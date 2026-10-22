@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todos Preview</title>
+  <style>
+    /* 색상 (라이트 모드) */
+    :root {
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --text: #1d1d1f;
+      --secondary: #86868b;
+      --separator: rgba(60, 60, 67, 0.12);
+      --accent: #0071e3;
+      --done: #34c759;
+      --overdue: #ff3b30;
+      --pill-bg: rgba(0, 113, 227, 0.1);
+      --done-bg: #fafafa;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    /* 색상 (다크 모드) */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000000;
+        --card: #1c1c1e;
+        --text: #f5f5f7;
+        --secondary: #98989d;
+        --separator: rgba(84, 84, 88, 0.6);
+        --accent: #2997ff;
+        --done: #30d158;
+        --overdue: #ff453a;
+        --pill-bg: rgba(41, 151, 255, 0.16);
+        --done-bg: #242426;
+        --shadow: none;
+      }
+    }
+
+    /* 기본 설정 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Apple SD Gothic Neo", "Helvetica Neue", sans-serif;
+      line-height: 1.47;
+      letter-spacing: -0.01em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 80px 24px 96px;
+    }
+
+    /* 홈으로 돌아가기 */
+    .back {
+      display: inline-block;
+      font-size: 15px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    /* 머리말 */
+    .eyebrow {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      margin-bottom: 32px;
+    }
+
+    /* 요약 타일 */
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .tile {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .tile .label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+
+    .tile .value {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tile.total .value { color: var(--accent); }
+    .tile.done .value { color: var(--done); }
+
+    /* 상태 문구 */
+    .status {
+      color: var(--secondary);
+      font-size: 15px;
+      text-align: center;
+      padding: 32px 0;
+    }
+
+    .status.error {
+      color: var(--overdue);
+    }
+
+    .status:empty {
+      display: none;
+    }
+
+    /* 목록 (그룹형 카드) */
+    .todo-list {
+      list-style: none;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .todo-list:empty {
+      display: none;
+    }
+
+    .todo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      position: relative;
+    }
+
+    /* 항목 사이 구분선 (원 아이콘 오른쪽부터) */
+    .todo + .todo::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 56px;
+      right: 0;
+      border-top: 0.5px solid var(--separator);
+    }
+
+    .check {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 1.5px solid var(--secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.6;
+    }
+
+    .todo.done {
+      background: var(--done-bg);
+    }
+
+    .todo.done .check {
+      background: var(--accent);
+      border-color: var(--accent);
+      opacity: 1;
+    }
+
+    .check svg {
+      display: none;
+      width: 12px;
+      height: 12px;
+    }
+
+    .todo.done .check svg {
+      display: block;
+    }
+
+    .body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .title {
+      font-size: 17px;
+      word-break: break-word;
+    }
+
+    .todo.done .title {
+      color: var(--secondary);
+    }
+
+    .meta {
+      font-size: 13px;
+      color: var(--secondary);
+      margin-top: 1px;
+    }
+
+    .meta.overdue {
+      color: var(--overdue);
+    }
+
+    .pill {
+      flex-shrink: 0;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      background: var(--pill-bg);
+      border-radius: 999px;
+      padding: 3px 10px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .todo.done .pill {
+      color: var(--secondary);
+      background: var(--separator);
+    }
+
+    footer {
+      margin-top: 16px;
+      padding: 0 20px;
+      font-size: 13px;
+      color: var(--secondary);
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 48px 16px 64px;
+      }
+
+      h1 {
+        font-size: 34px;
+        margin-bottom: 24px;
+      }
+
+      .summary {
+        gap: 8px;
+        margin-bottom: 24px;
+      }
+
+      .tile {
+        padding: 12px 14px;
+      }
+
+      .tile .value {
+        font-size: 26px;
+      }
+
+      .todo {
+        padding: 12px 16px;
+      }
+
+      .todo + .todo::before {
+        left: 52px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <a href="index.html" class="back">‹ Home</a>
+    <p class="eyebrow">test_todos</p>
+    <h1>할 일</h1>
+
+    <div class="summary">
+      <div class="tile total">
+        <p class="label">전체</p>
+        <p class="value" id="count-total">–</p>
+      </div>
+      <div class="tile">
+        <p class="label">남은 일</p>
+        <p class="value" id="count-left">–</p>
+      </div>
+      <div class="tile done">
+        <p class="label">완료</p>
+        <p class="value" id="count-done">–</p>
+      </div>
+    </div>
+
+    <p class="status" id="status">불러오는 중…</p>
+    <ul class="todo-list" id="list"></ul>
+    <footer id="footer"></footer>
+  </main>
+
+  <script>
+    // Supabase 연결 정보 (publishable key는 브라우저에 공개해도 되는 키)
+    const SUPABASE_URL = "https://hehifqnidhudcjtixngm.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_NbfByFM5lnKCX44ATOFOCA_90kkHN0C";
+
+    const statusEl = document.getElementById("status");
+    const listEl = document.getElementById("list");
+
+    const CHECK_ICON = '<svg viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg>';
+
+    // "2026-10-31" → "10월 31일 (금)"
+    function formatDate(value) {
+      const date = new Date(value + "T00:00:00");
+      return date.toLocaleDateString("ko-KR", { month: "long", day: "numeric", weekday: "short" });
+    }
+
+    function isOverdue(value) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      return new Date(value + "T00:00:00") < today;
+    }
+
+    function render(rows) {
+      listEl.innerHTML = "";
+      rows.forEach((row) => {
+        const done = row.done === true;
+
+        const li = document.createElement("li");
+        li.className = "todo" + (done ? " done" : "");
+
+        const check = document.createElement("span");
+        check.className = "check";
+        check.innerHTML = CHECK_ICON;
+
+        const body = document.createElement("div");
+        body.className = "body";
+
+        const titleEl = document.createElement("p");
+        titleEl.className = "title";
+        titleEl.textContent = (row.title ?? "").trim() || "(제목 없음)";
+        body.appendChild(titleEl);
+
+        if (row.due_date) {
+          const meta = document.createElement("p");
+          meta.className = "meta" + (!done && isOverdue(row.due_date) ? " overdue" : "");
+          meta.textContent = formatDate(row.due_date);
+          body.appendChild(meta);
+        }
+
+        li.append(check, body);
+
+        if (row.amount != null) {
+          const pill = document.createElement("span");
+          pill.className = "pill";
+          pill.textContent = `× ${row.amount}`;
+          li.appendChild(pill);
+        }
+
+        listEl.appendChild(li);
+      });
+    }
+
+    function renderCounts(rows) {
+      const doneCount = rows.filter((row) => row.done === true).length;
+      document.getElementById("count-total").textContent = rows.length;
+      document.getElementById("count-done").textContent = doneCount;
+      document.getElementById("count-left").textContent = rows.length - doneCount;
+    }
+
+    async function loadTodos() {
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/test_todos?select=*&order=due_date.asc.nullslast`, {
+          headers: { apikey: SUPABASE_KEY },
+        });
+        if (!res.ok) {
+          const detail = await res.text();
+          throw new Error(`HTTP ${res.status} ${detail}`);
+        }
+        const rows = await res.json();
+        renderCounts(rows);
+        if (rows.length === 0) {
+          statusEl.textContent = "표에 데이터가 없습니다.";
+          return;
+        }
+        statusEl.textContent = "";
+        render(rows);
+        document.getElementById("footer").textContent =
+          "Supabase에서 불러옴 · " + new Date().toLocaleTimeString("ko-KR", { hour: "numeric", minute: "2-digit" });
+      } catch (err) {
+        statusEl.textContent = "불러오기 실패: " + err.message;
+        statusEl.classList.add("error");
+      }
+    }
+
+    loadTodos();
+  </script>
+
+</body>
+</html>
