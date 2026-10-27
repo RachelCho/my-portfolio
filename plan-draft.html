@@ -3,213 +3,263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>기획서 초안 · 조예경 포트폴리오</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<title>기획서 초안 · Second Context</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <style>
 :root{
-  --bg:#f3f1ec; --ink:#161513; --ink-soft:#6b675f; --line:#e6e2d9; --card:#ffffff;
-  --pill-bg:#e9e5db;
-  --content:1360px;
-  --sp2:10px; --sp3:20px; --sp4:30px; --sp5:40px; --sp6:60px; --sp7:80px;
+  --plum:#30232E; --orange:#DA613E; --cream:#F4F0E8; --sage:#9DAE9A;
+  --line:rgba(48,35,46,.16);
+  --max:1200px; --text:720px;
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Pretendard',-apple-system,'Malgun Gothic',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body{font-family:'Manrope','Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;color:var(--plum);background:var(--cream);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 a{color:inherit}
-.shell{max-width:var(--content);margin:0 auto;padding:0 5%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s4)}
+.label{font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:var(--s1);margin-bottom:var(--s2)}
+.label::before{content:"";width:24px;height:2px;background:var(--orange)}
 
-.pill{display:inline-block;border-radius:999px;background:var(--pill-bg);font-size:12px;font-weight:700;letter-spacing:.08em;padding:6px 14px;margin-bottom:var(--sp2)}
-.card{background:var(--card);border-radius:22px;box-shadow:0 2px 10px rgba(22,21,19,.05);padding:var(--sp5)}
+.hero{padding:var(--s7) 0 var(--s6)}
+.hero h1{font-size:64px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+.hero p{max-width:var(--text);margin-top:var(--s3)}
+.docs{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s4);font-size:15px}
+.docs a{font-weight:600}
 
-.hero{padding:var(--sp6) 0 var(--sp5);text-align:center}
-.hero h1{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.3}
-.hero p{color:var(--ink-soft);margin-top:var(--sp2)}
+section{padding:var(--s6) 0;border-top:1px solid var(--line)}
+h2{font-size:36px;line-height:1.2;font-weight:800;letter-spacing:-.01em;margin-bottom:var(--s4)}
+h3{font-size:17px;font-weight:700;margin:var(--s4) 0 var(--s1)}
+.body{max-width:var(--text)}
+ul,ol{padding-left:1.2em}
+li{margin-bottom:6px}
+li ul{margin-top:6px}
+.note{font-size:13px;line-height:1.4;margin-top:var(--s2)}
 
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sp3);padding-bottom:var(--sp7)}
-.span-4{grid-column:span 4}
-.span-6{grid-column:span 6}
-.span-12{grid-column:span 12}
-.card h2{font-size:22px;font-weight:800;margin-bottom:var(--sp3)}
-.card h3{font-size:15px;font-weight:800;margin:var(--sp3) 0 var(--sp2)}
-.card h3:first-of-type{margin-top:0}
-.card ul{padding-left:1.2em;color:var(--ink-soft);font-size:15px}
-.card li{margin-bottom:6px}
-.card li ul{margin-top:6px}
-.card strong{color:var(--ink)}
-.btn{display:inline-block;border-radius:999px;background:var(--ink);color:#fff;font-size:14px;font-weight:700;padding:10px 20px;text-decoration:none;margin-top:var(--sp3)}
-.bk .len{font-size:12px;font-weight:700;color:var(--ink-soft)}
-.bk p{color:var(--ink-soft);font-size:15px}
-.btn.off{background:var(--pill-bg);color:var(--ink-soft);cursor:default}
-.bk .note{font-size:12px;color:var(--ink-soft);margin-top:var(--sp2)}
-code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
+table{width:100%;border-collapse:collapse;font-size:15px;margin-top:var(--s2)}
+th,td{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid var(--line)}
+th{font-size:13px;font-weight:600;letter-spacing:.04em;border-bottom:1.5px solid var(--plum)}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:6px;border:1px solid var(--line)}
 
-.proj h2{margin-bottom:var(--sp2)}
-.proj .num{font-size:12px;font-weight:700;color:var(--ink-soft)}
-.proj .flow{color:var(--ink-soft);font-size:14px}
+.booking{background:var(--sage);border-radius:4px;padding:var(--s4);margin-top:var(--s3)}
+.booking h3{margin-top:0}
+.btn{display:inline-block;background:var(--plum);color:var(--cream);font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:4px;margin-top:var(--s2)}
 
-.todo{background:transparent;box-shadow:none;border:1.5px dashed var(--line)}
-.todo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp4)}
+.tbd{border:1.5px dashed rgba(48,35,46,.35);border-radius:4px;padding:var(--s4)}
+.tbd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.tbd h3{margin-top:0}
 
-@media(max-width:960px){
-  .span-4,.span-6{grid-column:span 12}
-  .todo-grid{grid-template-columns:repeat(2,1fr)}
+@media(max-width:900px){
+  .tbd-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
-  .shell{padding:0 16px}
-  .card{padding:var(--sp4) var(--sp3)}
-  .todo-grid{grid-template-columns:1fr}
+  .wrap{padding:0 16px}
+  .hero h1{font-size:40px;line-height:1.15}
+  h2{font-size:28px;line-height:1.3}
+  .hero,section{padding:var(--s5) 0}
+  .tbd,.booking{padding:var(--s3)}
+  table{font-size:14px}
+  th,td{padding-right:10px}
 }
 </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="shell">
-    <span class="pill">PLAN DRAFT</span>
-    <h1>조예경 포트폴리오 기획서 (초안)</h1>
-    <p>확정된 내용은 1–7번에, 아직 정하지 않은 내용은 8번에 정리했습니다.</p>
+<header class="hero">
+  <div class="wrap">
+    <p class="label">Plan draft</p>
+    <h1>Second Context<br>웹사이트 기획서 (초안)</h1>
+    <p>강사님께 공유하는 기획서입니다. 확정된 내용은 1–8번에, 아직 정하지 않은 내용은 9번에 정리했습니다.</p>
+    <div class="docs">
+      <span>실제 사이트 시안 →</span><a href="second-context.html">second-context.html</a>
+    </div>
   </div>
-</section>
+</header>
 
-<main class="shell grid">
-  <section class="card span-6">
-    <span class="pill">01 · TITLE</span>
-    <h2>사이트 제목</h2>
-    <ul>
-      <li><strong>조예경 포트폴리오</strong></li>
-      <li>이름 표기: Rachel Cho | 조예경</li>
-      <li>소개 문구: Senior Product Designer specializing in B2B SaaS and enterprise products.</li>
-    </ul>
-  </section>
-
-  <section class="card span-6">
-    <span class="pill">02 · AUDIENCE</span>
-    <h2>대상 독자</h2>
-    <ul>
-      <li>B2B SaaS·엔터프라이즈 기업의 채용 담당자</li>
-      <li>디자인 리더</li>
-      <li>프리랜서·계약 프로젝트를 의뢰할 고객</li>
-    </ul>
+<main>
+  <section>
+    <div class="wrap body">
+      <p class="label">01 · Brand</p>
+      <h2>브랜드와 사이트 제목</h2>
+      <ul>
+        <li>사이트 제목: <strong>Second Context</strong> (로고 표기: second context / 한국어: 세컨드 컨텍스트)</li>
+        <li>브랜드 설명: 새로운 시장에서 제품의 다음 맥락을 설계하는 독립 프로덕트 디자인 스튜디오</li>
+        <li>태그라인: Product design across markets. / 시장을 넘어 이어지는 제품 경험.</li>
+        <li>운영: Rachel Cho | 조예경 — Founder &amp; Product Design Consultant</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="card span-6">
-    <span class="pill">03 · CONTENT</span>
-    <h2>보여줄 내용</h2>
-    <ul>
-      <li>복잡한 업무와 데이터를 이해하고, 사용하기 쉬운 제품으로 바꾼 과정</li>
-      <li>각 프로젝트의 문제·판단·협업·결과</li>
-    </ul>
-    <h3>필요한 화면</h3>
-    <ul>
-      <li>작업물 목록</li>
-      <li>작업물 상세</li>
-      <li>About (별도 페이지)</li>
-      <li>이력서 열람·다운로드 (PDF)</li>
-      <li>상담 예약 (30분 집중 상담 / 60분 심층 상담)</li>
-      <li>Footer 연락 링크</li>
-    </ul>
+  <section>
+    <div class="wrap body">
+      <p class="label">02 · Audience</p>
+      <h2>대상</h2>
+      <ul>
+        <li>미국 진출을 준비하는 한국 B2B SaaS 팀</li>
+        <li>이미 진출해 미국 사용자 경험을 개선하려는 한국 B2B SaaS 팀</li>
+        <li>전문 분야: 헬스케어, 엔터프라이즈, 복잡한 운영 워크플로</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="card span-6">
-    <span class="pill">04 · CONTACT</span>
-    <h2>연락처</h2>
-    <ul>
-      <li>적합한 역할이나 프로젝트가 있다면 이메일 또는 LinkedIn으로 인터뷰·상담을 요청해주세요.</li>
-      <li>Email: <a href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/rachelchoart" target="_blank" rel="noopener">linkedin.com/in/rachelchoart</a></li>
-    </ul>
-  </section>
-
-  <div class="span-12"><span class="pill">05 · BOOKING</span></div>
-  <section class="card span-6 bk">
-    <div class="len">30분</div>
-    <h2>집중 상담</h2>
-    <p>구체적인 질문 한 가지를 함께 살펴보고, 다음 행동을 정리하는 상담입니다.</p>
-    <a class="btn" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약하기 →</a>
-    <p class="note">Calendly 30분 이벤트로 연결</p>
-  </section>
-  <section class="card span-6 bk">
-    <div class="len">60분</div>
-    <h2>심층 상담</h2>
-    <p>제품 배경과 핵심 흐름을 살펴보고, 개선 방향을 논의하는 상담입니다.</p>
-    <!-- 60분 Calendly 이벤트가 준비되면 <a class="btn" href="이벤트 주소">60분 상담 예약하기 →</a>로 교체 -->
-    <span class="btn off">60분 상담 준비 중</span>
-    <p class="note">Calendly 60분 이벤트는 추후 연결</p>
-  </section>
-
-  <div class="span-12"><span class="pill">06 · WORKS</span></div>
-  <section class="card span-4 proj">
-    <div class="num">01</div>
-    <h2>Axle Health</h2>
-    <p class="flow">문제 → 판단 → 협업 → 결과</p>
-  </section>
-  <section class="card span-4 proj">
-    <div class="num">02</div>
-    <h2>Pfizer</h2>
-    <p class="flow">문제 → 판단 → 협업 → 결과</p>
-  </section>
-  <section class="card span-4 proj">
-    <div class="num">03</div>
-    <h2>FNS/LG</h2>
-    <p class="flow">문제 → 판단 → 협업 → 결과</p>
-  </section>
-
-  <section class="card span-12">
-    <span class="pill">07 · STYLE</span>
-    <h2>디자인 스타일 (Day05 선택)</h2>
-    <ul>
-      <li><strong>스타일 C — 카드형 벤토 그리드</strong></li>
-      <li>목표: C 카드형 스타일을 바탕으로 정보와 케이스스터디를 명확하게 보여준다.</li>
-      <li>기준 문서: design-style.md / 참고 예시: style-c-grid.html</li>
-      <li>지켜야 할 것 (design-style.md):
-        <ul>
-          <li>카드의 border-radius(22px)와 그림자 값을 낮추지 않는다.</li>
-          <li>프로젝트 카드는 <code>grid-column: span 4</code>만 쓴다.</li>
-          <li>섹션 제목 위에는 항상 알약 라벨을 붙인다.</li>
-        </ul>
-      </li>
-    </ul>
-  </section>
-
-  <section class="card span-12 todo">
-    <span class="pill">08 · TBD</span>
-    <h2>미정 및 추후 결정 사항</h2>
-    <div class="todo-grid">
-      <div>
-        <h3>대상과 메시지</h3>
-        <ul>
-          <li>대상 독자 사이의 우선순위, 국내·해외 중 주요 대상</li>
-          <li>대상별로 사이트에서 특히 확인하려는 것</li>
-          <li>사이트 언어 (한국어 / 영어 / 한·영 병기)</li>
-          <li>첫 화면에서 기억시킬 한 문장</li>
-        </ul>
+  <section>
+    <div class="wrap">
+      <p class="label">03 · Why</p>
+      <h2>필요성과 어려움 — 현지화 시행착오</h2>
+      <div class="body">
+        <h3>핵심 메시지</h3>
+        <p>같은 제품도 시장과 사용자가 달라지면 다른 맥락에서 사용됩니다. Second Context는 그 맥락을 이해하고 제품 경험에 반영합니다.</p>
+        <h3>왜 어려운가</h3>
+        <p>현지화는 번역만으로 끝나지 않습니다. 사용자가 일하는 방식, 제품을 이해하는 방식, 신뢰를 판단하는 기준이 함께 달라집니다. 한국 시장에 맞춰 제품을 만들어 온 팀은 이 차이를 내부에서 발견하기 어렵습니다.</p>
+        <h3>시행착오 유형 (설명용 예시 — 실제 기업 사례 아님)</h3>
       </div>
-      <div>
-        <h3>콘텐츠</h3>
+      <table>
+        <thead><tr><th>유형</th><th>흔히 일어나는 일</th><th>관련 질문</th></tr></thead>
+        <tbody>
+          <tr><td>번역 중심 현지화</td><td>화면 문구는 영어로 바꿨지만 온보딩이 국내 사용자를 전제로 설계되어 첫 사용자가 가치를 이해하지 못한다</td><td>처음 방문한 사용자가 제품의 가치를 이해하고 시작할 수 있는가?</td></tr>
+          <tr><td>업무 방식 차이</td><td>핵심 워크플로가 현지 팀의 역할 분담과 승인 방식에 맞지 않아 실제 업무에 쓰이지 않는다</td><td>핵심 업무 흐름이 목표 사용자의 실제 업무 방식에 맞는가?</td></tr>
+          <tr><td>구조와 문구</td><td>메뉴 구조와 버튼 문구가 다음 행동을 분명하게 안내하지 못한다</td><td>화면의 구조와 문구가 다음 행동을 명확하게 안내하는가?</td></tr>
+          <tr><td>우선순위 부재</td><td>고칠 것이 많아 보이지만 출시 전에 무엇부터 할지 정하지 못한다</td><td>출시 전에 어떤 UX 문제부터 개선해야 하는가?</td></tr>
+        </tbody>
+      </table>
+      <p class="note">실제 기업의 공개 사례는 출처를 확인한 뒤 추가합니다 (미정).</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="label">04 · Services</p>
+      <h2>서비스</h2>
+      <table>
+        <thead><tr><th>서비스</th><th>내용</th><th>결과물</th></tr></thead>
+        <tbody>
+          <tr><td>Product UX Review</td><td>온보딩·핵심 작업·정보 구조·화면 문구 검토</td><td>우선순위를 포함한 UX 진단 보고서</td></tr>
+          <tr><td>Market Context Session</td><td>목표 사용자·업무 방식·현지화 가정 검토</td><td>상담 및 핵심 권고 요약</td></tr>
+          <tr><td>Design Partnership</td><td>합의한 문제의 설계·프로토타입·개발 협업</td><td>범위에 맞춘 제품 디자인 결과물</td></tr>
+        </tbody>
+      </table>
+      <p class="note">결과를 보장하는 문구 대신 검토 범위와 실제 제공물을 설명합니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap body">
+      <p class="label">05 · Approach &amp; Contact</p>
+      <h2>Approach &amp; Contact (통합 섹션)</h2>
+      <h3>진행 방식</h3>
+      <ol>
+        <li>30분 상담으로 현재 과제를 듣습니다.</li>
+        <li>팀에 필요한 범위를 정리합니다.</li>
+        <li>UX 진단 또는 제품 디자인 협업으로 이어갑니다.</li>
+      </ol>
+      <div class="booking">
+        <h3>30분 상담</h3>
         <ul>
-          <li>프로젝트별 상세 내용 (문제·판단·협업·결과 각각의 내용, 성과 수치)</li>
-          <li>프로젝트별 공개 가능한 범위 (회사명, 화면, 수치)</li>
-          <li>작업물 노출 순서와 3개 외 추가 작업물 여부</li>
-          <li>About 페이지에 들어갈 내용</li>
-          <li>홈(첫 화면) 구성</li>
-          <li>상담별 사전 검토 범위와 결과물 범위</li>
+          <li>상담 종류는 30분 상담 한 가지입니다.</li>
+          <li>내용: 구체적인 질문 한 가지를 함께 살펴보고, 다음 행동을 정리합니다.</li>
+          <li>가격: 미정</li>
+          <li>예약 버튼 문구: 30분 상담 예약 (상단 메뉴와 본문 모두)</li>
         </ul>
+        <a class="btn" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약</a>
       </div>
-      <div>
-        <h3>화면과 디자인</h3>
-        <ul>
-          <li>케이스스터디 상세에서 문제·판단·협업·결과를 카드로 어떻게 나눌지</li>
-          <li>design-style.md 섹션 순서 중 Board 섹션 사용 여부</li>
-        </ul>
-      </div>
-      <div>
-        <h3>기능과 기술</h3>
-        <ul>
-          <li>기술 스택</li>
-          <li>로그인 방식</li>
-          <li>작업물 관리(등록·수정·삭제) 권한</li>
-          <li>이력서 PDF 업로드 방식과 권한</li>
-          <li>Calendly 60분 이벤트 개설과 연결 시점 (현재는 30분 상담만 예약 연결)</li>
-        </ul>
+      <h3>그 밖의 연락 방법</h3>
+      <ul>
+        <li>Email: <a href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/rachelchoart" target="_blank" rel="noopener">linkedin.com/in/rachelchoart</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap body">
+      <p class="label">06 · Selected work</p>
+      <h2>관련 사례</h2>
+      <ul>
+        <li>Axle Health</li>
+        <li>Pfizer</li>
+        <li>FNS/LG</li>
+      </ul>
+      <p class="note">각 사례는 문제·판단·협업·결과 순서로 보여주고, 공개 가능한 자료만 사용합니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap body">
+      <p class="label">07 · Structure</p>
+      <h2>사이트 구성 (second-context.html)</h2>
+      <ul>
+        <li>상단 메뉴: 로고 · Why · Services · Work · Approach &amp; Contact · [30분 상담 예약]</li>
+        <li>섹션 순서: Hero → Why (현지화 시행착오) → Services → Selected work → Approach &amp; Contact → Footer</li>
+        <li>Hero
+          <ul>
+            <li>제목: 새로운 시장, 새로운 사용 맥락.</li>
+            <li>설명: 미국 시장을 준비하는 한국 B2B SaaS 팀을 위해 제품 UX 진단부터 실제 디자인까지 함께합니다.</li>
+            <li>버튼: 30분 상담 예약 / 관련 사례 보기</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="label">08 · Design</p>
+      <h2>디자인 방향 — Second Context 브랜드</h2>
+      <table>
+        <thead><tr><th>색상</th><th>HEX</th><th>역할</th></tr></thead>
+        <tbody>
+          <tr><td><span class="swatch" style="background:#30232E"></span>Context Plum</td><td>#30232E</td><td>제목, 본문, 주요 버튼</td></tr>
+          <tr><td><span class="swatch" style="background:#DA613E"></span>Signal Orange</td><td>#DA613E</td><td>강조선, 큰 그래픽</td></tr>
+          <tr><td><span class="swatch" style="background:#F4F0E8"></span>Warm Cream</td><td>#F4F0E8</td><td>기본 배경</td></tr>
+          <tr><td><span class="swatch" style="background:#9DAE9A"></span>Soft Sage</td><td>#9DAE9A</td><td>보조 배경, 정보 패널</td></tr>
+        </tbody>
+      </table>
+      <ul class="body" style="margin-top:var(--s4)">
+        <li>시각 비중: 크림 70%, 플럼 20%, 오렌지 8%, 세이지 2%</li>
+        <li>주요 버튼: 플럼 배경 + 크림 글자</li>
+        <li>크림 배경의 작은 본문에는 오렌지·세이지 글자를 쓰지 않고 플럼을 쓴다</li>
+        <li>서체: Manrope (영문), Noto Sans KR (한글)</li>
+        <li>크기: H1 64px (모바일 40px), H2 36px (모바일 28px), 본문 17px/1.7, 라벨 13px</li>
+        <li>레이아웃: 좌측 정렬, 넓은 여백, 절제된 테두리, 분명한 정보 위계. 본문 최대 폭 약 720px, 전체 최대 폭 약 1200px</li>
+        <li>로고: 승인된 이미지를 사용하고 텍스트로 다시 입력하지 않는다. 비율·색상을 바꾸거나 그림자·그라데이션을 넣지 않는다</li>
+        <li>톤: 명확하고 구체적이며 차분한 실무자</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="tbd">
+        <p class="label">09 · TBD</p>
+        <h2>미정 및 추후 결정 사항</h2>
+        <div class="tbd-grid">
+          <div>
+            <h3>콘텐츠</h3>
+            <ul>
+              <li>실제 기업의 현지화 시행착오 사례 선정과 출처</li>
+              <li>관련 사례별 상세 내용과 공개 가능한 범위</li>
+              <li>사이트 언어 최종 결정 (시안은 한국어 우선, 영문 태그라인 병기)</li>
+            </ul>
+          </div>
+          <div>
+            <h3>상담과 서비스</h3>
+            <ul>
+              <li>30분 상담 가격</li>
+              <li>30분 상담의 사전 검토 범위와 결과물 범위</li>
+              <li>서비스별 가격과 범위</li>
+              <li>Market Context Session과 30분 상담의 관계</li>
+            </ul>
+          </div>
+          <div>
+            <h3>브랜드와 운영</h3>
+            <ul>
+              <li>로고 벡터 마스터와 파비콘</li>
+              <li>브랜드명 상표와 도메인 검토</li>
+              <li>기존 조예경 포트폴리오(index.html)와 Second Context 사이트의 관계</li>
+              <li>기술 스택, 로그인 방식, 콘텐츠 관리 권한</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>

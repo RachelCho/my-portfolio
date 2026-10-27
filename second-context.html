@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Context — Product design across markets.</title>
+<meta name="description" content="미국 시장을 준비하는 한국 B2B SaaS 팀을 위한 제품 UX 진단과 디자인.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+:root{
+  --plum:#30232E; --orange:#DA613E; --cream:#F4F0E8; --sage:#9DAE9A;
+  --line:rgba(48,35,46,.16);
+  --max:1200px; --text:720px;
+  --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope','Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;color:var(--plum);background:var(--cream);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+a{color:inherit}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s4)}
+.label{font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:var(--s1);margin-bottom:var(--s2)}
+.label::before{content:"";width:24px;height:2px;background:var(--orange)}
+h1{font-size:64px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
+h2{font-size:36px;line-height:1.2;font-weight:800;letter-spacing:-.01em;max-width:var(--text)}
+h3{font-size:20px;line-height:1.4;font-weight:700}
+.lead{max-width:var(--text);margin-top:var(--s3)}
+.btn{display:inline-flex;align-items:center;gap:var(--s1);font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border:1.5px solid var(--plum);border-radius:4px}
+.btn-primary{background:var(--plum);color:var(--cream)}
+.btn-primary:hover{background:#45333f}
+.btn-secondary:hover{background:rgba(48,35,46,.06)}
+section{padding:var(--s7) 0;border-top:1px solid var(--line)}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:var(--cream);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);height:80px}
+.logo img{width:200px;height:auto}
+nav{display:flex;align-items:center;gap:var(--s4);font-size:15px;font-weight:500}
+nav a{text-decoration:none}
+nav a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px}
+nav .btn{padding:10px 18px}
+
+/* hero */
+.hero{border-top:0;padding:var(--s7) 0}
+.hero .tag{font-size:15px;font-weight:600;margin-top:var(--s3)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s5)}
+
+/* why */
+.cases{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3);margin-top:var(--s5)}
+.case{border:1px solid var(--line);border-radius:4px;padding:var(--s4)}
+.case h3{margin-bottom:var(--s1)}
+.case .q{margin-top:var(--s2);padding-top:var(--s2);border-top:1px solid var(--line);font-size:15px;font-weight:600}
+.note{font-size:13px;line-height:1.4;margin-top:var(--s3)}
+
+/* services */
+.services{margin-top:var(--s5);border-top:1.5px solid var(--plum)}
+.svc{display:grid;grid-template-columns:1fr 1.4fr 1.2fr;gap:var(--s4);padding:var(--s4) 0;border-bottom:1px solid var(--line)}
+.svc .k{display:block;font-size:13px;font-weight:600;letter-spacing:.04em;margin-bottom:4px}
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s5)}
+.work article{border-top:3px solid var(--orange);padding-top:var(--s3)}
+.work .flow{font-size:15px;margin-top:var(--s1)}
+
+/* approach & contact */
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s5);counter-reset:step}
+.steps li{counter-increment:step;border-top:1px solid var(--plum);padding-top:var(--s2)}
+.steps li::before{content:"0" counter(step);display:block;font-size:13px;font-weight:800;margin-bottom:var(--s1)}
+.booking{display:grid;grid-template-columns:1.3fr 1fr;gap:var(--s4);margin-top:var(--s6);background:var(--sage);border-radius:4px;padding:var(--s5)}
+.booking .price{font-size:13px;font-weight:600;margin-top:var(--s2)}
+.booking .btn{margin-top:var(--s3)}
+.contact-list{list-style:none;border-left:1px solid rgba(48,35,46,.3);padding-left:var(--s4)}
+.contact-list li{margin-bottom:var(--s2)}
+.contact-list .k{font-size:13px;font-weight:600;display:block}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:var(--s5) 0}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s2);font-size:13px}
+
+@media(max-width:900px){
+  nav a:not(.btn){display:none}
+  .cases,.work,.steps,.booking{grid-template-columns:1fr}
+  .svc{grid-template-columns:1fr;gap:var(--s1)}
+  .contact-list{border-left:0;padding-left:0;border-top:1px solid rgba(48,35,46,.3);padding-top:var(--s3)}
+}
+@media(max-width:600px){
+  .wrap{padding:0 16px}
+  h1{font-size:40px;line-height:1.15}
+  h2{font-size:28px;line-height:1.3}
+  section,.hero{padding:var(--s6) 0}
+  .logo img{width:150px}
+  nav .btn{padding:8px 12px;font-size:14px}
+  .booking{padding:var(--s3)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="#top" class="logo" aria-label="Second Context 홈"><img src="assets/second-context-logo.png" alt="second context"></a>
+    <nav>
+      <a href="#why">Why</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Approach &amp; Contact</a>
+      <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="label">Product design across markets.</p>
+      <h1>새로운 시장,<br>새로운 사용 맥락.</h1>
+      <p class="lead">미국 시장을 준비하는 한국 B2B SaaS 팀을 위해 제품 UX 진단부터 실제 디자인까지 함께합니다.</p>
+      <p class="tag">헬스케어 · 엔터프라이즈 · 복잡한 운영 워크플로</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약</a>
+        <a class="btn btn-secondary" href="#work">관련 사례 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap">
+      <p class="label">Why</p>
+      <h2>번역만으로는 제품이 현지에서 쓰이지 않습니다.</h2>
+      <p class="lead">같은 제품도 시장과 사용자가 달라지면 다른 맥락에서 사용됩니다. 사용자가 일하는 방식, 제품을 이해하는 방식, 신뢰를 판단하는 기준이 함께 달라지고, 한국 시장에 맞춰 제품을 만들어 온 팀은 이 차이를 내부에서 발견하기 어렵습니다.</p>
+      <div class="cases">
+        <article class="case">
+          <h3>번역 중심 현지화</h3>
+          <p>화면 문구는 영어로 바꿨지만 온보딩이 국내 사용자를 전제로 설계되어, 첫 사용자가 제품의 가치를 이해하지 못합니다.</p>
+          <p class="q">처음 방문한 사용자가 가치를 이해하고 시작할 수 있는가?</p>
+        </article>
+        <article class="case">
+          <h3>업무 방식 차이</h3>
+          <p>핵심 워크플로가 현지 팀의 역할 분담과 승인 방식에 맞지 않아, 실제 업무에 쓰이지 않습니다.</p>
+          <p class="q">핵심 업무 흐름이 목표 사용자의 실제 업무 방식에 맞는가?</p>
+        </article>
+        <article class="case">
+          <h3>구조와 문구</h3>
+          <p>메뉴 구조와 버튼 문구가 다음 행동을 분명하게 안내하지 못합니다.</p>
+          <p class="q">화면의 구조와 문구가 다음 행동을 명확하게 안내하는가?</p>
+        </article>
+        <article class="case">
+          <h3>우선순위 부재</h3>
+          <p>고칠 것이 많아 보이지만, 출시 전에 무엇부터 해야 할지 정하지 못합니다.</p>
+          <p class="q">출시 전에 어떤 UX 문제부터 개선해야 하는가?</p>
+        </article>
+      </div>
+      <!-- 시안 메모: 위 네 가지는 설명용 예시입니다. 출처를 확인한 실제 기업 사례로 교체 예정 -->
+      <p class="note">위 내용은 자주 나타나는 시행착오 유형을 설명하기 위한 예시입니다.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <p class="label">Services</p>
+      <h2>팀에 필요한 범위로 함께합니다.</h2>
+      <div class="services">
+        <div class="svc">
+          <h3>Product UX Review</h3>
+          <div><span class="k">검토 범위</span>온보딩·핵심 작업·정보 구조·화면 문구</div>
+          <div><span class="k">결과물</span>우선순위를 포함한 UX 진단 보고서</div>
+        </div>
+        <div class="svc">
+          <h3>Market Context Session</h3>
+          <div><span class="k">검토 범위</span>목표 사용자·업무 방식·현지화 가정</div>
+          <div><span class="k">결과물</span>상담 및 핵심 권고 요약</div>
+        </div>
+        <div class="svc">
+          <h3>Design Partnership</h3>
+          <div><span class="k">검토 범위</span>합의한 문제의 설계·프로토타입·개발 협업</div>
+          <div><span class="k">결과물</span>범위에 맞춘 제품 디자인 결과물</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <p class="label">Selected work</p>
+      <h2>복잡한 업무를 쓰기 쉬운 제품으로.</h2>
+      <div class="work">
+        <article>
+          <h3>Axle Health</h3>
+          <p class="flow">문제 → 판단 → 협업 → 결과</p>
+        </article>
+        <article>
+          <h3>Pfizer</h3>
+          <p class="flow">문제 → 판단 → 협업 → 결과</p>
+        </article>
+        <article>
+          <h3>FNS/LG</h3>
+          <p class="flow">문제 → 판단 → 협업 → 결과</p>
+        </article>
+      </div>
+      <p class="note">케이스 스터디는 공개 가능한 자료만 사용합니다.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="label">Approach &amp; Contact</p>
+      <h2>30분 상담으로 시작합니다.</h2>
+      <ol class="steps">
+        <li>30분 상담으로 현재 과제를 듣습니다.</li>
+        <li>팀에 필요한 범위를 정리합니다.</li>
+        <li>UX 진단 또는 제품 디자인 협업으로 이어갑니다.</li>
+      </ol>
+      <div class="booking">
+        <div>
+          <h3>30분 상담</h3>
+          <p>구체적인 질문 한 가지를 함께 살펴보고, 다음 행동을 정리합니다.</p>
+          <!-- 시안 메모: 30분 상담 가격은 미정 -->
+          <p class="price">가격: 추후 안내</p>
+          <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약</a>
+        </div>
+        <ul class="contact-list">
+          <li><span class="k">Email</span><a href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></li>
+          <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/rachelchoart" target="_blank" rel="noopener">linkedin.com/in/rachelchoart</a></li>
+          <li><span class="k">Founder</span>Rachel Cho | 조예경</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Second Context — Product design across markets.</span>
+    <span>© 2026 Second Context</span>
+  </div>
+</footer>
+
+</body>
+</html>
