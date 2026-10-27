@@ -64,6 +64,7 @@ HOME = [
      'We work with Korean B2B SaaS teams preparing for the U.S. market, from product UX reviews to hands-on design.'),
     ('헬스케어 · 엔터프라이즈 · 복잡한 운영 워크플로', 'Healthcare · Enterprise · Complex operational workflows'),
     ('관련 사례 보기', 'See related work'),
+    ('동료들과 제품 전략을 논의하는 Rachel Cho', 'Rachel Cho discussing product strategy with colleagues'),
     ('번역만으로는 제품이 현지에서 쓰이지 않습니다.', 'Translation alone won’t get your product used in a new market.'),
     ('같은 제품도 시장과 사용자가 달라지면 다른 맥락에서 사용됩니다. 사용자가 일하는 방식, 제품을 이해하는 방식, 신뢰를 판단하는 기준이 함께 달라지고, 한국 시장에 맞춰 제품을 만들어 온 팀은 이 차이를 내부에서 발견하기 어렵습니다.',
      'When the market and users change, the same product is used in a different context. How people work, how they make sense of a product, and how they judge trust all shift with it—and teams that built for the Korean market often find these differences hard to see from the inside.'),
