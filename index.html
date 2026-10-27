@@ -1,286 +1,215 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rachel Cho</title>
-  <style>
-    /* 기본 설정 */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>조예경 포트폴리오</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{
+  --bg:#f3f1ec; --ink:#161513; --ink-soft:#6b675f; --line:#e6e2d9; --card:#ffffff;
+  --pill-bg:#e9e5db;
+  --content:1360px; --gut:20px;
+  --sp2:10px; --sp3:20px; --sp4:30px; --sp5:40px; --sp6:60px; --sp7:80px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Pretendard',-apple-system,'Malgun Gothic',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+a{color:inherit;text-decoration:none}
+.shell{max-width:var(--content);margin:0 auto;padding:0 5%}
 
-    body {
-      background: #ffffff;
-      color: #1a1a1a;
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
-      line-height: 1.7;
-    }
+.pill{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;background:var(--pill-bg);color:var(--ink-soft);padding:8px 18px;border-radius:999px;margin-bottom:var(--sp3)}
+.card{background:var(--card);border-radius:22px;box-shadow:0 2px 10px rgba(22,21,19,.05);padding:var(--sp5)}
+.placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--pill-bg);color:var(--ink-soft);font-size:13px;font-weight:700}
 
-    a {
-      color: inherit;
-    }
+/* ---------- header ---------- */
+header.site{position:sticky;top:0;z-index:50;background:rgba(243,241,236,.9);backdrop-filter:blur(8px)}
+header.site .shell{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:78px}
+.logo{font-size:18px;font-weight:800}
+nav.main{display:flex;gap:var(--sp5)}
+nav.main a{font-size:14px;color:var(--ink-soft);font-weight:500}
+nav.main a:hover{color:var(--ink)}
+.cta-btn{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:12px 20px;border-radius:999px;justify-self:end}
 
-    /* 상단 메뉴 */
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(255, 255, 255, 0.9);
-      border-bottom: 1px solid #eeeeee;
-    }
+/* ---------- hero ---------- */
+.hero{padding:var(--sp6) 0 var(--sp7);text-align:center}
+.hero h1{font-size:clamp(30px,4.4vw,48px);font-weight:800;letter-spacing:-.02em;line-height:1.3;max-width:860px;margin:0 auto var(--sp3)}
+.hero .name{font-size:18px;font-weight:800;margin-bottom:var(--sp5)}
+.hero .cta-row{display:flex;gap:var(--sp2);justify-content:center;margin-bottom:var(--sp7)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;padding:13px 24px;border-radius:999px;border:0;cursor:pointer;font-family:inherit}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-ghost{background:#fff;color:var(--ink);box-shadow:0 2px 8px rgba(22,21,19,.06)}
+.visual-card{overflow:hidden;aspect-ratio:21/9;padding:0}
 
-    nav .inner {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+/* ---------- bento grid ---------- */
+.sec{padding:var(--sp7) 0}
+.sec-center{text-align:center;margin-bottom:var(--sp6)}
+.sec-center h2{font-size:clamp(26px,3.4vw,36px);font-weight:800;letter-spacing:-.01em}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gut)}
 
-    nav .logo {
-      font-weight: 700;
-      text-decoration: none;
-    }
+.chip{text-align:left;padding:var(--sp4);grid-column:span 4}
+.chip .lbl{font-size:11.5px;font-weight:800;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:var(--sp2)}
+.chip .nm{font-size:15.5px;font-weight:800;margin-bottom:8px}
+.chip .dsc{font-size:12.5px;color:var(--ink-soft);line-height:1.5}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-    }
+.b-proj{grid-column:span 4;padding:0;overflow:hidden;display:flex;flex-direction:column;text-align:left;border:0;font-family:inherit;color:inherit;cursor:pointer}
+.b-proj .pimg{aspect-ratio:4/3;overflow:hidden}
+.b-proj .pbody{padding:var(--sp4);display:flex;flex-direction:column;flex:1;width:100%}
+.b-proj h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.b-proj p{font-size:13px;color:var(--ink-soft)}
+.proj-foot{display:flex;justify-content:flex-end;margin-top:auto;padding-top:var(--sp3)}
+.arrow-circ{width:34px;height:34px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
 
-    nav ul a {
-      color: #666666;
-      text-decoration: none;
-      font-size: 15px;
-    }
+.b-detail{grid-column:span 12;display:none}
+.b-detail.open{display:block}
+.b-detail h3{font-size:24px;font-weight:800;margin-bottom:var(--sp3)}
+.b-detail .dimg{aspect-ratio:21/9;border-radius:16px;overflow:hidden;margin-bottom:var(--sp3)}
+.b-detail p{font-size:14.5px;color:var(--ink-soft);margin-bottom:var(--sp4)}
 
-    nav ul a:hover,
-    nav ul a[aria-current="page"] {
-      color: #1a1a1a;
-    }
+/* ---------- footer ---------- */
+footer.site{padding:var(--sp2) 0 var(--sp7)}
+footer.site .shell{background:var(--card);border-radius:22px;display:flex;align-items:center;justify-content:space-between;gap:var(--sp2);padding:var(--sp4) var(--sp5)}
+.fbrand{font-size:14px;font-weight:800}
+.fcopy{font-size:12px;color:var(--ink-soft)}
+.flinks{display:flex;gap:var(--sp3);font-size:13px;font-weight:700}
+.flinks a:hover{text-decoration:underline}
 
-    nav ul a[aria-current="page"] {
-      font-weight: 600;
-    }
-
-    /* 본문 공통 */
-    main {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    section {
-      padding: 72px 0;
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    section:last-child {
-      border-bottom: none;
-    }
-
-    h2 {
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #999999;
-      margin-bottom: 24px;
-    }
-
-    /* 첫 화면 (이름 + 소개) */
-    .hero {
-      padding: 120px 0 96px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      color: #555555;
-    }
-
-    /* About */
-    .about p {
-      font-size: 17px;
-      margin-bottom: 16px;
-    }
-
-    /* Projects */
-    .project-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .project {
-      padding: 24px;
-      border: 1px solid #eeeeee;
-      border-radius: 12px;
-      transition: border-color 0.2s;
-    }
-
-    .project:hover {
-      border-color: #cccccc;
-    }
-
-    .project h3 {
-      font-size: 18px;
-      margin-bottom: 6px;
-    }
-
-    .project p {
-      color: #555555;
-      font-size: 15px;
-    }
-
-    .project .tag {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 13px;
-      color: #888888;
-    }
-
-    /* Todos (preview.html로 가는 카드) */
-    a.project {
-      display: block;
-      text-decoration: none;
-    }
-
-    /* Contact */
-    .contact p {
-      font-size: 17px;
-      margin-bottom: 16px;
-    }
-
-    .contact ul {
-      list-style: none;
-    }
-
-    .contact li {
-      margin-bottom: 8px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 24px;
-      font-size: 13px;
-      color: #999999;
-    }
-
-    /* 휴대폰처럼 좁은 화면 */
-    @media (max-width: 600px) {
-      nav .inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 6px;
-        padding: 12px 16px;
-      }
-
-      nav ul {
-        flex-wrap: wrap;
-        gap: 6px 18px;
-      }
-
-      main {
-        padding: 0 16px;
-      }
-
-      .hero {
-        padding: 72px 0 56px;
-      }
-
-      .hero h1 {
-        font-size: 36px;
-      }
-
-      .hero p {
-        font-size: 17px;
-      }
-    }
-  </style>
+@media(max-width:960px){
+  nav.main{display:none}
+  header.site .shell{grid-template-columns:1fr auto}
+  .b-proj{grid-column:span 12}
+  .chip{grid-column:span 6}
+}
+@media(max-width:600px){
+  .shell{padding:0 16px}
+  .card{padding:var(--sp4) var(--sp3)}
+  .visual-card,.b-proj{padding:0}
+  .chip{grid-column:span 12}
+  .hero .cta-row{flex-wrap:wrap}
+  .visual-card{aspect-ratio:4/3}
+  .b-detail .dimg{aspect-ratio:4/3}
+  footer.site .shell{flex-direction:column;align-items:flex-start;padding:var(--sp3)}
+}
+</style>
 </head>
 <body>
 
-  <!-- 상단 메뉴 -->
-  <nav>
-    <div class="inner">
-      <a href="index.html" class="logo">Rachel Cho</a>
-      <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
+<header class="site">
+  <div class="shell">
+    <a href="index.html" class="logo">조예경 포트폴리오</a>
+    <nav class="main">
+      <a href="#about">자기소개</a>
+      <a href="#works">작업물</a>
+    </nav>
+    <a href="#works" class="cta-btn">작업물 보기 →</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="shell">
+    <span class="pill">PORTFOLIO</span>
+    <h1>Senior Product Designer specializing in B2B SaaS and enterprise products.</h1>
+    <div class="name">Rachel Cho | 조예경</div>
+    <div class="cta-row">
+      <a href="#works" class="btn btn-dark">작업물 보기 →</a>
+      <a href="#about" class="btn btn-ghost">자기소개 보기</a>
     </div>
-  </nav>
+    <div class="card visual-card">
+      <!-- 대표 이미지가 준비되면 아래 div를 <img src="파일명" alt="">로 교체 -->
+      <div class="placeholder">대표 이미지</div>
+    </div>
+  </div>
+</section>
 
-  <main>
-    <!-- 첫 화면 -->
-    <section class="hero">
-      <h1>Rachel Cho</h1>
-      <p>복잡한 문제를 이해하고 해결하는 프로덕트 디자이너</p>
-    </section>
+<!-- 자기소개 -->
+<section class="sec" id="about">
+  <div class="shell">
+    <div class="sec-center">
+      <span class="pill">ABOUT</span>
+      <h2>자기소개</h2>
+    </div>
+    <div class="bento">
+      <div class="card chip"><div class="lbl">ROLE</div><div class="nm">Senior Product Designer</div><div class="dsc">B2B SaaS 제품을 디자인합니다.</div></div>
+      <div class="card chip"><div class="lbl">FOCUS</div><div class="nm">AI-native Systems</div><div class="dsc">AI가 중심이 되는 제품의 경험을 설계합니다.</div></div>
+      <div class="card chip"><div class="lbl">ABOUT</div><div class="nm">소개를 적어주세요</div><div class="dsc">자신을 한두 문장으로 소개해 주세요.</div></div>
+    </div>
+  </div>
+</section>
 
-    <!-- About -->
-    <section class="about" id="about">
-      <h2>About</h2>
-      <p>안녕하세요, 프로덕트 디자이너 Rachel Cho입니다.</p>
-      <p>사용자가 겪는 복잡한 문제를 깊이 이해하고, 이를 단순하고 명확한 경험으로 바꾸는 일을 좋아합니다.</p>
-    </section>
+<!-- 작업물 목록 + 상세 -->
+<section class="sec" id="works">
+  <div class="shell">
+    <div class="sec-center">
+      <span class="pill">WORKS</span>
+      <h2>작업물</h2>
+    </div>
+    <div class="bento">
+      <button class="card b-proj" data-title="작업물 이름 1" data-desc="이 작업물의 배경, 맡은 역할, 결과를 적어주세요.">
+        <div class="pimg"><div class="placeholder">작업물 이미지 1</div></div>
+        <div class="pbody">
+          <h3>작업물 이름 1</h3>
+          <p>한 줄 설명을 적어주세요.</p>
+          <div class="proj-foot"><span class="arrow-circ">→</span></div>
+        </div>
+      </button>
+      <button class="card b-proj" data-title="작업물 이름 2" data-desc="이 작업물의 배경, 맡은 역할, 결과를 적어주세요.">
+        <div class="pimg"><div class="placeholder">작업물 이미지 2</div></div>
+        <div class="pbody">
+          <h3>작업물 이름 2</h3>
+          <p>한 줄 설명을 적어주세요.</p>
+          <div class="proj-foot"><span class="arrow-circ">→</span></div>
+        </div>
+      </button>
+      <button class="card b-proj" data-title="작업물 이름 3" data-desc="이 작업물의 배경, 맡은 역할, 결과를 적어주세요.">
+        <div class="pimg"><div class="placeholder">작업물 이미지 3</div></div>
+        <div class="pbody">
+          <h3>작업물 이름 3</h3>
+          <p>한 줄 설명을 적어주세요.</p>
+          <div class="proj-foot"><span class="arrow-circ">→</span></div>
+        </div>
+      </button>
 
-    <!-- Projects -->
-    <section class="projects" id="projects">
-      <h2>Projects</h2>
-      <div class="project-list">
-        <div class="project">
-          <h3>프로젝트 이름 1</h3>
-          <p>어떤 문제를 발견했고, 어떻게 해결했는지 한두 문장으로 적어주세요.</p>
-          <span class="tag">UX 리서치 · UI 디자인</span>
-        </div>
-        <div class="project">
-          <h3>프로젝트 이름 2</h3>
-          <p>어떤 문제를 발견했고, 어떻게 해결했는지 한두 문장으로 적어주세요.</p>
-          <span class="tag">프로토타이핑 · 사용성 테스트</span>
-        </div>
-        <div class="project">
-          <h3>프로젝트 이름 3</h3>
-          <p>어떤 문제를 발견했고, 어떻게 해결했는지 한두 문장으로 적어주세요.</p>
-          <span class="tag">디자인 시스템</span>
-        </div>
+      <!-- 작업물 상세 (목록에서 카드를 누르면 열림) -->
+      <div class="card b-detail" id="detail" aria-live="polite">
+        <span class="pill">DETAIL</span>
+        <h3 id="detail-title"></h3>
+        <div class="dimg"><div class="placeholder">작업물 상세 이미지</div></div>
+        <p id="detail-desc"></p>
+        <button class="btn btn-dark" id="detail-close">목록으로 돌아가기</button>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Todos -->
-    <section class="todos" id="todos">
-      <h2>Todos</h2>
-      <a href="preview.html" class="project">
-        <h3>할 일 목록 →</h3>
-        <p>Supabase의 test_todos 표에서 불러온 할 일을 확인해보세요.</p>
-        <span class="tag">Supabase 연동</span>
-      </a>
-    </section>
+<footer class="site">
+  <div class="shell">
+    <span class="fbrand">조예경 포트폴리오</span>
+    <!-- 연락처: 실제 이메일 주소와 LinkedIn 주소가 정해지면 href를 교체 -->
+    <nav class="flinks">
+      <a href="mailto:">Email</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+    <span class="fcopy">© 2026 조예경</span>
+  </div>
+</footer>
 
-    <!-- Contact -->
-    <section class="contact" id="contact">
-      <h2>Contact</h2>
-      <p>함께 이야기 나누고 싶다면 편하게 연락해주세요.</p>
-      <ul>
-        <li>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></li>
-        <li>LinkedIn: <a href="#">linkedin.com/in/your-id</a></li>
-      </ul>
-    </section>
-  </main>
+<script>
+const detail = document.getElementById('detail');
 
-  <footer>
-    © 2026 Rachel Cho
-  </footer>
+document.querySelectorAll('.b-proj').forEach((card) => {
+  card.addEventListener('click', () => {
+    document.getElementById('detail-title').textContent = card.dataset.title;
+    document.getElementById('detail-desc').textContent = card.dataset.desc;
+    detail.classList.add('open');
+    detail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+
+document.getElementById('detail-close').addEventListener('click', () => {
+  detail.classList.remove('open');
+  document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
 
 </body>
 </html>
