@@ -82,6 +82,14 @@
 - 세이지 / 크림 (약 2.06:1): 글자나 기능성 아이콘에 쓰지 않는다
 - 장식 오렌지 #DA613E: 글자·버튼·기능 요소에 쓰지 않는다
 
+### 창업자 소개 (Founder)
+- 사진: ./rachel-portrait-bw.png (흑백 최종본). 얼굴·외모를 편집하지 않고, 원본 비율을 유지하며 얼굴과 머리를 자르지 않는다
+- 사진 아래 3줄: Rachel Cho / Founder, Second Context / Product Designer · Startup Strategy Coach · Career Mentor
+- 소개문은 사용자가 준 최종본을 그대로 쓰고 직접 작성하지 않는다
+- 글로벌 기업 12곳 이상, 27개국 경험, 1,500만 달러를 투자 유치한 YC 스타트업의 창업 디자이너 경력을 서로 구분한다
+- 투자 유치는 회사의 이력이며, 본인이 직접 투자를 유치했다는 의미로 바꾸지 않는다
+- 멘토링은 본인 경험 기반의 비자·학교 선택·커리어 설계 도움이며, 이민 법률 자격이나 법률 서비스 제공을 주장하지 않는다
+
 ### 공식 기준
 - https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 - https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html

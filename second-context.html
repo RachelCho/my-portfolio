@@ -77,6 +77,16 @@ nav .btn{padding:10px 18px}
 .work article{border-top:3px solid var(--accent-deco);padding-top:var(--s3)}
 .work .flow{font-size:15px;margin-top:var(--s1)}
 
+/* founder */
+.founder{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s6);align-items:start;margin-top:var(--s5)}
+.founder figure{max-width:440px}
+.founder img{width:100%;height:auto;border-radius:4px}
+.founder figcaption{margin-top:var(--s2);font-size:15px;line-height:1.6}
+.founder figcaption span{display:block}
+.founder figcaption .name{font-size:17px;font-weight:700}
+.founder-text{max-width:640px}
+.founder-text p+p{margin-top:var(--s3)}
+
 /* approach & contact */
 .steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s5);counter-reset:step}
 .steps li{counter-increment:step;border-top:1px solid var(--plum);padding-top:var(--s2)}
@@ -94,7 +104,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 
 @media(max-width:900px){
   nav a:not(.btn){display:none}
-  .cases,.work,.steps,.booking{grid-template-columns:1fr}
+  .cases,.work,.steps,.booking,.founder{grid-template-columns:1fr}
+  .founder{gap:var(--s4)}
   .svc{grid-template-columns:1fr;gap:var(--s1)}
   .contact-list{border-left:0;padding-left:0;border-top:1px solid rgba(48,35,46,.3);padding-top:var(--s3)}
 }
@@ -213,6 +224,26 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
         </article>
       </div>
       <p class="note">케이스 스터디는 공개 가능한 자료만 사용합니다.</p>
+    </div>
+  </section>
+
+  <section id="founder">
+    <div class="wrap">
+      <p class="label">Founder</p>
+      <h2>창업자 소개</h2>
+      <div class="founder">
+        <figure>
+          <img src="./rachel-portrait-bw.png" width="1122" height="1402" loading="lazy" alt="Rachel Cho의 흑백 인물 사진">
+          <figcaption>
+            <span class="name">Rachel Cho</span>
+            <span>Founder, Second Context</span>
+            <span>Product Designer · Startup Strategy Coach · Career Mentor</span>
+          </figcaption>
+        </figure>
+        <div class="founder-text">
+          <!-- 최종 소개문 미수령: 사용자가 준 문구를 그대로 넣는다. 직접 작성하지 않는다. -->
+        </div>
+      </div>
     </div>
   </section>
 

@@ -66,11 +66,20 @@
 
 ## 7. 사이트 구성 (second-context.html)
 - 상단 메뉴: 로고 · WHY US · Services · Work · Contact · [30분 상담 예약]
-- 섹션 순서: Hero → WHY US (현지화 시행착오) → Services → Selected work → Contact → Footer
+- 섹션 순서: Hero → WHY US (현지화 시행착오) → Services → Selected work → Founder → Contact → Footer
 - Hero
   - 제목: 새로운 시장, 새로운 사용 맥락.
   - 설명: 미국 시장을 준비하는 한국 B2B SaaS 팀을 위해 제품 UX 진단부터 실제 디자인까지 함께합니다.
   - 버튼: 30분 상담 예약 / 관련 사례 보기
+
+### 창업자 소개 (Founder)
+- 사진: ./rachel-portrait-bw.png (흑백 최종본, 얼굴·외모 편집 금지, 원본 비율 유지·얼굴과 머리 자르지 않음)
+- 사진 아래 3줄: Rachel Cho / Founder, Second Context / Product Designer · Startup Strategy Coach · Career Mentor
+- 레이아웃: 데스크톱은 사진 왼쪽·소개문 오른쪽, 모바일은 사진 → 소개문 세로 배치
+- 소개문 작성 기준
+  - 글로벌 기업 12곳 이상, 27개국 경험, 1,500만 달러를 투자 유치한 YC 스타트업의 창업 디자이너 경력을 서로 구분해 쓴다
+  - 투자 유치는 회사의 이력이며, 본인이 직접 투자를 유치했다는 의미로 바꾸지 않는다
+  - 멘토링은 본인 경험을 바탕으로 한 비자·학교 선택·커리어 설계 도움이며, 이민 법률 자격이나 법률 서비스 제공을 주장하지 않는다
 
 ## 8. 디자인 방향 — Second Context 브랜드
 ### 확정 컬러 토큰
@@ -126,6 +135,7 @@
 
 ## 9. 미정 및 추후 결정 사항
 ### 콘텐츠
+- 창업자 소개문 최종본 (받는 대로 그대로 반영)
 - 실제 기업의 현지화 시행착오 사례 선정과 출처
 - 관련 사례별 상세 내용과 공개 가능한 범위
 - 사이트 언어 최종 결정 (시안은 한국어 우선, 영문 태그라인 병기)
