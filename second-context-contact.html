@@ -71,11 +71,11 @@
           <div class="field">
             <label for="f-message">문의 내용 <span class="req" aria-hidden="true">*</span></label>
             <p class="field-help" id="f-message-help">제품, 목표 시장, 현재 과제와 희망 일정을 알려 주세요.</p>
-            <textarea id="f-message" name="message" rows="7" required aria-describedby="f-message-help f-message-error"></textarea>
+            <textarea id="f-message" name="message" rows="5" required aria-describedby="f-message-help f-message-error"></textarea>
             <p class="field-error" id="f-message-error" hidden></p>
           </div>
-          <p class="form-pending">온라인 문의 접수는 아직 연결 전입니다. 제출해도 전송되지 않으니, 지금은 Direct contact의 이메일로 문의해 주세요.</p>
-          <button class="btn btn-primary" type="submit">문의 보내기</button>
+          <p class="form-pending" id="form-pending">온라인 문의 전송이 아직 연결되지 않아 문의 보내기 버튼을 사용할 수 없습니다. Direct contact의 이메일(주소 복사·Gmail 작성)이나 30분 상담 예약을 이용해 주세요.</p>
+          <button class="btn btn-primary" type="submit" disabled aria-describedby="form-pending">문의 보내기</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <aside class="contact-aside" aria-label="연락 안내">
@@ -83,7 +83,18 @@
           <p class="aside-name"><span>Second Context</span><span>Rachel Cho</span></p>
           <dl class="aside-list">
             <dt>이메일</dt>
-            <dd><a href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></dd>
+            <dd>
+              <a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a>
+              <div class="email-actions">
+                <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">이메일 주소 복사</button>
+                <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rachel.cho5257%40gmail.com" target="_blank" rel="noopener">Gmail에서 작성<span class="sr-only"> (새 탭에서 열림)</span></a>
+              </div>
+              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+              <div class="copy-fallback" id="copy-fallback" hidden>
+                <label for="email-manual">이메일 주소 (선택해서 복사)</label>
+                <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
+              </div>
+            </dd>
             <dt>LinkedIn</dt>
             <dd><a href="https://www.linkedin.com/in/rachelchoart/" target="_blank" rel="noopener">linkedin.com/in/rachelchoart<span class="sr-only"> (새 탭에서 열림)</span></a></dd>
           </dl>

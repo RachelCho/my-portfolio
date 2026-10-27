@@ -1,12 +1,45 @@
-/* Second Context 문의 폼: 입력 검증, 오류 안내, 전송 상태 알림.
-   전송 주소는 form의 data-endpoint에 넣는다. 비어 있으면 전송하지 않고 "연결 전" 안내만 보여 준다.
+/* Second Context Contact: 문의 폼 검증·전송 상태, 이메일 주소 복사.
+   전송 주소는 form의 data-endpoint에 넣는다. 비어 있으면 제출 버튼을 비활성화한 채로 두고 전송하지 않는다.
    비밀키는 이 파일이나 HTML에 넣지 않는다 (공개 저장소). */
 (function () {
+  var ko = document.documentElement.lang === 'ko';
+  var EMAIL = 'rachel.cho5257@gmail.com';
+
+  /* ---------- 이메일 주소 복사 ---------- */
+  var copyBtn = document.querySelector('[data-copy-email]');
+  if (copyBtn) {
+    var copyStatus = document.getElementById('copy-status');
+    var fallback = document.getElementById('copy-fallback');
+    var manual = document.getElementById('email-manual');
+    var C = ko ? {
+      ok: '이메일 주소를 복사했습니다.',
+      fail: '자동 복사를 사용할 수 없습니다. 아래 칸의 주소를 선택해 직접 복사해 주세요.'
+    } : {
+      ok: 'Email address copied.',
+      fail: 'Couldn’t copy automatically. Please select and copy the address in the box below.'
+    };
+    var showFallback = function () {
+      copyStatus.textContent = C.fail;
+      fallback.hidden = false;
+      manual.focus();
+      manual.select();
+    };
+    copyBtn.addEventListener('click', function () {
+      copyStatus.textContent = '';
+      var address = copyBtn.getAttribute('data-copy-email');
+      if (!navigator.clipboard || !window.isSecureContext) { showFallback(); return; }
+      // 클립보드 쓰기가 실제로 성공했을 때만 완료 안내
+      navigator.clipboard.writeText(address).then(function () {
+        fallback.hidden = true;
+        copyStatus.textContent = C.ok;
+      }, showFallback);
+    });
+  }
+
+  /* ---------- 문의 폼 ---------- */
   var form = document.getElementById('inquiry');
   if (!form) return;
 
-  var ko = document.documentElement.lang === 'ko';
-  var EMAIL = 'rachel.cho5257@gmail.com';
   var T = ko ? {
     names: { name: '이름', email: '이메일', message: '문의 내용' },
     prefix: '오류: ',
@@ -31,12 +64,17 @@
 
   var status = form.querySelector('.form-status');
   var button = form.querySelector('button[type="submit"]');
-  var fields = Array.prototype.slice.call(form.querySelectorAll('input, textarea'));
+  var fields = Array.prototype.slice.call(form.querySelectorAll('.field input, .field textarea'));
   var endpoint = (form.getAttribute('data-endpoint') || '').trim();
   var sending = false;
 
-  var pending = form.querySelector('.form-pending');
-  if (pending && endpoint) pending.hidden = true;
+  // 전송 주소가 연결되면 비활성 안내를 숨기고 버튼을 켠다
+  if (endpoint) {
+    var pending = form.querySelector('.form-pending');
+    if (pending) pending.hidden = true;
+    button.disabled = false;
+    button.removeAttribute('aria-describedby');
+  }
 
   function setError(el, msg) {
     var err = document.getElementById(el.id + '-error');

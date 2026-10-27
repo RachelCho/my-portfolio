@@ -24,6 +24,8 @@
   --card-pad:var(--s4);      /* 카드·패널 안쪽 여백: 데스크톱·태블릿 32 / 모바일 24 */
   --gap-tight:4px;           /* 반 단계: 라벨 ↔ 값, 목록 항목 사이에만 */
   --founder-photo:340px;     /* 창업자 사진 열 (320~360 범위) */
+  --gap-field:40px;          /* 입력 밑줄 → 다음 필드 라벨 (데스크톱 40 / 모바일 16) */
+  --gap-label-input:var(--s2); /* 필드 라벨 → 입력 (데스크톱 16 / 모바일 8) */
   --header-h:80px;           /* 데스크톱 고정 헤더 높이 (8px 배수) */
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -144,33 +146,43 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 
 /* contact */
 .contact-layout{display:grid;grid-template-columns:minmax(0,65fr) minmax(0,35fr);margin-top:var(--gap-block);align-items:start}
-.inquiry-form{padding-right:var(--s5)}
+.inquiry-form{padding-right:var(--s4)}
 .form-note{font-size:15px}
-.field{margin-top:var(--s4)}
-.field label{display:block;font-size:17px;font-weight:600}
+.field{margin-top:var(--gap-field)}
+.form-note + .field{margin-top:var(--s4)}
+.field label{display:block;font-size:17px;line-height:1.4;font-weight:600}
 .field .req{color:var(--orange)}
 .field-help{font-size:15px;margin-top:var(--gap-tight)}
 /* 밑줄형 입력: 투명 배경, 플럼 밑줄(크림 대비 13:1), 포커스는 공통 3px 외곽선 + 굵은 밑줄 */
-.field input,.field textarea{display:block;width:100%;min-height:48px;margin-top:var(--s1);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
-.field textarea{min-height:192px;resize:vertical}
+.field input,.field textarea{display:block;width:100%;min-height:48px;margin-top:var(--gap-label-input);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
+.field textarea{min-height:184px;resize:vertical}
 .field input:focus,.field textarea:focus{border-bottom-width:3px}
 .field [aria-invalid="true"]{border-bottom:3px solid var(--orange)}
 .field-error{margin-top:var(--s1);font-size:15px;font-weight:600;color:var(--orange)}
 .form-pending{margin-top:var(--s4);font-size:15px;padding-left:var(--s2);border-left:3px solid var(--plum)}
 .inquiry-form .btn{margin-top:var(--s3)}
+/* 전송 연결 전 비활성 버튼: 점선 테두리로 구분하되 글자 대비는 유지 */
+.inquiry-form .btn:disabled{background:var(--cream);color:var(--plum);border-style:dashed;cursor:not-allowed}
 .form-status{margin-top:var(--s2);font-weight:600}
 .form-status:empty{display:none}
 .form-status[data-state="error"]{color:var(--orange)}
 /* 가운데 얇은 세로 구분선 (장식) */
-.contact-aside{padding-left:var(--s5);border-left:1px solid rgba(48,35,46,.3)}
-.contact-aside .label:not(:first-child){margin-top:var(--s5)}
+.contact-aside{padding-left:var(--s4);border-left:1px solid rgba(48,35,46,.3)}
+.contact-aside .label:not(:first-child){margin-top:var(--s6)}
 .aside-name span{display:block}
 .aside-name span:first-child{font-weight:700}
 .aside-list{margin-top:var(--s3)}
 .aside-list dt{font-size:13px;font-weight:600}
 .aside-list dt:not(:first-child){margin-top:var(--s2)}
-.aside-list a{overflow-wrap:anywhere}
-.aside-booking{margin-top:var(--s5)}
+.aside-list a{overflow-wrap:anywhere;display:inline-block;padding:var(--gap-tight) 0}
+.email-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s1) var(--s3);margin-top:var(--s1);font-size:15px}
+.mini-btn{min-height:44px;padding:var(--s1) var(--s2);background:var(--cream);color:var(--plum);border:1.5px solid var(--plum);border-radius:4px;font:inherit;font-weight:600;cursor:pointer}
+.mini-btn:hover{background:var(--plum);color:var(--cream)}
+.copy-status{margin-top:var(--s1);font-size:15px;font-weight:600}
+.copy-status:empty{display:none}
+.copy-fallback{margin-top:var(--s1);font-size:15px}
+.copy-fallback input{display:block;width:100%;min-height:44px;margin-top:var(--gap-tight);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
+.aside-booking{margin-top:var(--s6)}
 .aside-lead{font-weight:700}
 .aside-booking .btn{margin-top:var(--s3)}
 
@@ -191,6 +203,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .step,.values,.contact-layout{grid-template-columns:1fr}
   .founder{gap:var(--gap-stack)}
   .inquiry-form{padding-right:0}
+  .contact-aside .label:not(:first-child),.aside-booking{margin-top:var(--s5)}
   .contact-aside{padding-left:0;border-left:0;margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid rgba(48,35,46,.3)}
   .step{gap:var(--gap-sub)}
   .values{row-gap:var(--gap-stack)}
@@ -204,6 +217,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .page-intro h1{font-size:32px;line-height:1.3}
   .step h3,.work-title{font-size:20px}
   .founder-lead{font-size:20px}
+  :root{--gap-field:var(--s2);--gap-label-input:var(--s1)}
   .step dl{grid-template-columns:1fr;gap:0}
   .step dd{margin-bottom:var(--s1)}
 }

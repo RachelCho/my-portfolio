@@ -71,11 +71,11 @@
           <div class="field">
             <label for="f-message">How can I help? <span class="req" aria-hidden="true">*</span></label>
             <p class="field-help" id="f-message-help">Tell us about your product, target market, current challenges, and preferred timeline.</p>
-            <textarea id="f-message" name="message" rows="7" required aria-describedby="f-message-help f-message-error"></textarea>
+            <textarea id="f-message" name="message" rows="5" required aria-describedby="f-message-help f-message-error"></textarea>
             <p class="field-error" id="f-message-error" hidden></p>
           </div>
-          <p class="form-pending">Online inquiries aren’t connected yet. Submitting this form won’t send it, so for now please use the email address under Direct contact.</p>
-          <button class="btn btn-primary" type="submit">Send inquiry</button>
+          <p class="form-pending" id="form-pending">Online inquiries aren’t connected yet, so the Send inquiry button is unavailable. Please use the email under Direct contact (copy the address or compose in Gmail) or book a 30-minute consultation.</p>
+          <button class="btn btn-primary" type="submit" disabled aria-describedby="form-pending">Send inquiry</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
         <aside class="contact-aside" aria-label="Contact details">
@@ -83,7 +83,18 @@
           <p class="aside-name"><span>Second Context</span><span>Rachel Cho</span></p>
           <dl class="aside-list">
             <dt>Email</dt>
-            <dd><a href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></dd>
+            <dd>
+              <a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a>
+              <div class="email-actions">
+                <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">Copy email</button>
+                <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rachel.cho5257%40gmail.com" target="_blank" rel="noopener">Compose in Gmail<span class="sr-only"> (opens in a new tab)</span></a>
+              </div>
+              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+              <div class="copy-fallback" id="copy-fallback" hidden>
+                <label for="email-manual">Email address (select to copy)</label>
+                <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
+              </div>
+            </dd>
             <dt>LinkedIn</dt>
             <dd><a href="https://www.linkedin.com/in/rachelchoart/" target="_blank" rel="noopener">linkedin.com/in/rachelchoart<span class="sr-only"> (opens in a new tab)</span></a></dd>
           </dl>
