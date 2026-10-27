@@ -23,6 +23,7 @@
   --gap-grid:var(--s3);      /* 카드 목록 사이 */
   --card-pad:var(--s4);      /* 카드·패널 안쪽 여백: 데스크톱·태블릿 32 / 모바일 24 */
   --gap-tight:4px;           /* 반 단계: 라벨 ↔ 값, 목록 항목 사이에만 */
+  --founder-photo:340px;     /* 창업자 사진 열 (320~360 범위) */
   --header-h:80px;           /* 데스크톱 고정 헤더 높이 (8px 배수) */
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -89,13 +90,12 @@ nav .btn{padding:var(--s1) var(--s2)}
 
 /* founder */
 /* 두 열 레이아웃(founder·contact-grid·step) 공통: 열 사이 --gap-split, 쌓이면 --gap-stack */
-.founder{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gap-split);align-items:start;margin-top:var(--gap-block)}
-.founder figure{max-width:440px}
+.founder{display:grid;grid-template-columns:var(--founder-photo) minmax(0,1fr);gap:var(--gap-split);align-items:start;margin-top:var(--gap-block)}
+.founder figure{max-width:440px} /* 세로로 쌓일 때 사진이 과하게 커지지 않게 */
 .founder img{width:100%;height:auto;border-radius:4px}
 .founder figcaption{margin-top:var(--s2);font-size:15px;line-height:1.6}
 .founder figcaption span{display:block}
 .founder figcaption .name{font-size:17px;font-weight:700}
-.founder-text{max-width:var(--text)}
 .founder-text p+p{margin-top:var(--gap-para)}
 .founder-lead{font-size:24px;line-height:1.5;font-weight:700}
 

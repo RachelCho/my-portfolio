@@ -129,6 +129,10 @@
 - 간격은 assets/second-context.css의 변수만 쓰고, 값은 8 / 16 / 24 / 32 / 48 / 64 / 96px 간격 체계에서 고른다 (예외: --gap-tight 4px)
 - 버튼 안쪽 여백: 기본 16·24px, 헤더 버튼 8·16px, 최소 높이 44px
 - 창업자 소개는 Home의 #founder 섹션이며 별도 About 페이지는 없다 (about.html은 포트폴리오 페이지)
+- 창업자 소개 그리드: 사진 열 --founder-photo 340px(320~360 범위) + 열 사이 --gap-split 64px + 본문은 남은 너비(본문에 별도 max-width를 두지 않음). 위쪽 정렬, 사진은 원본 비율, 900px 이하에서 세로 배치(사진 최대 440px)
+- 읽기 너비(--text 720px)는 컨테이너가 아니라 안쪽 요소(.lead, h2, 기획서의 .body > *)에만 건다. `.wrap`과 폭 제한 클래스를 같은 요소에 같이 쓰지 않는다 — 섹션 전체가 가운데로 밀린다
+- overflow-x: hidden으로 넘침을 가리지 않는다. 고정 높이는 Calendly iframe, 헤더·버튼 최소 높이, 장식 선에만 쓴다
+- 기획서(plan-draft.html)는 자체 CSS를 쓰되 같은 이름의 변수(--gutter·--section-y·--gap-*·--card-pad·--founder-photo)로 같은 규칙을 따른다. 기획서 섹션 위아래는 64px(모바일 48px)
 
 ### 공식 기준
 - https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html

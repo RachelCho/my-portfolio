@@ -18,25 +18,36 @@
   --line:rgba(48,35,46,.16); /* 장식용 구분선 */
   --max:1200px; --text:720px;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px;
+  /* 레이아웃 간격 (같은 역할 = 같은 변수) */
+  --gutter:var(--s4);       /* 좌우 여백: 데스크톱·태블릿 32 / 모바일 16 */
+  --section-y:var(--s6);    /* 섹션 위아래: 64 / 모바일 48 */
+  --gap-label:var(--s2);    /* 라벨 → 제목 */
+  --gap-title:var(--s4);    /* 섹션 제목 → 내용 */
+  --gap-para:var(--s2);     /* 문단 ↔ 문단 */
+  --gap-split:var(--s6);    /* 두 열 사이 */
+  --gap-stack:var(--s4);    /* 두 열이 세로로 쌓일 때 */
+  --card-pad:var(--s4);     /* 패널 안쪽: 32 / 모바일 24 */
+  --founder-photo:340px;    /* 창업자 사진 열 */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Manrope','Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;color:var(--plum);background:var(--cream);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 a{color:inherit;text-underline-offset:3px}
 :focus-visible{outline:3px solid var(--plum);outline-offset:3px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s4)}
-.label{font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:var(--s1);margin-bottom:var(--s2)}
+/* 공통 컨테이너: 모든 섹션이 같은 바깥 기준선을 쓴다. 읽기 너비 제한은 .body 안쪽 요소에만 적용 */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.label{font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:var(--s1);margin-bottom:var(--gap-label)}
 .label::before{content:"";width:24px;height:2px;background:var(--accent-deco)}
 
-.hero{padding:var(--s7) 0 var(--s6)}
+.hero{padding:var(--s7) 0 var(--section-y)}
 .hero h1{font-size:64px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
 .hero p{max-width:var(--text);margin-top:var(--s3)}
 .docs{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s4);font-size:15px}
 .docs a{font-weight:600}
 
-section{padding:var(--s6) 0;border-top:1px solid var(--line)}
-h2{font-size:36px;line-height:1.2;font-weight:800;letter-spacing:-.01em;margin-bottom:var(--s4)}
+section{padding:var(--section-y) 0;border-top:1px solid var(--line)}
+h2{font-size:36px;line-height:1.2;font-weight:800;letter-spacing:-.01em;margin-bottom:var(--gap-title)}
 h3{font-size:17px;font-weight:700;margin:var(--s4) 0 var(--s1)}
-.body{max-width:var(--text)}
+.body > *:not(.founder){max-width:var(--text)}
 ul,ol{padding-left:1.2em}
 li{margin-bottom:6px}
 li ul{margin-top:6px}
@@ -48,7 +59,7 @@ th{font-size:13px;font-weight:600;letter-spacing:.04em;border-bottom:1.5px solid
 .swatch{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:6px;border:1px solid var(--plum)}
 .sw-plum{background:var(--plum)}.sw-orange{background:var(--orange)}.sw-cream{background:var(--cream)}.sw-sage{background:var(--sage)}.sw-deco{background:var(--accent-deco)}
 
-.booking{background:var(--sage);border-radius:4px;padding:var(--s4);margin-top:var(--s3)}
+.booking{background:var(--sage);border-radius:4px;padding:var(--card-pad);margin-top:var(--s3)}
 .booking h3{margin-top:0}
 .btn{display:inline-block;background:var(--plum);color:var(--cream);border:1.5px solid var(--plum);font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:4px;margin-top:var(--s2)}
 a.btn:hover{background:var(--plum-hover);border-color:var(--plum-hover)}
@@ -58,28 +69,28 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
 .btn-demo{display:flex;flex-wrap:wrap;gap:var(--s2)}
 .btn-demo .btn{margin-top:0;font-size:14px}
 
-.founder{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:var(--s5);align-items:start;margin-top:var(--s2)}
-.founder figure{max-width:320px}
+.founder{display:grid;grid-template-columns:var(--founder-photo) minmax(0,1fr);gap:var(--gap-split);align-items:start;margin-top:var(--s2)}
+.founder figure{max-width:440px}
 .founder img{display:block;width:100%;height:auto;border-radius:4px}
 .founder figcaption{margin-top:var(--s2);font-size:15px;line-height:1.6}
 .founder figcaption span{display:block}
 .founder figcaption .name{font-size:17px;font-weight:700}
-.founder-text p+p{margin-top:var(--s2)}
+.founder-text p+p{margin-top:var(--gap-para)}
 .founder-lead{font-size:20px;line-height:1.5;font-weight:700}
 
-.tbd{border:1.5px dashed rgba(48,35,46,.35);border-radius:4px;padding:var(--s4)}
+.tbd{border:1.5px dashed rgba(48,35,46,.35);border-radius:4px;padding:var(--card-pad)}
 .tbd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
 .tbd h3{margin-top:0}
 
 @media(max-width:900px){
   .tbd-grid,.founder{grid-template-columns:1fr}
+  .founder{gap:var(--gap-stack)}
 }
 @media(max-width:600px){
-  .wrap{padding:0 16px}
+  :root{--gutter:var(--s2);--section-y:var(--s5);--card-pad:var(--s3)}
   .hero h1{font-size:40px;line-height:1.15}
   h2{font-size:28px;line-height:1.3}
-  .hero,section{padding:var(--s5) 0}
-  .tbd,.booking{padding:var(--s3)}
+  .hero{padding-top:var(--s5)}
   table{font-size:14px}
   th,td{padding-right:10px}
 }
