@@ -107,6 +107,29 @@
     `<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">`
   - 새 Second Context 페이지를 만들면 같은 두 줄을 넣는다. 경로를 /로 시작하지 않는다(/my-portfolio/ 하위 경로 유지)
 
+### 레이아웃 간격 규칙 (공통 컨테이너)
+| 역할 | 변수 | 데스크톱 (901px~) | 태블릿 (601~900px) | 모바일 (~600px) |
+|---|---|---|---|---|
+| 콘텐츠 최대 폭 | --max | 1200px | 1200px | 1200px |
+| 좌우 여백 (공통 기준선) | --gutter | 32 | 32 | 16 |
+| 섹션 위아래 | --section-y | 96 | 64 | 64 |
+| 라벨 → 제목 | --gap-label | 16 | 16 | 16 |
+| 제목 → 설명 문단, 짧은 주석 | --gap-lead | 24 | 24 | 24 |
+| 제목·설명 → 본문 블록(카드 목록·두 열·CTA 줄) | --gap-block | 48 | 48 | 48 |
+| 문단 ↔ 문단 | --gap-para | 24 | 24 | 24 |
+| 패널 제목 → 내용 | --gap-sub | 16 | 16 | 16 |
+| 두 열(사진·본문, 소개·문의, 단계 제목·설명) 사이 | --gap-split | 64 | 세로 쌓임 | 세로 쌓임 |
+| 두 열이 세로로 쌓일 때 | --gap-stack | — | 32 | 32 |
+| 카드 목록 사이 | --gap-grid | 24 | 24 | 24 |
+| 카드·패널 안쪽 | --card-pad | 32 | 32 | 24 |
+| 라벨 ↔ 값, 목록 항목 (반 단계) | --gap-tight | 4 | 4 | 4 |
+
+- 모든 Second Context 페이지(Home·Approach·Contact)는 헤더·각 섹션·푸터에 같은 `.wrap` 컨테이너 하나만 쓴다. `.wrap`을 중첩하거나 페이지별로 좌우 padding을 따로 주지 않는다
+- 배경이 화면 전체를 채우는 섹션도 배경은 `section`에, 내용은 안쪽 `.wrap`에 두어 같은 기준선에 맞춘다
+- 간격은 assets/second-context.css의 변수만 쓰고, 값은 8 / 16 / 24 / 32 / 48 / 64 / 96px 간격 체계에서 고른다 (예외: --gap-tight 4px)
+- 버튼 안쪽 여백: 기본 16·24px, 헤더 버튼 8·16px, 최소 높이 44px
+- 창업자 소개는 Home의 #founder 섹션이며 별도 About 페이지는 없다 (about.html은 포트폴리오 페이지)
+
 ### 공식 기준
 - https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 - https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html
