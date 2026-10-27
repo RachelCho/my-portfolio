@@ -41,37 +41,62 @@
 
 <main id="main">
   <section class="page-intro">
-    <div class="wrap contact-grid">
-      <div>
-        <p class="label">Contact</p>
-        <h1>다음 시장을 준비하고 계신가요?</h1>
-        <p class="lead">제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. 30분 상담을 예약하시거나 프로젝트 문의를 남겨 주시면 협업할 범위를 함께 살펴보겠습니다.</p>
-        <div class="booking-block open-frame" id="booking">
-          <h2>Rachel과 30분 상담 예약하기</h2>
-          <p>제품의 현재 상황과 목표를 공유하고, UX 진단·현지화 검토·디자인 협업 중 어떤 지원이 필요한지 함께 살펴봅니다.</p>
-          <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>
-        </div>
-      </div>
-      <div class="inquiry" id="inquiry">
-        <h2>프로젝트 문의</h2>
-        <p>프로젝트 문의는 이메일로 받고 있습니다. 아래 내용을 함께 알려 주시면 협업할 범위를 살펴보는 데 도움이 됩니다.</p>
-        <ul>
-          <li>이름</li>
-          <li>회사·팀 (선택)</li>
-          <li>제품 또는 웹사이트 주소 (선택)</li>
-          <li>관심 서비스 (선택): Product UX Review, Market Context Session, Design Partnership, 아직 잘 모르겠습니다</li>
-          <li>문의 내용: 제품, 목표 시장, 현재 과제와 희망 일정</li>
-        </ul>
-        <a class="btn btn-primary" href="mailto:rachel.cho5257@gmail.com?subject=%5BSecond%20Context%5D%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%AC%B8%EC%9D%98&amp;body=%EC%9D%B4%EB%A6%84%3A%0A%ED%9A%8C%EC%82%AC%C2%B7%ED%8C%80%3A%0A%EC%A0%9C%ED%92%88%20%EB%98%90%EB%8A%94%20%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%A3%BC%EC%86%8C%3A%0A%EA%B4%80%EC%8B%AC%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%28Product%20UX%20Review%20/%20Market%20Context%20Session%20/%20Design%20Partnership%20/%20%EC%95%84%EC%A7%81%20%EC%9E%98%20%EB%AA%A8%EB%A5%B4%EA%B2%A0%EC%8A%B5%EB%8B%88%EB%8B%A4%29%3A%0A%EB%AC%B8%EC%9D%98%20%EB%82%B4%EC%9A%A9%20%28%EC%A0%9C%ED%92%88%2C%20%EB%AA%A9%ED%91%9C%20%EC%8B%9C%EC%9E%A5%2C%20%ED%98%84%EC%9E%AC%20%EA%B3%BC%EC%A0%9C%EC%99%80%20%ED%9D%AC%EB%A7%9D%20%EC%9D%BC%EC%A0%95%29%3A%0A">이메일로 프로젝트 문의 보내기</a>
-        <p class="hint">사용 중인 이메일 앱이 열리고, 위 항목이 본문에 채워집니다.</p>
-        <ul class="direct" role="list">
-          <li><span class="k">Email</span><a href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></li>
-          <li><span class="k">LinkedIn</span><a href="https://www.linkedin.com/in/rachelchoart" target="_blank" rel="noopener">linkedin.com/in/rachelchoart<span class="sr-only"> (새 탭에서 열림)</span></a></li>
-        </ul>
+    <div class="wrap">
+      <p class="label">Contact</p>
+      <h1>다음 시장을 준비하고 계신가요?</h1>
+      <p class="lead">제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. 30분 상담을 예약하시거나 프로젝트 문의를 남겨 주시면 협업할 범위를 함께 살펴보겠습니다.</p>
+      <div class="contact-layout">
+        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-labelledby="form-title">
+          <h2 id="form-title">프로젝트 문의</h2>
+          <p class="form-note">(필수) 표시가 있는 항목은 꼭 입력해 주세요.</p>
+          <div class="field">
+            <label for="f-name">이름 <span class="req">(필수)</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error">
+            <p class="field-error" id="f-name-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-org">회사·팀 <span class="opt">(선택)</span></label>
+            <input id="f-org" name="organisation" type="text" autocomplete="organization" aria-describedby="f-org-error">
+            <p class="field-error" id="f-org-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-email">이메일 <span class="req">(필수)</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error">
+            <p class="field-error" id="f-email-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-phone">전화번호 <span class="opt">(선택)</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="f-phone-error">
+            <p class="field-error" id="f-phone-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-message">문의 내용 <span class="req">(필수)</span></label>
+            <p class="field-help" id="f-message-help">제품, 목표 시장, 현재 과제와 희망 일정을 알려 주세요.</p>
+            <textarea id="f-message" name="message" rows="7" required aria-describedby="f-message-help f-message-error"></textarea>
+            <p class="field-error" id="f-message-error" hidden></p>
+          </div>
+          <p class="form-pending">온라인 문의 접수는 아직 연결 전입니다. 제출해도 전송되지 않으니, 지금은 Direct contact의 이메일로 문의해 주세요.</p>
+          <button class="btn btn-primary" type="submit">문의 보내기</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <aside class="contact-aside" aria-label="직접 연락">
+          <h2 class="label">Direct contact</h2>
+          <p class="aside-name"><span>Second Context</span><span>Rachel Cho</span></p>
+          <dl class="aside-list">
+            <dt>이메일</dt>
+            <dd><a href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></dd>
+            <dt>LinkedIn</dt>
+            <dd><a href="https://www.linkedin.com/in/rachelchoart/" target="_blank" rel="noopener">linkedin.com/in/rachelchoart<span class="sr-only"> (새 탭에서 열림)</span></a></dd>
+          </dl>
+          <h2 class="label">Languages</h2>
+          <p><span lang="ko">한국어</span> · <span lang="en">English</span></p>
+          <div class="aside-booking" id="booking">
+            <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -80,6 +105,8 @@
     <span>© 2026 Second Context</span>
   </div>
 </footer>
+
+<script src="assets/contact-form.js" defer></script>
 
 </body>
 </html>

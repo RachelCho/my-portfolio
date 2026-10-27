@@ -1,6 +1,6 @@
 """Second Context 한국어 페이지에 언어 전환·hreflang을 넣고, 번역 표로 en/ 영어 페이지를 만든다.
 사용: python3 tools/build_en_pages.py .   (여러 번 실행해도 결과가 같다)"""
-import os, re, sys, urllib.parse
+import os, re, sys
 
 R = sys.argv[1]
 BASE = "https://rachelcho.github.io/my-portfolio/"
@@ -213,38 +213,27 @@ APPROACH = [
     ('피드백과 사용 근거를 다음 개선 과제로 이어갑니다.', 'We carry feedback and usage evidence into the next round of improvements.'),
 ]
 
-KO_BODY = ("이름:\n회사·팀:\n제품 또는 웹사이트 주소:\n"
-           "관심 서비스 (Product UX Review / Market Context Session / Design Partnership / 아직 잘 모르겠습니다):\n"
-           "문의 내용 (제품, 목표 시장, 현재 과제와 희망 일정):\n")
-EN_BODY = ("Name:\nCompany or team:\nProduct or website URL:\n"
-           "Service of interest (Product UX Review / Market Context Session / Design Partnership / Not sure yet):\n"
-           "Inquiry details (product, target market, current challenges, preferred timeline):\n")
-def mailto(subject, body):
-    return ("mailto:rachel.cho5257@gmail.com?subject=" + urllib.parse.quote(subject)
-            + "&amp;body=" + urllib.parse.quote(body))
-
 CONTACT = [
-    (mailto("[Second Context] 프로젝트 문의", KO_BODY), mailto("[Second Context] Project inquiry", EN_BODY)),
     ('Second Context와 30분 상담을 예약하거나 프로젝트를 문의하세요.',
-     'Book a 30-minute call with Second Context or send a project inquiry.'),
+     'Book a 30-minute consultation with Second Context or send a project inquiry.'),
     ('다음 시장을 준비하고 계신가요?', 'Preparing for your next market?'),
     ('제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. 30분 상담을 예약하시거나 프로젝트 문의를 남겨 주시면 협업할 범위를 함께 살펴보겠습니다.',
-     'Tell us about your product, your target market, and the challenges you’re working through. Book a 30-minute call or send a project inquiry, and we’ll explore the right scope of collaboration together.'),
-    ('Rachel과 Book a 30-minute call', 'Book a 30-minute call with Rachel'),
-    ('제품의 현재 상황과 목표를 공유하고, UX 진단·현지화 검토·디자인 협업 중 어떤 지원이 필요한지 함께 살펴봅니다.',
-     'Share where your product stands today and what you’re aiming for, and we’ll look together at which support you need: a UX review, a localization review, or design collaboration.'),
-    ('<h2>프로젝트 문의</h2>', '<h2>Project inquiry</h2>'),
-    ('프로젝트 문의는 이메일로 받고 있습니다. 아래 내용을 함께 알려 주시면 협업할 범위를 살펴보는 데 도움이 됩니다.',
-     'We currently take project inquiries by email. Including the details below helps us understand the scope of collaboration.'),
-    ('<li>이름</li>', '<li>Name</li>'),
-    ('<li>회사·팀 (선택)</li>', '<li>Company or team (optional)</li>'),
-    ('<li>제품 또는 웹사이트 주소 (선택)</li>', '<li>Product or website URL (optional)</li>'),
-    ('<li>관심 서비스 (선택): Product UX Review, Market Context Session, Design Partnership, 아직 잘 모르겠습니다</li>',
-     '<li>Service of interest (optional): Product UX Review, Market Context Session, Design Partnership, Not sure yet</li>'),
-    ('<li>문의 내용: 제품, 목표 시장, 현재 과제와 희망 일정</li>',
-     '<li>Inquiry details: your product, target market, current challenges, and preferred timeline</li>'),
-    ('이메일로 프로젝트 문의 보내기', 'Send a project inquiry by email'),
-    ('사용 중인 이메일 앱이 열리고, 위 항목이 본문에 채워집니다.', 'Your email app will open with these items filled into the message.'),
+     'Tell us about your product, your target market, and the challenges you’re working through. Book a 30-minute consultation or send a project inquiry, and we’ll explore the right scope of collaboration together.'),
+    ('<h2 id="form-title">프로젝트 문의</h2>', '<h2 id="form-title">Project inquiry</h2>'),
+    ('(필수) 표시가 있는 항목은 꼭 입력해 주세요.', 'Fields marked (required) must be filled in.'),
+    ('이름 <span class="req">(필수)</span>', 'Name <span class="req">(required)</span>'),
+    ('회사·팀 <span class="opt">(선택)</span>', 'Organisation <span class="opt">(optional)</span>'),
+    ('이메일 <span class="req">(필수)</span>', 'Email <span class="req">(required)</span>'),
+    ('전화번호 <span class="opt">(선택)</span>', 'Phone number <span class="opt">(optional)</span>'),
+    ('문의 내용 <span class="req">(필수)</span>', 'How can I help? <span class="req">(required)</span>'),
+    ('제품, 목표 시장, 현재 과제와 희망 일정을 알려 주세요.', 'Tell us about your product, target market, current challenges, and preferred timeline.'),
+    ('온라인 문의 접수는 아직 연결 전입니다. 제출해도 전송되지 않으니, 지금은 Direct contact의 이메일로 문의해 주세요.',
+     'Online inquiries aren’t connected yet. Submitting this form won’t send it, so for now please use the email address under Direct contact.'),
+    ('>문의 보내기</button>', '>Send inquiry</button>'),
+    ('aria-label="직접 연락"', 'aria-label="Direct contact"'),
+    ('<dt>이메일</dt>', '<dt>Email</dt>'),
+    ('30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>\n          </div>',
+     'Book a 30-minute consultation<span class="sr-only"> (새 탭에서 열림)</span></a>\n          </div>'),
 ]
 
 PATHS = [

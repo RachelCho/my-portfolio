@@ -105,7 +105,7 @@ nav .btn{padding:var(--s1) var(--s2)}
 .work-close .cta{margin-top:var(--s3)}
 
 /* founder */
-/* 두 열 레이아웃(founder·contact-grid·step) 공통: 열 사이 --gap-split, 쌓이면 --gap-stack */
+/* 두 열 레이아웃(founder·step) 공통: 열 사이 --gap-split, 쌓이면 --gap-stack */
 .founder{display:grid;grid-template-columns:var(--founder-photo) minmax(0,1fr);gap:var(--gap-split);align-items:start;margin-top:var(--gap-block)}
 .founder figure{max-width:440px} /* 세로로 쌓일 때 사진이 과하게 커지지 않게 */
 .founder img{width:100%;height:auto;border-radius:4px}
@@ -143,19 +143,35 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 .values h3{margin-bottom:var(--s1)}
 
 /* contact */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--gap-split);align-items:start}
-.contact-grid h1{font-size:48px;line-height:1.2}
-.booking-block{margin-top:var(--gap-block)}
-.booking-block h2,.inquiry h2{font-size:28px;line-height:1.3}
-.booking-block p,.inquiry > p{margin-top:var(--gap-sub)}
-.booking-block .btn,.inquiry .btn{margin-top:var(--s3)}
-.inquiry{background:var(--sage);border-radius:4px;padding:var(--card-pad)}
-.inquiry ul{margin:var(--gap-sub) 0 0 1.2em}
-.inquiry li{margin-bottom:var(--gap-tight)}
-.inquiry .hint{font-size:15px;margin-top:var(--s1)}
-.inquiry .direct a{overflow-wrap:anywhere}
-.inquiry .direct{list-style:none;margin:var(--s4) 0 0 0;padding-top:var(--s3);border-top:1px solid rgba(48,35,46,.3)}
-.direct .k{display:block;font-size:13px;font-weight:600}
+.contact-layout{display:grid;grid-template-columns:minmax(0,65fr) minmax(0,35fr);margin-top:var(--gap-block);align-items:start}
+.inquiry-form{padding-right:var(--s5)}
+.inquiry-form h2{font-size:28px;line-height:1.3}
+.form-note{font-size:15px;margin-top:var(--s1)}
+.field{margin-top:var(--s4)}
+.field label{display:block;font-size:17px;font-weight:600}
+.field .req,.field .opt{font-size:15px;font-weight:400}
+.field-help{font-size:15px;margin-top:var(--gap-tight)}
+/* 밑줄형 입력: 투명 배경, 플럼 밑줄(크림 대비 13:1), 포커스는 공통 3px 외곽선 + 굵은 밑줄 */
+.field input,.field textarea{display:block;width:100%;min-height:48px;margin-top:var(--s1);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
+.field textarea{min-height:192px;resize:vertical}
+.field input:focus,.field textarea:focus{border-bottom-width:3px}
+.field [aria-invalid="true"]{border-bottom:3px solid var(--orange)}
+.field-error{margin-top:var(--s1);font-size:15px;font-weight:600;color:var(--orange)}
+.form-pending{margin-top:var(--s4);font-size:15px;padding-left:var(--s2);border-left:3px solid var(--plum)}
+.inquiry-form .btn{margin-top:var(--s3)}
+.form-status{margin-top:var(--s2);font-weight:600}
+.form-status:empty{display:none}
+.form-status[data-state="error"]{color:var(--orange)}
+/* 가운데 얇은 세로 구분선 (장식) */
+.contact-aside{padding-left:var(--s5);border-left:1px solid rgba(48,35,46,.3)}
+.contact-aside .label:not(:first-child){margin-top:var(--s5)}
+.aside-name span{display:block}
+.aside-name span:first-child{font-weight:700}
+.aside-list{margin-top:var(--s3)}
+.aside-list dt{font-size:13px;font-weight:600}
+.aside-list dt:not(:first-child){margin-top:var(--s2)}
+.aside-list a{overflow-wrap:anywhere}
+.aside-booking{margin-top:var(--s5)}
 
 /* 헤더만 1100px에서 두 줄로 바뀐다: 영어 메뉴가 한 줄에 들어가지 않기 때문 */
 @media(max-width:1100px){
@@ -171,8 +187,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .work-item{gap:var(--gap-sub)}
   .svc{grid-template-columns:1fr;gap:var(--s1)}
   .method{grid-template-columns:1fr;gap:0}
-  .step,.contact-grid,.values{grid-template-columns:1fr}
-  .founder,.contact-grid{gap:var(--gap-stack)}
+  .step,.values,.contact-layout{grid-template-columns:1fr}
+  .founder{gap:var(--gap-stack)}
+  .inquiry-form{padding-right:0}
+  .contact-aside{padding-left:0;border-left:0;margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid rgba(48,35,46,.3)}
   .step{gap:var(--gap-sub)}
   .values{row-gap:var(--gap-stack)}
 }
@@ -182,12 +200,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   h2{font-size:28px;line-height:1.3}
   .logo img{width:150px}
   nav .btn{font-size:14px}
-  .page-intro h1,.contact-grid h1{font-size:32px;line-height:1.3}
+  .page-intro h1{font-size:32px;line-height:1.3}
   .step h3,.work-title{font-size:20px}
   .founder-lead{font-size:20px}
   .step dl{grid-template-columns:1fr;gap:0}
   .step dd{margin-bottom:var(--s1)}
-  .booking-block h2,.inquiry h2{font-size:24px}
+  .inquiry-form h2{font-size:24px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
