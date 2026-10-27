@@ -90,6 +90,17 @@
 - 투자 유치는 회사의 이력이며, 본인이 직접 투자를 유치했다는 의미로 바꾸지 않는다
 - 멘토링은 본인 경험 기반의 비자·학교 선택·커리어 설계 도움이며, 이민 법률 자격이나 법률 서비스 제공을 주장하지 않는다
 
+### 페이지 구조와 구현 규칙
+- 정적 HTML, GitHub Pages(/my-portfolio/ 하위 경로). 링크·이미지는 상대 경로만 쓴다
+- 페이지: second-context.html(홈), second-context-approach.html, second-context-contact.html. 기존 포트폴리오 contact.html과 이름이 겹치지 않게 second-context- 접두어를 쓴다
+- 공통 스타일은 assets/second-context.css 하나로 관리하고, 헤더·푸터·본문 바로가기는 세 페이지에 같은 구조로 둔다
+- 현재 페이지 메뉴에는 aria-current="page"를 넣고 밑줄·굵기로도 표시한다
+- 새 탭 링크에는 "(새 탭에서 열림)"을 화면 밖 텍스트(sr-only)로 붙인다
+- 버튼은 최소 44×44px, 모바일(900px 이하)에서도 메뉴 링크를 숨기지 않고 줄바꿈한다
+- Calendly는 직접 링크를 항상 제공하고, 임베드는 title이 있는 iframe으로 추가한다
+- 실제 전송 수단이 없는 문의 폼은 게시하지 않는다. 현재 문의는 이메일(mailto)로 받는다
+- 성과 수치·고객 실적·매출 증가 등을 임의로 추가하거나 보장하지 않는다
+
 ### 공식 기준
 - https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 - https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html

@@ -42,15 +42,18 @@
 
 ## 5. Contact (진행 방식 포함)
 ### 진행 방식
-1. 30분 상담으로 현재 과제를 듣습니다.
-2. 팀에 필요한 범위를 정리합니다.
-3. UX 진단 또는 제품 디자인 협업으로 이어갑니다.
+진행 방식은 별도 Approach 페이지(second-context-approach.html)의 6단계 접근으로 안내합니다.
+
+### Contact 페이지
+- 주소: second-context-contact.html
+- 왼쪽: 소개와 30분 상담 예약 (#booking), 오른쪽: 프로젝트 문의 (#inquiry), 아래: Calendly 예약 일정표
+- 프로젝트 문의는 현재 이메일로 받습니다. 온라인 문의 폼은 전송 수단이 정해지면 추가합니다 (미정)
 
 ### 30분 상담
 - 상담 종류는 30분 상담 한 가지입니다.
 - 내용: 구체적인 질문 한 가지를 함께 살펴보고, 다음 행동을 정리합니다.
 - 가격: 미정
-- 예약 버튼 문구: 30분 상담 예약 (상단 메뉴와 본문 모두)
+- 예약 버튼 문구: 30분 상담 예약 (상단 메뉴·홈 Hero), 30분 상담 예약하기 (Approach·Contact 페이지)
 - 예약 링크: https://calendly.com/yeagyeong/meeting-with-rachel-cho (새 탭으로 열림)
 
 ### 그 밖의 연락 방법
@@ -65,8 +68,10 @@
 각 사례는 문제·판단·협업·결과 순서로 보여주고, 공개 가능한 자료만 사용합니다.
 
 ## 7. 사이트 구성 (second-context.html)
-- 상단 메뉴: 로고 · WHY US · Services · Work · Contact · [30분 상담 예약]
-- 섹션 순서: Hero → WHY US (현지화 시행착오) → Services → Selected work → Founder → Contact → Footer
+- 페이지: 홈 second-context.html · Approach second-context-approach.html · Contact second-context-contact.html
+- 상단 메뉴 (모든 페이지 공통): 로고 · WHY US · Services · Work · Approach · Contact · [30분 상담 예약]
+- Approach 순서: 도입 → 6단계 개요 → 단계별 설명·산출물·기대 효과 → 상담 CTA → Business value 4개 → 마지막 CTA
+- 섹션 순서: Hero → WHY US (현지화 시행착오) → Services → Selected work → Founder → Contact 안내(짧은 안내 + Contact 페이지 이동) → Footer
 - Hero
   - 제목: 새로운 시장, 새로운 사용 맥락.
   - 설명: 미국 시장을 준비하는 한국 B2B SaaS 팀을 위해 제품 UX 진단부터 실제 디자인까지 함께합니다.
@@ -142,6 +147,7 @@
 
 ### 상담과 서비스
 - 30분 상담 가격
+- 프로젝트 문의 온라인 폼의 전송 수단 (현재는 이메일)
 - 30분 상담의 사전 검토 범위와 결과물 범위
 - 서비스별 가격과 범위
 - Market Context Session과 30분 상담의 관계
