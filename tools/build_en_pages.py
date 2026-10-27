@@ -224,7 +224,6 @@ def mailto(subject, body):
             + "&amp;body=" + urllib.parse.quote(body))
 
 CONTACT = [
-    ('title="Calendly 30분 상담 예약 일정표"', 'title="Calendly calendar for booking a 30-minute call"'),
     (mailto("[Second Context] 프로젝트 문의", KO_BODY), mailto("[Second Context] Project inquiry", EN_BODY)),
     ('Second Context와 30분 상담을 예약하거나 프로젝트를 문의하세요.',
      'Book a 30-minute call with Second Context or send a project inquiry.'),
@@ -246,11 +245,6 @@ CONTACT = [
      '<li>Inquiry details: your product, target market, current challenges, and preferred timeline</li>'),
     ('이메일로 프로젝트 문의 보내기', 'Send a project inquiry by email'),
     ('사용 중인 이메일 앱이 열리고, 위 항목이 본문에 채워집니다.', 'Your email app will open with these items filled into the message.'),
-    ('예약 일정표', 'Booking calendar'),
-    ('아래 Calendly 일정표에서도 바로 예약할 수 있습니다. 일정표가 보이지 않으면 ',
-     'You can also book directly in the Calendly calendar below. If the calendar doesn’t load, please use the '),
-    ('Calendly 예약 페이지', 'Calendly booking page'),
-    ('</a>에서 예약해 주세요.', '</a> instead.'),
 ]
 
 PATHS = [

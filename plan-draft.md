@@ -46,7 +46,7 @@
 
 ### Contact 페이지
 - 주소: second-context-contact.html
-- 왼쪽: 소개와 30분 상담 예약 (#booking), 오른쪽: 프로젝트 문의 (#inquiry), 아래: Calendly 예약 일정표
+- 왼쪽: 소개와 30분 상담 예약 (#booking), 오른쪽: 프로젝트 문의 (#inquiry)
 - 프로젝트 문의는 현재 이메일로 받습니다. 온라인 문의 폼은 전송 수단이 정해지면 추가합니다 (미정)
 
 ### 30분 상담

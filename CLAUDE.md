@@ -97,7 +97,7 @@
 - 현재 페이지 메뉴에는 aria-current="page"를 넣고 밑줄·굵기로도 표시한다
 - 새 탭 링크에는 "(새 탭에서 열림)"을 화면 밖 텍스트(sr-only)로 붙인다
 - 버튼은 최소 44×44px, 모바일(900px 이하)에서도 메뉴 링크를 숨기지 않고 줄바꿈한다
-- Calendly는 직접 링크를 항상 제공하고, 임베드는 title이 있는 iframe으로 추가한다
+- Calendly는 새 탭으로 여는 직접 링크로만 연결한다 (Contact 페이지 일정표 임베드는 2026-10-28에 제거)
 - 실제 전송 수단이 없는 문의 폼은 게시하지 않는다. 현재 문의는 이메일(mailto)로 받는다
 - 성과 수치·고객 실적·매출 증가 등을 임의로 추가하거나 보장하지 않는다
 - 파비콘: 승인 로고(Second context framed wordmark logo.png)의 두 열린 사각 프레임 심볼만 크림 배경 위에 사용한다. 워드마크·가운데 채움 네모는 넣지 않는다
@@ -131,7 +131,7 @@
 - 창업자 소개는 Home의 #founder 섹션이며 별도 About 페이지는 없다 (about.html은 포트폴리오 페이지)
 - 창업자 소개 그리드: 사진 열 --founder-photo 340px(320~360 범위) + 열 사이 --gap-split 64px + 본문은 남은 너비(본문에 별도 max-width를 두지 않음). 위쪽 정렬, 사진은 원본 비율, 900px 이하에서 세로 배치(사진 최대 440px)
 - 읽기 너비(--text 720px)는 컨테이너가 아니라 안쪽 요소(.lead, h2, 기획서의 .body > *)에만 건다. `.wrap`과 폭 제한 클래스를 같은 요소에 같이 쓰지 않는다 — 섹션 전체가 가운데로 밀린다
-- overflow-x: hidden으로 넘침을 가리지 않는다. 고정 높이는 Calendly iframe, 헤더·버튼 최소 높이, 장식 선에만 쓴다
+- overflow-x: hidden으로 넘침을 가리지 않는다. 고정 높이는 헤더·버튼 최소 높이, 장식 선에만 쓴다
 - 기획서(plan-draft.html)는 자체 CSS를 쓰되 같은 이름의 변수(--gutter·--section-y·--gap-*·--card-pad·--founder-photo)로 같은 규칙을 따른다. 기획서 섹션 위아래는 64px(모바일 48px)
 
 ### Use Cases (홈 #work, 메뉴 이름 Work)
