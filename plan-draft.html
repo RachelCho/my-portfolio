@@ -64,7 +64,8 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
 .founder figcaption{margin-top:var(--s2);font-size:15px;line-height:1.6}
 .founder figcaption span{display:block}
 .founder figcaption .name{font-size:17px;font-weight:700}
-.founder h3:first-child{margin-top:0}
+.founder-text p+p{margin-top:var(--s2)}
+.founder-lead{font-size:20px;line-height:1.5;font-weight:700}
 
 .tbd{border:1.5px dashed rgba(48,35,46,.35);border-radius:4px;padding:var(--s4)}
 .tbd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
@@ -233,19 +234,14 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
             <span>Product Designer · Startup Strategy Coach · Career Mentor</span>
           </figcaption>
         </figure>
-        <div>
-          <ul>
-            <li>사진: ./rachel-portrait-bw.png (흑백 최종본, 얼굴·외모 편집 금지, 원본 비율 유지·얼굴과 머리 자르지 않음)</li>
-            <li>레이아웃: 데스크톱은 사진 왼쪽·소개문 오른쪽, 모바일은 사진 → 소개문 세로 배치</li>
-            <li>소개문 작성 기준
-              <ul>
-                <li>글로벌 기업 12곳 이상, 27개국 경험, 1,500만 달러를 투자 유치한 YC 스타트업의 창업 디자이너 경력을 서로 구분해 쓴다</li>
-                <li>투자 유치는 회사의 이력이며, 본인이 직접 투자를 유치했다는 의미로 바꾸지 않는다</li>
-                <li>멘토링은 본인 경험을 바탕으로 한 비자·학교 선택·커리어 설계 도움이며, 이민 법률 자격이나 법률 서비스 제공을 주장하지 않는다</li>
-              </ul>
-            </li>
-            <li>소개문 최종본: 받는 대로 그대로 반영 (미정)</li>
-          </ul>
+        <div class="founder-text">
+          <p class="founder-lead">새로운 세계에서 스스로 길을 찾아온 경험을, 사람과 제품의 다음 가능성으로 연결합니다.</p>
+          <p>경제적으로 넉넉하지 않았던 어린 시절, 해외 유학은 상상하기조차 어려운 일이었습니다. 그런 제가 직접 27개국을 여행하고 현지 사람들과 생활하며, 국경을 넘어 일하는 디지털 노매드가 되었습니다. 낯선 환경에 들어가 배우고 관계를 쌓으며, 제게 가능한 선택지를 하나씩 넓혀 왔습니다.</p>
+          <p>그 과정에서 12개 이상의 글로벌 기업을 위한 주요 프로젝트를 이끌고, 1,500만 달러의 투자를 유치한 Y Combinator 출신 스타트업에서 파운딩 디자이너로 일했습니다. 글로벌 기업의 복잡한 협업부터 초기 스타트업의 빠른 의사결정까지 경험하며, 서로 다른 환경에서 제품의 방향을 정하고 실행하는 일을 해왔습니다.</p>
+          <p>이 여정은 현지화를 바라보는 제 관점을 만들었습니다. 같은 제품도 사용자의 문화, 업무 방식, 기대에 따라 다르게 받아들여집니다. 새로운 시장에서 제품의 가치를 전달하려면 사람들이 어떻게 판단하고, 무엇을 신뢰하며, 실제로 어떤 방식으로 일하는지 이해해야 합니다.</p>
+          <p>Second Context는 이러한 이해를 한국 기업의 글로벌 확장에 연결하기 위해 시작하였습니다. 특히 미국 시장을 준비하는 B2B SaaS 팀을 대상으로 제품 UX 진단, 현지화 방향 검토, 개선 우선순위 수립과 실제 디자인을 지원합니다. 스타트업 전략 코치로서는 팀이 목표 사용자와 핵심 문제를 명확히 하고, 다음에 집중할 제품 과제를 구체화하도록 돕습니다.</p>
+          <p>사람들의 새로운 출발을 돕는 일도 이어가고 있습니다. 이민자와 유학 준비자들이 비자와 학교 선택, 해외 정착과 커리어의 연결을 고민할 때 제 경험을 나누고, 디자이너들에게는 전략적인 커리어 설계와 해외 취업을 위한 멘토링을 제공합니다. 또한 디자이너 소셜 모임을 기획하고 운영하며, 서로 다른 경험을 가진 사람들이 지식과 기회를 나누는 자리를 만들고 있습니다.</p>
+          <p>스스로의 가능성을 넓혀 온 경험을 바탕으로, 이제는 사람과 제품이 새로운 시장에서 자신만의 자리를 찾도록 돕고자 합니다.</p>
         </div>
       </div>
     </div>
@@ -326,7 +322,6 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
           <div>
             <h3>콘텐츠</h3>
             <ul>
-              <li>창업자 소개문 최종본 (받는 대로 그대로 반영)</li>
               <li>실제 기업의 현지화 시행착오 사례 선정과 출처</li>
               <li>관련 사례별 상세 내용과 공개 가능한 범위</li>
               <li>사이트 언어 최종 결정 (시안은 한국어 우선, 영문 태그라인 병기)</li>
