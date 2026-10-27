@@ -40,7 +40,7 @@
 
 결과를 보장하는 문구 대신 검토 범위와 실제 제공물을 설명합니다.
 
-## 5. Approach & Contact (통합 섹션)
+## 5. Contact (진행 방식 포함)
 ### 진행 방식
 1. 30분 상담으로 현재 과제를 듣습니다.
 2. 팀에 필요한 범위를 정리합니다.
@@ -65,8 +65,8 @@
 각 사례는 문제·판단·협업·결과 순서로 보여주고, 공개 가능한 자료만 사용합니다.
 
 ## 7. 사이트 구성 (second-context.html)
-- 상단 메뉴: 로고 · Why · Services · Work · Approach & Contact · [30분 상담 예약]
-- 섹션 순서: Hero → Why (현지화 시행착오) → Services → Selected work → Approach & Contact → Footer
+- 상단 메뉴: 로고 · WHY US · Services · Work · Contact · [30분 상담 예약]
+- 섹션 순서: Hero → WHY US (현지화 시행착오) → Services → Selected work → Contact → Footer
 - Hero
   - 제목: 새로운 시장, 새로운 사용 맥락.
   - 설명: 미국 시장을 준비하는 한국 B2B SaaS 팀을 위해 제품 UX 진단부터 실제 디자인까지 함께합니다.
