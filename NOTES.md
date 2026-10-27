@@ -7,5 +7,7 @@
 - 선택한 스타일로 첫 화면 만들기
 - 변경사항을 커밋하고 push하기
 
-### 보류
-- Supabase 프로젝트 이름: 확인 후 기록
+### Supabase
+- 프로젝트 ID: hehifqnidhudcjtixngm
+- 대시보드: https://supabase.com/dashboard/project/hehifqnidhudcjtixngm
+- 프로젝트 이름: 확인 후 기록
