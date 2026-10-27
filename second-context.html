@@ -10,27 +10,40 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <style>
 :root{
-  --plum:#30232E; --orange:#DA613E; --cream:#F4F0E8; --sage:#9DAE9A;
-  --line:rgba(48,35,46,.16);
+  /* 브랜드 컬러 토큰 — 대비 기준은 CLAUDE.md "Second Context 브랜드 규칙" 참고 */
+  --plum:#30232E;          /* Primary: 글자, 주요 버튼 */
+  --orange:#A83E20;        /* Secondary (Accessible Orange): 기능성 강조, 보조 버튼 */
+  --cream:#F4F0E8;         /* Background */
+  --sage:#9DAE9A;          /* Surface: 보조 배경 (글자·기능 아이콘 색으로 쓰지 않음) */
+  --accent-deco:#DA613E;   /* Decorative Accent: 순수 장식 선·그래픽 전용 */
+  --plum-hover:#45333F; --plum-active:#221920;
+  --orange-hover:#8A3219;
+  --line:rgba(48,35,46,.16); /* 장식용 구분선 */
   --max:1200px; --text:720px;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
 body{font-family:'Manrope','Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;color:var(--plum);background:var(--cream);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
-a{color:inherit}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--plum);outline-offset:3px}
 img{display:block;max-width:100%}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s4)}
 .label{font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:var(--s1);margin-bottom:var(--s2)}
-.label::before{content:"";width:24px;height:2px;background:var(--orange)}
+.label::before{content:"";width:24px;height:2px;background:var(--accent-deco)}
 h1{font-size:64px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
 h2{font-size:36px;line-height:1.2;font-weight:800;letter-spacing:-.01em;max-width:var(--text)}
 h3{font-size:20px;line-height:1.4;font-weight:700}
 .lead{max-width:var(--text);margin-top:var(--s3)}
 .btn{display:inline-flex;align-items:center;gap:var(--s1);font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border:1.5px solid var(--plum);border-radius:4px}
 .btn-primary{background:var(--plum);color:var(--cream)}
-.btn-primary:hover{background:#45333f}
-.btn-secondary:hover{background:rgba(48,35,46,.06)}
+.btn-primary:hover{background:var(--plum-hover);border-color:var(--plum-hover)}
+.btn-primary:active{background:var(--plum-active);border-color:var(--plum-active)}
+.btn-secondary{background:var(--cream);color:var(--orange);border-color:var(--orange)}
+.btn-secondary:hover{background:var(--orange);color:var(--cream)}
+.btn-secondary:active{background:var(--orange-hover);border-color:var(--orange-hover);color:var(--cream)}
+.btn-secondary-fill{background:var(--orange);color:var(--cream);border-color:var(--orange)}
+.btn-secondary-fill:hover,.btn-secondary-fill:active{background:var(--orange-hover);border-color:var(--orange-hover)}
 section{padding:var(--s7) 0;border-top:1px solid var(--line)}
 
 /* header */
@@ -61,7 +74,7 @@ nav .btn{padding:10px 18px}
 
 /* work */
 .work{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);margin-top:var(--s5)}
-.work article{border-top:3px solid var(--orange);padding-top:var(--s3)}
+.work article{border-top:3px solid var(--accent-deco);padding-top:var(--s3)}
 .work .flow{font-size:15px;margin-top:var(--s1)}
 
 /* approach & contact */

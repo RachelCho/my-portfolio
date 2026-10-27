@@ -37,3 +37,52 @@
 - 이 스타일을 고른 이유: 디자이너 포트폴리오에 적합하고 정보 구조가 명확하여 선택했다. 케이스스터디를 중심으로 작업물을 보여주고, 별도의 About 페이지와 이력서 PDF 업로드 및 다운로드 기능을 제공한다.
 - 내 소개 문구 방향: B2B SaaS와 엔터프라이즈 제품을 전문으로 하는 시니어 프로덕트 디자이너
 - 이 스타일에서 바꾸고 싶은 부분: 별도의 Contact 페이지와 문의 폼 대신, 모든 페이지의 푸터에 이메일과 LinkedIn 링크를 배치한다.
+
+## Second Context 브랜드 규칙 (필수)
+- 적용 대상: second-context.html, plan-draft.html, plan-draft.md 등 Second Context 관련 화면과 문서
+- 포트폴리오(index.html)의 스타일 C 기준과 별개로 적용한다.
+- 아래 컬러 토큰과 WCAG 2.2 AA 색상 대비 조건은 필수 디자인 규칙이다. 화면을 바꿀 때마다 hover·active·focus를 포함해 대비를 다시 계산한다.
+
+### 확정 컬러 토큰
+| 토큰 | HEX | 역할 |
+|---|---|---|
+| Primary / Context Plum | #30232E | 제목, 본문, Primary 버튼 |
+| Secondary / Accessible Orange | #A83E20 | 기능성 강조, Secondary 버튼, 강조 글자 |
+| Background / Warm Cream | #F4F0E8 | 기본 배경, 어두운 배경 위 글자 |
+| Surface / Soft Sage | #9DAE9A | 보조 배경, 정보 패널 |
+| Decorative Accent / Signal Orange | #DA613E | 승인 로고, 순수 장식 선·그래픽 전용 |
+
+### 접근성 필수 조건 (WCAG 2.2 AA 색상 대비)
+- 일반 글자: 배경과 4.5:1 이상
+- 큰 글자: 최소 3:1 이상, 브랜드 내부 목표는 가능하면 4.5:1 이상
+- 식별에 필요한 아이콘·컨트롤 경계·상태 표시: 인접 색상과 3:1 이상
+- 링크는 밑줄 등 색상 이외의 구분을 함께 제공
+- 오류·성공·선택 상태는 문구나 아이콘을 함께 제공
+- hover, active, focus 상태도 실제 배경과의 대비를 검증
+- 키보드 포커스는 명확하게 보이고 다른 요소에 가려지지 않게 구현
+- 색상 대비는 WCAG 기준의 일부입니다. 대비 검증만으로 사이트 전체가 WCAG를 충족한다고 표현하지 않습니다.
+
+### 승인된 조합
+| 글자 / 배경 | 대비 |
+|---|---|
+| 플럼 / 크림 | 13.15:1 |
+| 크림 / 플럼 | 13.15:1 |
+| 조정 오렌지 / 크림 | 5.48:1 |
+| 크림 / 조정 오렌지 | 5.48:1 |
+| 플럼 / 세이지 | 6.37:1 |
+| 조정 오렌지 / 흰색 | 6.22:1 |
+
+### 버튼
+- Primary: 플럼 배경 + 크림 문구
+- Secondary 채움: 조정 오렌지 배경 + 크림 문구
+- Secondary 외곽선: 크림 배경 + 조정 오렌지 문구·테두리
+
+### 사용 금지 조합
+- 플럼 ↔ 조정 오렌지 (약 2.40:1): 서로를 글자·배경이나 기능 식별용 경계로 조합하지 않는다
+- 세이지 / 크림 (약 2.06:1): 글자나 기능성 아이콘에 쓰지 않는다
+- 장식 오렌지 #DA613E: 글자·버튼·기능 요소에 쓰지 않는다
+
+### 공식 기준
+- https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
+- https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html
+- https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html

@@ -9,17 +9,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
 <style>
 :root{
-  --plum:#30232E; --orange:#DA613E; --cream:#F4F0E8; --sage:#9DAE9A;
-  --line:rgba(48,35,46,.16);
+  /* 브랜드 컬러 토큰 — 대비 기준은 CLAUDE.md "Second Context 브랜드 규칙" 참고 */
+  --plum:#30232E; --orange:#A83E20; --cream:#F4F0E8; --sage:#9DAE9A;
+  --accent-deco:#DA613E;   /* 순수 장식 전용 */
+  --plum-hover:#45333F; --plum-active:#221920; --orange-hover:#8A3219;
+  --line:rgba(48,35,46,.16); /* 장식용 구분선 */
   --max:1200px; --text:720px;
   --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:64px; --s7:96px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Manrope','Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;color:var(--plum);background:var(--cream);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
-a{color:inherit}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--plum);outline-offset:3px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--s4)}
 .label{font-size:13px;line-height:1.4;font-weight:600;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:var(--s1);margin-bottom:var(--s2)}
-.label::before{content:"";width:24px;height:2px;background:var(--orange)}
+.label::before{content:"";width:24px;height:2px;background:var(--accent-deco)}
 
 .hero{padding:var(--s7) 0 var(--s6)}
 .hero h1{font-size:64px;line-height:1.1;font-weight:800;letter-spacing:-.02em}
@@ -39,11 +43,18 @@ li ul{margin-top:6px}
 table{width:100%;border-collapse:collapse;font-size:15px;margin-top:var(--s2)}
 th,td{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid var(--line)}
 th{font-size:13px;font-weight:600;letter-spacing:.04em;border-bottom:1.5px solid var(--plum)}
-.swatch{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:6px;border:1px solid var(--line)}
+.swatch{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:6px;border:1px solid var(--plum)}
+.sw-plum{background:var(--plum)}.sw-orange{background:var(--orange)}.sw-cream{background:var(--cream)}.sw-sage{background:var(--sage)}.sw-deco{background:var(--accent-deco)}
 
 .booking{background:var(--sage);border-radius:4px;padding:var(--s4);margin-top:var(--s3)}
 .booking h3{margin-top:0}
-.btn{display:inline-block;background:var(--plum);color:var(--cream);font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:4px;margin-top:var(--s2)}
+.btn{display:inline-block;background:var(--plum);color:var(--cream);border:1.5px solid var(--plum);font-size:15px;font-weight:600;text-decoration:none;padding:14px 24px;border-radius:4px;margin-top:var(--s2)}
+a.btn:hover{background:var(--plum-hover);border-color:var(--plum-hover)}
+a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
+.btn-secondary-fill{background:var(--orange);border-color:var(--orange)}
+.btn-secondary{background:var(--cream);color:var(--orange);border-color:var(--orange)}
+.btn-demo{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.btn-demo .btn{margin-top:0;font-size:14px}
 
 .tbd{border:1.5px dashed rgba(48,35,46,.35);border-radius:4px;padding:var(--s4)}
 .tbd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
@@ -205,19 +216,59 @@ th{font-size:13px;font-weight:600;letter-spacing:.04em;border-bottom:1.5px solid
     <div class="wrap">
       <p class="label">08 · Design</p>
       <h2>디자인 방향 — Second Context 브랜드</h2>
+      <h3>확정 컬러 토큰</h3>
       <table>
-        <thead><tr><th>색상</th><th>HEX</th><th>역할</th></tr></thead>
+        <thead><tr><th>토큰</th><th>HEX</th><th>역할</th></tr></thead>
         <tbody>
-          <tr><td><span class="swatch" style="background:#30232E"></span>Context Plum</td><td>#30232E</td><td>제목, 본문, 주요 버튼</td></tr>
-          <tr><td><span class="swatch" style="background:#DA613E"></span>Signal Orange</td><td>#DA613E</td><td>강조선, 큰 그래픽</td></tr>
-          <tr><td><span class="swatch" style="background:#F4F0E8"></span>Warm Cream</td><td>#F4F0E8</td><td>기본 배경</td></tr>
-          <tr><td><span class="swatch" style="background:#9DAE9A"></span>Soft Sage</td><td>#9DAE9A</td><td>보조 배경, 정보 패널</td></tr>
+          <tr><td><span class="swatch sw-plum"></span>Primary / Context Plum</td><td>#30232E</td><td>제목, 본문, Primary 버튼</td></tr>
+          <tr><td><span class="swatch sw-orange"></span>Secondary / Accessible Orange</td><td>#A83E20</td><td>기능성 강조, Secondary 버튼, 강조 글자</td></tr>
+          <tr><td><span class="swatch sw-cream"></span>Background / Warm Cream</td><td>#F4F0E8</td><td>기본 배경, 어두운 배경 위 글자</td></tr>
+          <tr><td><span class="swatch sw-sage"></span>Surface / Soft Sage</td><td>#9DAE9A</td><td>보조 배경, 정보 패널</td></tr>
+          <tr><td><span class="swatch sw-deco"></span>Decorative Accent / Signal Orange</td><td>#DA613E</td><td>승인 로고, 순수 장식 선·그래픽 전용</td></tr>
         </tbody>
       </table>
-      <ul class="body" style="margin-top:var(--s4)">
-        <li>시각 비중: 크림 70%, 플럼 20%, 오렌지 8%, 세이지 2%</li>
-        <li>주요 버튼: 플럼 배경 + 크림 글자</li>
-        <li>크림 배경의 작은 본문에는 오렌지·세이지 글자를 쓰지 않고 플럼을 쓴다</li>
+
+      <h3>접근성 필수 조건 (WCAG 2.2 AA 색상 대비)</h3>
+      <ul class="body">
+        <li>일반 글자: 배경과 4.5:1 이상</li>
+        <li>큰 글자: 최소 3:1 이상, 브랜드 내부 목표는 가능하면 4.5:1 이상</li>
+        <li>식별에 필요한 아이콘·컨트롤 경계·상태 표시: 인접 색상과 3:1 이상</li>
+        <li>링크는 밑줄 등 색상 이외의 구분을 함께 제공</li>
+        <li>오류·성공·선택 상태는 문구나 아이콘을 함께 제공</li>
+        <li>hover, active, focus 상태도 실제 배경과의 대비를 검증</li>
+        <li>키보드 포커스는 명확하게 보이고 다른 요소에 가려지지 않게 구현</li>
+      </ul>
+      <p class="note">색상 대비는 WCAG 기준의 일부입니다. 대비 검증만으로 사이트 전체가 WCAG를 충족한다고 표현하지 않습니다.</p>
+
+      <h3>승인된 조합</h3>
+      <table>
+        <thead><tr><th>글자 / 배경</th><th>대비</th></tr></thead>
+        <tbody>
+          <tr><td>플럼 / 크림</td><td>13.15:1</td></tr>
+          <tr><td>크림 / 플럼</td><td>13.15:1</td></tr>
+          <tr><td>조정 오렌지 / 크림</td><td>5.48:1</td></tr>
+          <tr><td>크림 / 조정 오렌지</td><td>5.48:1</td></tr>
+          <tr><td>플럼 / 세이지</td><td>6.37:1</td></tr>
+          <tr><td>조정 오렌지 / 흰색</td><td>6.22:1</td></tr>
+        </tbody>
+      </table>
+
+      <h3>버튼</h3>
+      <div class="btn-demo">
+        <span class="btn">Primary · 플럼 배경 + 크림 문구</span>
+        <span class="btn btn-secondary-fill">Secondary 채움 · 조정 오렌지 배경 + 크림 문구</span>
+        <span class="btn btn-secondary">Secondary 외곽선 · 크림 배경 + 조정 오렌지 문구·테두리</span>
+      </div>
+
+      <h3>사용 금지 조합</h3>
+      <ul class="body">
+        <li>플럼 ↔ 조정 오렌지 (약 2.40:1): 서로를 글자·배경이나 기능 식별용 경계로 조합하지 않는다</li>
+        <li>세이지 / 크림 (약 2.06:1): 글자나 기능성 아이콘에 쓰지 않는다</li>
+        <li>장식 오렌지 #DA613E: 글자·버튼·기능 요소에 쓰지 않는다</li>
+      </ul>
+
+      <h3>그 밖의 디자인 규칙</h3>
+      <ul class="body">
         <li>서체: Manrope (영문), Noto Sans KR (한글)</li>
         <li>크기: H1 64px (모바일 40px), H2 36px (모바일 28px), 본문 17px/1.7, 라벨 13px</li>
         <li>레이아웃: 좌측 정렬, 넓은 여백, 절제된 테두리, 분명한 정보 위계. 본문 최대 폭 약 720px, 전체 최대 폭 약 1200px</li>
