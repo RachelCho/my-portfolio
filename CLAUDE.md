@@ -100,6 +100,12 @@
 - Calendly는 직접 링크를 항상 제공하고, 임베드는 title이 있는 iframe으로 추가한다
 - 실제 전송 수단이 없는 문의 폼은 게시하지 않는다. 현재 문의는 이메일(mailto)로 받는다
 - 성과 수치·고객 실적·매출 증가 등을 임의로 추가하거나 보장하지 않는다
+- 파비콘: 승인 로고(Second context framed wordmark logo.png)의 두 열린 사각 프레임 심볼만 크림 배경 위에 사용한다. 워드마크·가운데 채움 네모는 넣지 않는다
+  - 파일: favicon.ico(16·32·48px, 저장소 루트), assets/favicon-32.png(32×32)
+  - 연결: Second Context 페이지마다 <title> 바로 아래에 상대 경로로 둔다
+    `<link rel="icon" href="favicon.ico" sizes="any">`
+    `<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">`
+  - 새 Second Context 페이지를 만들면 같은 두 줄을 넣는다. 경로를 /로 시작하지 않는다(/my-portfolio/ 하위 경로 유지)
 
 ### 공식 기준
 - https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
