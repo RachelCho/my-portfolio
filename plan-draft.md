@@ -70,9 +70,9 @@
 ## 7. 사이트 구성 (second-context.html)
 - 페이지: 홈 second-context.html · Approach second-context-approach.html · Contact second-context-contact.html
 - 영어 페이지: en/ 폴더에 같은 파일 이름. 헤더 오른쪽 "한국어 | English"로 같은 페이지의 다른 언어로 이동
-- 상단 메뉴 (모든 페이지 공통): 로고 · WHY US · Services · Work · Approach · Contact · [30분 상담 예약]
+- 상단 메뉴 (모든 페이지 공통): 로고 · Why Us · Services · Work · Approach · Contact · [30분 상담 예약]
 - Approach 순서: 도입 → 6단계 개요 → 단계별 설명·산출물·기대 효과 → 상담 CTA → Business value 4개 → 마지막 CTA
-- 섹션 순서: Hero → WHY US (현지화 시행착오) → Services → Selected work → Founder → Contact 안내(짧은 안내 + Contact 페이지 이동) → Footer
+- 섹션 순서: Hero → Why Us (현지화 시행착오) → Services → Selected work → Founder → Contact 안내(짧은 안내 + Contact 페이지 이동) → Footer
 - Hero
   - 제목: 새로운 시장, 새로운 사용 맥락.
   - 설명: 미국 시장을 준비하는 한국 B2B SaaS 팀을 위해 제품 UX 진단부터 실제 디자인까지 함께합니다.

@@ -142,6 +142,7 @@
 - 페이지마다 html lang, title, description, canonical(자기 언어 URL), hreflang ko·en·x-default(한국어)를 둔다
 - 영어 페이지는 한국어 페이지에서 만든다: 한국어 문구를 고친 뒤 `python3 tools/build_en_pages.py .`를 실행하고, 새 문구는 스크립트의 번역 표에 추가한다. 표에 없는 한국어가 남으면 스크립트가 멈춘다
 - 이름·브랜드명·숫자(27개국, 12개 이상, $15M)·서비스 범위를 그대로 유지한다. $15M은 회사(Y Combinator 스타트업)의 투자 유치 이력으로만 쓴다
+- 메뉴 표기: Why Us · Services · Work · Approach · Contact (두 언어 공통, 대문자 강제 변환 없음)
 - 헤더는 1100px 이하에서 두 줄(로고·언어 / 메뉴), 그 위에서는 한 줄. 영어 길이 때문에 버튼·메뉴를 고정 폭·고정 높이로 자르지 않는다
 - Calendly 예약 화면의 언어는 Calendly 쪽 설정을 따르며 사이트 번역 범위가 아니다
 
