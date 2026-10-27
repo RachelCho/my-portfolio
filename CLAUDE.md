@@ -134,6 +134,17 @@
 - overflow-x: hidden으로 넘침을 가리지 않는다. 고정 높이는 Calendly iframe, 헤더·버튼 최소 높이, 장식 선에만 쓴다
 - 기획서(plan-draft.html)는 자체 CSS를 쓰되 같은 이름의 변수(--gutter·--section-y·--gap-*·--card-pad·--founder-photo)로 같은 규칙을 따른다. 기획서 섹션 위아래는 64px(모바일 48px)
 
+### 다국어 (한국어·영어)
+- 기본 언어는 한국어. 한국어 URL은 그대로 두고, 영어는 en/ 폴더에 같은 파일 이름으로 둔다 (en/second-context.html, en/second-context-approach.html, en/second-context-contact.html)
+- 브라우저 언어·접속 국가에 따른 자동 이동을 하지 않는다. 실시간 번역 API를 쓰지 않는다
+- 헤더 오른쪽에 언어 이름 링크 "한국어 | English"(국기·스위치 금지). `<nav class="lang">`, 현재 언어는 aria-current="true" + 굵기·밑줄, 각 링크에 lang·hreflang
+- 언어 링크는 현재 페이지의 다른 언어 페이지로 연결하고, 각 언어의 내부 링크는 같은 언어 페이지로만 연결한다 (선택 언어 유지)
+- 페이지마다 html lang, title, description, canonical(자기 언어 URL), hreflang ko·en·x-default(한국어)를 둔다
+- 영어 페이지는 한국어 페이지에서 만든다: 한국어 문구를 고친 뒤 `python3 tools/build_en_pages.py .`를 실행하고, 새 문구는 스크립트의 번역 표에 추가한다. 표에 없는 한국어가 남으면 스크립트가 멈춘다
+- 이름·브랜드명·숫자(27개국, 12개 이상, $15M)·서비스 범위를 그대로 유지한다. $15M은 회사(Y Combinator 스타트업)의 투자 유치 이력으로만 쓴다
+- 헤더는 1100px 이하에서 두 줄(로고·언어 / 메뉴), 그 위에서는 한 줄. 영어 길이 때문에 버튼·메뉴를 고정 폭·고정 높이로 자르지 않는다
+- Calendly 예약 화면의 언어는 Calendly 쪽 설정을 따르며 사이트 번역 범위가 아니다
+
 ### 공식 기준
 - https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
 - https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html

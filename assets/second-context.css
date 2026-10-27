@@ -58,7 +58,10 @@ section{padding:var(--section-y) 0;border-top:1px solid var(--line)}
 
 /* header */
 header{position:sticky;top:0;z-index:10;background:var(--cream);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);min-height:var(--header-h)}
+/* 헤더: 로고 · 주요 메뉴 · 언어 선택 (DOM 순서도 같다) */
+header .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"logo nav lang";align-items:center;column-gap:var(--s4);min-height:var(--header-h)}
+.logo{grid-area:logo}
+header nav:not(.lang){grid-area:nav;justify-self:end}
 .logo img{width:200px;height:auto}
 nav{display:flex;align-items:center;gap:var(--s4);font-size:15px;font-weight:500}
 nav a{text-decoration:none}
@@ -66,6 +69,9 @@ nav a:not(.btn){padding:var(--s1) 0}
 nav a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;font-weight:700}
 nav a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px}
 nav .btn{padding:var(--s1) var(--s2)}
+/* 언어 선택: 국기·스위치 대신 언어 이름 링크. 현재 언어는 aria-current + 굵기·밑줄 */
+.lang{grid-area:lang;gap:var(--s1);padding-left:var(--s4);border-left:1px solid var(--line)}
+.lang a[aria-current="true"]{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
 
 /* hero */
 .hero,.page-intro{border-top:0}
@@ -142,12 +148,16 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 .direct .k{display:block;font-size:13px;font-weight:600}
 .calendar-section iframe{display:block;width:100%;height:720px;border:1px solid var(--line);border-radius:4px;background:var(--cream);margin-top:var(--gap-block)}
 
-@media(max-width:900px){
-  :root{--section-y:var(--s6)}
+/* 헤더만 1100px에서 두 줄로 바뀐다: 영어 메뉴가 한 줄에 들어가지 않기 때문 */
+@media(max-width:1100px){
   html{scroll-padding-top:var(--s3)}
   header{position:static}
-  header .wrap{flex-wrap:wrap;padding-top:var(--s2);padding-bottom:var(--s2);gap:var(--s1) var(--s3)}
-  nav{flex-wrap:wrap;gap:0 var(--s3)}
+  header .wrap{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"logo lang" "nav nav";row-gap:var(--s1);padding-top:var(--s2);padding-bottom:var(--s2)}
+  header nav:not(.lang){justify-self:start;flex-wrap:wrap;gap:0 var(--s3)}
+  .lang{justify-self:end;flex-wrap:wrap;padding-left:0;border-left:0}
+}
+@media(max-width:900px){
+  :root{--section-y:var(--s6)}
   .cases,.work,.founder{grid-template-columns:1fr}
   .svc{grid-template-columns:1fr;gap:var(--s1)}
   .method{grid-template-columns:1fr;gap:0}
