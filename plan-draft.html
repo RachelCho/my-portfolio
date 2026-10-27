@@ -35,6 +35,11 @@ a{color:inherit}
 .card li{margin-bottom:6px}
 .card li ul{margin-top:6px}
 .card strong{color:var(--ink)}
+.btn{display:inline-block;border-radius:999px;background:var(--ink);color:#fff;font-size:14px;font-weight:700;padding:10px 20px;text-decoration:none;margin-top:var(--sp3)}
+.bk .len{font-size:12px;font-weight:700;color:var(--ink-soft)}
+.bk p{color:var(--ink-soft);font-size:15px}
+.btn.off{background:var(--pill-bg);color:var(--ink-soft);cursor:default}
+.bk .note{font-size:12px;color:var(--ink-soft);margin-top:var(--sp2)}
 code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
 
 .proj h2{margin-bottom:var(--sp2)}
@@ -61,7 +66,7 @@ code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
   <div class="shell">
     <span class="pill">PLAN DRAFT</span>
     <h1>조예경 포트폴리오 기획서 (초안)</h1>
-    <p>확정된 내용은 1–6번에, 아직 정하지 않은 내용은 7번에 정리했습니다.</p>
+    <p>확정된 내용은 1–7번에, 아직 정하지 않은 내용은 8번에 정리했습니다.</p>
   </div>
 </section>
 
@@ -99,6 +104,7 @@ code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
       <li>작업물 상세</li>
       <li>About (별도 페이지)</li>
       <li>이력서 열람·다운로드 (PDF)</li>
+      <li>상담 예약 (30분 집중 상담 / 60분 심층 상담)</li>
       <li>Footer 연락 링크</li>
     </ul>
   </section>
@@ -113,7 +119,24 @@ code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
     </ul>
   </section>
 
-  <div class="span-12"><span class="pill">05 · WORKS</span></div>
+  <div class="span-12"><span class="pill">05 · BOOKING</span></div>
+  <section class="card span-6 bk">
+    <div class="len">30분</div>
+    <h2>집중 상담</h2>
+    <p>구체적인 질문 한 가지를 함께 살펴보고, 다음 행동을 정리하는 상담입니다.</p>
+    <a class="btn" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약하기 →</a>
+    <p class="note">Calendly 30분 이벤트로 연결</p>
+  </section>
+  <section class="card span-6 bk">
+    <div class="len">60분</div>
+    <h2>심층 상담</h2>
+    <p>제품 배경과 핵심 흐름을 살펴보고, 개선 방향을 논의하는 상담입니다.</p>
+    <!-- 60분 Calendly 이벤트가 준비되면 <a class="btn" href="이벤트 주소">60분 상담 예약하기 →</a>로 교체 -->
+    <span class="btn off">60분 상담 준비 중</span>
+    <p class="note">Calendly 60분 이벤트는 추후 연결</p>
+  </section>
+
+  <div class="span-12"><span class="pill">06 · WORKS</span></div>
   <section class="card span-4 proj">
     <div class="num">01</div>
     <h2>Axle Health</h2>
@@ -131,7 +154,7 @@ code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
   </section>
 
   <section class="card span-12">
-    <span class="pill">06 · STYLE</span>
+    <span class="pill">07 · STYLE</span>
     <h2>디자인 스타일 (Day05 선택)</h2>
     <ul>
       <li><strong>스타일 C — 카드형 벤토 그리드</strong></li>
@@ -148,7 +171,7 @@ code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
   </section>
 
   <section class="card span-12 todo">
-    <span class="pill">07 · TBD</span>
+    <span class="pill">08 · TBD</span>
     <h2>미정 및 추후 결정 사항</h2>
     <div class="todo-grid">
       <div>
@@ -168,6 +191,7 @@ code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
           <li>작업물 노출 순서와 3개 외 추가 작업물 여부</li>
           <li>About 페이지에 들어갈 내용</li>
           <li>홈(첫 화면) 구성</li>
+          <li>상담별 사전 검토 범위와 결과물 범위</li>
         </ul>
       </div>
       <div>
@@ -184,6 +208,7 @@ code{font-size:13px;background:var(--bg);border-radius:6px;padding:1px 6px}
           <li>로그인 방식</li>
           <li>작업물 관리(등록·수정·삭제) 권한</li>
           <li>이력서 PDF 업로드 방식과 권한</li>
+          <li>Calendly 60분 이벤트 개설과 연결 시점 (현재는 30분 상담만 예약 연결)</li>
         </ul>
       </div>
     </div>
