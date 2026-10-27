@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="ko" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
 <link rel="alternate" hreflang="en" href="https://rachelcho.github.io/my-portfolio/en/second-context-contact.html">
 <link rel="alternate" hreflang="x-default" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
-<meta name="description" content="Second Context와 30분 상담을 예약하거나 프로젝트를 문의하세요.">
+<meta name="description" content="Second Context에 프로젝트를 문의하거나 30분 상담을 예약하세요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
@@ -43,34 +43,33 @@
   <section class="page-intro">
     <div class="wrap">
       <p class="label">Contact</p>
-      <h1>다음 시장을 준비하고 계신가요?</h1>
-      <p class="lead">제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. 30분 상담을 예약하시거나 프로젝트 문의를 남겨 주시면 협업할 범위를 함께 살펴보겠습니다.</p>
+      <h1>프로젝트 이야기를 들려주세요.</h1>
+      <p class="lead">제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요.</p>
       <div class="contact-layout">
-        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-labelledby="form-title">
-          <h2 id="form-title">프로젝트 문의</h2>
-          <p class="form-note">(필수) 표시가 있는 항목은 꼭 입력해 주세요.</p>
+        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-label="프로젝트 문의">
+          <p class="form-note"><span aria-hidden="true">*</span> 필수 항목</p>
           <div class="field">
-            <label for="f-name">이름 <span class="req">(필수)</span></label>
+            <label for="f-name">이름 <span class="req" aria-hidden="true">*</span></label>
             <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error">
             <p class="field-error" id="f-name-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-org">회사·팀 <span class="opt">(선택)</span></label>
+            <label for="f-org">회사·팀</label>
             <input id="f-org" name="organisation" type="text" autocomplete="organization" aria-describedby="f-org-error">
             <p class="field-error" id="f-org-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-email">이메일 <span class="req">(필수)</span></label>
+            <label for="f-email">이메일 <span class="req" aria-hidden="true">*</span></label>
             <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error">
             <p class="field-error" id="f-email-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-phone">전화번호 <span class="opt">(선택)</span></label>
+            <label for="f-phone">전화번호</label>
             <input id="f-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="f-phone-error">
             <p class="field-error" id="f-phone-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-message">문의 내용 <span class="req">(필수)</span></label>
+            <label for="f-message">문의 내용 <span class="req" aria-hidden="true">*</span></label>
             <p class="field-help" id="f-message-help">제품, 목표 시장, 현재 과제와 희망 일정을 알려 주세요.</p>
             <textarea id="f-message" name="message" rows="7" required aria-describedby="f-message-help f-message-error"></textarea>
             <p class="field-error" id="f-message-error" hidden></p>
@@ -79,7 +78,7 @@
           <button class="btn btn-primary" type="submit">문의 보내기</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
-        <aside class="contact-aside" aria-label="직접 연락">
+        <aside class="contact-aside" aria-label="연락 안내">
           <h2 class="label">Direct contact</h2>
           <p class="aside-name"><span>Second Context</span><span>Rachel Cho</span></p>
           <dl class="aside-list">
@@ -91,6 +90,9 @@
           <h2 class="label">Languages</h2>
           <p><span lang="ko">한국어</span> · <span lang="en">English</span></p>
           <div class="aside-booking" id="booking">
+            <h2 class="label">30-minute consultation</h2>
+            <p class="aside-lead">먼저 이야기 나누고 싶으신가요?</p>
+            <p>30분 상담에서 제품과 현재 과제를 함께 살펴보겠습니다.</p>
             <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>
           </div>
         </aside>

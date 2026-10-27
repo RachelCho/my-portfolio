@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="ko" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
 <link rel="alternate" hreflang="en" href="https://rachelcho.github.io/my-portfolio/en/second-context-contact.html">
 <link rel="alternate" hreflang="x-default" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
-<meta name="description" content="Book a 30-minute consultation with Second Context or send a project inquiry.">
+<meta name="description" content="Send Second Context a project inquiry or book a 30-minute consultation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
@@ -43,34 +43,33 @@
   <section class="page-intro">
     <div class="wrap">
       <p class="label">Contact</p>
-      <h1>Preparing for your next market?</h1>
-      <p class="lead">Tell us about your product, your target market, and the challenges you’re working through. Book a 30-minute consultation or send a project inquiry, and we’ll explore the right scope of collaboration together.</p>
+      <h1>Tell us about your project.</h1>
+      <p class="lead">Tell us about your product, your target market, and the challenges you’re working through.</p>
       <div class="contact-layout">
-        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-labelledby="form-title">
-          <h2 id="form-title">Project inquiry</h2>
-          <p class="form-note">Fields marked (required) must be filled in.</p>
+        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-label="Project inquiry">
+          <p class="form-note"><span aria-hidden="true">*</span> Required</p>
           <div class="field">
-            <label for="f-name">Name <span class="req">(required)</span></label>
+            <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
             <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error">
             <p class="field-error" id="f-name-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-org">Organisation <span class="opt">(optional)</span></label>
+            <label for="f-org">Organisation</label>
             <input id="f-org" name="organisation" type="text" autocomplete="organization" aria-describedby="f-org-error">
             <p class="field-error" id="f-org-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-email">Email <span class="req">(required)</span></label>
+            <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
             <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error">
             <p class="field-error" id="f-email-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-phone">Phone number <span class="opt">(optional)</span></label>
+            <label for="f-phone">Phone number</label>
             <input id="f-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="f-phone-error">
             <p class="field-error" id="f-phone-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-message">How can I help? <span class="req">(required)</span></label>
+            <label for="f-message">How can I help? <span class="req" aria-hidden="true">*</span></label>
             <p class="field-help" id="f-message-help">Tell us about your product, target market, current challenges, and preferred timeline.</p>
             <textarea id="f-message" name="message" rows="7" required aria-describedby="f-message-help f-message-error"></textarea>
             <p class="field-error" id="f-message-error" hidden></p>
@@ -79,7 +78,7 @@
           <button class="btn btn-primary" type="submit">Send inquiry</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
-        <aside class="contact-aside" aria-label="Direct contact">
+        <aside class="contact-aside" aria-label="Contact details">
           <h2 class="label">Direct contact</h2>
           <p class="aside-name"><span>Second Context</span><span>Rachel Cho</span></p>
           <dl class="aside-list">
@@ -91,6 +90,9 @@
           <h2 class="label">Languages</h2>
           <p><span lang="ko">한국어</span> · <span lang="en">English</span></p>
           <div class="aside-booking" id="booking">
+            <h2 class="label">30-minute consultation</h2>
+            <p class="aside-lead">Would you like to talk first?</p>
+            <p>In a 30-minute consultation, we’ll look at your product and current challenges together.</p>
             <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (opens in a new tab)</span></a>
           </div>
         </aside>
