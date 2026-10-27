@@ -134,6 +134,15 @@
 - overflow-x: hidden으로 넘침을 가리지 않는다. 고정 높이는 Calendly iframe, 헤더·버튼 최소 높이, 장식 선에만 쓴다
 - 기획서(plan-draft.html)는 자체 CSS를 쓰되 같은 이름의 변수(--gutter·--section-y·--gap-*·--card-pad·--founder-photo)로 같은 규칙을 따른다. 기획서 섹션 위아래는 64px(모바일 48px)
 
+### Selected Work (홈 #work)
+- 메뉴는 Work, 섹션 라벨은 Selected Work. 사례는 번호 목록(ol)으로 세로 배치
+- 사례 구조: 번호 · 회사명 · 제목(h3) | 문제 · 접근 · 결과(목록). Apple처럼 정량 성과가 없는 사례는 결과 대신 "산출물"
+- 데스크톱은 왼쪽 번호·회사명·제목, 오른쪽 상세(5:7, --gap-split), 900px 이하 세로
+- 수치는 사용자가 제공한 출처·조건 문구(파일럿에서, 여러 개선이 함께 적용된 후, 프로젝트에서 보고된)와 함께만 쓴다. 출처 없는 수치를 추가하지 않는다
+- 협업 관계는 제공된 그대로 표기(Pfizer: Blink UX / IBM 협업, Apple: Hogarth WW UK·Apple Korea·Apple SF와 협업). 별도 콘셉트 작업을 납품·출시 실적으로 섞지 않는다
+- 사례마다 CTA를 반복하지 않고, 세 사례 아래에 공통 "30분 상담 예약하기"(Calendly) 하나
+- 공개 범위가 확인되지 않은 사례·내부 메모는 화면에 올리지 않는다
+
 ### 다국어 (한국어·영어)
 - 기본 언어는 한국어. 한국어 URL은 그대로 두고, 영어는 en/ 폴더에 같은 파일 이름으로 둔다 (en/second-context.html, en/second-context-approach.html, en/second-context-contact.html)
 - 브라우저 언어·접속 국가에 따른 자동 이동을 하지 않는다. 실시간 번역 API를 쓰지 않는다
