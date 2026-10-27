@@ -21,12 +21,13 @@
 - 선택한 스타일: 스타일 C — 카드형 벤토 그리드
 - 디자인 기준은 design-style.md(../design-style.md)를 따른다.
 - 화면을 만들 때 style-c-grid.html(../style-c-grid.html)도 직접 읽어 색상, 여백, 카드와 레이아웃을 참고한다.
-- 소개 문구: "B2B SaaS Senior Product Designer · AI-native Systems  레이첼 조 "
+- 이름: Rachel Cho | 조예경
+- 소개 문구: Senior Product Designer specializing in B2B SaaS and enterprise products.
 
 ## 지켜야 할 것
 - design-style.md의 "수정 시 지켜야 할 것" 항목을 그대로 따를 것
 
 ## 메모
 - 이 스타일을 고른 이유: 디자이너 포트폴리오에 적합하고 정보 구조가 명확하여 선택했다. 케이스스터디를 중심으로 작업물을 보여주고, 별도의 About 페이지와 이력서 PDF 업로드 및 다운로드 기능을 제공한다.
-- 내 소개 문구 방향: B2B SaaS와 엔터프라이즈 제품을 전문으로 하는 시니어 프로덕트 디자이너 — Senior Product Designer specializing in B2B SaaS and enterprise products.
+- 내 소개 문구 방향: B2B SaaS와 엔터프라이즈 제품을 전문으로 하는 시니어 프로덕트 디자이너
 - 이 스타일에서 바꾸고 싶은 부분: 별도의 Contact 페이지와 문의 폼 대신, 모든 페이지의 푸터에 이메일과 LinkedIn 링크를 배치한다.
