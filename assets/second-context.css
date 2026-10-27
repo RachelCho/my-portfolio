@@ -100,6 +100,9 @@ nav .btn{padding:var(--s1) var(--s2)}
 .work-detail dd{margin-top:var(--gap-tight)}
 .work-detail ul{list-style:disc;padding-left:1.2em}
 .work-detail li+li{margin-top:var(--gap-tight)}
+.work-close{margin-top:var(--gap-block)}
+.work-close p{margin-top:var(--s1)}
+.work-close .cta{margin-top:var(--s3)}
 
 /* founder */
 /* 두 열 레이아웃(founder·contact-grid·step) 공통: 열 사이 --gap-split, 쌓이면 --gap-stack */
