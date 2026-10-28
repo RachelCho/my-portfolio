@@ -39,8 +39,9 @@
       });
       var open = Array.prototype.map.call(document.querySelectorAll('details[id][open]'), function (d) { return d.id; });
       var demos = {};
+      var counted = Array.prototype.map.call(document.querySelectorAll('[data-countup][data-counted][id]'), function (l) { return l.id; });
       Array.prototype.forEach.call(document.querySelectorAll('[data-demo][id]'), function (d) { demos[d.id] = d.getAttribute('data-step'); });
-      set('sessionStorage', STATE, JSON.stringify({ page: pageName(location.pathname), target: target, anchor: anchor, ratio: ratio, atTop: window.scrollY < 4, open: open, demos: demos, fields: fields }));
+      set('sessionStorage', STATE, JSON.stringify({ page: pageName(location.pathname), target: target, anchor: anchor, ratio: ratio, atTop: window.scrollY < 4, open: open, demos: demos, counted: counted, fields: fields }));
     }
 
     Array.prototype.forEach.call(document.querySelectorAll('nav.lang a[hreflang]'), function (a) {
@@ -59,6 +60,11 @@
     if (!st || st.target !== cur || st.page !== pageName(location.pathname)) return;
 
     (st.open || []).forEach(function (id) { var d = document.getElementById(id); if (d && d.tagName === 'DETAILS') d.open = true; });
+    // 이미 재생한 경력 수치 카운트업은 다시 재생하지 않는다 (count-up.js가 sc:counted를 받아 최종 값 표시)
+    (st.counted || []).forEach(function (id) {
+      var l = document.getElementById(id);
+      if (l) l.dispatchEvent(new CustomEvent('sc:counted'));
+    });
     // 사례 인터랙션의 선택 단계 (case-demo.js가 sc:step 이벤트를 받아 바꾼다)
     Object.keys(st.demos || {}).forEach(function (id) {
       var d = document.getElementById(id);

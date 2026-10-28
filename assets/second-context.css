@@ -241,12 +241,10 @@ nav .btn{padding:var(--s1) var(--s2)}
 .founder figcaption span{display:block}
 .founder figcaption .name{font-size:17px;font-weight:700}
 .founder-text p+p{margin-top:var(--gap-para)}
-.founder-more{margin-top:var(--s3)}
-.founder-more a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
-.founder-more a::after{content:"→";content:"→" / "";margin-left:var(--s1)}
 /* 경력 수치: 소개 문단 아래, 숫자와 의미를 한 줄씩 */
-.founder-stats{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-grid);margin-top:var(--gap-block);padding-top:var(--s3);border-top:1px solid var(--line)}
-.founder-stats .stat-value{display:block;font-size:30px;font-weight:700;line-height:1.25}
+.founder-stats{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-grid);margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid var(--line)}
+.founder-stats .stat-value{display:block;font-size:30px;font-weight:700;line-height:1.25;font-variant-numeric:tabular-nums}
+.founder-stats .stat-num{display:inline-block;text-align:right} /* 폭은 count-up.js가 최종 자릿수(ch)로 잡는다 */
 .founder-stats .stat-label{display:block;margin-top:var(--gap-tight);font-size:15px;line-height:1.5}
 
 /* footer */

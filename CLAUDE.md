@@ -90,10 +90,11 @@
 
 ### 창업자 소개 (Founder)
 - 사진: ./rachel-portrait-bw.png (흑백 최종본). 얼굴·외모를 편집하지 않고, 원본 비율을 유지하며 얼굴과 머리를 자르지 않는다
-- 사진 아래 3줄: Rachel Cho / Founder, Second Context / Product Designer · Startup Strategy Coach · Career Mentor
-- 구성(2026-10-28): 홈 #founder는 1인칭 짧은 소개 2문단(전문성 → 이민자로 쌓은 커리어 → 지금의 멘토링·파운더 지원) + 경력 수치 3개 + "Rachel의 이야기 더 보기 / Read Rachel’s story" 링크. 창업자 소개 페이지 second-context-about.html(제목 "새로운 환경에서, 나만의 길을 만들어왔습니다.")는 사용자가 준 3문단을 그대로 쓴다. 메뉴에는 About을 따로 두지 않는다
+- 사진 아래 3줄: Rachel Cho / Founder & Product UX Consultant / Product Designer · Startup Strategy Coach · Career Mentor
+- 구성(2026-10-28 갱신): 제목 "낯선 맥락을 이해하고, 다음 방향을 함께 찾습니다." / "Understanding new contexts. Finding a way forward, together." 창업자 소개 페이지는 사용자가 준 3문단(전문성 / 직접 학비·이민자 커리어·디지털 노매드 / 컨설팅·멘토링)을 그대로 쓰고, 홈 #founder도 같은 3문단 + 경력 수치(창업자 소개 페이지 링크 없음, 2026-10-28 사용자 요청). 메뉴에는 About을 따로 두지 않는다
 - 1인칭(나/저)으로 쓰고, '자수성가'·'역경 극복'·'글로벌 리더' 같은 수식어 대신 구체적 경험(직접 학비 마련, 이민자로 쌓은 커리어, 27개국 디지털 노매드)으로 보여준다. 확인되지 않은 어려움·감정·가족사·재정 상황은 덧붙이지 않는다
-- 경력 수치(Rachel 제공): 40+ 완료 프로젝트 · 약 12개 글로벌·다국적 기업 · 27개국 여행 · 디지털 노매드 경험
+- 경력 수치(Rachel 제공): 40+ 완료한 프로젝트 / Projects completed · 12+ 함께 일한 글로벌·다국적 기업 / Global & multinational companies worked with · 27 여행한 국가 / Countries visited. 12+를 "약 12개"로 바꾸지 않고, 27은 여행한 국가 수로만 쓴다(일한 국가·시장 수 아님). 투자금은 개인 수치에 넣지 않는다
+- 카운트업(assets/count-up.js): HTML에는 최종 값, 화면 60% 진입 시 세 숫자를 동시에 0→최종 값 900ms(ease-out), 방문당 한 번, 언어 전환으로 들어온 페이지에서는 다시 재생하지 않음(lang.js가 sc:counted 전달). 움직임 줄이기·IntersectionObserver 미지원이면 최종 값 그대로. 보이는 숫자는 aria-hidden, sr-only로 최종 값만 읽음, aria-live 없음. tabular-nums + 최종 자릿수만큼 폭 확보
 - 회사명은 쓰지 않는다("Y Combinator W21 출신의 미국 헬스케어 스타트업"). 투자금은 회사의 이력이며 개인 성과로 쓰지 않고, 금액은 자료끼리 다르므로($15M / $14.2M) 확인 전까지 넣지 않는다
 - 기업 경험은 실제 참여 형태를 존중하고, 27개국은 개인 배경으로만 쓴다(27개 시장 업무·리서치로 바꾸지 않는다)
 - 경력 수치는 창업자 소개에만, 프로젝트 개선 수치는 해당 사례(#work)에만 둔다. 프로젝트 성과를 Rachel 개인의 단독 성과로 쓰지 않는다
@@ -180,7 +181,7 @@
 - 번역 관리: 화면 문구는 한국어 HTML(원본)과 tools/build_en_pages.py의 번역 표 한 곳에서만 관리하고, 폼·복사 안내 메시지는 assets/contact-form.js 안의 ko/en 묶음에서 관리한다. en/*.html을 직접 고치지 않는다
 - 실제 제품 스크린샷을 넣을 때는 화면 속 문구를 번역용으로 바꾸지 않고, 주석·설계 포인트·해설만 HTML 텍스트로 두어 번역 표로 전환한다
 - 영어 페이지는 한국어 페이지에서 만든다: 한국어 문구를 고친 뒤 `python3 tools/build_en_pages.py .`를 실행하고, 새 문구는 스크립트의 번역 표에 추가한다. 표에 없는 한국어가 남으면 스크립트가 멈춘다
-- 이름·브랜드명·숫자(40+, 약 12개, 27개국, 사례별 수치와 단위)·서비스 범위를 그대로 유지한다
+- 이름·브랜드명·숫자(40+, 12+, 27, 사례별 수치와 단위)·서비스 범위를 그대로 유지한다
 - 메뉴 표기: Why Us · Services · Work · Approach · Contact (두 언어 공통, 대문자 강제 변환 없음)
 - 헤더는 1100px 이하에서 두 줄(로고·언어 / 메뉴), 그 위에서는 한 줄. 영어 길이 때문에 버튼·메뉴를 고정 폭·고정 높이로 자르지 않는다
 - Calendly 예약 화면의 언어는 Calendly 쪽 설정을 따르며 사이트 번역 범위가 아니다
