@@ -206,48 +206,134 @@
             </dd>
           </dl>
         </div>
-        <div class="case-demo">
-          <div class="demo" id="demo-monitoring" data-demo data-step="1">
-            <div class="demo-bar">
-              <ol class="demo-steps" aria-label="Interaction steps">
-                <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>Select an incident</button></li>
-                <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>Severity and impact</button></li>
-                <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>Investigate</button></li>
-              </ol>
-              <div class="demo-motion">
-                <button type="button" class="demo-ctl" data-play>Play motion</button>
-                <button type="button" class="demo-ctl" data-stop disabled>Stop</button>
-                <button type="button" class="demo-ctl" data-replay>Replay</button>
-              </div>
-            </div>
-            <div class="demo-frame" role="group" aria-label="Recreated incident investigation screen">
-              <p class="demo-tag">Recreated for illustration · Sample data</p>
-              <div class="ui-head"><span class="ui-title">Incidents</span><span class="ui-sub">Sorted by severity</span></div>
-              <ul class="ui-list" data-hl="1">
-                <li class="ui-row" data-pick="1 2 3"><span class="sev sev-high">High</span><span class="ui-row-name">Sample incident A · Data ingestion delay</span><span class="ui-row-meta">Impact 3</span></li>
-                <li class="ui-row"><span class="sev sev-mid">Medium</span><span class="ui-row-name">Sample incident B · Batch job retries</span><span class="ui-row-meta">Impact 1</span></li>
-                <li class="ui-row"><span class="sev sev-low">Low</span><span class="ui-row-name">Sample incident C · Alert delay</span><span class="ui-row-meta">Impact 0</span></li>
-              </ul>
-              <div class="ui-panel" data-show="2">
-                <p class="ui-panel-title">Sample incident A</p>
-                <dl class="ui-kv" data-hl="2">
-                  <dt>Severity</dt><dd><span class="sev sev-high">High</span></dd>
-                  <dt>Downstream impact</dt><dd>Sample service 1 · Sample service 2 · Sample service 3</dd>
-                </dl>
-              </div>
-              <div class="ui-panel" data-show="3">
-                <p class="ui-panel-title">Investigation order</p>
-                <ol class="ui-insights" data-hl="3">
-                  <li><strong>Risk prediction</strong> Likelihood that downstream impact grows</li>
-                  <li><strong>Related alerts</strong> Alerts raised around the same time</li>
-                  <li><strong>Confidence</strong> How far the prediction can be trusted</li>
+        <div class="case-demo case-demo-stack">
+          <div class="demo-block">
+            <h3 class="demo-title">Put what needs action first, first.</h3>
+            <p class="demo-desc">Technical signals and business impact are read together, so the incident that needs action first sits at the top of the list.</p>
+            <div class="demo" id="demo-monitoring" data-demo data-step="1" data-sel="a">
+              <div class="demo-bar">
+                <ol class="demo-steps" aria-label="Interaction steps">
+                  <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>Many alerts</button></li>
+                  <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>Priority to the top</button></li>
+                  <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>Click to investigate</button></li>
                 </ol>
+                <div class="demo-motion">
+                  <button type="button" class="demo-ctl" data-play>Play motion</button>
+                  <button type="button" class="demo-ctl" data-stop disabled>Stop</button>
+                  <button type="button" class="demo-ctl" data-replay>Replay</button>
+                </div>
+              </div>
+              <div class="demo-frame" role="group" aria-label="Recreated incident priority screen">
+                <p class="demo-tag">Recreated for illustration · Sample data</p>
+                <div class="ui-head"><span class="ui-title">Incidents</span><span class="ui-sub" data-show="1">In order received</span><span class="ui-sub" data-show="2 3" hidden>In order of priority</span></div>
+                <p class="tri-rule" data-show="2 3" hidden>Criteria: technical signal (anomaly score) + business impact (blocked teams, owner assigned)</p>
+                <ul class="tri-list" aria-label="Sample incident list">
+                  <li class="tri-item" data-pos="1 2 2"><button type="button" class="tri-row" data-select="d" aria-controls="tri-detail"><span class="pri pri-2" data-show="2 3" hidden>P2</span><span class="tri-main"><span class="tri-name">Sample incident D · Rising server memory usage</span><span class="tri-meta">Anomaly score 0.66 · Teams blocked 0/5</span></span><span class="tri-time">09:12</span></button></li>
+                  <li class="tri-item" data-pos="2 3 3"><button type="button" class="tri-row" data-select="b" aria-controls="tri-detail"><span class="pri pri-2" data-show="2 3" hidden>P2</span><span class="tri-main"><span class="tri-name">Sample incident B · Backup job failing and retrying</span><span class="tri-meta">Anomaly score 0.38 · Teams blocked 1/5</span></span><span class="tri-time">09:20</span></button></li>
+                  <li class="tri-item" data-pos="3 1 1" data-hl="2"><button type="button" class="tri-row" data-select="a" aria-controls="tri-detail"><span class="pri pri-1" data-show="2 3" hidden>P1</span><span class="tri-main"><span class="tri-name">Sample incident A · Delivery tracking data sync delay</span><span class="tri-meta">Anomaly score 0.42 · Teams blocked 3/5 · No owner</span><span class="tri-why" data-show="2 3" hidden>The anomaly score is low, but 3 of 5 teams are blocked and no one owns it.</span></span><span class="tri-time">09:31</span></button></li>
+                  <li class="tri-item" data-pos="4 4 4"><button type="button" class="tri-row" data-select="c" aria-controls="tri-detail"><span class="pri pri-3" data-show="2 3" hidden>P3</span><span class="tri-main"><span class="tri-name">Sample incident C · More access requests</span><span class="tri-meta">Anomaly score 0.21 · Teams blocked 0/5</span></span><span class="tri-time">09:40</span></button></li>
+                </ul>
+                <div class="ui-panel tri-detail" id="tri-detail" data-show="3" hidden>
+                  <div data-detail="a" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-1">P1</span> Sample incident A · Escalate now</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>Sample team 1 · Sample team 2 · Sample team 3 (3 of 5 teams)</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.42 · Recurred 3× this week</dd>
+                      <dt>Owner</dt><dd>None yet — a responsible team needs to be assigned</dd>
+                      <dt>Records</dt><dd>2 related tickets · 1 earlier incident</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="d" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-2">P2</span> Sample incident D · Monitor</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>No teams blocked</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.66 · Memory usage rising</dd>
+                      <dt>Owner</dt><dd>Sample owner 1 (SRE)</dd>
+                      <dt>Records</dt><dd>1 earlier incident</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="b" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-2">P2</span> Sample incident B · Track and log</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>Sample team 4 (1 of 5 teams)</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.38 · 2 backup retries</dd>
+                      <dt>Owner</dt><dd>Sample owner 2 (GCC)</dd>
+                      <dt>Records</dt><dd>1 related ticket</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="c" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-3">P3</span> Sample incident C · Log only</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>No teams blocked</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.21 · Request volume rising</dd>
+                      <dt>Owner</dt><dd>Sample owner 3 (GCC)</dd>
+                      <dt>Records</dt><dd>No related records</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-notes" aria-live="polite">
+                <p class="demo-note" data-note="1"><strong>1. Many alerts</strong> When alerts are listed in the order received, all with equal weight, responders have to work out for themselves what to check first.</p>
+                <p class="demo-note" data-note="2" hidden><strong>2. Priority to the top</strong> Even with a low anomaly score, an incident becomes P1 when several teams are blocked and no one owns it. This movement only demonstrates the principle; the real screen opens in this order from the start.</p>
+                <p class="demo-note" data-note="3" hidden><strong>3. Click to investigate</strong> Selecting an item shows affected teams, related signals, owner, and records in one place. Select another item to compare.</p>
               </div>
             </div>
-            <div class="demo-notes" aria-live="polite">
-              <p class="demo-note" data-note="1"><strong>1. Select an incident</strong> Instead of moving between 8 dashboards, incidents are gathered in one list sorted by severity.</p>
-              <p class="demo-note" data-note="2" hidden><strong>2. Severity and impact</strong> Severity and downstream impact appear on one screen, so teams can decide what to investigate first.</p>
-              <p class="demo-note" data-note="3" hidden><strong>3. Investigate</strong> Risk predictions, alerts, and confidence levels aren’t listed with equal weight; they’re shown in order of investigation priority.</p>
+          </div>
+
+          <div class="demo-block">
+            <h3 class="demo-title">From past records, the signals to watch next.</h3>
+            <p class="demo-desc">AI finds recurring patterns in the past records connected for the project, and the summary above the list flags risks that may come next.</p>
+            <div class="demo" id="demo-forecast" data-demo data-step="1">
+              <div class="demo-bar">
+                <ol class="demo-steps" aria-label="Interaction steps">
+                  <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>Gather related records</button></li>
+                  <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>Find the pattern</button></li>
+                  <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>Forecast summary</button></li>
+                </ol>
+                <div class="demo-motion">
+                  <button type="button" class="demo-ctl" data-play>Play motion</button>
+                  <button type="button" class="demo-ctl" data-stop disabled>Stop</button>
+                  <button type="button" class="demo-ctl" data-replay>Replay</button>
+                </div>
+              </div>
+              <div class="demo-frame" role="group" aria-label="Recreated AI forecast summary screen">
+                <p class="demo-tag">Recreated for illustration · Sample data</p>
+                <div class="ui-head"><span class="ui-title">Sample service X · Operations records</span><span class="ui-sub">Scope: related records connected for the project</span></div>
+                <section class="fc-summary" data-show="3" hidden aria-labelledby="fc-summary-title">
+                  <p class="fc-summary-title" id="fc-summary-title">AI summary</p>
+                  <dl class="fc-kv">
+                    <dt><span class="fc-kind">Observed</span>Recurring pattern</dt>
+                    <dd>In sample service X, processing delay alerts were followed by data update tickets and sync delay incidents, twice.</dd>
+                    <dt><span class="fc-kind fc-kind-pred">Forecast</span>Risk that may follow</dt>
+                    <dd>If the same alert appears again, this sequence may continue and could affect downstream work.</dd>
+                    <dt><span class="fc-kind">Evidence</span>Check related records</dt>
+                    <dd><button type="button" class="fc-toggle" data-expand aria-expanded="false" aria-controls="fc-evidence">View related records</button></dd>
+                  </dl>
+                  <div class="fc-evidence" id="fc-evidence" hidden>
+                    <p>These sample records support the summary. The same rows are marked in the table below.</p>
+                    <ol>
+                      <li>Operations data D-01 processing delay alert → Ticket T-01 data update delay question → Incident history E sync delay</li>
+                      <li>Operations data D-03 processing delay alert → Ticket T-03 missing report question → Incident history G sync delay</li>
+                    </ol>
+                    <p class="fc-caveat">A forecast is a possibility, not a confirmed outcome. Responders review the evidence and decide whether to act.</p>
+                  </div>
+                </section>
+                <table class="fc-table">
+                  <caption class="sr-only">Sample related records</caption>
+                  <thead><tr><th scope="col">Past operations data</th><th scope="col">Related tickets</th><th scope="col">Incident history</th></tr></thead>
+                  <tbody>
+                    <tr class="fc-pat" data-on="2 3"><td>D-01 Processing delay alert</td><td>T-01 Data update delay question</td><td>E Sync delay</td></tr>
+                    <tr><td>D-02 Disk usage alert</td><td>T-02 Access request</td><td>F Certificate renewal</td></tr>
+                    <tr class="fc-pat" data-on="2 3"><td>D-03 Processing delay alert</td><td>T-03 Missing report question</td><td>G Sync delay</td></tr>
+                  </tbody>
+                </table>
+                <p class="fc-common" data-show="2 3" hidden><span class="fc-kind">In common</span>Processing delay alert → data update ticket → sync delay recurred twice in the same order.</p>
+              </div>
+              <div class="demo-notes" aria-live="polite">
+                <p class="demo-note" data-note="1"><strong>1. Gather related records</strong> Past operations data, related tickets, and incident history connected for the project are brought together.</p>
+                <p class="demo-note" data-note="2" hidden><strong>2. Find the pattern</strong> What the records have in common is found, and sequences that recurred in the same order are marked.</p>
+                <p class="demo-note" data-note="3" hidden><strong>3. Forecast summary</strong> The AI summary above the records shows the result first. It separates the observed pattern from the forecast, and “View related records” shows the evidence.</p>
+              </div>
             </div>
           </div>
         </div>

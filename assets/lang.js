@@ -40,7 +40,9 @@
       var open = Array.prototype.map.call(document.querySelectorAll('details[id][open]'), function (d) { return d.id; });
       var demos = {};
       var counted = Array.prototype.map.call(document.querySelectorAll('[data-countup][data-counted][id]'), function (l) { return l.id; });
-      Array.prototype.forEach.call(document.querySelectorAll('[data-demo][id]'), function (d) { demos[d.id] = d.getAttribute('data-step'); });
+      Array.prototype.forEach.call(document.querySelectorAll('[data-demo][id]'), function (d) {
+        demos[d.id] = { step: d.getAttribute('data-step'), sel: d.getAttribute('data-sel'), open: d.classList.contains('is-open') };
+      });
       set('sessionStorage', STATE, JSON.stringify({ page: pageName(location.pathname), target: target, anchor: anchor, ratio: ratio, atTop: window.scrollY < 4, open: open, demos: demos, counted: counted, fields: fields }));
     }
 
@@ -65,7 +67,7 @@
       var l = document.getElementById(id);
       if (l) l.dispatchEvent(new CustomEvent('sc:counted'));
     });
-    // 사례 인터랙션의 선택 단계 (case-demo.js가 sc:step 이벤트를 받아 바꾼다)
+    // 사례 인터랙션의 단계·선택한 항목·펼친 기록 (case-demo.js가 sc:step 이벤트를 받아 바꾼다)
     Object.keys(st.demos || {}).forEach(function (id) {
       var d = document.getElementById(id);
       if (d) d.dispatchEvent(new CustomEvent('sc:step', { detail: st.demos[id] }));

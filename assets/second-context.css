@@ -176,6 +176,61 @@ nav .btn{padding:var(--s1) var(--s2)}
 .demo .day[data-hl].is-hl{box-shadow:0 0 0 2px var(--orange)}
 .demo .ui-panel:not([hidden]),.demo .ui-loc:not([hidden]),.demo-note:not([hidden]){animation:demo-in .3s ease both}
 @keyframes demo-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* 사례 02: 데모 두 개를 위아래로 (화면이 길어 따라 내려오지 않음) */
+.demo [hidden]{display:none!important}
+@media(min-width:1101px){.case-demo.case-demo-stack{position:static}}
+.case-demo-stack{display:grid;gap:var(--s5)}
+.demo-title{font-size:20px;line-height:1.4}
+.demo-desc{margin-top:var(--s1);font-size:15px}
+.demo-block .demo{margin-top:var(--s2)}
+/* 데모 A: 우선 대응 목록 */
+.tri-rule{margin-top:var(--s1);font-size:13px}
+.tri-list{list-style:none;margin-top:var(--s1)}
+.tri-item{border-radius:4px}
+.tri-item+.tri-item{margin-top:4px}
+.tri-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s1);align-items:start;width:100%;min-height:44px;padding:8px;background:var(--white);color:var(--plum);border:1px solid var(--field-border);border-radius:4px;font:inherit;text-align:left;cursor:pointer}
+.tri-row:hover{border-color:var(--plum)}
+.tri-row.is-sel{border:2px solid var(--plum);padding:7px;box-shadow:inset 4px 0 0 var(--plum)}
+.tri-main{display:grid;gap:2px}
+.tri-name{font-weight:600}
+.tri-meta,.tri-time{font-size:12px}
+.tri-why{font-size:13px;font-weight:600;color:var(--orange)}
+.pri{display:inline-block;min-width:28px;padding:1px 6px;border-radius:999px;border:1px solid var(--plum);font-size:12px;font-weight:700;text-align:center}
+.pri-1{background:var(--orange);border-color:var(--orange);color:var(--white)}
+.pri-3{border-style:dashed}
+.ui-panel-title .pri{margin-right:6px}
+/* 데모 B: 관련 기록 → 패턴 → 목록 위 AI 요약 */
+.fc-summary{margin-top:var(--s1);padding:12px;background:var(--white);border:1px solid var(--line);border-top:3px solid var(--plum);border-radius:4px}
+.fc-summary-title{font-weight:700}
+.fc-kv dt{margin-top:var(--s1);font-weight:600}
+.fc-kv dd{margin-top:2px}
+.fc-kind{display:inline-block;margin-right:6px;padding:0 6px;border:1px solid var(--plum);border-radius:999px;font-size:11px;font-weight:700;vertical-align:1px}
+.fc-kind-pred{color:var(--orange);border-color:var(--orange);border-style:dashed}
+.fc-toggle{min-height:44px;padding:0 var(--s2);background:var(--white);color:var(--orange);border:1px solid var(--orange);border-radius:4px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.fc-toggle:hover{background:var(--surface)}
+.fc-evidence{margin-top:var(--s1);padding-top:var(--s1);border-top:1px solid var(--line);font-size:13px}
+.fc-evidence ol{margin-top:4px;padding-left:1.4em}
+.fc-evidence li+li{margin-top:4px}
+.fc-caveat{margin-top:var(--s1)}
+.fc-table{width:100%;margin-top:var(--s1);border-collapse:separate;border-spacing:0 4px;font-size:13px;table-layout:fixed}
+.fc-table th{padding:0 8px;font-size:12px;font-weight:700;text-align:left;vertical-align:bottom}
+.fc-table td{position:relative;padding:8px;background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}
+.fc-table td:first-child{border-left:1px solid var(--line);border-radius:4px 0 0 4px}
+.fc-table td:last-child{border-right:1px solid var(--line);border-radius:0 4px 4px 0}
+.fc-pat.is-on td{border-color:var(--orange);border-top-width:2px;border-bottom-width:2px}
+.fc-pat.is-on td:first-child{border-left-width:2px}
+.fc-pat.is-on td:last-child{border-right-width:2px}
+.fc-table td:not(:last-child){padding-right:14px}
+.fc-table td+td{padding-left:16px}
+/* 반복 흐름 표시: 칸 경계 위 원 + 오른쪽 꺾쇠 (장식, 읽지 않음) */
+.fc-pat.is-on td:not(:last-child)::after{content:"";position:absolute;z-index:1;right:-9px;top:50%;width:18px;height:18px;margin-top:-9px;border:2px solid var(--orange);border-radius:50%;background:var(--white);box-sizing:border-box}
+.fc-pat.is-on td:not(:last-child)::before{content:"";position:absolute;z-index:2;right:-2px;top:50%;width:5px;height:5px;margin-top:-3px;border-top:2px solid var(--orange);border-right:2px solid var(--orange);transform:rotate(45deg)}
+.demo.is-open .fc-pat td{background:var(--cream)}
+.fc-common{margin-top:4px;font-size:13px}
+.demo[data-step="1"] .fc-table tbody tr{animation:demo-in .35s ease both}
+.demo[data-step="1"] .fc-table tbody tr:nth-child(2){animation-delay:.15s}
+.demo[data-step="1"] .fc-table tbody tr:nth-child(3){animation-delay:.3s}
+.demo .fc-summary:not([hidden]),.demo .fc-common:not([hidden]),.demo .tri-why:not([hidden]){animation:demo-in .3s ease both}
 
 /* 페이지·섹션 첫머리: 왼쪽 글(.page-header) | 오른쪽 이미지. 이미지는 원본 3:2 비율 그대로(자르지 않음) */
 .intro-grid{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);column-gap:var(--s6);align-items:center}
