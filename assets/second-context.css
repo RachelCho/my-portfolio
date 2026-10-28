@@ -4,7 +4,9 @@
   --orange:#A83E20;        /* Secondary (Accessible Orange): 기능성 강조, 보조 버튼 */
   --white:#FFFFFF;
   --bg:var(--white);       /* 기본 배경 (2026-10-28 크림 → 화이트) */
-  --surface:#F6F6F4;       /* 옅은 중립 면: 문의 폼처럼 꼭 필요한 영역에만 */
+  --surface:#F6F6F4;
+  --field-border:#8C858E;  /* 입력 테두리: 화이트 3.58:1 (컨트롤 경계 3:1 이상) */
+  --placeholder:#7A737C;   /* 입력 예시 글자: 화이트 4.59:1, 플럼보다 연하게 */       /* 옅은 중립 면: 문의 폼처럼 꼭 필요한 영역에만 */
   --cream:#F4F0E8;         /* 브랜드 보조색: 플럼 버튼 위 글자 등 작은 요소에만 */
   --sage:#9DAE9A;          /* Surface: 보조 배경 (글자·기능 아이콘 색으로 쓰지 않음) */
   --accent-deco:#DA613E;   /* Decorative Accent: 순수 장식 선·그래픽 전용 */
@@ -27,8 +29,6 @@
   --card-pad:var(--s4);      /* 카드·패널 안쪽 여백: 데스크톱·태블릿 32 / 모바일 24 */
   --gap-tight:4px;           /* 반 단계: 라벨 ↔ 값, 목록 항목 사이에만 */
   --founder-photo:340px;     /* 창업자 사진 열 (320~360 범위) */
-  --gap-field:40px;          /* 입력 밑줄 → 다음 필드 라벨 (데스크톱 40 / 모바일 16) */
-  --gap-label-input:var(--s2); /* 필드 라벨 → 입력 (데스크톱 16 / 모바일 8) */
   /* 페이지·섹션 머리글(.page-header = 라벨 + 제목 + 첫 소개 문단) */
   --lead-size:20px;          /* 첫 소개 문단 글자 크기: 데스크톱 20 / 모바일 18 */
   --lead-line:1.7;
@@ -84,7 +84,98 @@ nav a:not(.btn):hover{text-decoration:underline;text-underline-offset:4px}
 nav .btn{padding:var(--s1) var(--s2)}
 /* 언어 선택: 국기·스위치 대신 언어 이름 링크. 현재 언어는 aria-current + 굵기·밑줄 */
 .lang{grid-area:lang;gap:var(--s1);padding-left:var(--s4);border-left:1px solid var(--line)}
+.lang a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 var(--gap-tight);font-weight:600}
 .lang a[aria-current="true"]{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px}
+
+/* 사례 페이지(second-context-work.html): 사례마다 문제·역할·판단·결과 | 재구성 화면 + 3단계 인터랙션 */
+.work-link{margin-top:var(--s3)}
+.work-link a,.case-index a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.work-link a::after{content:"→";content:"→" / "";margin-left:var(--s1)}
+.work-page{padding-bottom:var(--s5)}
+.case-index{display:flex;flex-wrap:wrap;gap:0 var(--s4);margin-top:var(--s4);padding-top:var(--s2);border-top:1px solid var(--line)}
+.case-index span{color:var(--orange);margin-right:var(--s1);font-size:13px;font-weight:800}
+.case-study{padding:var(--s6) 0;border-top:1px solid var(--line);scroll-margin-top:var(--header-h)}
+@media(min-width:1101px){.case-demo{position:sticky;top:calc(var(--header-h) + var(--s2))}}
+.case-meta{display:flex;align-items:baseline;gap:var(--s2);font-size:15px}
+.case-num{font-size:13px;font-weight:800;color:var(--orange)}
+.case-meta .work-client{margin:0}
+.case-head h2{margin-top:var(--s1);font-size:28px;line-height:1.35}
+.case-head .work-strength{margin-top:var(--s1);font-size:17px}
+.case-body{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s5);margin-top:var(--s4);align-items:start}
+.case-facts{font-size:15px}
+.case-facts dd{line-height:1.65}
+/* 데모: 단계 버튼 · 모션 버튼 · 화면 프레임 · 해설 */
+.demo{border:1px solid var(--line);border-radius:6px;background:var(--white)}
+.demo-bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:var(--s1) var(--s2);padding:var(--s2);border-bottom:1px solid var(--line)}
+.demo-steps{list-style:none;display:flex;flex-wrap:wrap;gap:var(--s1)}
+.demo-step{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;background:var(--white);color:var(--plum);border:1px solid var(--field-border);border-radius:999px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.demo-step .demo-n{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;border:1px solid currentColor;font-size:12px}
+.demo-step[aria-current="step"]{background:var(--plum);border-color:var(--plum);color:var(--white)}
+.demo-motion{display:flex;flex-wrap:wrap;gap:4px}
+.demo-ctl{min-height:44px;padding:0 10px;background:none;border:0;color:var(--plum);font:inherit;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.demo-ctl:disabled{color:var(--placeholder);text-decoration:none;cursor:default}
+.demo-frame{position:relative;margin:var(--s2);padding:var(--s2);background:var(--surface);border-radius:4px;font-size:14px;line-height:1.5}
+.demo-tag{font-size:12px;color:var(--plum);margin-bottom:var(--s1)}
+.demo-tag::before{content:"";display:inline-block;width:8px;height:8px;margin-right:6px;border:1px solid var(--orange);vertical-align:0}
+.demo-notes{padding:0 var(--s2) var(--s2);font-size:15px;min-height:72px}
+.demo-note strong{color:var(--orange);margin-right:6px}
+.demo-marks{margin-top:var(--s1);padding-left:1.4em}
+.demo-marks li+li{margin-top:2px}
+/* 재구성 화면 공통 요소 */
+.ui-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s2);padding-bottom:var(--s1);border-bottom:1px solid var(--line)}
+.ui-title{font-weight:700;font-size:15px}
+.ui-sub{font-size:13px}
+.ui-legend{list-style:none;display:flex;flex-wrap:wrap;gap:4px var(--s2);margin-top:var(--s1);font-size:13px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:0}
+.dot-ok{background:var(--white);border:2px solid var(--plum)}
+.dot-no{background:repeating-linear-gradient(45deg,var(--field-border) 0 2px,transparent 2px 4px);border:1px solid var(--field-border)}
+.dot-pick{background:var(--orange)}
+.ui-cal{margin-top:var(--s1)}
+.ui-cal-row{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.ui-cal-row+.ui-cal-row{margin-top:4px}
+.ui-cal-dow span{text-align:center;font-size:12px;font-weight:600}
+.day{display:grid;place-items:center;min-height:34px;border-radius:4px;font-weight:600;background:var(--white);border:1px solid var(--line)}
+.day.ok{border:2px solid var(--plum)}
+.day.no{color:var(--placeholder);background:repeating-linear-gradient(45deg,var(--white) 0 4px,var(--surface) 4px 8px);text-decoration:line-through}
+.day.off{color:var(--placeholder);border-style:dashed}
+.day.is-pick{background:var(--orange);border-color:var(--orange);color:var(--white);text-decoration:none}
+.day.is-rec{background:var(--plum);border-color:var(--plum);color:var(--white)}
+.ui-panel{margin-top:var(--s2);padding:12px;background:var(--white);border:1px solid var(--line);border-radius:4px}
+.ui-panel-title{font-weight:700}
+.ui-reason{margin-top:4px}
+.ui-code{margin-top:6px;font-size:13px}
+.ui-strike{font-family:ui-monospace,Menlo,monospace;text-decoration:line-through}
+.ui-actions{display:flex;flex-wrap:wrap;gap:var(--s1);margin-top:var(--s1)}
+.ui-btn{display:inline-block;padding:6px 12px;border:1px solid var(--plum);border-radius:4px;font-weight:600;font-size:13px}
+.ui-btn-fill{background:var(--plum);color:var(--white)}
+.ui-list{list-style:none;margin-top:var(--s1)}
+.ui-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s1);align-items:center;padding:8px;border:1px solid var(--line);border-radius:4px;background:var(--white)}
+.ui-row+.ui-row{margin-top:4px}
+.ui-row.is-pick{border:2px solid var(--orange)}
+.ui-row-meta{font-size:12px}
+.sev{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid currentColor}
+.sev-high{background:var(--orange);border-color:var(--orange);color:var(--white)}
+.sev-mid{color:var(--plum)}
+.sev-low{color:var(--plum);border-style:dashed}
+.ui-kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px var(--s2);margin-top:6px}
+.ui-kv dt{font-weight:600}
+.ui-insights{margin-top:6px;padding-left:1.4em}
+.ui-insights li+li{margin-top:4px}
+.ui-loc{padding:12px;background:var(--white);border:1px solid var(--line);border-radius:4px}
+.ui-loc-lang{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.04em}
+.ui-loc-hello{margin-top:4px}
+.ui-loc-head{margin-top:var(--s1);font-size:20px;line-height:1.35;font-weight:700;max-width:22em}
+.ui-loc-ko .ui-loc-head{line-height:1.5;word-break:keep-all}
+.ui-loc-line{margin-top:4px;font-size:14px}
+.mark{border-radius:2px}
+.mark.is-hl{outline:2px solid var(--orange);outline-offset:2px}
+.mark.is-hl::before{content:attr(data-mark);display:inline-grid;place-items:center;width:18px;height:18px;margin-right:6px;border-radius:50%;background:var(--orange);color:var(--white);font-size:11px;font-weight:700;vertical-align:2px}
+/* 강조: 짧은 전환 (움직임 줄이기 설정에서는 없앰) */
+.demo [data-hl]{transition:box-shadow .25s ease,outline-color .25s ease}
+.demo [data-hl].is-hl:not(.mark){box-shadow:0 0 0 2px var(--orange)}
+.demo .day[data-hl].is-hl{box-shadow:0 0 0 2px var(--orange)}
+.demo .ui-panel:not([hidden]),.demo .ui-loc:not([hidden]),.demo-note:not([hidden]){animation:demo-in .3s ease both}
+@keyframes demo-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
 /* hero */
 .hero,.page-intro{border-top:0}
@@ -150,6 +241,9 @@ nav .btn{padding:var(--s1) var(--s2)}
 .founder figcaption span{display:block}
 .founder figcaption .name{font-size:17px;font-weight:700}
 .founder-text p+p{margin-top:var(--gap-para)}
+.founder-more{margin-top:var(--s3)}
+.founder-more a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.founder-more a::after{content:"→";content:"→" / "";margin-left:var(--s1)}
 /* 경력 수치: 소개 문단 아래, 숫자와 의미를 한 줄씩 */
 .founder-stats{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-grid);margin-top:var(--gap-block);padding-top:var(--s3);border-top:1px solid var(--line)}
 .founder-stats .stat-value{display:block;font-size:30px;font-weight:700;line-height:1.25}
@@ -183,42 +277,47 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 .values h3{margin-bottom:var(--s1)}
 
 /* contact */
-/* 데스크톱: 왼쪽 안내(제목·설명·이메일·상담 예약) | 오른쪽 문의 폼. 900px 이하는 안내 → 폼 */
-.contact-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gap-split);align-items:start}
-.contact-way + .contact-way{margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line)}
-.contact-way .label{margin-bottom:var(--s2)}
-.contact-way .btn{margin-top:var(--s3)}
-.email-link{display:inline-block;padding:var(--gap-tight) 0;font-size:19px;font-weight:600;overflow-wrap:anywhere}
-.contact-way .mini-btn{margin-top:var(--s2)}
-/* 폼: 이 페이지에서 유일하게 옅은 중립색 면을 쓰는 영역 */
-.inquiry-form{background:var(--surface);padding:var(--s5) var(--s6) var(--s6);border-radius:4px}
-.form-note{font-size:15px}
-.field{margin-top:var(--gap-field)}
-.form-note + .field{margin-top:var(--s4)}
-.field label{display:block;font-size:17px;line-height:1.4;font-weight:600}
+/* Contact: 짧은 머리글 → 폼(최대 640px) | 다른 연락 방법(좁은 열). 900px 이하는 폼 → 다른 연락 방법 */
+.contact-page{padding-top:var(--s6)}
+.contact-page .page-header h1{font-size:40px;line-height:1.25}
+.contact-page .lead{font-size:18px}
+.contact-page .page-header + .contact-layout{margin-top:var(--s5)}
+.contact-layout{display:grid;grid-template-columns:minmax(0,640px) minmax(0,280px);gap:var(--s6);align-items:start}
+/* 폼: 옅은 중립 면 하나로 묶고, 안쪽 입력은 흰 바탕 + 얇은 테두리 */
+.inquiry-form{background:var(--surface);padding:var(--s4);border-radius:6px}
+.form-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--s1) var(--s2)}
+.form-head h2{font-size:20px;line-height:1.4}
+.form-note{font-size:14px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px var(--s2);margin-top:var(--s3)}
+.field-wide{grid-column:1 / -1}
+.field label{display:block;font-size:15px;line-height:1.4;font-weight:600}
 .field .req{color:var(--orange)}
-.field-help{font-size:15px;margin-top:var(--gap-tight)}
-/* 밑줄형 입력: 투명 배경, 플럼 밑줄, 포커스는 공통 3px 외곽선 + 굵은 밑줄 */
-.field input,.field textarea{display:block;width:100%;min-height:48px;margin-top:var(--gap-label-input);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
-.field textarea{min-height:184px;resize:vertical}
-.field input:focus,.field textarea:focus{border-bottom-width:3px}
-.field [aria-invalid="true"]{border-bottom:3px solid var(--orange)}
-.field-error{margin-top:var(--s1);font-size:15px;font-weight:600;color:var(--orange)}
+.field input,.field textarea{display:block;width:100%;min-height:46px;margin-top:var(--s1);padding:10px 12px;background:var(--white);border:1px solid var(--field-border);border-radius:4px;font:inherit;font-size:16px;line-height:1.5;color:inherit}
+.field textarea{height:160px;min-height:120px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:var(--placeholder);opacity:1}
+.field input:focus,.field textarea:focus{border-color:var(--plum);box-shadow:inset 0 0 0 1px var(--plum)}
+.field [aria-invalid="true"]{border-color:var(--orange);box-shadow:inset 0 0 0 1px var(--orange)}
+.field-error{margin-top:6px;font-size:14px;line-height:1.5;font-weight:600;color:var(--orange)}
 .hp{display:none}
-.form-pending{margin-top:var(--s4);font-size:15px;padding-left:var(--s2);border-left:3px solid var(--plum)}
-.inquiry-form .btn{margin-top:var(--s4)}
-/* 전송 연결 전 비활성 버튼: 점선 테두리로 구분하되 글자 대비는 유지 */
-.inquiry-form .btn:disabled{background:var(--bg);color:var(--plum);border-style:dashed;cursor:not-allowed}
-.inquiry-form .btn[aria-disabled="true"]{cursor:progress}
-.form-status{margin-top:var(--s2);font-weight:600}
+.form-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3);margin-top:var(--s3)}
+.inquiry-form .btn[aria-disabled="true"]{cursor:progress;opacity:.85}
+.form-status{margin-top:var(--s2);font-size:15px;font-weight:600}
 .form-status:empty{display:none}
 .form-status[data-state="error"]{color:var(--orange)}
-.mini-btn{min-height:44px;padding:var(--s1) var(--s2);background:var(--bg);color:var(--plum);border:1.5px solid var(--plum);border-radius:4px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
+/* 다른 연락 방법: 작은 글자, 구분선 하나 */
+.contact-aside{font-size:15px}
+.contact-aside .label{margin-bottom:var(--s2)}
+.way-title{font-weight:700}
+.contact-way + .contact-way{margin-top:var(--s3);padding-top:var(--s3);border-top:1px solid var(--line)}
+.contact-way .btn{margin-top:var(--s2)}
+.email-link{display:inline-block;padding:var(--gap-tight) 0;font-weight:600;overflow-wrap:anywhere}
+.contact-way .mini-btn{margin-top:var(--s1)}
+.mini-btn{min-height:44px;padding:var(--s1) var(--s2);background:var(--bg);color:var(--plum);border:1px solid var(--plum);border-radius:4px;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .mini-btn:hover{background:var(--plum);color:var(--cream)}
-.copy-status{margin-top:var(--s1);font-size:15px;font-weight:600}
+.copy-status{margin-top:var(--s1);font-size:14px;font-weight:600}
 .copy-status:empty{display:none}
-.copy-fallback{margin-top:var(--s1);font-size:15px}
-.copy-fallback input{display:block;width:100%;min-height:44px;margin-top:var(--gap-tight);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
+.copy-fallback{margin-top:var(--s1);font-size:14px}
+.copy-fallback input{display:block;width:100%;min-height:44px;margin-top:var(--gap-tight);padding:var(--s1) 12px;background:var(--white);border:1px solid var(--field-border);border-radius:4px;font:inherit;color:inherit}
 
 /* 헤더만 1100px에서 두 줄로 바뀐다: 영어 메뉴가 한 줄에 들어가지 않기 때문 */
 @media(max-width:1100px){
@@ -236,15 +335,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .work-item{gap:var(--gap-sub)}
   .svc{grid-template-columns:1fr;gap:var(--s1)}
   .method{grid-template-columns:1fr;gap:0}
-  .step,.values,.contact-layout{grid-template-columns:1fr}
+  .step,.values,.contact-layout,.case-body{grid-template-columns:1fr}
+  .case-demo{order:-1} /* 모바일: 대표 화면을 먼저 */
   .founder{gap:var(--gap-stack)}
   .contact-layout{gap:var(--s5)}
-  .inquiry-form{padding:var(--s4)}
   .step{gap:var(--gap-sub)}
   .values{row-gap:var(--gap-stack)}
 }
 @media(max-width:600px){
   .metric{grid-template-columns:1fr;row-gap:var(--gap-tight)}
+  .case-head h2{font-size:22px}
+  .demo-frame{margin:var(--s1);padding:12px}
+  .demo-bar{padding:var(--s1)}
   .metric-value{font-size:26px}
   :root{--gutter:var(--s2);--card-pad:var(--s3)}
   h1{font-size:40px;line-height:1.15}
@@ -254,9 +356,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .page-intro h1{font-size:32px;line-height:1.3}
   .step h3,.work-title{font-size:20px}
   .founder-stats{grid-template-columns:1fr;gap:var(--s2)}
-  .inquiry-form{padding:var(--s3) var(--s2) var(--s4);margin:0 calc(-1 * var(--s2));border-radius:0}
+  .inquiry-form{padding:var(--s3) var(--s2);margin:0 calc(-1 * var(--s2));border-radius:0}
+  .field-grid{grid-template-columns:1fr;gap:var(--s2)}
+  .contact-page .page-header h1{font-size:30px}
   .founder-stats .stat-value{font-size:26px}
-  :root{--gap-field:var(--s2);--gap-label-input:var(--s1);--lead-size:18px;--gap-after-lead:40px}
+  :root{--lead-size:18px;--gap-after-lead:40px}
   .step dl{grid-template-columns:1fr;gap:0}
   .step dd{margin-bottom:var(--s1)}
 }

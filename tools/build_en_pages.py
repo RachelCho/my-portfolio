@@ -4,7 +4,7 @@ import os, re, sys
 
 R = sys.argv[1]
 BASE = "https://rachelcho.github.io/my-portfolio/"
-PAGES = ["second-context.html", "second-context-approach.html", "second-context-contact.html"]
+PAGES = ["second-context.html", "second-context-approach.html", "second-context-contact.html", "second-context-about.html", "second-context-work.html"]
 
 
 def head_links(page):
@@ -18,13 +18,13 @@ def lang_nav(page, cur):
     if cur == "ko":
         return ('    <nav class="lang" aria-label="언어 선택">\n'
                 f'      <a href="{page}" lang="ko" hreflang="ko" aria-current="true">한국어</a>\n'
-                '      <span aria-hidden="true">|</span>\n'
-                f'      <a href="en/{page}" lang="en" hreflang="en">English</a>\n'
+                '      <span aria-hidden="true">/</span>\n'
+                f'      <a href="en/{page}" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>\n'
                 '    </nav>\n')
     return ('    <nav class="lang" aria-label="Language">\n'
             f'      <a href="../{page}" lang="ko" hreflang="ko">한국어</a>\n'
-            '      <span aria-hidden="true">|</span>\n'
-            f'      <a href="{page}" lang="en" hreflang="en" aria-current="true">English</a>\n'
+            '      <span aria-hidden="true">/</span>\n'
+            f'      <a href="{page}" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>\n'
             '    </nav>\n')
 
 
@@ -33,10 +33,12 @@ def prep_korean(page):
     p = os.path.join(R, page)
     s = open(p, encoding="utf-8").read()
     s = re.sub(r'<link rel="canonical"[^>]*>\n(<link rel="alternate"[^>]*>\n)*', "", s)
+    s = s.replace('<script src="assets/lang.js"></script>\n', '')
     s = re.sub(r'    <nav class="lang".*?    </nav>\n', "", s, flags=re.S)
     anchor = '<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">\n'
     assert s.count(anchor) == 1
-    s = s.replace(anchor, anchor + f'<link rel="canonical" href="{BASE + page}">\n' + head_links(page))
+    s = s.replace(anchor, anchor + f'<link rel="canonical" href="{BASE + page}">\n' + head_links(page)
+                  + '<script src="assets/lang.js"></script>\n')
     end = "    </nav>\n  </div>\n</header>"
     assert s.count(end) == 1
     s = s.replace(end, "    </nav>\n" + lang_nav(page, "ko") + "  </div>\n</header>")
@@ -57,6 +59,7 @@ COMMON = [
 ]
 
 HOME = [
+    ('<title>Second Context — 시장을 넘나드는 제품 디자인</title>', '<title>Second Context — Product design across markets.</title>'),
     ('미국 시장을 준비하는 한국 B2B SaaS 팀을 위한 제품 UX 진단과 디자인.',
      'Product UX reviews and design for Korean B2B SaaS teams preparing for the U.S. market.'),
     ('새로운 시장,<br>새로운 사용 맥락.', 'New markets,<br>new contexts of use.'),
@@ -95,6 +98,30 @@ HOME = [
     ('상담 및 핵심 권고 요약', 'Consultation and a summary of key recommendations'),
     ('합의한 문제의 설계·프로토타입·개발 협업', 'Design, prototyping, and development collaboration on agreed problems'),
     ('범위에 맞춘 제품 디자인 결과물', 'Product design deliverables matched to the agreed scope'),
+    ('비슷한 과제를 고민하고 계신가요?', 'Working through a similar challenge?'),
+    ('제품과 현재 상황을 함께 살펴보겠습니다.', 'Let’s look at your product and where it stands today.'),
+    ('협업 방식 보기', 'See how we work'),
+    ('창업자 소개', 'About the founder'),
+    ('Rachel Cho의 흑백 인물 사진', 'Black-and-white portrait of Rachel Cho'),
+    ('안녕하세요, Second Context를 이끄는 프로덕트 디자이너 Rachel Cho입니다. Y Combinator W21 출신의 미국 헬스케어 스타트업에서 파운딩 디자이너로 제품 디자인을 이끌었고, 약 12개 글로벌·다국적 기업에서 40개 이상의 프로젝트를 완료했습니다.',
+     'Hi, I’m Rachel Cho, the product designer who leads Second Context. I led product design as the founding designer at a U.S. healthcare startup from Y Combinator’s W21 batch, and I’ve completed more than 40 projects with about 12 global and multinational companies.'),
+    ('이민자로서 새로운 언어와 문화 속에서 커리어를 쌓아 왔고, 지금은 그 경험을 바탕으로 이민자 커뮤니티와 주니어 디자이너를 멘토링하며 파운더의 제품 고민을 함께 풀고 있습니다.',
+     'I built my career as an immigrant, in a new language and culture. Drawing on that experience, I now mentor people in immigrant communities and junior designers, and work through product challenges with founders.'),
+    ('<a href="second-context-about.html">Rachel의 이야기 더 보기</a>', '<a href="second-context-about.html">Read Rachel’s story</a>'),
+    ('aria-label="경력 요약"', 'aria-label="Career summary"'),
+    ('<span class="stat-label">완료 프로젝트</span>', '<span class="stat-label">Completed projects</span>'),
+    ('<span class="stat-value">약 12개</span><span class="stat-label">글로벌·다국적 기업</span>',
+     '<span class="stat-value">About 12</span><span class="stat-label">Global and multinational companies</span>'),
+    ('<span class="stat-value">27개국</span><span class="stat-label">여행 · 디지털 노매드 경험</span>',
+     '<span class="stat-value">27 countries</span><span class="stat-label">Traveled · Digital nomad experience</span>'),
+    ('<p class="metric-value">35% 감소</p>', '<p class="metric-value">35% less</p>'),
+    ('AI 보조 일정 워크플로에서의 수동 검증', 'Manual validation in the AI-assisted scheduling workflow'),
+    ('제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. 협업할 범위를 함께 살펴보겠습니다.',
+     'Tell us about your product, your target market, and the challenges you’re working through. We’ll explore the right scope of collaboration together.'),
+]
+
+# 사례 문구: 홈 Work 요약과 사례 페이지(second-context-work.html)가 함께 쓰는 번역. 페이지에 있는 것만 적용한다
+CASE_TEXT = [
     ('복잡한 업무와 새로운 사용 맥락을, 명확한 제품 경험으로.', 'Turning complex work and new contexts of use into clear product experiences.'),
     ('Second Context를 시작하기 전, Rachel Cho가 이전 경력에서 수행한 세 프로젝트입니다. 고객사 이름은 밝히지 않습니다.',
      'Three projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed.'),
@@ -203,26 +230,103 @@ HOME = [
     ('<span class="metric-kind">프로젝트 기간</span>', '<span class="metric-kind">Project length</span>'),
     ('수치는 각 프로젝트에서 측정·보고된 값이며, 측정 방식은 프로젝트마다 다릅니다.',
      'Figures are as measured and reported in each project; measurement methods differ by project.'),
-    ('비슷한 과제를 고민하고 계신가요?', 'Working through a similar challenge?'),
-    ('제품과 현재 상황을 함께 살펴보겠습니다.', 'Let’s look at your product and where it stands today.'),
-    ('협업 방식 보기', 'See how we work'),
-    ('창업자 소개', 'About the founder'),
-    ('Rachel Cho의 흑백 인물 사진', 'Black-and-white portrait of Rachel Cho'),
-    ('Rachel Cho는 복잡한 B2B 업무의 규칙과 예외를 명확한 제품 경험으로 설계하는 프로덕트 디자이너입니다. 정규직, 계약, 프로젝트 협업 등 여러 형태로 약 12개 글로벌·다국적 기업과 일하며 40개 이상의 프로젝트를 완료했습니다.',
-     'Rachel Cho is a product designer who turns the rules and exceptions of complex B2B work into clear product experiences. Working with about 12 global and multinational companies in full-time, contract, and project-based roles, Rachel has completed 40+ projects.'),
-    ('헬스케어 SaaS, 엔터프라이즈 운영 시스템, 글로벌 제품 현지화 경험을 바탕으로, Second Context에서는 문제 정의부터 UX 설계와 개발 협업까지 직접 참여합니다.',
-     'Drawing on experience in healthcare SaaS, enterprise operations systems, and global product localization, Rachel works hands-on at Second Context, from problem definition through UX design and collaboration with development.'),
-    ('aria-label="경력 요약"', 'aria-label="Career summary"'),
-    ('<span class="stat-label">완료 프로젝트</span>', '<span class="stat-label">Completed projects</span>'),
-    ('<span class="stat-value">약 12개</span><span class="stat-label">글로벌·다국적 기업</span>',
-     '<span class="stat-value">About 12</span><span class="stat-label">Global and multinational companies</span>'),
-    ('<span class="stat-value">27개국</span><span class="stat-label">여행 · 디지털 노매드 경험</span>',
-     '<span class="stat-value">27 countries</span><span class="stat-label">Traveled · Digital nomad experience</span>'),
-    ('<p class="metric-value">35% 감소</p>', '<p class="metric-value">35% less</p>'),
-    ('AI 보조 일정 워크플로에서의 수동 검증', 'Manual validation in the AI-assisted scheduling workflow'),
-    ('제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. 협업할 범위를 함께 살펴보겠습니다.',
-     'Tell us about your product, your target market, and the challenges you’re working through. We’ll explore the right scope of collaboration together.'),
+    # 사례 페이지 전용
+    ('<title>사례 — Second Context</title>', '<title>Selected work — Second Context</title>'),
+    ('Rachel Cho가 이전 경력에서 수행한 세 프로젝트의 문제, 역할, 핵심 설계 판단과 확인된 결과.',
+     'The problem, role, key design decisions, and confirmed results of three projects Rachel Cho delivered in previous roles.'),
+    ('<h1>세 프로젝트로 보는 설계 판단</h1>', '<h1>Design decisions, in three projects</h1>'),
+    ('Second Context를 시작하기 전, Rachel Cho가 이전 경력에서 수행한 프로젝트입니다. 고객사 이름은 밝히지 않으며, 화면은 설계 판단을 설명하기 위해 다시 구성했습니다.',
+     'Projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed, and the screens are recreated to illustrate the design decisions.'),
+    ('aria-label="사례 바로가기"', 'aria-label="Jump to a case"'),
+    ('</span> 홈헬스케어 일정 관리</a>', '</span> Home healthcare scheduling</a>'),
+    ('</span> 운영 모니터링</a>', '</span> Operations monitoring</a>'),
+    ('</span> 한국어 현지화</a>', '</span> Korean localization</a>'),
+    ('<dt>문제</dt>', '<dt>Problem</dt>'),
+    ('<dt>내 역할</dt>', '<dt>My role</dt>'),
+    ('<dt>핵심 설계 판단</dt>', '<dt>Key design decisions</dt>'),
+    ('<dt>바뀐 화면과 흐름</dt>', '<dt>Screens and flows changed</dt>'),
+    ('<dt>확인된 결과(산출물)</dt>', '<dt>Confirmed results (deliverables)</dt>'),
+    ('<dt>확인된 결과</dt>', '<dt>Confirmed results</dt>'),
+    ('<p class="work-link"><a href="second-context-work.html#case-healthcare">사례 자세히 보기</a></p>', '<p class="work-link"><a href="second-context-work.html#case-healthcare">Read the full case</a></p>'),
+    ('<p class="work-link"><a href="second-context-work.html#case-monitoring">사례 자세히 보기</a></p>', '<p class="work-link"><a href="second-context-work.html#case-monitoring">Read the full case</a></p>'),
+    ('<p class="work-link"><a href="second-context-work.html#case-localization">사례 자세히 보기</a></p>', '<p class="work-link"><a href="second-context-work.html#case-localization">Read the full case</a></p>'),
+    # 데모 공통
+    ('aria-label="인터랙션 단계"', 'aria-label="Interaction steps"'),
+    ('>모션 재생</button>', '>Play motion</button>'),
+    ('>정지</button>', '>Stop</button>'),
+    ('>다시 보기</button>', '>Replay</button>'),
+    ('설계 설명을 위한 재구성 · 실제 프로젝트 화면이 아닌 예시 문구', 'Recreated for illustration · Sample copy, not actual project screens'),
+    ('설계 설명을 위한 재구성 · 예시 데이터', 'Recreated for illustration · Sample data'),
+    # 데모 1: 홈헬스케어
+    ('</span>날짜 선택</button>', '</span>Pick a date</button>'),
+    ('</span>제한 이유 확인</button>', '</span>See why it’s blocked</button>'),
+    ('</span>다음 행동</button>', '</span>Next step</button>'),
+    ('aria-label="재구성한 방문 일정 화면"', 'aria-label="Recreated visit scheduling screen"'),
+    ('<span class="ui-title">방문 일정</span><span class="ui-sub">예시 환자 A</span>', '<span class="ui-title">Visit schedule</span><span class="ui-sub">Sample patient A</span>'),
+    ('aria-label="상태 범례"', 'aria-label="Status legend"'),
+    ('</span>예약 가능</li>', '</span>Available</li>'),
+    ('</span>제한</li>', '</span>Blocked</li>'),
+    ('</span>선택</li>', '</span>Selected</li>'),
+    ('aria-label="예시 달력 2주"', 'aria-label="Sample two-week calendar"'),
+    ('<span role="columnheader">월</span><span role="columnheader">화</span><span role="columnheader">수</span><span role="columnheader">목</span><span role="columnheader">금</span><span role="columnheader">토</span><span role="columnheader">일</span>',
+     '<span role="columnheader">Mon</span><span role="columnheader">Tue</span><span role="columnheader">Wed</span><span role="columnheader">Thu</span><span role="columnheader">Fri</span><span role="columnheader">Sat</span><span role="columnheader">Sun</span>'),
+    ('</span>10일은 예약할 수 없습니다</p>', '</span>The 10th can’t be booked</p>'),
+    ('이번 주 방문 횟수(2회)를 이미 모두 사용했습니다.', 'This week’s visit limit (2 visits) has already been used.'),
+    ('→ 사용자가 이해할 수 있는 문장으로 표시', '→ shown as a sentence users can understand'),
+    ('추천 일정: 12일(금) 오전', 'Recommended: Fri the 12th, morning'),
+    ('방문 빈도와 담당 임상의 가능 시간을 함께 확인한 날짜입니다.', 'This date fits both the visit frequency and the assigned clinician’s availability.'),
+    ('<span class="ui-btn ui-btn-fill">추천 확인</span><span class="ui-btn">다른 날짜 선택</span>', '<span class="ui-btn ui-btn-fill">Confirm</span><span class="ui-btn">Choose another date</span>'),
+    ('<strong>1. 날짜 선택</strong> 규칙을 먼저 설명하지 않고, 예약 가능한 날짜와 상태를 달력에서 바로 보여 줍니다.',
+     '<strong>1. Pick a date</strong> Instead of explaining the rules first, the calendar shows which dates are available and their status.'),
+    ('<strong>2. 제한 이유 확인</strong> 제한된 날짜를 고르면 내부 코드 대신 이유를 문장으로 알려 줍니다.',
+     '<strong>2. See why it’s blocked</strong> Choosing a blocked date explains the reason in plain language instead of an internal code.'),
+    ('<strong>3. 다음 행동</strong> AI 추천 일정을 보여 주되, 사용자가 확인하거나 다른 날짜로 조정한 뒤 확정합니다.',
+     '<strong>3. Next step</strong> The AI-recommended date is shown, and the user confirms it or adjusts to another date before booking.'),
+    # 데모 2: 운영 모니터링
+    ('</span>인시던트 선택</button>', '</span>Select an incident</button>'),
+    ('</span>심각도·영향 범위</button>', '</span>Severity and impact</button>'),
+    ('</span>조사 정보</button>', '</span>Investigate</button>'),
+    ('aria-label="재구성한 인시던트 조사 화면"', 'aria-label="Recreated incident investigation screen"'),
+    ('<span class="ui-title">인시던트</span><span class="ui-sub">심각도 순 정렬</span>', '<span class="ui-title">Incidents</span><span class="ui-sub">Sorted by severity</span>'),
+    ('<span class="sev sev-high">높음</span>', '<span class="sev sev-high">High</span>'),
+    ('<span class="sev sev-mid">보통</span>', '<span class="sev sev-mid">Medium</span>'),
+    ('<span class="sev sev-low">낮음</span>', '<span class="sev sev-low">Low</span>'),
+    ('예시 인시던트 A · 데이터 수집 지연', 'Sample incident A · Data ingestion delay'),
+    ('예시 인시던트 B · 배치 작업 재시도', 'Sample incident B · Batch job retries'),
+    ('예시 인시던트 C · 알림 지연', 'Sample incident C · Alert delay'),
+    ('<span class="ui-row-meta">영향 3</span>', '<span class="ui-row-meta">Impact 3</span>'),
+    ('<span class="ui-row-meta">영향 1</span>', '<span class="ui-row-meta">Impact 1</span>'),
+    ('<span class="ui-row-meta">영향 0</span>', '<span class="ui-row-meta">Impact 0</span>'),
+    ('<p class="ui-panel-title">예시 인시던트 A</p>', '<p class="ui-panel-title">Sample incident A</p>'),
+    ('<dt>심각도</dt>', '<dt>Severity</dt>'),
+    ('<dt>후속 영향</dt><dd>예시 서비스 1 · 예시 서비스 2 · 예시 서비스 3</dd>', '<dt>Downstream impact</dt><dd>Sample service 1 · Sample service 2 · Sample service 3</dd>'),
+    ('<p class="ui-panel-title">조사 순서</p>', '<p class="ui-panel-title">Investigation order</p>'),
+    ('<li><strong>위험 예측</strong> 후속 영향이 커질 가능성</li>', '<li><strong>Risk prediction</strong> Likelihood that downstream impact grows</li>'),
+    ('<li><strong>관련 알림</strong> 같은 시점에 발생한 알림</li>', '<li><strong>Related alerts</strong> Alerts raised around the same time</li>'),
+    ('<li><strong>신뢰도</strong> 예측을 얼마나 믿을 수 있는지</li>', '<li><strong>Confidence</strong> How far the prediction can be trusted</li>'),
+    ('<strong>1. 인시던트 선택</strong> 8개 대시보드를 오가는 대신, 인시던트를 심각도 순으로 한 목록에 모읍니다.',
+     '<strong>1. Select an incident</strong> Instead of moving between 8 dashboards, incidents are gathered in one list sorted by severity.'),
+    ('<strong>2. 심각도·영향 범위</strong> 심각도와 후속 영향을 한 화면에서 확인해 무엇부터 조사할지 정합니다.',
+     '<strong>2. Severity and impact</strong> Severity and downstream impact appear on one screen, so teams can decide what to investigate first.'),
+    ('<strong>3. 조사 정보</strong> 위험 예측·알림·신뢰도를 같은 무게로 나열하지 않고, 조사 우선순위에 따라 보여 줍니다.',
+     '<strong>3. Investigate</strong> Risk predictions, alerts, and confidence levels aren’t listed with equal weight; they’re shown in order of investigation priority.'),
+    # 데모 3: 한국어 현지화 (비교 화면 자체는 i18n:keep으로 번역하지 않음)
+    ('</span>원문 화면</button>', '</span>Original screen</button>'),
+    ('</span>한국어 화면</button>', '</span>Korean screen</button>'),
+    ('</span>변경 지점</button>', '</span>What changed</button>'),
+    ('aria-label="재구성한 원문·한국어 비교 화면"', 'aria-label="Recreated original and Korean comparison screen"'),
+    ('<strong>1. 원문 화면</strong> 영어 원문의 이름·날짜·시간 표기와 문장 길이를 기준으로 삼습니다.',
+     '<strong>1. Original screen</strong> The English original’s name, date, and time formats and sentence length are the starting point.'),
+    ('<strong>2. 한국어 화면</strong> 같은 정보를 한국어 사용자가 익숙한 순서와 표기로 옮깁니다.',
+     '<strong>2. Korean screen</strong> The same information is carried over in the order and formats Korean users expect.'),
+    ('<p><strong>3. 변경 지점</strong></p>', '<p><strong>3. What changed</strong></p>'),
+    ('<li>이름: 성-이름 순서와 ‘님’ 호칭</li>', '<li>Names: family name first, with the honorific <span lang="ko">님</span></li>'),
+    ('<li>날짜: 연-월-일 순서, 요일은 괄호로</li>', '<li>Dates: year-month-day order, with the weekday in parentheses</li>'),
+    ('<li>시간: 오전·오후를 숫자 앞에</li>', '<li>Times: <span lang="ko">오전/오후</span> (a.m./p.m.) before the numbers</li>'),
+    ('<li>문구·줄바꿈: 단어 단위 줄바꿈과 한글에 맞춘 글자 간격</li>', '<li>Copy and line breaks: breaking lines at word boundaries, with spacing suited to Korean text</li>'),
 ]
+
+WORK = []
 
 STEPS = [
     ('시장과 사용 맥락 이해하기', 'Understand the market and context of use'),
@@ -233,6 +337,7 @@ STEPS = [
     ('검증하고 다음 개선으로 이어가기', 'Validate and carry into the next iteration'),
 ]
 APPROACH = [
+    ('<title>협업 방식 — Second Context</title>', '<title>Approach — Second Context</title>'),
     ('Second Context의 6단계 접근: 시장과 사용 맥락 이해부터 설계, 개발 연결, 검증까지.',
      'Second Context’s six-step approach: from understanding the market and context of use to design, development handoff, and validation.'),
     ('새로운 시장을 이해하고, 제품이 실행할 다음 단계를 설계합니다.',
@@ -284,31 +389,55 @@ APPROACH = [
 ]
 
 CONTACT = [
+    ('<title>문의 — Second Context</title>', '<title>Contact — Second Context</title>'),
     ('Second Context에 프로젝트를 문의하거나 30분 상담을 예약하세요.',
      'Send Second Context a project inquiry or book a 30-minute consultation.'),
     ('<h1>제품의 어떤 부분을 개선하고 싶으신가요?</h1>', '<h1>What would you like to improve in your product?</h1>'),
-    ('<p class="lead">제품과 현재 고민을 간단히 알려주세요. 프로젝트 범위가 아직 정해지지 않았어도 괜찮습니다.</p>',
-     '<p class="lead">Tell us briefly about your product and what you’re working through. It’s fine if the project scope isn’t defined yet.</p>'),
-    ('<h2 class="label">이메일로 문의하기</h2>', '<h2 class="label">Email</h2>'),
-    ('>이메일 주소 복사</button>', '>Copy email</button>'),
-    ('이메일 주소 (선택해서 복사)', 'Email address (select to copy)'),
-    ('<h2 class="label">30분 상담 예약</h2>', '<h2 class="label">30-minute consultation</h2>'),
-    ('글보다 대화가 편하시다면 30분 상담에서 제품과 현재 과제를 함께 살펴보겠습니다.',
-     'If you’d rather talk than write, we can look at your product and current challenges together in a 30-minute consultation.'),
-    ('30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>\n            </div>',
-     'Book a 30-minute consultation<span class="sr-only"> (새 탭에서 열림)</span></a>\n            </div>'),
-    ('<h2 class="label" id="inquiry-title">문의 남기기</h2>', '<h2 class="label" id="inquiry-title">Send an inquiry</h2>'),
+    ('<p class="lead">제품과 현재 고민을 간단히 알려주세요. 범위가 정해지지 않았어도 괜찮습니다.</p>',
+     '<p class="lead">Tell us briefly about your product and what you’re working through. It’s fine if the scope isn’t defined yet.</p>'),
+    ('<h2 id="inquiry-title">문의 보내기</h2>', '<h2 id="inquiry-title">Send an inquiry</h2>'),
     ('</span> 필수 항목</p>', '</span> Required</p>'),
+    ('value="Second Context 웹사이트 문의"', 'value="Second Context website inquiry"'),
+    ('value="한국어 페이지"', 'value="English page"'),
     ('<label for="f-name">이름 ', '<label for="f-name">Name '),
+    ('placeholder="예: 홍길동"', 'placeholder="e.g., Alex Kim"'),
     ('<label for="f-email">이메일 ', '<label for="f-email">Email '),
     ('<label for="f-company">회사 또는 제품명</label>', '<label for="f-company">Company or product name</label>'),
+    ('placeholder="회사명 또는 제품명"', 'placeholder="Company or product name"'),
     ('<label for="f-url">제품 URL</label>', '<label for="f-url">Product URL</label>'),
     ('<label for="f-message">문의 내용 ', '<label for="f-message">Message '),
-    ('어떤 제품인지, 현재 어려운 점과 필요한 도움을 알려주세요. 희망 일정이 있다면 함께 적어주세요.',
-     'Tell us what the product is, what’s difficult right now, and what help you need. If you have a preferred timeline, include it too.'),
-    ('온라인 문의 전송이 아직 연결되지 않아 문의 보내기 버튼을 사용할 수 없습니다. 이메일이나 30분 상담 예약을 이용해 주세요.',
-     'Online inquiries aren’t connected yet, so the Send inquiry button is unavailable. Please use email or book a 30-minute consultation.'),
+    ('placeholder="제품 소개, 현재 어려운 점, 필요한 도움을 간단히 알려주세요."',
+     'placeholder="Briefly describe your product, what’s difficult right now, and the help you need."'),
     ('>문의 보내기</button>', '>Send inquiry</button>'),
+    ('aria-labelledby="other-ways">', 'aria-labelledby="other-ways">'),
+    ('<h2 class="label" id="other-ways">다른 연락 방법</h2>', '<h2 class="label" id="other-ways">Other ways to reach us</h2>'),
+    ('<p class="way-title">이메일</p>', '<p class="way-title">Email</p>'),
+    ('>이메일 주소 복사</button>', '>Copy email</button>'),
+    ('이메일 주소 (선택해서 복사)', 'Email address (select to copy)'),
+    ('<p class="way-title">30분 상담</p>', '<p class="way-title">30-minute call</p>'),
+    ('대화로 먼저 이야기 나누고 싶다면 예약해 주세요.', 'Prefer to talk first? Book a time.'),
+    ('30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>\n          </div>',
+     'Book a 30-minute consultation<span class="sr-only"> (새 탭에서 열림)</span></a>\n          </div>'),
+]
+
+ABOUT = [
+    ('<title>창업자 소개 — Second Context</title>', '<title>About Rachel Cho — Second Context</title>'),
+    ('Second Context를 이끄는 프로덕트 디자이너 Rachel Cho의 경력과 여정, 지금 하고 있는 일.',
+     'The career, journey, and current work of Rachel Cho, the product designer who leads Second Context.'),
+    ('<h1>새로운 환경에서, 나만의 길을 만들어왔습니다.</h1>', '<h1>I’ve made my own way in new environments.</h1>'),
+    ('안녕하세요, Second Context를 이끄는 프로덕트 디자이너 Rachel Cho입니다. Y Combinator W21 출신의 미국 헬스케어 스타트업에서 파운딩 디자이너로 제품 디자인을 이끌었고, 약 12개 글로벌·다국적 기업에서 40개 이상의 프로젝트를 완료했습니다.',
+     'Hi, I’m Rachel Cho, the product designer who leads Second Context. I led product design as the founding designer at a U.S. healthcare startup from Y Combinator’s W21 batch, and I’ve completed more than 40 projects with about 12 global and multinational companies.'),
+    ('그 과정이 처음부터 익숙했던 것은 아닙니다. 직접 학비를 마련하며 공부했고, 이민자로서 새로운 언어와 문화 속에서 커리어를 쌓아왔습니다. 27개국을 여행하며 디지털 노매드로 지낸 시간은, 같은 상황도 사람의 배경에 따라 다르게 경험될 수 있다는 것을 배우는 시간이었습니다.',
+     'None of it felt familiar at first. I paid for my own education while I studied, and I built my career as an immigrant in a new language and culture. The time I spent as a digital nomad, traveling to 27 countries, taught me that the same situation can be experienced very differently depending on a person’s background.'),
+    ('새로운 환경에서 다음 걸음을 찾는 일이 얼마나 막막한지 알기에, 지금은 이민자 커뮤니티와 주니어 디자이너를 멘토링하고 파운더의 제품 고민을 함께 풀고 있습니다. 제가 쌓아온 경험이 누군가에게는 조금 더 분명한 출발점이 되기를 바랍니다.',
+     'Because I know how hard it can be to find your next step in a new environment, I now mentor people in immigrant communities and junior designers, and work through product challenges with founders. I hope what I’ve learned along the way can give someone a clearer place to start.'),
+    ('Rachel Cho의 흑백 인물 사진', 'Black-and-white portrait of Rachel Cho'),
+    ('aria-label="경력 요약"', 'aria-label="Career summary"'),
+    ('<span class="stat-label">완료 프로젝트</span>', '<span class="stat-label">Completed projects</span>'),
+    ('<span class="stat-value">약 12개</span><span class="stat-label">글로벌·다국적 기업</span>',
+     '<span class="stat-value">About 12</span><span class="stat-label">Global and multinational companies</span>'),
+    ('<span class="stat-value">27개국</span><span class="stat-label">여행 · 디지털 노매드 경험</span>',
+     '<span class="stat-value">27 countries</span><span class="stat-label">Traveled · Digital nomad experience</span>'),
 ]
 
 PATHS = [
@@ -318,14 +447,23 @@ PATHS = [
     ('src="./rachel-portrait-bw.png"', 'src="../rachel-portrait-bw.png"'),
 ]
 
-TABLE = {PAGES[0]: HOME, PAGES[1]: APPROACH, PAGES[2]: CONTACT}
+TABLE = {PAGES[0]: HOME, PAGES[1]: APPROACH, PAGES[2]: CONTACT, PAGES[3]: ABOUT, PAGES[4]: WORK}
+KEEP = re.compile(r'<!--i18n:keep-->.*?<!--/i18n:keep-->', re.S)  # 비교 자료처럼 두 언어에서 그대로 두는 부분
 
 for page in PAGES:
     s = prep_korean(page)
     e = s.replace(f'<link rel="canonical" href="{BASE + page}">', f'<link rel="canonical" href="{BASE}en/{page}">')
     e = e.replace(lang_nav(page, "ko"), lang_nav(page, "en"))
+    # i18n:keep 영역은 번역하지 않고 그대로 둔다
+    kept = KEEP.findall(e)
+    for i, k in enumerate(kept):
+        e = e.replace(k, f'@@KEEP{i}@@', 1)
+    # 사례 문구는 이 페이지에 있는 것만 페이지 표에 더한다 (홈 요약·사례 상세가 같은 번역을 공유)
+    table = TABLE[page] + [(ko, en) for ko, en in CASE_TEXT if ko in s and ko not in dict(TABLE[page])]
+    # 긴 문장부터 바꿔야 짧은 문구가 긴 문장 일부를 먼저 바꾸지 않는다
+    table.sort(key=lambda p: -len(p[0]))
     # 페이지 표 먼저(긴 문장), 그다음 공통 문구
-    for ko, en in TABLE[page] + COMMON + PATHS:
+    for ko, en in table + COMMON + PATHS:
         if page == PAGES[2] and ko == 'Rachel과 Book a 30-minute call':
             continue
         # 페이지별 표의 문구는 반드시 있어야 한다. 공통 문구·경로는 페이지에 있을 때만 바꾼다
@@ -335,8 +473,12 @@ for page in PAGES:
         e = e.replace('Rachel과 Book a 30-minute call', 'Book a 30-minute call with Rachel')
     # 한국어 작업 메모 주석은 영어 페이지에 옮기지 않는다 (화면에 보이지 않음)
     e = re.sub(r'[ \t]*<!--[^>]*[가-힣][^>]*-->\n', '', e)
-    left = [m for m in re.findall(r'[^<>"]*[가-힣][^<>"]*', e) if m.strip() != '한국어']
+    # lang="ko"로 표시한 한국어 예시(예: 호칭 ‘님’)는 영어 페이지에도 그대로 둔다
+    check = re.sub(r'<span lang="ko">[^<]*</span>', '', e)
+    left = [m for m in re.findall(r'[^<>"]*[가-힣][^<>"]*', check) if m.strip() != '한국어']
     assert not left, (page, left)
+    for i, k in enumerate(kept):
+        e = e.replace(f'@@KEEP{i}@@', k, 1)
     os.makedirs(os.path.join(R, 'en'), exist_ok=True)
     open(os.path.join(R, 'en', page), 'w', encoding='utf-8').write(e)
     print('built en/' + page)

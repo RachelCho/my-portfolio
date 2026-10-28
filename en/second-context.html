@@ -10,6 +10,7 @@
 <link rel="alternate" hreflang="ko" href="https://rachelcho.github.io/my-portfolio/second-context.html">
 <link rel="alternate" hreflang="en" href="https://rachelcho.github.io/my-portfolio/en/second-context.html">
 <link rel="alternate" hreflang="x-default" href="https://rachelcho.github.io/my-portfolio/second-context.html">
+<script src="../assets/lang.js"></script>
 <meta name="description" content="Product UX reviews and design for Korean B2B SaaS teams preparing for the U.S. market.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,8 +34,8 @@
     </nav>
     <nav class="lang" aria-label="Language">
       <a href="../second-context.html" lang="ko" hreflang="ko">한국어</a>
-      <span aria-hidden="true">|</span>
-      <a href="second-context.html" lang="en" hreflang="en" aria-current="true">English</a>
+      <span aria-hidden="true">/</span>
+      <a href="second-context.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
     </nav>
   </div>
 </header>
@@ -125,7 +126,7 @@
         <p class="lead">Three projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed.</p>
       </div>
       <ol class="work-list">
-        <li class="work-item">
+        <li class="work-item" id="case-healthcare">
           <div class="work-head">
             <span class="num" aria-hidden="true">01</span>
             <h3><span class="work-client">Home Healthcare SaaS · 2025–2026</span><span class="work-title">Scheduling UX for a U.S. home healthcare SaaS</span></h3>
@@ -151,52 +152,10 @@
                 <p class="metric-note"><span class="metric-kind">Adoption scope</span> Clinicians using the AI scheduling recommendation experience</p>
               </li>
             </ul>
-            <details class="work-more">
-              <summary>Read the full case</summary>
-              <dl class="work-detail">
-                <dt>Project context and problem</dt>
-                <dd>An AI scheduling platform that U.S. home healthcare operations teams use to coordinate clinician visits. Schedulers had to weigh patient eligibility, visit frequency, and staff availability together, which led to repeated questions and confusion.</dd>
-                <dt>Rachel’s role and responsibilities</dt>
-                <dd>
-                  <ul>
-                    <li>Joined as the founding designer (Senior Product Designer).</li>
-                    <li>Defined the product design vision and strategy for the core AI scheduling platform with the CEO, translating business goals into end-to-end design direction from 0 to 1.</li>
-                    <li>Built the company’s first Figma design system with the CTO and 6 front-end engineers.</li>
-                    <li>Established the company’s first end-to-end design process shared by design, product, and engineering.</li>
-                  </ul>
-                </dd>
-                <dt>Key design decisions and why</dt>
-                <dd>
-                  <ul>
-                    <li>Because overlapping eligibility, visit-frequency, and availability rules caused repeated questions and confusion, the design shows bookable dates and status first instead of explaining the rules.</li>
-                    <li>Replaced internal codes with wording users could understand.</li>
-                    <li>To improve both decision speed and confidence, defined how AI-generated schedule recommendations are surfaced, validated, and adjusted.</li>
-                  </ul>
-                </dd>
-                <dt>Screens and workflows changed</dt>
-                <dd>
-                  <ul>
-                    <li>A calendar of bookable dates and schedule status indicators</li>
-                    <li>UI wording that replaces internal codes</li>
-                    <li>A flow for reviewing, validating, and adjusting AI schedule recommendations</li>
-                  </ul>
-                </dd>
-                <dt>Results</dt>
-                <dd>
-                  <ul>
-                    <li><span class="metric-kind">User rating</span> Schedule-planning confidence 5.8 → 8.2 in the pilot</li>
-                    <li><span class="metric-kind">Work outcome</span> Task time 180 sec → 60 sec after several improvements were applied together</li>
-                    <li><span class="metric-kind">Work outcome</span> Manual validation reduced by 35% in the AI-assisted scheduling workflow</li>
-                    <li><span class="metric-kind">Adoption scope</span> Scheduling recommendation experience used by 3,000+ clinicians</li>
-                    <li><span class="metric-kind">Adoption scope</span> Design system adopted by all 23 developers as the org-wide standard</li>
-                    <li><span class="metric-kind">Work outcome</span> Release cycles accelerated by 50%+ after the design system was adopted</li>
-                  </ul>
-                </dd>
-              </dl>
-            </details>
+            <p class="work-link"><a href="second-context-work.html#case-healthcare">Read the full case</a></p>
           </div>
         </li>
-        <li class="work-item">
+        <li class="work-item" id="case-monitoring">
           <div class="work-head">
             <span class="num" aria-hidden="true">02</span>
             <h3><span class="work-client">Global Pharma · Enterprise Monitoring · 2024</span><span class="work-title">Operations monitoring and incident management UX for a global pharmaceutical company</span></h3>
@@ -218,49 +177,10 @@
                 <p class="metric-note"><span class="metric-kind">Work outcome</span> Ticket processing time in developers’ internal tools</p>
               </li>
             </ul>
-            <details class="work-more">
-              <summary>Read the full case</summary>
-              <dl class="work-detail">
-                <dt>Project context and problem</dt>
-                <dd>An enterprise monitoring platform supporting vaccine operations, used by the company’s engineering teams. To investigate an incident, operators had to move between 8 dashboards to work out severity and impact.</dd>
-                <dt>Rachel’s role and responsibilities</dt>
-                <dd>
-                  <ul>
-                    <li>Joined as a contract Senior Product Designer through a UX design agency.</li>
-                    <li>Designed a generative-AI incident management system with a global IT company’s AI/ML teams, translating model outputs into actionable signals for enterprise users.</li>
-                    <li>Conducted 15 stakeholder interviews to define how AI insights such as risk predictions, alerts, and confidence levels are surfaced and prioritized.</li>
-                  </ul>
-                </dd>
-                <dt>Key design decisions and why</dt>
-                <dd>
-                  <ul>
-                    <li>Because operators had to piece together severity and impact across 8 dashboards themselves, the information architecture was redesigned around severity and downstream impact.</li>
-                    <li>Rather than listing risk predictions, alerts, and confidence levels with equal weight, set criteria for showing them by investigation priority.</li>
-                    <li>Aligned with engineering on a list-browsing approach that accounts for performance.</li>
-                  </ul>
-                </dd>
-                <dt>Screens and workflows changed</dt>
-                <dd>
-                  <ul>
-                    <li>An incident investigation flow centered on severity and downstream impact</li>
-                    <li>Decision-support screens that surface AI insights by priority</li>
-                    <li>Performance-aware incident list browsing</li>
-                  </ul>
-                </dd>
-                <dt>Results</dt>
-                <dd>
-                  <ul>
-                    <li><span class="metric-kind">Work outcome</span> Incident investigation time 30 min → 3 min, as reported in the project</li>
-                    <li><span class="metric-kind">Work outcome</span> Incident triage time reduced by 80% after redesigning decision-support workflows and clarifying signals</li>
-                    <li><span class="metric-kind">Work outcome</span> Developer internal-tool ticket processing time reduced by 40%</li>
-                    <li><span class="metric-kind">Research scope</span> 15 stakeholder interviews</li>
-                  </ul>
-                </dd>
-              </dl>
-            </details>
+            <p class="work-link"><a href="second-context-work.html#case-monitoring">Read the full case</a></p>
           </div>
         </li>
-        <li class="work-item">
+        <li class="work-item" id="case-localization">
           <div class="work-head">
             <span class="num" aria-hidden="true">03</span>
             <h3><span class="work-client">Global Tech · Korean Localization · 2019</span><span class="work-title">Korean product localization for a global tech company</span></h3>
@@ -274,38 +194,7 @@
                 <p class="metric-note"><span class="metric-kind">Project length</span> Localization period in 2019, with a production agency and the client’s Korea and U.S. teams</p>
               </li>
             </ul>
-            <details class="work-more">
-              <summary>Read the full case</summary>
-              <dl class="work-detail">
-                <dt>Project context and problem</dt>
-                <dd>A project adapting content for a 5K-display desktop product to the Korean market, keeping the global brand’s expression while making Korean copy and layout read naturally.</dd>
-                <dt>Rachel’s role and responsibilities</dt>
-                <dd>Over 6 weeks in 2019, worked with a global production agency in the U.K. and the client’s Korea and U.S. teams to localize UX copy and design assets and support communication between teams.</dd>
-                <dt>Key design decisions and why</dt>
-                <dd>
-                  <ul>
-                    <li>Because both the global brand’s expression and natural Korean had to be preserved, name, date, and time formats were matched to Korean conventions, not just the copy.</li>
-                    <li>For the same reason, typography and spacing were adjusted for Korean text.</li>
-                    <li>Supported communication so the U.K., Korea, and U.S. teams stayed aligned.</li>
-                  </ul>
-                </dd>
-                <dt>Screens and workflows changed</dt>
-                <dd>
-                  <ul>
-                    <li>Korean UX copy</li>
-                    <li>Name, date, and time formats</li>
-                    <li>Localized layouts reflecting Korean typography and spacing</li>
-                  </ul>
-                </dd>
-                <dt>Deliverables</dt>
-                <dd>
-                  <ul>
-                    <li>UX copy and design assets tailored to the Korean market</li>
-                    <li>Localized layouts</li>
-                  </ul>
-                </dd>
-              </dl>
-            </details>
+            <p class="work-link"><a href="second-context-work.html#case-localization">Read the full case</a></p>
           </div>
         </li>
       </ol>
@@ -335,13 +224,14 @@
           </figcaption>
         </figure>
         <div class="founder-text">
-          <p>Rachel Cho is a product designer who turns the rules and exceptions of complex B2B work into clear product experiences. Working with about 12 global and multinational companies in full-time, contract, and project-based roles, Rachel has completed 40+ projects.</p>
-          <p>Drawing on experience in healthcare SaaS, enterprise operations systems, and global product localization, Rachel works hands-on at Second Context, from problem definition through UX design and collaboration with development.</p>
+          <p>Hi, I’m Rachel Cho, the product designer who leads Second Context. I led product design as the founding designer at a U.S. healthcare startup from Y Combinator’s W21 batch, and I’ve completed more than 40 projects with about 12 global and multinational companies.</p>
+          <p>I built my career as an immigrant, in a new language and culture. Drawing on that experience, I now mentor people in immigrant communities and junior designers, and work through product challenges with founders.</p>
           <ul class="founder-stats" aria-label="Career summary">
             <li><span class="stat-value">40+</span><span class="stat-label">Completed projects</span></li>
             <li><span class="stat-value">About 12</span><span class="stat-label">Global and multinational companies</span></li>
             <li><span class="stat-value">27 countries</span><span class="stat-label">Traveled · Digital nomad experience</span></li>
           </ul>
+          <p class="founder-more"><a href="second-context-about.html">Read Rachel’s story</a></p>
         </div>
       </div>
     </div>

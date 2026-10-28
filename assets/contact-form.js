@@ -1,9 +1,8 @@
 /* Second Context Contact: 문의 폼 검증·전송 상태, 이메일 주소 복사.
-   전송 주소는 form의 data-endpoint에 넣는다. 비어 있으면 제출 버튼을 비활성화한 채로 두고 전송하지 않는다.
+   전송 주소(Formspree 폼 주소)는 form의 data-endpoint에 넣는다. 비어 있으면 전송하지 않고 실패 안내만 보여 준다.
    비밀키는 이 파일이나 HTML에 넣지 않는다 (공개 저장소). */
 (function () {
   var ko = document.documentElement.lang === 'ko';
-  var EMAIL = 'rachel.cho5257@gmail.com';
 
   /* ---------- 이메일 주소 복사 ---------- */
   var copyBtn = document.querySelector('[data-copy-email]');
@@ -48,10 +47,9 @@
     required: function (n) { return n + ' 항목을 입력해 주세요.'; },
     email: '이메일 형식이 올바르지 않습니다. name@company.com 형태로 입력해 주세요.',
     summary: function (c) { return '입력 내용을 확인해 주세요. 수정이 필요한 항목이 ' + c + '개 있습니다.'; },
-    notConnected: '전송되지 않음: 온라인 문의 접수가 아직 연결되지 않았습니다. 작성하신 내용은 그대로 남아 있으니 ' + EMAIL + '으로 보내 주세요.',
-    sending: '문의를 보내는 중입니다…',
-    success: '전송 완료: 문의가 접수되었습니다. 감사합니다.',
-    failure: '전송 실패: 문의를 보내지 못했습니다. 작성하신 내용은 그대로 남아 있으니 문의 보내기를 다시 눌러 주세요. 계속 실패하면 ' + EMAIL + '으로 보내 주세요.'
+    sending: '보내는 중…',
+    success: '문의가 접수되었습니다. 남겨주신 이메일로 답변드리겠습니다.',
+    failure: '전송하지 못했습니다. 작성하신 내용은 이 화면에 그대로 남아 있습니다. 다시 시도해 주세요.'
   } : {
     names: { name: 'your name', email: 'your email address', message: 'your message' },
     url: 'This URL isn’t valid. Please use a format like example.com.',
@@ -60,10 +58,9 @@
     required: function (n) { return 'Please fill in ' + n + '.'; },
     email: 'This email address isn’t valid. Please use a format like name@company.com.',
     summary: function (c) { return 'Please check the form. ' + c + (c === 1 ? ' field needs' : ' fields need') + ' your attention.'; },
-    notConnected: 'Not sent: online inquiries aren’t connected yet. Your message is still in the form—please send it to ' + EMAIL + '.',
-    sending: 'Sending your inquiry…',
-    success: 'Sent: your inquiry has been received. Thank you.',
-    failure: 'Not sent: something went wrong. Your message is still in the form—please select Send inquiry again. If it keeps failing, email ' + EMAIL + '.'
+    sending: 'Sending…',
+    success: 'Thank you. Your inquiry has been received. I’ll reply to the email address you provided.',
+    failure: 'Your message couldn’t be sent. What you entered is still on this page. Please try again.'
   };
 
   var status = form.querySelector('.form-status');
@@ -71,14 +68,6 @@
   var fields = Array.prototype.slice.call(form.querySelectorAll('.field input, .field textarea'));
   var endpoint = (form.getAttribute('data-endpoint') || '').trim();
   var sending = false;
-
-  // 전송 주소가 연결되면 비활성 안내를 숨기고 버튼을 켠다
-  if (endpoint) {
-    var pending = form.querySelector('.form-pending');
-    if (pending) pending.hidden = true;
-    button.disabled = false;
-    button.removeAttribute('aria-describedby');
-  }
 
   function setError(el, msg) {
     var err = document.getElementById(el.id + '-error');
@@ -129,8 +118,10 @@
       return;
     }
 
+    // 전송 주소가 비어 있으면 보내지 않고 실패로 안내한다 (성공처럼 보이지 않게). 설정 안내는 화면에 쓰지 않는다
     if (!endpoint) {
-      setStatus(T.notConnected, 'error');
+      if (window.console) console.warn('contact-form: data-endpoint가 비어 있어 전송하지 않았습니다.');
+      setStatus(T.failure, 'error');
       return;
     }
 

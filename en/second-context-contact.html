@@ -10,6 +10,7 @@
 <link rel="alternate" hreflang="ko" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
 <link rel="alternate" hreflang="en" href="https://rachelcho.github.io/my-portfolio/en/second-context-contact.html">
 <link rel="alternate" hreflang="x-default" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
+<script src="../assets/lang.js"></script>
 <meta name="description" content="Send Second Context a project inquiry or book a 30-minute consultation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,74 +34,79 @@
     </nav>
     <nav class="lang" aria-label="Language">
       <a href="../second-context-contact.html" lang="ko" hreflang="ko">한국어</a>
-      <span aria-hidden="true">|</span>
-      <a href="second-context-contact.html" lang="en" hreflang="en" aria-current="true">English</a>
+      <span aria-hidden="true">/</span>
+      <a href="second-context-contact.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="page-intro">
+  <section class="page-intro contact-page">
     <div class="wrap">
+      <div class="page-header">
+        <p class="label">Contact</p>
+        <h1>What would you like to improve in your product?</h1>
+        <p class="lead">Tell us briefly about your product and what you’re working through. It’s fine if the scope isn’t defined yet.</p>
+      </div>
       <div class="contact-layout">
-        <div class="contact-intro">
-          <div class="page-header">
-            <p class="label">Contact</p>
-            <h1>What would you like to improve in your product?</h1>
-            <p class="lead">Tell us briefly about your product and what you’re working through. It’s fine if the project scope isn’t defined yet.</p>
+        <form class="inquiry-form" id="inquiry" data-endpoint="https://formspree.io/f/mwllbenr" novalidate aria-labelledby="inquiry-title">
+          <div class="form-head">
+            <h2 id="inquiry-title">Send an inquiry</h2>
+            <p class="form-note"><span aria-hidden="true">*</span> Required</p>
           </div>
-          <div class="contact-ways">
-            <div class="contact-way" id="email-contact">
-              <h2 class="label">Email</h2>
-              <p><a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></p>
-              <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">Copy email</button>
-              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
-              <div class="copy-fallback" id="copy-fallback" hidden>
-                <label for="email-manual">Email address (select to copy)</label>
-                <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
-              </div>
+          <input type="hidden" name="_subject" value="Second Context website inquiry">
+          <input type="hidden" name="language" value="English page">
+          <div class="field-grid">
+            <div class="field">
+              <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g., Alex Kim" required aria-describedby="f-name-error">
+              <p class="field-error" id="f-name-error" hidden></p>
             </div>
-            <div class="contact-way" id="booking">
-              <h2 class="label">30-minute consultation</h2>
-              <p>If you’d rather talk than write, we can look at your product and current challenges together in a 30-minute consultation.</p>
-              <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (opens in a new tab)</span></a>
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@company.com" required aria-describedby="f-email-error">
+              <p class="field-error" id="f-email-error" hidden></p>
             </div>
-          </div>
-        </div>
-        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-labelledby="inquiry-title">
-          <h2 class="label" id="inquiry-title">Send an inquiry</h2>
-          <p class="form-note"><span aria-hidden="true">*</span> Required</p>
-          <div class="field">
-            <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error">
-            <p class="field-error" id="f-name-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error">
-            <p class="field-error" id="f-email-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-company">Company or product name</label>
-            <input id="f-company" name="company" type="text" autocomplete="organization" aria-describedby="f-company-error">
-            <p class="field-error" id="f-company-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-url">Product URL</label>
-            <input id="f-url" name="product_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" aria-describedby="f-url-error">
-            <p class="field-error" id="f-url-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-message">Message <span class="req" aria-hidden="true">*</span></label>
-            <p class="field-help" id="f-message-help">Tell us what the product is, what’s difficult right now, and what help you need. If you have a preferred timeline, include it too.</p>
-            <textarea id="f-message" name="message" rows="6" required aria-describedby="f-message-help f-message-error"></textarea>
-            <p class="field-error" id="f-message-error" hidden></p>
+            <div class="field">
+              <label for="f-company">Company or product name</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Company or product name" aria-describedby="f-company-error">
+              <p class="field-error" id="f-company-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-url">Product URL</label>
+              <input id="f-url" name="product_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://yourproduct.com" aria-describedby="f-url-error">
+              <p class="field-error" id="f-url-error" hidden></p>
+            </div>
+            <div class="field field-wide">
+              <label for="f-message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="f-message" name="message" rows="6" placeholder="Briefly describe your product, what’s difficult right now, and the help you need." required aria-describedby="f-message-error"></textarea>
+              <p class="field-error" id="f-message-error" hidden></p>
+            </div>
           </div>
           <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-          <p class="form-pending" id="form-pending">Online inquiries aren’t connected yet, so the Send inquiry button is unavailable. Please use email or book a 30-minute consultation.</p>
-          <button class="btn btn-primary" type="submit" disabled aria-describedby="form-pending">Send inquiry</button>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send inquiry</button>
+          </div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
+        <aside class="contact-aside" aria-labelledby="other-ways">
+          <h2 class="label" id="other-ways">Other ways to reach us</h2>
+          <div class="contact-way" id="email-contact">
+            <p class="way-title">Email</p>
+            <p><a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></p>
+            <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">Copy email</button>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            <div class="copy-fallback" id="copy-fallback" hidden>
+              <label for="email-manual">Email address (select to copy)</label>
+              <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
+            </div>
+          </div>
+          <div class="contact-way" id="booking">
+            <p class="way-title">30-minute call</p>
+            <p>Prefer to talk first? Book a time.</p>
+            <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </aside>
       </div>
     </div>
   </section>

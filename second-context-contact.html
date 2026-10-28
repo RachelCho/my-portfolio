@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact — Second Context</title>
+<title>문의 — Second Context</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="canonical" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
 <link rel="alternate" hreflang="ko" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
 <link rel="alternate" hreflang="en" href="https://rachelcho.github.io/my-portfolio/en/second-context-contact.html">
 <link rel="alternate" hreflang="x-default" href="https://rachelcho.github.io/my-portfolio/second-context-contact.html">
+<script src="assets/lang.js"></script>
 <meta name="description" content="Second Context에 프로젝트를 문의하거나 30분 상담을 예약하세요.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,75 +34,80 @@
     </nav>
     <nav class="lang" aria-label="언어 선택">
       <a href="second-context-contact.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
-      <span aria-hidden="true">|</span>
-      <a href="en/second-context-contact.html" lang="en" hreflang="en">English</a>
+      <span aria-hidden="true">/</span>
+      <a href="en/second-context-contact.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="page-intro">
+  <section class="page-intro contact-page">
     <div class="wrap">
+      <div class="page-header">
+        <p class="label">Contact</p>
+        <h1>제품의 어떤 부분을 개선하고 싶으신가요?</h1>
+        <p class="lead">제품과 현재 고민을 간단히 알려주세요. 범위가 정해지지 않았어도 괜찮습니다.</p>
+      </div>
       <div class="contact-layout">
-        <div class="contact-intro">
-          <div class="page-header">
-            <p class="label">Contact</p>
-            <h1>제품의 어떤 부분을 개선하고 싶으신가요?</h1>
-            <p class="lead">제품과 현재 고민을 간단히 알려주세요. 프로젝트 범위가 아직 정해지지 않았어도 괜찮습니다.</p>
+        <form class="inquiry-form" id="inquiry" data-endpoint="https://formspree.io/f/mwllbenr" novalidate aria-labelledby="inquiry-title">
+          <div class="form-head">
+            <h2 id="inquiry-title">문의 보내기</h2>
+            <p class="form-note"><span aria-hidden="true">*</span> 필수 항목</p>
           </div>
-          <div class="contact-ways">
-            <div class="contact-way" id="email-contact">
-              <h2 class="label">이메일로 문의하기</h2>
-              <p><a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></p>
-              <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">이메일 주소 복사</button>
-              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
-              <div class="copy-fallback" id="copy-fallback" hidden>
-                <label for="email-manual">이메일 주소 (선택해서 복사)</label>
-                <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
-              </div>
+          <input type="hidden" name="_subject" value="Second Context 웹사이트 문의">
+          <input type="hidden" name="language" value="한국어 페이지">
+          <div class="field-grid">
+            <div class="field">
+              <label for="f-name">이름 <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="예: 홍길동" required aria-describedby="f-name-error">
+              <p class="field-error" id="f-name-error" hidden></p>
             </div>
-            <div class="contact-way" id="booking">
-              <h2 class="label">30분 상담 예약</h2>
-              <p>글보다 대화가 편하시다면 30분 상담에서 제품과 현재 과제를 함께 살펴보겠습니다.</p>
-              <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>
+            <div class="field">
+              <label for="f-email">이메일 <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@company.com" required aria-describedby="f-email-error">
+              <p class="field-error" id="f-email-error" hidden></p>
             </div>
-          </div>
-        </div>
-        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-labelledby="inquiry-title">
-          <h2 class="label" id="inquiry-title">문의 남기기</h2>
-          <p class="form-note"><span aria-hidden="true">*</span> 필수 항목</p>
-          <div class="field">
-            <label for="f-name">이름 <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-error">
-            <p class="field-error" id="f-name-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-email">이메일 <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error">
-            <p class="field-error" id="f-email-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-company">회사 또는 제품명</label>
-            <input id="f-company" name="company" type="text" autocomplete="organization" aria-describedby="f-company-error">
-            <p class="field-error" id="f-company-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-url">제품 URL</label>
-            <input id="f-url" name="product_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" aria-describedby="f-url-error">
-            <p class="field-error" id="f-url-error" hidden></p>
-          </div>
-          <div class="field">
-            <label for="f-message">문의 내용 <span class="req" aria-hidden="true">*</span></label>
-            <p class="field-help" id="f-message-help">어떤 제품인지, 현재 어려운 점과 필요한 도움을 알려주세요. 희망 일정이 있다면 함께 적어주세요.</p>
-            <textarea id="f-message" name="message" rows="6" required aria-describedby="f-message-help f-message-error"></textarea>
-            <p class="field-error" id="f-message-error" hidden></p>
+            <div class="field">
+              <label for="f-company">회사 또는 제품명</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="회사명 또는 제품명" aria-describedby="f-company-error">
+              <p class="field-error" id="f-company-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-url">제품 URL</label>
+              <input id="f-url" name="product_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://yourproduct.com" aria-describedby="f-url-error">
+              <p class="field-error" id="f-url-error" hidden></p>
+            </div>
+            <div class="field field-wide">
+              <label for="f-message">문의 내용 <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="f-message" name="message" rows="6" placeholder="제품 소개, 현재 어려운 점, 필요한 도움을 간단히 알려주세요." required aria-describedby="f-message-error"></textarea>
+              <p class="field-error" id="f-message-error" hidden></p>
+            </div>
           </div>
           <!-- 스팸 방지용 숨김 칸 (사람에게는 보이지 않고 키보드로도 이동하지 않음) -->
           <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
-          <p class="form-pending" id="form-pending">온라인 문의 전송이 아직 연결되지 않아 문의 보내기 버튼을 사용할 수 없습니다. 이메일이나 30분 상담 예약을 이용해 주세요.</p>
-          <button class="btn btn-primary" type="submit" disabled aria-describedby="form-pending">문의 보내기</button>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">문의 보내기</button>
+          </div>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
+        <aside class="contact-aside" aria-labelledby="other-ways">
+          <h2 class="label" id="other-ways">다른 연락 방법</h2>
+          <div class="contact-way" id="email-contact">
+            <p class="way-title">이메일</p>
+            <p><a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></p>
+            <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">이메일 주소 복사</button>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            <div class="copy-fallback" id="copy-fallback" hidden>
+              <label for="email-manual">이메일 주소 (선택해서 복사)</label>
+              <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
+            </div>
+          </div>
+          <div class="contact-way" id="booking">
+            <p class="way-title">30분 상담</p>
+            <p>대화로 먼저 이야기 나누고 싶다면 예약해 주세요.</p>
+            <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
