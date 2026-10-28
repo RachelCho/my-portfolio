@@ -111,11 +111,29 @@ nav .btn{padding:var(--s1) var(--s2)}
 .work-head .num{display:block;font-size:13px;font-weight:800;letter-spacing:.04em;margin-bottom:var(--s1)}
 .work-client{display:block;font-size:15px;font-weight:600;margin-bottom:var(--s1)}
 .work-title{display:block;font-size:24px;line-height:1.35}
-.work-detail dt{font-size:13px;font-weight:700;letter-spacing:.04em}
 .work-detail dt:not(:first-child){margin-top:var(--gap-lead)}
 .work-detail dd{margin-top:var(--gap-tight)}
 .work-detail ul{list-style:disc;padding-left:1.2em}
 .work-detail li+li{margin-top:var(--gap-tight)}
+.work-head,.work-body{min-width:0} /* 긴 영어 단어가 열 폭을 넓히지 않게 */
+.work-strength{margin-top:var(--gap-sub);font-size:15px}
+.work-key strong,.work-detail dt{display:block;font-size:13px;font-weight:700;letter-spacing:.04em}
+.work-key strong{margin-bottom:var(--gap-tight)}
+/* 대표 수치: 숫자 바로 옆에 지표 종류와 어떤 변화의 결과인지 */
+.metrics{list-style:none;margin-top:var(--gap-lead);border-top:1px solid var(--line)}
+.metric{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);column-gap:var(--s3);align-items:baseline;padding:var(--s2) 0;border-bottom:1px solid var(--line)}
+.metric-value{font-size:30px;font-weight:700;line-height:1.25;font-variant-numeric:tabular-nums}
+.metric-note{font-size:15px;line-height:1.6}
+.metric-kind{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--orange)}
+.work-detail .metric-kind{display:inline;margin-right:var(--s1)}
+/* 펼쳐보기: 요약 아래 전체 사례 */
+.work-more{margin-top:var(--gap-lead)}
+.work-more summary{display:inline-flex;align-items:center;gap:var(--s1);min-height:44px;font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.work-more summary::-webkit-details-marker{display:none}
+.work-more summary{list-style:none}
+.work-more summary::before{content:"+";content:"+" / "";display:inline-block;width:1em;text-align:center;font-weight:700}
+.work-more[open] summary::before{content:"−";content:"−" / ""}
+.work-more .work-detail{margin-top:var(--gap-sub);padding-top:var(--gap-sub);border-top:1px solid var(--line)}
 .work-close{margin-top:var(--gap-block)}
 .work-close p{margin-top:var(--s1)}
 .work-close .cta{margin-top:var(--s3)}
@@ -225,6 +243,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .values{row-gap:var(--gap-stack)}
 }
 @media(max-width:600px){
+  .metric{grid-template-columns:1fr;row-gap:var(--gap-tight)}
+  .metric-value{font-size:26px}
   :root{--gutter:var(--s2);--card-pad:var(--s3)}
   h1{font-size:40px;line-height:1.15}
   h2{font-size:28px;line-height:1.3}
