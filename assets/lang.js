@@ -1,4 +1,4 @@
-/* Second Context 언어 전환: 선택한 언어 기억, 전환할 때 보던 위치·펼친 사례·사례 인터랙션 단계·작성 중인 문의 유지.
+/* Second Context 언어 전환: 선택한 언어 기억, 전환할 때 보던 위치·펼친 사례·사례 인터랙션 단계와 탭·작성 중인 문의 유지.
    - 첫 방문은 한국어. 브라우저 언어나 접속 국가로 자동 이동하지 않는다.
    - 언어 링크를 누르면 그 언어를 기억하고, 다음에 한국어(기본) 주소로 들어오면 영어 페이지로 이어 준다.
    - 저장은 이 브라우저에만 남는다(localStorage·sessionStorage). 막혀 있으면 기억 없이 그대로 동작한다. */
@@ -43,7 +43,12 @@
       Array.prototype.forEach.call(document.querySelectorAll('[data-demo][id]'), function (d) {
         demos[d.id] = { step: d.getAttribute('data-step'), sel: d.getAttribute('data-sel'), open: d.classList.contains('is-open') };
       });
-      set('sessionStorage', STATE, JSON.stringify({ page: pageName(location.pathname), target: target, anchor: anchor, ratio: ratio, atTop: window.scrollY < 4, open: open, demos: demos, counted: counted, fields: fields }));
+      var tabs = {};
+      Array.prototype.forEach.call(document.querySelectorAll('[data-tabs][id]'), function (b) {
+        var t = b.querySelector('[role="tab"][aria-selected="true"]');
+        if (t) tabs[b.id] = t.id;
+      });
+      set('sessionStorage', STATE, JSON.stringify({ page: pageName(location.pathname), target: target, anchor: anchor, ratio: ratio, atTop: window.scrollY < 4, open: open, demos: demos, tabs: tabs, counted: counted, fields: fields }));
     }
 
     Array.prototype.forEach.call(document.querySelectorAll('nav.lang a[hreflang]'), function (a) {
@@ -71,6 +76,11 @@
     Object.keys(st.demos || {}).forEach(function (id) {
       var d = document.getElementById(id);
       if (d) d.dispatchEvent(new CustomEvent('sc:step', { detail: st.demos[id] }));
+    });
+    // 사례 데모 탭 (case-demo.js가 sc:tab 이벤트를 받아 바꾼다)
+    Object.keys(st.tabs || {}).forEach(function (id) {
+      var b = document.getElementById(id);
+      if (b) b.dispatchEvent(new CustomEvent('sc:tab', { detail: st.tabs[id] }));
     });
     Object.keys(st.fields || {}).forEach(function (id) {
       var el = document.getElementById(id);

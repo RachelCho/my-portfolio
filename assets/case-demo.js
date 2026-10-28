@@ -5,7 +5,8 @@
      data-on="2 3"(그 단계에서 is-on), data-pos="3 1 1"(단계별 목록 순서 — 순서를 바꿀 때만 한 번 움직인다)
    - 선택 목록: data-select="a" 버튼을 누르면 마지막 단계로 가서 data-detail="a" 내용을 보여 준다
    - 펼침: data-expand 버튼이 aria-controls 영역을 펼친다 (단계를 바꾸면 접힘)
-   - 언어 전환 뒤 단계·선택·펼침을 되살릴 때는 lang.js가 'sc:step' 이벤트를 보낸다 */
+   - 탭(data-tabs): 데모 여러 개 중 하나만 보인다. 탭을 바꾸면 재생 중인 데모는 멈춘다
+   - 언어 전환 뒤 단계·선택·펼침을 되살릴 때는 lang.js가 'sc:step', 고른 탭은 'sc:tab' 이벤트를 보낸다 */
 (function () {
   var STEP_MS = 2600;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -147,5 +148,33 @@
     });
 
     setStep(current());
+  });
+
+  // 데모 탭: 좌우 화살표·Home·End로 이동하며 바로 전환한다
+  all(document, '[data-tabs]').forEach(function (box) {
+    var tabs = all(box, '[role="tab"]');
+    function select(tab, focus) {
+      halts.forEach(function (h) { h(); });
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) tab.focus();
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { select(t); });
+      t.addEventListener('keydown', function (e) {
+        var j = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: tabs.length - 1 }[e.key];
+        if (j === undefined) return;
+        e.preventDefault();
+        select(tabs[(j + tabs.length) % tabs.length], true);
+      });
+    });
+    box.addEventListener('sc:tab', function (e) {
+      var t = document.getElementById(e.detail);
+      if (t && tabs.indexOf(t) !== -1) select(t);
+    });
   });
 })();

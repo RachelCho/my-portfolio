@@ -43,10 +43,20 @@
 <main id="main">
   <section class="page-intro work-page">
     <div class="wrap">
-      <div class="page-header">
-        <p class="label">Selected Work</p>
-        <h1>Design decisions, in three projects</h1>
-        <p class="lead">Projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed, and the screens are recreated to illustrate the design decisions.</p>
+      <div class="media-split work-hero">
+        <div class="page-header media-text">
+          <p class="label">Selected Work</p>
+          <h1>Design decisions, in three projects</h1>
+          <p class="lead">Projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed, and the screens are recreated to illustrate the design decisions.</p>
+        </div>
+        <div class="work-hero-ui frame-product">
+          <ul class="wh-list">
+          <li><div class="thumb thumb-cal" role="img" aria-label="Recreated scheduling screen preview: a calendar distinguishing available, blocked, and recommended dates"><span class="th-head"></span><span class="th-grid"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="no"></i><i></i><i></i><i class="ok"></i><i class="no"></i><i class="no"></i><i class="ok"></i><i class="rec"></i><i></i><i></i></span></div><span class="wh-cap">01 Scheduling</span></li>
+          <li><div class="thumb thumb-pri" role="img" aria-label="Recreated incident list preview: the P1 item that needs action first is highlighted at the top"><span class="th-head"></span><span class="th-row is-top"><b>P1</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P3</b><i></i></span></div><span class="wh-cap">02 Priority triage</span></li>
+          <li><div class="thumb thumb-l10n" role="img" aria-label="Recreated localization comparison preview: the same screen in the English original and in Korean"><span class="th-col"><b>EN</b><i></i><i class="s"></i><i class="go"></i></span><span class="th-col"><b>KO</b><i></i><i class="s"></i><i class="go"></i></span></div><span class="wh-cap">03 Korean localization</span></li>
+          </ul>
+          <p class="thumb-note">Recreated for illustration · Sample data</p>
+        </div>
       </div>
       <nav class="case-index" aria-label="Jump to a case">
         <a href="#case-healthcare"><span aria-hidden="true">01</span> Home healthcare scheduling</a>
@@ -206,8 +216,12 @@
             </dd>
           </dl>
         </div>
-        <div class="case-demo case-demo-stack">
-          <div class="demo-block">
+        <div class="case-demo case-demo-tabs" id="case-monitoring-demos" data-tabs>
+          <div class="demo-tabs" role="tablist" aria-label="Choose a demo">
+            <button type="button" class="demo-tab" role="tab" id="tab-triage" aria-selected="true" aria-controls="panel-triage">Priority triage</button>
+            <button type="button" class="demo-tab" role="tab" id="tab-forecast" aria-selected="false" aria-controls="panel-forecast" tabindex="-1">AI forecast summary</button>
+          </div>
+          <div class="demo-block" role="tabpanel" id="panel-triage" aria-labelledby="tab-triage">
             <h3 class="demo-title">Put what needs action first, first.</h3>
             <p class="demo-desc">Technical signals and business impact are read together, so the incident that needs action first sits at the top of the list.</p>
             <div class="demo" id="demo-monitoring" data-demo data-step="1" data-sel="a">
@@ -279,8 +293,7 @@
               </div>
             </div>
           </div>
-
-          <div class="demo-block">
+          <div class="demo-block" role="tabpanel" id="panel-forecast" aria-labelledby="tab-forecast" hidden>
             <h3 class="demo-title">From past records, the signals to watch next.</h3>
             <p class="demo-desc">AI finds recurring patterns in the past records connected for the project, and the summary above the list flags risks that may come next.</p>
             <div class="demo" id="demo-forecast" data-demo data-step="1">

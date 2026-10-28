@@ -43,10 +43,20 @@
 <main id="main">
   <section class="page-intro work-page">
     <div class="wrap">
-      <div class="page-header">
-        <p class="label">Selected Work</p>
-        <h1>세 프로젝트로 보는 설계 판단</h1>
-        <p class="lead">Second Context를 시작하기 전, Rachel Cho가 이전 경력에서 수행한 프로젝트입니다. 고객사 이름은 밝히지 않으며, 화면은 설계 판단을 설명하기 위해 다시 구성했습니다.</p>
+      <div class="media-split work-hero">
+        <div class="page-header media-text">
+          <p class="label">Selected Work</p>
+          <h1>세 프로젝트로 보는 설계 판단</h1>
+          <p class="lead">Second Context를 시작하기 전, Rachel Cho가 이전 경력에서 수행한 프로젝트입니다. 고객사 이름은 밝히지 않으며, 화면은 설계 판단을 설명하기 위해 다시 구성했습니다.</p>
+        </div>
+        <div class="work-hero-ui frame-product">
+          <ul class="wh-list">
+          <li><div class="thumb thumb-cal" role="img" aria-label="재구성한 일정 화면 미리보기: 예약 가능한 날짜, 제한된 날짜, 추천 날짜를 구분한 달력"><span class="th-head"></span><span class="th-grid"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="no"></i><i></i><i></i><i class="ok"></i><i class="no"></i><i class="no"></i><i class="ok"></i><i class="rec"></i><i></i><i></i></span></div><span class="wh-cap">01 일정 관리</span></li>
+          <li><div class="thumb thumb-pri" role="img" aria-label="재구성한 인시던트 목록 미리보기: 우선 대응할 P1 항목이 맨 위에 강조된 화면"><span class="th-head"></span><span class="th-row is-top"><b>P1</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P3</b><i></i></span></div><span class="wh-cap">02 우선 대응</span></li>
+          <li><div class="thumb thumb-l10n" role="img" aria-label="재구성한 현지화 비교 미리보기: 같은 화면의 영어 원문과 한국어 화면"><span class="th-col"><b>EN</b><i></i><i class="s"></i><i class="go"></i></span><span class="th-col"><b>KO</b><i></i><i class="s"></i><i class="go"></i></span></div><span class="wh-cap">03 한국어 현지화</span></li>
+          </ul>
+          <p class="thumb-note">설계 설명을 위한 재구성 · 예시 데이터</p>
+        </div>
       </div>
       <nav class="case-index" aria-label="사례 바로가기">
         <a href="#case-healthcare"><span aria-hidden="true">01</span> 홈헬스케어 일정 관리</a>
@@ -206,8 +216,12 @@
             </dd>
           </dl>
         </div>
-        <div class="case-demo case-demo-stack">
-          <div class="demo-block">
+        <div class="case-demo case-demo-tabs" id="case-monitoring-demos" data-tabs>
+          <div class="demo-tabs" role="tablist" aria-label="데모 선택">
+            <button type="button" class="demo-tab" role="tab" id="tab-triage" aria-selected="true" aria-controls="panel-triage">우선 대응 판단</button>
+            <button type="button" class="demo-tab" role="tab" id="tab-forecast" aria-selected="false" aria-controls="panel-forecast" tabindex="-1">AI 예측 요약</button>
+          </div>
+          <div class="demo-block" role="tabpanel" id="panel-triage" aria-labelledby="tab-triage">
             <h3 class="demo-title">먼저 대응할 문제를, 먼저 보이게.</h3>
             <p class="demo-desc">기술 신호와 업무 영향을 함께 보고, 가장 먼저 대응해야 할 인시던트를 목록 맨 위에 둡니다.</p>
             <div class="demo" id="demo-monitoring" data-demo data-step="1" data-sel="a">
@@ -279,8 +293,7 @@
               </div>
             </div>
           </div>
-
-          <div class="demo-block">
+          <div class="demo-block" role="tabpanel" id="panel-forecast" aria-labelledby="tab-forecast" hidden>
             <h3 class="demo-title">과거의 기록에서, 다음에 주의할 신호를.</h3>
             <p class="demo-desc">AI가 프로젝트에서 연결한 과거 기록의 반복 패턴을 찾고, 앞으로 생길 수 있는 위험을 목록 위 요약에서 먼저 알려 줍니다.</p>
             <div class="demo" id="demo-forecast" data-demo data-step="1">
