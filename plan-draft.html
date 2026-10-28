@@ -58,7 +58,7 @@ table{width:100%;border-collapse:collapse;font-size:15px;margin-top:var(--s2)}
 th,td{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid var(--line)}
 th{font-size:13px;font-weight:600;letter-spacing:.04em;border-bottom:1.5px solid var(--plum)}
 .swatch{display:inline-block;width:14px;height:14px;border-radius:2px;vertical-align:-2px;margin-right:6px;border:1px solid var(--plum)}
-.sw-plum{background:var(--plum)}.sw-orange{background:var(--orange)}.sw-cream{background:var(--cream)}.sw-sage{background:var(--sage)}.sw-deco{background:var(--accent-deco)}
+.sw-plum{background:var(--plum)}.sw-orange{background:var(--orange)}.sw-cream{background:var(--cream)}.sw-white{background:#FFFFFF}.sw-surface{background:#F6F6F4}.sw-sage{background:var(--sage)}.sw-deco{background:var(--accent-deco)}
 
 .booking{background:var(--sage);border-radius:4px;padding:var(--card-pad);margin-top:var(--s3)}
 .booking h3{margin-top:0}
@@ -301,7 +301,9 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
         <tbody>
           <tr><td><span class="swatch sw-plum"></span>Primary / Context Plum</td><td>#30232E</td><td>제목, 본문, Primary 버튼</td></tr>
           <tr><td><span class="swatch sw-orange"></span>Secondary / Accessible Orange</td><td>#A83E20</td><td>기능성 강조, Secondary 버튼, 강조 글자</td></tr>
-          <tr><td><span class="swatch sw-cream"></span>Background / Warm Cream</td><td>#F4F0E8</td><td>기본 배경, 어두운 배경 위 글자</td></tr>
+          <tr><td><span class="swatch sw-white"></span>Background / White</td><td>#FFFFFF</td><td>기본 배경 (2026-10-28 크림에서 변경)</td></tr>
+          <tr><td><span class="swatch sw-surface"></span>Neutral Surface</td><td>#F6F6F4</td><td>옅은 중립 면. 문의 폼처럼 꼭 필요한 영역에만</td></tr>
+          <tr><td><span class="swatch sw-cream"></span>Brand Cream</td><td>#F4F0E8</td><td>작은 브랜드 요소 전용: 플럼·오렌지 버튼 위 글자, 파비콘 바탕</td></tr>
           <tr><td><span class="swatch sw-sage"></span>Surface / Soft Sage</td><td>#9DAE9A</td><td>보조 배경, 정보 패널</td></tr>
           <tr><td><span class="swatch sw-deco"></span>Decorative Accent / Signal Orange</td><td>#DA613E</td><td>승인 로고, 순수 장식 선·그래픽 전용</td></tr>
         </tbody>
@@ -323,6 +325,10 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
       <table>
         <thead><tr><th>글자 / 배경</th><th>대비</th></tr></thead>
         <tbody>
+          <tr><td>플럼 / 화이트</td><td>14.94:1</td></tr>
+          <tr><td>조정 오렌지 / 화이트</td><td>6.22:1</td></tr>
+          <tr><td>플럼 / 중립 면(#F6F6F4)</td><td>13.81:1</td></tr>
+          <tr><td>조정 오렌지 / 중립 면(#F6F6F4)</td><td>5.75:1</td></tr>
           <tr><td>플럼 / 크림</td><td>13.15:1</td></tr>
           <tr><td>크림 / 플럼</td><td>13.15:1</td></tr>
           <tr><td>조정 오렌지 / 크림</td><td>5.48:1</td></tr>
@@ -336,7 +342,7 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
       <div class="btn-demo">
         <span class="btn">Primary · 플럼 배경 + 크림 문구</span>
         <span class="btn btn-secondary-fill">Secondary 채움 · 조정 오렌지 배경 + 크림 문구</span>
-        <span class="btn btn-secondary">Secondary 외곽선 · 크림 배경 + 조정 오렌지 문구·테두리</span>
+        <span class="btn btn-secondary">Secondary 외곽선 · 화이트 배경 + 조정 오렌지 문구·테두리</span>
       </div>
 
       <h3>사용 금지 조합</h3>

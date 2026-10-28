@@ -2,7 +2,10 @@
   /* 브랜드 컬러 토큰 — 대비 기준은 CLAUDE.md "Second Context 브랜드 규칙" 참고 */
   --plum:#30232E;          /* Primary: 글자, 주요 버튼 */
   --orange:#A83E20;        /* Secondary (Accessible Orange): 기능성 강조, 보조 버튼 */
-  --cream:#F4F0E8;         /* Background */
+  --white:#FFFFFF;
+  --bg:var(--white);       /* 기본 배경 (2026-10-28 크림 → 화이트) */
+  --surface:#F6F6F4;       /* 옅은 중립 면: 문의 폼처럼 꼭 필요한 영역에만 */
+  --cream:#F4F0E8;         /* 브랜드 보조색: 플럼 버튼 위 글자 등 작은 요소에만 */
   --sage:#9DAE9A;          /* Surface: 보조 배경 (글자·기능 아이콘 색으로 쓰지 않음) */
   --accent-deco:#DA613E;   /* Decorative Accent: 순수 장식 선·그래픽 전용 */
   --plum-hover:#45333F; --plum-active:#221920;
@@ -34,13 +37,13 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + var(--s3))}
-body{font-family:'Manrope','Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;color:var(--plum);background:var(--cream);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body{font-family:'Manrope','Noto Sans KR',sans-serif;font-size:17px;line-height:1.7;color:var(--plum);background:var(--bg);-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
 a{color:inherit;text-underline-offset:3px}
 :focus-visible{outline:3px solid var(--plum);outline-offset:3px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.skip{position:absolute;left:var(--s2);top:-200px;z-index:100;background:var(--plum);color:var(--cream);padding:var(--s2) var(--s3);border-radius:4px;font-weight:600;text-decoration:underline}
+.skip{position:absolute;left:var(--s2);top:-200px;z-index:100;background:var(--plum);color:var(--white);padding:var(--s2) var(--s3);border-radius:4px;font-weight:600;text-decoration:underline}
 .skip:focus{top:var(--s2)}
-.skip:focus-visible{outline-color:var(--plum);outline-offset:3px;box-shadow:0 0 0 3px var(--cream)}
+.skip:focus-visible{outline-color:var(--plum);outline-offset:3px;box-shadow:0 0 0 3px var(--bg)}
 img{display:block;max-width:100%}
 /* 공통 콘텐츠 컨테이너: 헤더·섹션·푸터 모두 이 하나로 좌우 기준선을 맞춘다. 중첩하지 않는다 */
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
@@ -59,7 +62,7 @@ h3{font-size:20px;line-height:1.4;font-weight:700}
 .btn-primary{background:var(--plum);color:var(--cream)}
 .btn-primary:hover{background:var(--plum-hover);border-color:var(--plum-hover)}
 .btn-primary:active{background:var(--plum-active);border-color:var(--plum-active)}
-.btn-secondary{background:var(--cream);color:var(--orange);border-color:var(--orange)}
+.btn-secondary{background:var(--bg);color:var(--orange);border-color:var(--orange)}
 .btn-secondary:hover{background:var(--orange);color:var(--cream)}
 .btn-secondary:active{background:var(--orange-hover);border-color:var(--orange-hover);color:var(--cream)}
 .btn-secondary-fill{background:var(--orange);color:var(--cream);border-color:var(--orange)}
@@ -67,7 +70,7 @@ h3{font-size:20px;line-height:1.4;font-weight:700}
 section{padding:var(--section-y) 0;border-top:1px solid var(--line)}
 
 /* header */
-header{position:sticky;top:0;z-index:10;background:var(--cream);border-bottom:1px solid var(--line)}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
 /* 헤더: 로고 · 주요 메뉴 · 언어 선택 (DOM 순서도 같다) */
 header .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"logo nav lang";align-items:center;column-gap:var(--s4);min-height:var(--header-h)}
 .logo{grid-area:logo}
@@ -180,46 +183,42 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 .values h3{margin-bottom:var(--s1)}
 
 /* contact */
-.contact-layout{display:grid;grid-template-columns:minmax(0,65fr) minmax(0,35fr);align-items:start}
-.inquiry-form{padding-right:var(--s4)}
+/* 데스크톱: 왼쪽 안내(제목·설명·이메일·상담 예약) | 오른쪽 문의 폼. 900px 이하는 안내 → 폼 */
+.contact-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gap-split);align-items:start}
+.contact-way + .contact-way{margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid var(--line)}
+.contact-way .label{margin-bottom:var(--s2)}
+.contact-way .btn{margin-top:var(--s3)}
+.email-link{display:inline-block;padding:var(--gap-tight) 0;font-size:19px;font-weight:600;overflow-wrap:anywhere}
+.contact-way .mini-btn{margin-top:var(--s2)}
+/* 폼: 이 페이지에서 유일하게 옅은 중립색 면을 쓰는 영역 */
+.inquiry-form{background:var(--surface);padding:var(--s5) var(--s6) var(--s6);border-radius:4px}
 .form-note{font-size:15px}
 .field{margin-top:var(--gap-field)}
 .form-note + .field{margin-top:var(--s4)}
 .field label{display:block;font-size:17px;line-height:1.4;font-weight:600}
 .field .req{color:var(--orange)}
 .field-help{font-size:15px;margin-top:var(--gap-tight)}
-/* 밑줄형 입력: 투명 배경, 플럼 밑줄(크림 대비 13:1), 포커스는 공통 3px 외곽선 + 굵은 밑줄 */
+/* 밑줄형 입력: 투명 배경, 플럼 밑줄, 포커스는 공통 3px 외곽선 + 굵은 밑줄 */
 .field input,.field textarea{display:block;width:100%;min-height:48px;margin-top:var(--gap-label-input);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
 .field textarea{min-height:184px;resize:vertical}
 .field input:focus,.field textarea:focus{border-bottom-width:3px}
 .field [aria-invalid="true"]{border-bottom:3px solid var(--orange)}
 .field-error{margin-top:var(--s1);font-size:15px;font-weight:600;color:var(--orange)}
+.hp{display:none}
 .form-pending{margin-top:var(--s4);font-size:15px;padding-left:var(--s2);border-left:3px solid var(--plum)}
-.inquiry-form .btn{margin-top:var(--s3)}
+.inquiry-form .btn{margin-top:var(--s4)}
 /* 전송 연결 전 비활성 버튼: 점선 테두리로 구분하되 글자 대비는 유지 */
-.inquiry-form .btn:disabled{background:var(--cream);color:var(--plum);border-style:dashed;cursor:not-allowed}
+.inquiry-form .btn:disabled{background:var(--bg);color:var(--plum);border-style:dashed;cursor:not-allowed}
+.inquiry-form .btn[aria-disabled="true"]{cursor:progress}
 .form-status{margin-top:var(--s2);font-weight:600}
 .form-status:empty{display:none}
 .form-status[data-state="error"]{color:var(--orange)}
-/* 가운데 얇은 세로 구분선 (장식) */
-.contact-aside{padding-left:var(--s4);border-left:1px solid rgba(48,35,46,.3)}
-.contact-aside .label:not(:first-child){margin-top:var(--s6)}
-.aside-name span{display:block}
-.aside-name span:first-child{font-weight:700}
-.aside-list{margin-top:var(--s3)}
-.aside-list dt{font-size:13px;font-weight:600}
-.aside-list dt:not(:first-child){margin-top:var(--s2)}
-.aside-list a{overflow-wrap:anywhere;display:inline-block;padding:var(--gap-tight) 0}
-.email-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s1) var(--s3);margin-top:var(--s1);font-size:15px}
-.mini-btn{min-height:44px;padding:var(--s1) var(--s2);background:var(--cream);color:var(--plum);border:1.5px solid var(--plum);border-radius:4px;font:inherit;font-weight:600;cursor:pointer}
+.mini-btn{min-height:44px;padding:var(--s1) var(--s2);background:var(--bg);color:var(--plum);border:1.5px solid var(--plum);border-radius:4px;font:inherit;font-size:15px;font-weight:600;cursor:pointer}
 .mini-btn:hover{background:var(--plum);color:var(--cream)}
 .copy-status{margin-top:var(--s1);font-size:15px;font-weight:600}
 .copy-status:empty{display:none}
 .copy-fallback{margin-top:var(--s1);font-size:15px}
 .copy-fallback input{display:block;width:100%;min-height:44px;margin-top:var(--gap-tight);padding:var(--s1) 0;background:transparent;border:0;border-bottom:1.5px solid var(--plum);border-radius:0;font:inherit;color:inherit}
-.aside-booking{margin-top:var(--s6)}
-.aside-lead{font-weight:700}
-.aside-booking .btn{margin-top:var(--s3)}
 
 /* 헤더만 1100px에서 두 줄로 바뀐다: 영어 메뉴가 한 줄에 들어가지 않기 때문 */
 @media(max-width:1100px){
@@ -239,9 +238,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .method{grid-template-columns:1fr;gap:0}
   .step,.values,.contact-layout{grid-template-columns:1fr}
   .founder{gap:var(--gap-stack)}
-  .inquiry-form{padding-right:0}
-  .contact-aside .label:not(:first-child),.aside-booking{margin-top:var(--s5)}
-  .contact-aside{padding-left:0;border-left:0;margin-top:var(--s5);padding-top:var(--s5);border-top:1px solid rgba(48,35,46,.3)}
+  .contact-layout{gap:var(--s5)}
+  .inquiry-form{padding:var(--s4)}
   .step{gap:var(--gap-sub)}
   .values{row-gap:var(--gap-stack)}
 }
@@ -256,6 +254,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .page-intro h1{font-size:32px;line-height:1.3}
   .step h3,.work-title{font-size:20px}
   .founder-stats{grid-template-columns:1fr;gap:var(--s2)}
+  .inquiry-form{padding:var(--s3) var(--s2) var(--s4);margin:0 calc(-1 * var(--s2));border-radius:0}
   .founder-stats .stat-value{font-size:26px}
   :root{--gap-field:var(--s2);--gap-label-input:var(--s1);--lead-size:18px;--gap-after-lead:40px}
   .step dl{grid-template-columns:1fr;gap:0}

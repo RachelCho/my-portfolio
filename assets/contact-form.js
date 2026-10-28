@@ -42,6 +42,8 @@
 
   var T = ko ? {
     names: { name: '이름', email: '이메일', message: '문의 내용' },
+    url: 'URL 형식이 올바르지 않습니다. example.com 형태로 입력해 주세요.',
+    sendingLabel: '보내는 중…',
     prefix: '오류: ',
     required: function (n) { return n + ' 항목을 입력해 주세요.'; },
     email: '이메일 형식이 올바르지 않습니다. name@company.com 형태로 입력해 주세요.',
@@ -49,9 +51,11 @@
     notConnected: '전송되지 않음: 온라인 문의 접수가 아직 연결되지 않았습니다. 작성하신 내용은 그대로 남아 있으니 ' + EMAIL + '으로 보내 주세요.',
     sending: '문의를 보내는 중입니다…',
     success: '전송 완료: 문의가 접수되었습니다. 감사합니다.',
-    failure: '전송 실패: 문의를 보내지 못했습니다. 작성하신 내용은 그대로 남아 있습니다. 잠시 후 다시 시도하시거나 ' + EMAIL + '으로 보내 주세요.'
+    failure: '전송 실패: 문의를 보내지 못했습니다. 작성하신 내용은 그대로 남아 있으니 문의 보내기를 다시 눌러 주세요. 계속 실패하면 ' + EMAIL + '으로 보내 주세요.'
   } : {
     names: { name: 'your name', email: 'your email address', message: 'your message' },
+    url: 'This URL isn’t valid. Please use a format like example.com.',
+    sendingLabel: 'Sending…',
     prefix: 'Error: ',
     required: function (n) { return 'Please fill in ' + n + '.'; },
     email: 'This email address isn’t valid. Please use a format like name@company.com.',
@@ -59,7 +63,7 @@
     notConnected: 'Not sent: online inquiries aren’t connected yet. Your message is still in the form—please send it to ' + EMAIL + '.',
     sending: 'Sending your inquiry…',
     success: 'Sent: your inquiry has been received. Thank you.',
-    failure: 'Not sent: something went wrong. Your message is still in the form. Please try again later or send it to ' + EMAIL + '.'
+    failure: 'Not sent: something went wrong. Your message is still in the form—please select Send inquiry again. If it keeps failing, email ' + EMAIL + '.'
   };
 
   var status = form.querySelector('.form-status');
@@ -92,8 +96,12 @@
   function check(el) {
     var v = el.value.trim();
     var msg = '';
+    // 제품 URL은 https:// 없이 적어도 받는다 (example.com → https://example.com)
+    if (el.type === 'url' && v && !/^[a-z][a-z0-9+.-]*:\/\//i.test(v)) { el.value = 'https://' + v; }
     if (el.required && !v) msg = T.required(T.names[el.name] || el.name);
     else if (el.type === 'email' && v && el.validity.typeMismatch) msg = T.email;
+    // 브라우저 검사는 공백 섞인 주소도 통과시키므로, 공백 없음과 도메인 점(.)을 함께 확인한다
+    else if (el.type === 'url' && v && (el.validity.typeMismatch || !/^[a-z][a-z0-9+.-]*:\/\/[^\/\s.]+\.[^\/\s]+(\/\S*)?$/i.test(el.value.trim()))) msg = T.url;
     setError(el, msg);
     return !msg;
   }
@@ -126,8 +134,11 @@
       return;
     }
 
+    // 전송 중에는 다시 누를 수 없게 하고, 응답이 오면 버튼을 되돌린다
     sending = true;
+    var label = button.textContent;
     button.setAttribute('aria-disabled', 'true');
+    button.textContent = T.sendingLabel;
     setStatus(T.sending, 'sending');
 
     fetch(endpoint, {
@@ -136,12 +147,15 @@
       headers: { Accept: 'application/json' }
     }).then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
+      // 서버가 성공(2xx)을 돌려준 뒤에만 입력을 비운다
       form.reset();
+      fields.forEach(function (el) { setError(el, ''); });
       setStatus(T.success, 'success');
     }).catch(function () {
       setStatus(T.failure, 'error');
     }).then(function () {
       sending = false;
+      button.textContent = label;
       button.removeAttribute('aria-disabled');
     });
   });

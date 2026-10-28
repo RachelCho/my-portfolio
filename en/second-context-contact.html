@@ -42,13 +42,33 @@
 <main id="main">
   <section class="page-intro">
     <div class="wrap">
-      <div class="page-header">
-        <p class="label">Contact</p>
-        <h1>Tell us about your project.</h1>
-        <p class="lead">Tell us about your product, your target market, and the challenges you’re working through.</p>
-      </div>
       <div class="contact-layout">
-        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-label="Project inquiry">
+        <div class="contact-intro">
+          <div class="page-header">
+            <p class="label">Contact</p>
+            <h1>What would you like to improve in your product?</h1>
+            <p class="lead">Tell us briefly about your product and what you’re working through. It’s fine if the project scope isn’t defined yet.</p>
+          </div>
+          <div class="contact-ways">
+            <div class="contact-way" id="email-contact">
+              <h2 class="label">Email</h2>
+              <p><a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></p>
+              <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">Copy email</button>
+              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+              <div class="copy-fallback" id="copy-fallback" hidden>
+                <label for="email-manual">Email address (select to copy)</label>
+                <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
+              </div>
+            </div>
+            <div class="contact-way" id="booking">
+              <h2 class="label">30-minute consultation</h2>
+              <p>If you’d rather talk than write, we can look at your product and current challenges together in a 30-minute consultation.</p>
+              <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+        </div>
+        <form class="inquiry-form" id="inquiry" data-endpoint="" novalidate aria-labelledby="inquiry-title">
+          <h2 class="label" id="inquiry-title">Send an inquiry</h2>
           <p class="form-note"><span aria-hidden="true">*</span> Required</p>
           <div class="field">
             <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
@@ -56,59 +76,31 @@
             <p class="field-error" id="f-name-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-org">Organisation</label>
-            <input id="f-org" name="organisation" type="text" autocomplete="organization" aria-describedby="f-org-error">
-            <p class="field-error" id="f-org-error" hidden></p>
-          </div>
-          <div class="field">
             <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
             <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="f-email-error">
             <p class="field-error" id="f-email-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-phone">Phone number</label>
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel" aria-describedby="f-phone-error">
-            <p class="field-error" id="f-phone-error" hidden></p>
+            <label for="f-company">Company or product name</label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" aria-describedby="f-company-error">
+            <p class="field-error" id="f-company-error" hidden></p>
           </div>
           <div class="field">
-            <label for="f-message">How can I help? <span class="req" aria-hidden="true">*</span></label>
-            <p class="field-help" id="f-message-help">Tell us about your product, target market, current challenges, and preferred timeline.</p>
-            <textarea id="f-message" name="message" rows="5" required aria-describedby="f-message-help f-message-error"></textarea>
+            <label for="f-url">Product URL</label>
+            <input id="f-url" name="product_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" aria-describedby="f-url-error">
+            <p class="field-error" id="f-url-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="f-message">Message <span class="req" aria-hidden="true">*</span></label>
+            <p class="field-help" id="f-message-help">Tell us what the product is, what’s difficult right now, and what help you need. If you have a preferred timeline, include it too.</p>
+            <textarea id="f-message" name="message" rows="6" required aria-describedby="f-message-help f-message-error"></textarea>
             <p class="field-error" id="f-message-error" hidden></p>
           </div>
-          <p class="form-pending" id="form-pending">Online inquiries aren’t connected yet, so the Send inquiry button is unavailable. Please use the email under Direct contact (copy the address or compose in Gmail) or book a 30-minute consultation.</p>
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          <p class="form-pending" id="form-pending">Online inquiries aren’t connected yet, so the Send inquiry button is unavailable. Please use email or book a 30-minute consultation.</p>
           <button class="btn btn-primary" type="submit" disabled aria-describedby="form-pending">Send inquiry</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
-        <aside class="contact-aside" aria-label="Contact details">
-          <h2 class="label">Direct contact</h2>
-          <p class="aside-name"><span>Second Context</span><span>Rachel Cho</span></p>
-          <dl class="aside-list">
-            <dt>Email</dt>
-            <dd>
-              <a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a>
-              <div class="email-actions">
-                <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">Copy email</button>
-                <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=rachel.cho5257%40gmail.com" target="_blank" rel="noopener">Compose in Gmail<span class="sr-only"> (opens in a new tab)</span></a>
-              </div>
-              <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
-              <div class="copy-fallback" id="copy-fallback" hidden>
-                <label for="email-manual">Email address (select to copy)</label>
-                <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
-              </div>
-            </dd>
-            <dt>LinkedIn</dt>
-            <dd><a href="https://www.linkedin.com/in/rachelchoart/" target="_blank" rel="noopener">linkedin.com/in/rachelchoart<span class="sr-only"> (opens in a new tab)</span></a></dd>
-          </dl>
-          <h2 class="label">Languages</h2>
-          <p><span lang="ko">한국어</span> · <span lang="en">English</span></p>
-          <div class="aside-booking" id="booking">
-            <h2 class="label">30-minute consultation</h2>
-            <p class="aside-lead">Would you like to talk first?</p>
-            <p>In a 30-minute consultation, we’ll look at your product and current challenges together.</p>
-            <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (opens in a new tab)</span></a>
-          </div>
-        </aside>
       </div>
     </div>
   </section>

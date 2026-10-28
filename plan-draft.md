@@ -113,7 +113,9 @@ Global Tech · Korean Localization · 2019
 |---|---|---|
 | Primary / Context Plum | #30232E | 제목, 본문, Primary 버튼 |
 | Secondary / Accessible Orange | #A83E20 | 기능성 강조, Secondary 버튼, 강조 글자 |
-| Background / Warm Cream | #F4F0E8 | 기본 배경, 어두운 배경 위 글자 |
+| Background / White | #FFFFFF | 기본 배경 (2026-10-28 크림에서 변경) |
+| Neutral Surface | #F6F6F4 | 옅은 중립 면. 문의 폼처럼 꼭 필요한 영역에만 |
+| Brand Cream | #F4F0E8 | 작은 브랜드 요소 전용: 플럼·오렌지 버튼 위 글자, 파비콘 바탕 |
 | Surface / Soft Sage | #9DAE9A | 보조 배경, 정보 패널 |
 | Decorative Accent / Signal Orange | #DA613E | 승인 로고, 순수 장식 선·그래픽 전용 |
 
@@ -130,6 +132,10 @@ Global Tech · Korean Localization · 2019
 ### 승인된 조합
 | 글자 / 배경 | 대비 |
 |---|---|
+| 플럼 / 화이트 | 14.94:1 |
+| 조정 오렌지 / 화이트 | 6.22:1 |
+| 플럼 / 중립 면(#F6F6F4) | 13.81:1 |
+| 조정 오렌지 / 중립 면(#F6F6F4) | 5.75:1 |
 | 플럼 / 크림 | 13.15:1 |
 | 크림 / 플럼 | 13.15:1 |
 | 조정 오렌지 / 크림 | 5.48:1 |
@@ -140,7 +146,7 @@ Global Tech · Korean Localization · 2019
 ### 버튼
 - Primary: 플럼 배경 + 크림 문구
 - Secondary 채움: 조정 오렌지 배경 + 크림 문구
-- Secondary 외곽선: 크림 배경 + 조정 오렌지 문구·테두리
+- Secondary 외곽선: 화이트 배경 + 조정 오렌지 문구·테두리
 
 ### 사용 금지 조합
 - 플럼 ↔ 조정 오렌지 (약 2.40:1): 서로를 글자·배경이나 기능 식별용 경계로 조합하지 않는다
