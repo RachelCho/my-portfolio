@@ -59,6 +59,7 @@ COMMON = [
 ]
 
 HOME = [
+    ('화이트보드의 화면 흐름을 가리키며 제품 방향을 설명하는 장면', 'Someone pointing to a screen flow on a whiteboard while explaining product direction'),
     ('<title>Second Context — 시장을 넘나드는 제품 디자인</title>', '<title>Second Context — Product design across markets.</title>'),
     ('미국 시장을 준비하는 한국 B2B SaaS 팀을 위한 제품 UX 진단과 디자인.',
      'Product UX reviews and design for Korean B2B SaaS teams preparing for the U.S. market.'),
@@ -336,6 +337,7 @@ STEPS = [
     ('검증하고 다음 개선으로 이어가기', 'Validate and carry into the next iteration'),
 ]
 APPROACH = [
+    ('네 사람이 테이블 위 화면 스케치를 함께 검토하는 장면', 'Four people reviewing screen sketches together at a table'),
     ('<title>협업 방식 — Second Context</title>', '<title>Approach — Second Context</title>'),
     ('Second Context의 6단계 접근: 시장과 사용 맥락 이해부터 설계, 개발 연결, 검증까지.',
      'Second Context’s six-step approach: from understanding the market and context of use to design, development handoff, and validation.'),
@@ -420,6 +422,7 @@ CONTACT = [
 ]
 
 ABOUT = [
+    ('노트북과 화면 스케치를 함께 보며 이야기하는 멘토링 장면', 'A mentoring conversation over a laptop and screen sketches'),
     ('<title>창업자 소개 — Second Context</title>', '<title>About Rachel Cho — Second Context</title>'),
     ('Second Context를 이끄는 프로덕트 디자이너 Rachel Cho의 경력과 여정, 지금 하고 있는 일.',
      'The career, journey, and current work of Rachel Cho, the product designer who leads Second Context.'),
@@ -441,7 +444,6 @@ PATHS = [
     ('href="favicon.ico"', 'href="../favicon.ico"'),
     ('href="assets/', 'href="../assets/'),
     ('src="assets/', 'src="../assets/'),
-    ('src="./rachel-portrait-bw.png"', 'src="../rachel-portrait-bw.png"'),
 ]
 
 TABLE = {PAGES[0]: HOME, PAGES[1]: APPROACH, PAGES[2]: CONTACT, PAGES[3]: ABOUT, PAGES[4]: WORK}

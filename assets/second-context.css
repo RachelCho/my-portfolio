@@ -177,6 +177,11 @@ nav .btn{padding:var(--s1) var(--s2)}
 .demo .ui-panel:not([hidden]),.demo .ui-loc:not([hidden]),.demo-note:not([hidden]){animation:demo-in .3s ease both}
 @keyframes demo-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
+/* 페이지·섹션 첫머리: 왼쪽 글(.page-header) | 오른쪽 이미지. 이미지는 원본 3:2 비율 그대로(자르지 않음) */
+.intro-grid{display:grid;grid-template-columns:minmax(0,55fr) minmax(0,45fr);column-gap:var(--s6);align-items:center}
+.intro-grid + [class]{margin-top:var(--gap-after-lead)}
+.intro-media img{display:block;width:100%;height:auto;aspect-ratio:3/2}
+
 /* hero */
 .hero,.page-intro{border-top:0}
 .hero .tag{font-size:15px;font-weight:600}
@@ -334,6 +339,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .svc{grid-template-columns:1fr;gap:var(--s1)}
   .method{grid-template-columns:1fr;gap:0}
   .step,.values,.contact-layout,.case-body{grid-template-columns:1fr}
+  .intro-grid{grid-template-columns:1fr;row-gap:var(--s4)}
+  .intro-media{max-width:640px}
   .case-demo{order:-1} /* 모바일: 대표 화면을 먼저 */
   .founder{gap:var(--gap-stack)}
   .contact-layout{gap:var(--s5)}

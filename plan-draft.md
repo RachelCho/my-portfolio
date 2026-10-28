@@ -96,7 +96,7 @@ Global Tech · Korean Localization · 2019
   - 버튼: 30분 상담 예약 / 관련 사례 보기
 
 ### 창업자 소개 (Founder)
-- 사진: ./rachel-portrait-bw.png (흑백 최종본, 얼굴·외모 편집 금지, 원본 비율 유지·얼굴과 머리 자르지 않음)
+- 사진: assets/rachel-portrait-bw.png (흑백 최종본, 얼굴·외모 편집 금지, 원본 비율 유지·얼굴과 머리 자르지 않음)
 - 사진 아래 3줄: Rachel Cho / Founder, Second Context / Product Designer · Startup Strategy Coach · Career Mentor
 - 레이아웃: 데스크톱은 사진 왼쪽·소개문 오른쪽, 모바일은 사진 → 소개문 세로 배치
 - 홈: 창업자 소개 페이지와 같은 1인칭 소개 3문단(이전: 짧은 소개 2문단)(전문성 → 이민자로 쌓은 커리어 → 지금의 멘토링·파운더 지원) + 경력 수치 3개(40+ 완료한 프로젝트 · 12+ 함께 일한 글로벌·다국적 기업 · 27 여행한 국가, 화면 진입 시 한 번 카운트업)

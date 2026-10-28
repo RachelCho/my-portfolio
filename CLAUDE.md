@@ -89,7 +89,7 @@
 - 장식 오렌지 #DA613E: 글자·버튼·기능 요소에 쓰지 않는다
 
 ### 창업자 소개 (Founder)
-- 사진: ./rachel-portrait-bw.png (흑백 최종본). 얼굴·외모를 편집하지 않고, 원본 비율을 유지하며 얼굴과 머리를 자르지 않는다
+- 사진: assets/rachel-portrait-bw.png (흑백 최종본). 얼굴·외모를 편집하지 않고, 원본 비율을 유지하며 얼굴과 머리를 자르지 않는다
 - 사진 아래 3줄: Rachel Cho / Founder & Product UX Consultant / Product Designer · Startup Strategy Coach · Career Mentor
 - 구성(2026-10-28 갱신): 제목 "낯선 맥락을 이해하고, 다음 방향을 함께 찾습니다." / "Understanding new contexts. Finding a way forward, together." 창업자 소개 페이지는 사용자가 준 3문단(전문성 / 직접 학비·이민자 커리어·디지털 노매드 / 컨설팅·멘토링)을 그대로 쓰고, 홈 #founder도 같은 3문단 + 경력 수치(창업자 소개 페이지 링크 없음, 2026-10-28 사용자 요청). 메뉴에는 About을 따로 두지 않는다
 - 1인칭(나/저)으로 쓰고, '자수성가'·'역경 극복'·'글로벌 리더' 같은 수식어 대신 구체적 경험(직접 학비 마련, 이민자로 쌓은 커리어, 27개국 디지털 노매드)으로 보여준다. 확인되지 않은 어려움·감정·가족사·재정 상황은 덧붙이지 않는다
