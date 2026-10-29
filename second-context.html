@@ -41,9 +41,12 @@
 </header>
 
 <main id="main">
-  <section class="hero" id="top">
-    <div class="wrap media-split">
-      <div class="media-text hero-text">
+  <section class="hero hero-full" id="top">
+    <!-- 풀블리드 Hero: 사진(배경) → 그라데이션(텍스트 대비) → 실제 HTML 텍스트 -->
+    <img class="hero-bg" src="assets/images/home-hero-team-1536.jpg" srcset="assets/images/home-hero-team-768.jpg 768w, assets/images/home-hero-team-1152.jpg 1152w, assets/images/home-hero-team-1536.jpg 1536w" width="1536" height="1024" sizes="100vw" fetchpriority="high" alt="밝은 사무실에서 노트북을 펴 놓고 운영 대시보드를 함께 논의하는 네 사람">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-text">
         <div class="page-header">
           <p class="label">Product design across markets.</p>
           <h1>새로운 시장의 맥락을, 제품의 다음 단계로.</h1>
@@ -51,13 +54,10 @@
         </div>
         <p class="tag">헬스케어 · 엔터프라이즈 · 복잡한 운영 워크플로</p>
         <div class="cta">
-          <a class="btn btn-primary" href="second-context-contact.html#inquiry">프로젝트 문의하기</a>
-          <a class="btn btn-secondary" href="#work">사례 살펴보기</a>
+          <a class="btn btn-hero-primary" href="second-context-contact.html#inquiry">프로젝트 문의하기</a>
+          <a class="btn btn-hero-secondary" href="#work">사례 살펴보기</a>
         </div>
       </div>
-      <figure class="frame-photo">
-        <img src="assets/images/home-hero-team-1152.jpg" srcset="assets/images/home-hero-team-768.jpg 768w, assets/images/home-hero-team-1152.jpg 1152w, assets/images/home-hero-team-1536.jpg 1536w" width="1536" height="1024" sizes="(max-width: 900px) 100vw, 536px" fetchpriority="high" alt="밝은 사무실에서 노트북을 펴 놓고 운영 대시보드를 함께 논의하는 네 사람">
-      </figure>
     </div>
   </section>
 
