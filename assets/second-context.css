@@ -302,6 +302,31 @@ section > .wrap.media-split{margin-top:0}
 .btn-hero-secondary:hover{background:rgba(34,25,32,.78);border-color:var(--white)}
 .btn-hero-secondary:active{background:rgba(34,25,32,.9);border-color:var(--white)}
 .hero-full .btn:focus-visible{outline:3px solid var(--white);outline-offset:3px;box-shadow:0 0 0 6px var(--plum-active)}
+/* Approach Hero(--low): 인물 얼굴과 유리벽 스케치가 위쪽에 보이도록 텍스트는 아래, 음영은 주로 아래쪽 */
+.hero-full--low{min-height:85vh;min-height:85svh}
+.hero-full--low .hero-bg{object-position:50% 16%}
+.hero-full--low .hero-shade{background:
+    linear-gradient(0deg,rgba(34,25,32,.9) 0%,rgba(34,25,32,.84) 40%,rgba(34,25,32,.5) 54%,rgba(34,25,32,0) 68%),
+    linear-gradient(90deg,rgba(34,25,32,.45) 0%,rgba(34,25,32,0) 55%)}
+.hero-full--low .hero-text{max-width:780px}
+.hero-full--low h1{max-width:16em}
+.hero-full--low .lead{max-width:34em}
+/* Work Hero(--plain): 사진 없이 다크 배경 + 제품 화면 미리보기. 높이는 콘텐츠에 맞춘다 */
+.hero-full--plain{min-height:0;align-items:stretch}
+.hero-full--plain .hero-text,.hero-full--plain .page-header{max-width:none}
+.hero-full .wh-cap,.hero-full .thumb-note{color:var(--hero-muted)}
+.hero-full .case-index{border-top-color:rgba(255,255,255,.3)}
+.hero-full .case-index a{color:var(--white)}
+.hero-full .case-index span{color:var(--hero-muted)}
+/* 홈 섹션 Hero 띠(--band): Services(사진)·Work(제품 화면). 페이지 Hero보다 낮게, 다음 섹션과 이어진다 */
+.hero-full--band{min-height:65vh;min-height:65svh}
+.hero-full--band .hero-bg{object-position:50% 22%}
+.hero-full--plain.hero-full--band{min-height:0}
+.hero-full h2{color:var(--white);text-wrap:balance}
+.section-after-band{border-top:0}
+.section-after-band .wrap > .sr-only:first-child + *{margin-top:0}
+/* Hero에서 내려온 강조 문장 → 다음 라벨 */
+.highlight + .label{margin-top:var(--s6)}
 
 /* why */
 .cases{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap-grid);margin-top:var(--gap-block)}
@@ -496,7 +521,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 .th-col i.s{width:60%}
 .th-col i.go{width:55%;height:12px;margin-top:4px;background:var(--plum)}
 .thumb-note{margin-top:var(--s1);font-size:12px;line-height:var(--lh-small)}
-.wh-list{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2);align-items:end}
+.wh-list{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2);align-items:start}
 .wh-cap{display:block;margin-top:6px;font-size:13px;font-weight:600}
 .career-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--gap-split);align-items:start}
 .career-text h2 + p{margin-top:var(--gap-lead)}
@@ -578,6 +603,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .hero-bg{bottom:auto;height:calc(40vh + 140px);object-position:42% 30%;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);mask-image:linear-gradient(180deg,#000 72%,transparent 100%)}
   /* 음영은 텍스트 블록에 묶는다: 텍스트 뒤는 균일하게 어둡게(확대해도 밝은 곳에 걸리지 않음), 텍스트 위 160px 안에서 사진으로 사라짐 */
   .hero-shade{display:none}
+  .hero-full--low .hero-bg{object-position:28% 30%} /* 발표자와 유리벽 스케치를 위쪽에 */
+  .hero-full--plain{min-height:0}
+  .hero-full--band{min-height:0}
+  .hero-full--band .hero-bg{object-position:30% 30%} /* 가운데 인물이 위쪽에 */
+  .hero-full--plain .hero-inner{padding-top:var(--s6);background:none}
   .hero-inner{padding-top:40vh;padding-bottom:var(--s5);background:linear-gradient(0deg,rgba(34,25,32,.92) 0,rgba(34,25,32,.92) calc(100% - 40vh + 32px),rgba(34,25,32,0) calc(100% - 40vh + 160px))}
 }
 @media(max-width:600px){

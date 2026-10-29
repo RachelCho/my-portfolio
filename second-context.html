@@ -146,18 +146,24 @@
     </div>
   </section>
 
-  <section id="services">
-    <div class="wrap">
-      <div class="media-split">
-        <div class="page-header media-text">
+  <section class="hero hero-full hero-full--band" id="services">
+    <!-- Services Hero 띠: 가로 사진(노트북 회의 장면)을 전체 폭 배경으로, 텍스트는 왼쪽 아래 -->
+    <img class="hero-bg" src="assets/images/services-product-discussion-1536.jpg" srcset="assets/images/services-product-discussion-768.jpg 768w, assets/images/services-product-discussion-1152.jpg 1152w, assets/images/services-product-discussion-1536.jpg 1536w" width="1536" height="1024" sizes="100vw" loading="lazy" decoding="async" alt="노트북으로 작업하며 회의 테이블의 동료들에게 의견을 말하는 사람">
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-text">
+        <div class="page-header">
           <p class="label">Services</p>
           <h2>지금 제품에 필요한 도움부터 시작합니다.</h2>
           <p class="lead">팀에 필요한 범위로 함께합니다. 짧은 진단부터 제품 설계와 개발 협업까지, 현재 단계에 맞춰 시작할 수 있습니다.</p>
         </div>
-        <figure class="frame-photo frame-pos-portrait">
-          <img src="assets/images/services-collaboration-1122.jpg" srcset="assets/images/services-collaboration-560.jpg 560w, assets/images/services-collaboration-1122.jpg 1122w" width="1122" height="1402" sizes="(max-width: 900px) 100vw, 536px" loading="lazy" decoding="async" alt="테이블에 둘러앉아 노트북 화면을 함께 보며 이야기하는 세 사람">
-        </figure>
       </div>
+    </div>
+  </section>
+
+  <section class="section-after-band" aria-labelledby="services-cards-title">
+    <div class="wrap">
+      <h3 class="sr-only" id="services-cards-title">서비스별 예시 산출물</h3>
       <p class="ex-legend"><span class="ex-label">예시 산출물</span> 아래 화면은 서비스 결과물의 형태를 보여 주는 예시이며, 실제 프로젝트 결과가 아닙니다.</p>
       <ul class="svc-cards">
         <li class="svc-card">
@@ -256,20 +262,37 @@
             </ul>
           </figure>
         </div>
-        <figure class="frame-photo">
-          <img src="assets/images/services-product-discussion-1152.jpg" srcset="assets/images/services-product-discussion-768.jpg 768w, assets/images/services-product-discussion-1152.jpg 1152w, assets/images/services-product-discussion-1536.jpg 1536w" width="1536" height="1024" sizes="(max-width: 900px) 100vw, 536px" loading="lazy" decoding="async" alt="노트북으로 작업하며 회의 테이블의 동료들에게 의견을 말하는 사람">
+        <figure class="frame-photo frame-pos-portrait">
+          <img src="assets/images/services-collaboration-1122.jpg" srcset="assets/images/services-collaboration-560.jpg 560w, assets/images/services-collaboration-1122.jpg 1122w" width="1122" height="1402" sizes="(max-width: 900px) 100vw, 536px" loading="lazy" decoding="async" alt="테이블에 둘러앉아 노트북 화면을 함께 보며 이야기하는 세 사람">
         </figure>
       </div>
     </div>
   </section>
 
-  <section id="work">
-    <div class="wrap">
-      <div class="page-header">
-        <p class="label">Selected Work</p>
+  <section class="hero hero-full hero-full--plain hero-full--band" id="work">
+    <!-- Work Hero 띠: 사진 없이 다크 배경 + 세 사례의 재구성 화면 미리보기 -->
+    <div class="wrap hero-inner">
+      <div class="media-split work-hero">
+        <div class="page-header media-text">
+          <p class="label">Selected Work</p>
         <h2 class="text-wide">복잡한 업무와 새로운 사용 맥락을, 명확한 제품 경험으로.</h2>
         <p class="lead">Second Context를 시작하기 전, Rachel Cho가 이전 경력에서 수행한 세 프로젝트입니다. 고객사 이름은 밝히지 않습니다.</p>
+        </div>
+        <div class="work-hero-ui frame-product">
+          <ul class="wh-list">
+          <li><div class="thumb thumb-cal" role="img" aria-label="재구성한 일정 화면 미리보기: 예약 가능한 날짜, 제한된 날짜, 추천 날짜를 구분한 달력"><span class="th-head"></span><span class="th-grid"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="no"></i><i></i><i></i><i class="ok"></i><i class="no"></i><i class="no"></i><i class="ok"></i><i class="rec"></i><i></i><i></i></span></div><span class="wh-cap">01 일정 관리</span></li>
+          <li><div class="thumb thumb-pri" role="img" aria-label="재구성한 인시던트 목록 미리보기: 우선 대응할 P1 항목이 맨 위에 강조된 화면"><span class="th-head"></span><span class="th-row is-top"><b>P1</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P3</b><i></i></span></div><span class="wh-cap">02 우선 대응</span></li>
+          <li><div class="thumb thumb-l10n" role="img" aria-label="재구성한 현지화 비교 미리보기: 같은 화면의 영어 원문과 한국어 화면"><span class="th-col"><b>EN</b><i></i><i class="s"></i><i class="go"></i></span><span class="th-col"><b>KO</b><i></i><i class="s"></i><i class="go"></i></span></div><span class="wh-cap">03 한국어 현지화</span></li>
+          </ul>
+          <p class="thumb-note">설계 설명을 위한 재구성 · 예시 데이터</p>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section-after-band" aria-labelledby="work-list-title">
+    <div class="wrap">
+      <h3 class="sr-only" id="work-list-title">사례 목록</h3>
       <ol class="work-list">
         <li class="work-item" id="case-healthcare">
           <div class="work-head">

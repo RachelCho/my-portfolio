@@ -163,6 +163,8 @@ HOME = [
     ('직접 학비를 마련하며 공부하고, 이민자로 새로운 언어와 문화 속에서 커리어를 쌓았습니다. 디지털 노매드로 여러 나라를 여행하며 서로 다른 배경과 관점을 이해해온 경험은, 제품이 쓰이는 맥락과 그 안의 사람을 살피는 바탕이 되었습니다.', 'I funded my own education and built my career as an immigrant, navigating a new language and culture. Traveling as a digital nomad taught me to understand different backgrounds and perspectives—and it shapes how I look at the context a product is used in, and the people within it.'),
     ('지금은 제품팀과 파운더의 고민을 함께 풀며, 이민자 커뮤니티와 주니어 디자이너의 새로운 출발도 돕고 있습니다. ADPList 멘토링과 Flexwork Pro의 UX·AI 제품 디자인 강의를 통해 경험을 나누고, 막막한 상황에서도 실행 가능한 다음 걸음을 함께 찾습니다.', 'Today, I work through challenges with product teams and founders, and help immigrant communities and junior designers make a fresh start. Through mentoring on ADPList and teaching UX and AI product design at Flexwork Pro, I share what I’ve learned and help people find a practical next step, even when the way forward feels unclear.'),
     ('노트북 앞에서 상대의 이야기를 들으며 대화하는 두 사람', 'Two people in conversation at a laptop, one listening closely to the other'),
+    ('<h3 class="sr-only" id="services-cards-title">서비스별 예시 산출물</h3>', '<h3 class="sr-only" id="services-cards-title">Example deliverables by service</h3>'),
+    ('<h3 class="sr-only" id="work-list-title">사례 목록</h3>', '<h3 class="sr-only" id="work-list-title">Case list</h3>'),
 ]
 
 # 사례 문구: 홈 Work 요약과 사례 페이지(second-context-work.html)가 함께 쓰는 번역. 페이지에 있는 것만 적용한다
@@ -346,6 +348,9 @@ CASE_TEXT = [
     ('재구성한 인시던트 목록 미리보기: 우선 대응할 P1 항목이 맨 위에 강조된 화면', 'Recreated incident list preview: the P1 item that needs action first is highlighted at the top'),
     ('재구성한 현지화 비교 미리보기: 같은 화면의 영어 원문과 한국어 화면', 'Recreated localization comparison preview: the same screen in the English original and in Korean'),
     ('<p class="thumb-note">설계 설명을 위한 재구성</p>', '<p class="thumb-note">Recreated for illustration</p>'),
+    ('<span class="wh-cap">01 일정 관리</span>', '<span class="wh-cap">01 Scheduling</span>'),
+    ('<span class="wh-cap">02 우선 대응</span>', '<span class="wh-cap">02 Priority triage</span>'),
+    ('<span class="wh-cap">03 한국어 현지화</span>', '<span class="wh-cap">03 Korean localization</span>'),
 ]
 
 WORK = [
