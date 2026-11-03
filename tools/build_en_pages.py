@@ -14,6 +14,43 @@ def head_links(page):
             f'<link rel="alternate" hreflang="x-default" href="{ko}">\n')
 
 
+# Open Graph 이미지(tools/make_og_images.py로 만든 assets/og/<이름>-<언어>.png). 이전 창업자 소개 주소는 홈 이미지를 쓴다
+OG_IMAGE = {PAGES[0]: "home", PAGES[1]: "approach", PAGES[2]: "contact", PAGES[3]: "home", PAGES[4]: "work"}
+OG_RE = re.compile(r'(<meta (?:property="og:|name="twitter:)[^>]*>\n)+')
+DESC_RE = re.compile(r'<meta name="description" content="[^"]*">\n')
+
+
+def og_tags(page, lang, s):
+    """페이지의 title·description으로 Open Graph·Twitter 카드 태그를 만든다. 이미지 설명은 이미지 속 h1 문구"""
+    title = re.search(r'<title>(.*?)</title>', s).group(1)
+    desc = re.search(r'<meta name="description" content="([^"]*)">', s).group(1)
+    img_page = PAGES[0] if OG_IMAGE[page] == "home" else page
+    src = s if img_page == page else open(os.path.join(R, ("en/" if lang == "en" else "") + img_page), encoding="utf-8").read()
+    h1 = re.sub(r'<[^>]+>', '', re.search(r'(?s)<h1[^>]*>(.*?)</h1>', src).group(1)).strip()
+    alt = f'Second Context 로고와 “{h1}” 문구' if lang == "ko" else f'Second Context logo with the text “{h1}”'
+    url = BASE + ("en/" if lang == "en" else "") + page
+    img = f'{BASE}assets/og/{OG_IMAGE[page]}-{lang}.png'
+    locale, other = ("ko_KR", "en_US") if lang == "ko" else ("en_US", "ko_KR")
+    return (f'<meta property="og:type" content="website">\n'
+            f'<meta property="og:site_name" content="Second Context">\n'
+            f'<meta property="og:locale" content="{locale}">\n'
+            f'<meta property="og:locale:alternate" content="{other}">\n'
+            f'<meta property="og:title" content="{title}">\n'
+            f'<meta property="og:description" content="{desc}">\n'
+            f'<meta property="og:url" content="{url}">\n'
+            f'<meta property="og:image" content="{img}">\n'
+            f'<meta property="og:image:width" content="1200">\n'
+            f'<meta property="og:image:height" content="630">\n'
+            f'<meta property="og:image:alt" content="{alt}">\n'
+            f'<meta name="twitter:card" content="summary_large_image">\n')
+
+
+def add_og(page, lang, s):
+    d = DESC_RE.search(s).group(0)
+    assert s.count(d) == 1
+    return s.replace(d, d + og_tags(page, lang, s))
+
+
 def lang_nav(page, cur):
     if cur == "ko":
         return ('    <nav class="lang" aria-label="언어 선택">\n'
@@ -33,6 +70,7 @@ def prep_korean(page):
     p = os.path.join(R, page)
     s = open(p, encoding="utf-8").read()
     s = re.sub(r'<link rel="canonical"[^>]*>\n(<link rel="alternate"[^>]*>\n)*', "", s)
+    s = add_og(page, "ko", OG_RE.sub("", s))
     s = s.replace('<script src="assets/lang.js"></script>\n', '')
     s = re.sub(r'    <nav class="lang".*?    </nav>\n', "", s, flags=re.S)
     anchor = '<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">\n'
@@ -588,6 +626,7 @@ for page in PAGES:
     s = prep_korean(page)
     e = s.replace(f'<link rel="canonical" href="{BASE + page}">', f'<link rel="canonical" href="{BASE}en/{page}">')
     e = e.replace(lang_nav(page, "ko"), lang_nav(page, "en"))
+    e = OG_RE.sub("", e)  # 한국어 Open Graph 태그는 빼고, 번역이 끝난 뒤 영어 title·description으로 다시 만든다
     # i18n:keep 영역은 번역하지 않고 그대로 둔다
     kept = KEEP.findall(e)
     for i, k in enumerate(kept):
@@ -615,6 +654,7 @@ for page in PAGES:
     assert not left, (page, left)
     for i, k in enumerate(kept):
         e = e.replace(f'@@KEEP{i}@@', k, 1)
+    e = add_og(page, "en", e)
     os.makedirs(os.path.join(R, 'en'), exist_ok=True)
     open(os.path.join(R, 'en', page), 'w', encoding='utf-8').write(e)
     print('built en/' + page)

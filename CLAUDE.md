@@ -130,6 +130,9 @@
     `<link rel="icon" href="favicon.ico" sizes="any">`
     `<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">`
   - 새 Second Context 페이지를 만들면 같은 두 줄을 넣는다. 경로를 /로 시작하지 않는다(/my-portfolio/ 하위 경로 유지)
+- Open Graph(2026-11-03): 글자 중심 브랜드 카드 1200×630 PNG, assets/og/<home|approach|work|contact>-<ko|en>.png (흰 배경 · 승인 로고 · 라벨 조정 오렌지 · h1 플럼 · 장식 오렌지 선, 사진 없음). 이전 창업자 소개 주소는 홈 이미지를 쓴다
+  - 태그는 tools/build_en_pages.py가 한국어·영어 페이지의 description 바로 아래에 만든다(title·description·canonical에서 생성, HTML에서 직접 고치지 않음). og:image는 공유 서비스용이라 절대 URL을 쓴다
+  - 페이지의 라벨·h1을 바꾸면 `python3 tools/build_en_pages.py .` 다음에 `python3 tools/make_og_images.py .`로 이미지를 다시 만든다
 
 ### 레이아웃 간격 규칙 (공통 컨테이너)
 | 역할 | 변수 | 데스크톱 (901px~) | 태블릿 (601~900px) | 모바일 (~600px) |
