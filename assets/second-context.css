@@ -490,15 +490,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 .vis-states{margin-top:var(--s3)}
 .vis-states > figcaption{margin:0 0 var(--s2)}
 .vis-states .vis-title{display:inline}
-.states{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2)}
+/* 컴포넌트 상태 정의: 세 상태가 제목 / 상자 / 설명 행을 함께 쓴다(subgrid). 문구 길이·언어가 달라도 상자 높이와 각 행의 시작선이 같다 */
+.states{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--s2);row-gap:var(--s1)}
+.states li{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:var(--s1)}
 .st-name{font-size:13px;font-weight:700}
-.st-demo{display:flex;flex-direction:column;gap:6px;margin-top:6px;padding:10px;background:var(--white);border:1px solid var(--line);border-radius:4px}
-.st-input{display:block;min-height:28px;padding:4px 8px;border:1px solid var(--field-border);border-radius:3px;font-size:12px;overflow-wrap:anywhere}
-.st-btn{align-self:flex-start;padding:4px 12px;background:var(--plum);color:var(--white);border:1px solid var(--plum);border-radius:3px;font-size:12px;font-weight:600}
+/* 상자 안: 입력 칸(고정 높이) + 버튼·오류 문구 영역(공통 최소 높이 --st-foot) */
+.st-demo{--st-foot:34px;display:grid;grid-template-rows:28px minmax(var(--st-foot),1fr);row-gap:6px;padding:10px;background:var(--white);border:1px solid var(--line);border-radius:4px}
+.st-input{display:block;height:28px;padding:4px 8px;border:1px solid var(--field-border);border-radius:3px;font-size:12px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-btn{justify-self:start;align-self:start;padding:4px 12px;background:var(--plum);color:var(--white);border:1px solid var(--plum);border-radius:3px;font-size:12px;font-weight:600}
 .is-error .st-input{border:2px solid var(--orange)}
 .st-msg{font-size:11px;font-weight:600;color:var(--orange)}
 .is-disabled .st-btn{background:var(--white);color:var(--placeholder);border:1px dashed var(--field-border)}
-.st-note{margin-top:6px;font-size:12px}
+.st-note{font-size:12px}
 /* 홈 Work·사례 페이지: 사례별 재구성 화면 미리보기 */
 .work-thumb{margin-top:var(--s3);max-width:300px}
 .thumb{display:block;padding:10px;background:var(--surface);border:1px solid var(--line);border-radius:6px}
@@ -626,7 +629,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   :root{--lead-size:18px;--gap-after-lead:40px}
   .step dl{grid-template-columns:1fr;gap:0}
   .step dd{margin-bottom:var(--s1)}
-  .states{grid-template-columns:1fr}
+  /* 세로로 쌓이면 행을 함께 쓰지 않고, 상태마다 같은 내부 간격(--s1)·상태 사이 --s3 */
+  .states{grid-template-columns:1fr;row-gap:var(--s3)}
+  .states li{grid-row:auto;grid-template-rows:auto}
   .process{grid-template-columns:1fr;row-gap:0}
   .pr-step{padding:0 0 var(--s3) 52px}
   .pr-step:not(:last-child)::before{display:block;left:17px;right:auto;top:40px;bottom:6px;width:2px;height:auto}
