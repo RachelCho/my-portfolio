@@ -95,6 +95,9 @@ a.btn:active{background:var(--plum-active);border-color:var(--plum-active)}
 .founder{display:grid;grid-template-columns:var(--founder-photo) minmax(0,1fr);gap:var(--gap-split);align-items:start;margin-top:var(--s2)}
 .founder figure{max-width:440px}
 .founder img{display:block;width:100%;height:auto;border-radius:4px}
+.hero-ref{margin:var(--s2) 0 0;max-width:720px}
+.hero-ref img{display:block;width:100%;height:auto;border-radius:4px}
+.hero-ref figcaption{margin-top:var(--s1);font-size:13px;line-height:1.6}
 .founder figcaption{margin-top:var(--s2);font-size:15px;line-height:var(--lh-small)}
 .founder figcaption span{display:block}
 .founder figcaption .name{font-size:17px;font-weight:700}
@@ -405,7 +408,7 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
 </tbody></table></div>
       <h3>홈 내부 섹션 (독립 페이지 아님)</h3>
       <div class="tbl" role="region" tabindex="0" aria-label="홈 내부 섹션 (독립 페이지 아님) 표 (가로로 스크롤할 수 있음)"><table class="rt ids  cols-5"><colgroup><col style="width:9%"><col style="width:11%"><col style="width:10%"><col style="width:43%"><col style="width:27%"></colgroup><thead><tr><th class="nw" scope="col">ID</th><th class="nw" scope="col">섹션</th><th class="nw" scope="col">앵커</th><th scope="col">주요 콘텐츠</th><th scope="col">CTA</th></tr></thead><tbody>
-<tr><td class="nw" data-label="ID">H-1</td><td class="nw" data-label="섹션">Hero</td><td class="nw" data-label="앵커">(상단)</td><td data-label="주요 콘텐츠">제목 "새로운 시장의 맥락을, 제품의 다음 단계로." · 설명 · 분야 태그 · 사진</td><td data-label="CTA">프로젝트 문의하기 · 사례 살펴보기</td></tr>
+<tr><td class="nw" data-label="ID">H-1</td><td class="nw" data-label="섹션">Hero</td><td class="nw" data-label="앵커">(상단)</td><td data-label="주요 콘텐츠">제목 "새로운 시장의 맥락을, 제품의 다음 단계로." · 설명 · 분야 태그 · 대표 이미지(복잡한 제품 화면을 바탕으로 팀의 디자인 논의를 이끄는 Rachel, 전체 폭 배경)</td><td data-label="CTA">프로젝트 문의하기 · 사례 살펴보기</td></tr>
 <tr><td class="nw" data-label="ID">H-2</td><td class="nw" data-label="섹션">Why Us</td><td class="nw" data-label="앵커">#why</td><td data-label="주요 콘텐츠">문제의식 · 시행착오 유형 4개(설명용 예시) · 판단을 실행으로(사진) · 회사 배경과 Rachel의 역할</td><td data-label="CTA">—</td></tr>
 <tr><td class="nw" data-label="ID">H-3</td><td class="nw" data-label="섹션">Services</td><td class="nw" data-label="앵커">#services</td><td data-label="주요 콘텐츠">서비스 3개와 예시 산출물 · 개발 협업(컴포넌트 상태 예시)</td><td data-label="CTA">—</td></tr>
 <tr><td class="nw" data-label="ID">H-4</td><td class="nw" data-label="섹션">Work</td><td class="nw" data-label="앵커">#work</td><td data-label="주요 콘텐츠">사례 3개 요약 · 대표 수치</td><td data-label="CTA">사례 자세히 보기 · 30분 상담 예약하기 · 협업 방식 보기</td></tr>
@@ -451,11 +454,11 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
       <p class="note">헤더의 "30분 상담 예약"과 이메일 링크는 어느 단계에서든 바로 행동으로 갈 수 있는 지름길입니다.</p>
 
       <h3>와이어프레임 (박스와 라벨 중심)</h3>
-      <p class="measure">현재 구현된 배치를 단순화했습니다. 점선 박스는 <span class="chip idea">제안</span>입니다. 화면이 900px 이하로 좁아지면 두 열 배치는 모두 한 열로 쌓이고(사진은 글 다음, 인물 사진은 글 위), 6단계 다이어그램은 세로로 바뀝니다.</p>
+      <p class="measure">현재 구현된 배치를 단순화했습니다. 점선 박스는 <span class="chip idea">제안</span>입니다. 화면이 900px 이하로 좁아지면 두 열 배치는 모두 한 열로 쌓이고(사진은 글 다음, 인물 사진은 글 위), 6단계 다이어그램은 세로로 바뀝니다. 홈 Hero는 예외로 대표 이미지가 위, 제목·설명·버튼이 아래 어두운 바탕에 놓여 인물과 글이 겹치지 않습니다.</p>
       <div class="wf-grid">
       <figure class="wf"><figcaption>홈 (데스크톱 · 현재 구조)</figcaption>
         <div class="wb bar">헤더: 로고 · 메뉴 · 30분 상담 예약 · 한국어/EN</div>
-        <div class="wr"><div class="wb ">Hero 글 + 버튼 2개</div><div class="wb ph">사진 4:3</div></div>
+        <div class="wb ph">Hero · 대표 이미지 전체 폭 배경 — 왼쪽: 글 + 버튼 2개(어두운 그라데이션) · 오른쪽: Rachel</div>
         <div class="wr"><div class="wb ">Why Us 글</div><div class="wb ph">사진 4:3</div></div>
         <div class="wr"><div class="wb ">시행착오 카드</div><div class="wb ">시행착오 카드</div></div>
         <div class="wr"><div class="wb ph">사진 4:3</div><div class="wb ">판단을 실행으로 글</div></div>
@@ -602,6 +605,7 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
 <tr><td data-label="항목">문의 폼</td><td data-label="이전 기획서">화면·검증만 구현, 전송 미정 → 버튼 비활성</td><td data-label="현재 구현">Formspree 연결, 버튼 활성</td><td data-label="정리">화면 / 검증 / 전송을 F-06a·b·c로 분리. 실제 수신은 <span class="chip tbd">확인 필요</span></td></tr>
 <tr><td data-label="항목">Contact 구성</td><td data-label="이전 기획서">폼 65% · 연락 35%, 팀·전화번호 항목, Languages, Gmail 작성 링크, LinkedIn</td><td data-label="현재 구현">머리글 → 폼 7 : 다른 연락 방법 5, 이름·이메일·회사 또는 제품명·제품 URL·문의 내용, 이메일·복사, 30분 상담</td><td data-label="정리">현재 구현 기준으로 갱신. LinkedIn 노출은 <span class="chip tbd">결정 필요</span></td></tr>
 <tr><td data-label="항목">홈 Hero</td><td data-label="이전 기획서">"새로운 시장, 새로운 사용 맥락." / 30분 상담 예약 · 관련 사례 보기</td><td data-label="현재 구현">"새로운 시장의 맥락을, 제품의 다음 단계로." / 프로젝트 문의하기 · 사례 살펴보기</td><td data-label="정리">현재 문구로 갱신</td></tr>
+<tr><td data-label="항목">홈 Hero 대표 이미지</td><td data-label="이전 기획서">글 + 사진 4:3 두 열 / 노트북 앞 네 사람의 운영 대시보드 논의 사진</td><td data-label="현재 구현">전체 폭 배경 사진: 복잡한 제품 화면을 바탕으로 팀의 디자인 논의를 이끄는 Rachel(오른쪽), 글은 왼쪽 어두운 그라데이션 위. 한국어·영어 같은 파일 (2026-11-05)</td><td data-label="정리">대표 이미지·구성 갱신</td></tr>
 <tr><td data-label="항목">창업자 소개</td><td data-label="이전 기획서">홈 Founder (흑백 사진)</td><td data-label="현재 구현">홈 #founder로 통합, 이전 소개 주소는 이동, 투자 금액 1,420만 달러(회사 이력) 확정</td><td data-label="정리">현재 문구로 갱신</td></tr>
 <tr><td data-label="항목">상담 버튼 연결</td><td data-label="이전 기획서">Calendly 직접 링크</td><td data-label="현재 구현">헤더·홈은 Calendly 직접, Approach는 Contact #booking 경유</td><td data-label="정리">차이를 명시. 통일 여부는 <span class="chip idea">제안</span></td></tr>
 <tr><td data-label="항목">30분 상담 ↔ Market Context Session</td><td data-label="이전 기획서">미정</td><td data-label="현재 구현">사이트에 관계 설명 없음</td><td data-label="정리"><span class="chip tbd">결정 필요</span> 유지</td></tr>
@@ -670,6 +674,20 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
         <li>플럼 ↔ 조정 오렌지 (약 2.40:1): 서로를 글자·배경이나 기능 식별용 경계로 조합하지 않는다</li>
         <li>세이지 / 크림 (약 2.06:1): 글자나 기능성 아이콘에 쓰지 않는다</li>
         <li>장식 오렌지 #DA613E: 글자·버튼·기능 요소에 쓰지 않는다</li>
+      </ul>
+
+      <h3>대표 이미지 (홈 Hero, 2026-11-05)</h3>
+      <figure class="hero-ref">
+        <img src="assets/images/home-hero-rachel-design-review-1280.jpg" width="1280" height="640" loading="lazy" alt="제품 대시보드가 띄워진 화면 앞에서 손짓으로 설명하며 팀의 디자인 논의를 이끄는 Rachel Cho">
+        <figcaption>복잡한 제품 화면을 바탕으로 팀의 디자인 논의를 이끄는 Rachel</figcaption>
+      </figure>
+      <ul class="measure-wide">
+        <li>의미: 대형 화면과 노트북에 띄운 제품 대시보드를 바탕으로, Rachel이 손짓으로 설명하며 팀의 디자인 논의를 이끄는 장면. 복잡한 업무 제품을 팀과 함께 판단하는 Second Context의 일하는 방식을 보여 준다. 화면 속 대시보드는 실제 고객 프로젝트 결과로 소개하지 않는다</li>
+        <li>구성: 사진을 화면 전체 폭 배경으로 쓰고, 제목·설명·분야 태그·버튼은 왼쪽(공통 컨테이너 시작선)에 둔다. 왼쪽 절반에만 플럼 계열 그라데이션을 깔아 글자 대비를 확보하고, 오른쪽 Rachel의 얼굴과 설명하는 손은 사진 그대로 밝게 둔다</li>
+        <li>데스크톱(901px~): 원본 2:1, 얼굴이 화면 가로 약 ¾·손이 약 ⅔ 지점. 영어는 문장이 길어 글 상자를 조금 넓혀 제목을 두 줄로 맞춘다</li>
+        <li>태블릿(601~900px): 오른쪽을 자른 사진(16:10 표시)을 위에, 글·버튼을 아래 어두운 바탕에 둔다. 모바일(~600px): Rachel 얼굴·손·노트북에 더 가깝게 자른 4:3 사진을 위에 둔다</li>
+        <li>파일: assets/images/home-hero-rachel-design-review-*.jpg (데스크톱 1280·1774, 태블릿 768·1152, 모바일 640·987). 원본 assets/Product designer leading a studio critique.png에서 tools/make_hero_images.py로 만들며, 얼굴·피부·화면은 보정하지 않는다. 한국어·영어 홈이 같은 파일을 쓴다</li>
+        <li>대비: 사진 위 글자는 합성된 실제 배경 픽셀로 측정해 일반 글자 4.5:1·큰 글자 3:1 이상 유지</li>
       </ul>
 
       <h3>그 밖의 디자인 규칙</h3>

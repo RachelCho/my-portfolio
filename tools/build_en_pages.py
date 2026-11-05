@@ -139,10 +139,10 @@ HOME = [
     ('제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. <span class="keep">협업할 범위를 함께 살펴보겠습니다.</span>',
      'Tell us about your product, your target market, and the challenges you’re working through. We’ll explore the right scope of collaboration together.'),
     # 2026-10-29 사진·비주얼 재구성
-    ('<h1>새로운 시장의 맥락을, 제품의 다음 단계로.</h1>', '<h1>New market context, your product’s next step.</h1>'),
+    ('<h1>새로운 <span class="hero-hl">시장</span>의 <span class="hero-hl">맥락</span>을, 제품의 다음 단계로.</h1>', '<h1>New <span class="hero-hl">market</span> <span class="hero-hl">context</span>, your product’s next step.</h1>'),
     ('사용자와 업무 환경의 차이를 이해하고, 제품 경험과 실행 우선순위를 함께 설계합니다.', 'We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.'),
     ('>사례 살펴보기</a>', '>Explore our work</a>'),
-    ('밝은 사무실에서 노트북을 펴 놓고 운영 대시보드를 함께 논의하는 네 사람', 'Four people with open laptops discussing an operations dashboard in a bright office'),
+    ('제품 대시보드가 띄워진 화면 앞에서 손짓으로 설명하며 팀의 디자인 논의를 이끄는 Rachel Cho', 'Rachel Cho leading a team design discussion, gesturing as she explains in front of a screen showing a product dashboard'),
     ('<h2>제품과 사람, 비즈니스를 함께 이해합니다.</h2>', '<h2>We understand products, people, and business—together.</h2>'),
     ('번역만으로는 제품이 현지에서 쓰이지 않습니다. 같은 제품도 시장과 사용자가 달라지면 일하는 방식, 제품을 이해하는 방식, 신뢰를 판단하는 기준이 함께 달라지고, 한국 시장에 맞춰 제품을 만들어 온 팀은 이 차이를 내부에서 발견하기 어렵습니다.', 'Translation alone won’t get your product used in a new market. When the market and users change, how people work, how they make sense of a product, and how they judge trust all shift too—and teams that built for the Korean market often find these differences hard to see from the inside.'),
     ('노트북을 사이에 두고 웃으며 제품 이야기를 나누는 세 사람', 'Three people smiling as they talk about a product over a laptop'),

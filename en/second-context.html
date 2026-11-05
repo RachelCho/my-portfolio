@@ -53,14 +53,18 @@
 </header>
 
 <main id="main">
-  <section class="hero hero-full" id="top">
-    <img class="hero-bg" src="../assets/images/home-hero-team-1536.jpg" srcset="../assets/images/home-hero-team-768.jpg 768w, ../assets/images/home-hero-team-1152.jpg 1152w, ../assets/images/home-hero-team-1536.jpg 1536w" width="1536" height="1024" sizes="100vw" fetchpriority="high" alt="Four people with open laptops discussing an operations dashboard in a bright office">
+  <section class="hero hero-full hero-full--focus" id="top">
+    <picture>
+      <source media="(min-width: 901px)" srcset="../assets/images/home-hero-rachel-design-review-1280.jpg 1280w, ../assets/images/home-hero-rachel-design-review-1774.jpg 1774w" width="1774" height="887" sizes="100vw">
+      <source media="(max-width: 600px)" srcset="../assets/images/home-hero-rachel-design-review-mobile-640.jpg 640w, ../assets/images/home-hero-rachel-design-review-mobile-987.jpg 987w" width="987" height="740" sizes="100vw">
+      <img class="hero-bg" src="../assets/images/home-hero-rachel-design-review-tablet-1152.jpg" srcset="../assets/images/home-hero-rachel-design-review-tablet-768.jpg 768w, ../assets/images/home-hero-rachel-design-review-tablet-1152.jpg 1152w" width="1152" height="864" sizes="100vw" fetchpriority="high" alt="Rachel Cho leading a team design discussion, gesturing as she explains in front of a screen showing a product dashboard">
+    </picture>
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap hero-inner">
       <div class="hero-text">
         <div class="page-header">
           <p class="label">Product design across markets.</p>
-          <h1>New market context, your product’s next step.</h1>
+          <h1>New <span class="hero-hl">market</span> <span class="hero-hl">context</span>, your product’s next step.</h1>
           <p class="lead">We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.</p>
         </div>
         <p class="tag">Healthcare · Enterprise · Complex operational workflows</p>

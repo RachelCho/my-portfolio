@@ -39,6 +39,7 @@
   /* 사진 프레임: 장면 사진 4:3, 인물 4:5, 인물 열 폭 */
   /* 간격·줄 간격 공통 (2026-10-29 점검): 버튼 줄 앞 32 · 사진+글 블록 다음 64(모바일 48) · 본문 1.7 · 작은 글(12~15px) 1.6 · 수치 1.25 */
   --hero-text:#ECE7EB; --hero-muted:#DDD5DB; /* Hero 위 본문·보조 글자 (밝은 중립색) */
+  --orange-on-dark:#F0845C; /* 조정 오렌지(#A83E20)와 같은 색상 계열을 어두운 Hero 위 글자용으로 밝힌 값. 밝은 배경에는 쓰지 않는다 */
   --gap-cta:var(--s4); --after-split:var(--s6); --lh-body:1.7; --lh-small:1.6; --lh-stat:1.25;
   --ratio-photo:4/3; --ratio-profile:4/5; --profile-w:320px;
 }
@@ -68,15 +69,16 @@ h3{font-size:var(--fs-h4);line-height:1.4;font-weight:700}
 .page-header{margin:0;padding:0}
 /* 머리글 다음 콘텐츠는 항상 같은 간격 (개별 블록의 margin-top보다 우선) */
 .page-header + [class]{margin-top:var(--gap-after-lead)}
-.cta,.cta-row{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--gap-cta)}
+.cta,.cta-row{display:flex;flex-wrap:wrap;gap:var(--s4);margin-top:var(--gap-cta)} /* 버튼 ↔ 버튼 32 (2026-11-04, 가로·세로 모두) */
 .page-header + .cta{margin-top:var(--gap-cta)} /* 머리글 다음이어도 버튼 줄 앞은 32 */
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;gap:var(--s1);font-size:15px;font-weight:600;text-decoration:none;padding:var(--s2) var(--s3);border:1.5px solid var(--plum);border-radius:4px}
 .btn-primary{background:var(--plum);color:var(--cream)}
 .btn-primary:hover{background:var(--plum-hover);border-color:var(--plum-hover)}
 .btn-primary:active{background:var(--plum-active);border-color:var(--plum-active)}
 .btn-secondary{background:var(--bg);color:var(--orange);border-color:var(--orange)}
-.btn-secondary:hover{background:var(--orange);color:var(--cream)}
-.btn-secondary:active{background:var(--orange-hover);border-color:var(--orange-hover);color:var(--cream)}
+/* 보조 버튼은 hover·active에도 채우지 않는다: 중립 면 바탕으로만 바뀌어 주요 버튼(플럼 채움)보다 가볍게 유지 (2026-11-05) */
+.btn-secondary:hover{background:var(--surface)}  /* 오렌지 / 중립 면 5.75:1 */
+.btn-secondary:active{background:var(--surface);border-color:var(--orange-hover);color:var(--orange-hover)} /* #8A3219 / 중립 면 7.61:1 */
 .btn-secondary-fill{background:var(--orange);color:var(--cream);border-color:var(--orange)}
 .btn-secondary-fill:hover,.btn-secondary-fill:active{background:var(--orange-hover);border-color:var(--orange-hover)}
 section{padding:var(--section-y) 0;border-top:1px solid var(--line)}
@@ -322,6 +324,20 @@ section > .wrap.media-split{margin-top:0}
 .hero-full--band{min-height:65vh;min-height:65svh}
 .hero-full--band .hero-bg{object-position:50% 22%}
 .hero-full--plain.hero-full--band{min-height:0}
+/* 홈 Hero(--focus, 2026-11-05 대표 이미지 교체): 왼쪽 제목 · 오른쪽 Rachel.
+   원본 2:1 사진에서 Rachel 얼굴이 가로 75%·세로 30%, 설명하는 손이 가로 66%라 object-position 75% 30%면
+   화면 비율이 바뀌어도 얼굴은 화면 ¾, 손은 ⅔ 부근에 머문다. 음영은 텍스트 쪽(왼쪽 절반)만 진하게 하고
+   손(66%)·얼굴 주변은 사진 그대로 둔다 — 위·아래·오른쪽 음영 없음 */
+.hero-full--focus .hero-bg{object-position:75% 30%}
+.hero-full--focus .hero-shade{background:
+    linear-gradient(90deg,rgba(34,25,32,.92) 0%,rgba(34,25,32,.88) 45%,rgba(34,25,32,.8) 53%,rgba(34,25,32,.3) 58%,rgba(34,25,32,0) 62%)}
+.hero-full--focus .hero-text{max-width:min(600px,48%)}
+/* 영어 문구는 한국어보다 길다: 제목은 11.5em·글 상자 48%면 "market / context"가 갈려 세 줄이 되므로
+   데스크톱에서 글 상자 53%(1280px에서 600px)·제목 12.5em으로 두 줄, 설명(약 140자)은 약간 넓게. 글 끝(약 53%)까지 음영 .8 */
+@media(min-width:901px){.hero-full--focus .hero-text:lang(en){max-width:min(600px,53%)}}
+.hero-full--focus h1:lang(en){max-width:12.5em}
+.hero-full--focus .lead:lang(en){max-width:30em}
+.hero-full .hero-hl{color:var(--orange-on-dark)}
 .hero-full h2{color:var(--white);text-wrap:balance}
 .section-after-band{border-top:0}
 .section-after-band .wrap > .sr-only:first-child + *{margin-top:0}
@@ -452,9 +468,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
 /* Services: 글 | 세로 사진, 서비스별 예시 산출물, 개발 협업 */
 .ex-legend{font-size:14px;line-height:var(--lh-small)}
 .ex-label{display:inline-block;padding:1px 8px;margin-right:6px;border:1px solid var(--orange);border-radius:999px;color:var(--orange);font-size:12px;font-weight:700;line-height:1.5}
-.svc-cards{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap-grid);margin-top:var(--s3)}
-.svc-card{display:flex;flex-direction:column;min-width:0}
-.svc-card .vis{flex:1}
+/* 서비스 카드: 예시 화면 / 캡션 / 제목 / 정의 목록 네 행을 카드끼리 함께 쓴다(subgrid, 2026-11-05).
+   예시 화면 높이와 캡션 시작선이 세 카드에서 같고, 회색 면 아래 빈 공간이 생기지 않는다 */
+.svc-cards{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4) var(--gap-grid);margin-top:var(--s3)}
+.svc-card{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;min-width:0}
+.svc-card .vis{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:var(--s2)}
+.svc-card .vis > figcaption{margin-top:0}
 .svc-card h3{margin-top:var(--s3)}
 .svc-dl{margin-top:var(--s1);font-size:15px;line-height:var(--lh-small)}
 .svc-dl dt{margin-top:var(--s2);font-size:12px;font-weight:700;letter-spacing:.04em}
@@ -599,6 +618,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .step{gap:var(--gap-sub)}
   .values{row-gap:var(--gap-stack)}
 }
+/* 태블릿: 서비스 카드는 한 열이면 예시 화면이 가로로만 늘어나 2열로 둔다 (카드 폭 약 300~340px, 데스크톱 363px과 비슷) */
+@media(min-width:601px) and (max-width:900px){
+  .svc-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s5) var(--gap-grid)}
+}
 @media(max-width:900px){
   /* 태블릿·모바일: 인물은 위, 텍스트는 아래 → 그라데이션을 아래에서 위로 */
   .hero-full{min-height:88vh;min-height:88svh}
@@ -613,7 +636,18 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(-
   .hero-full--plain .hero-inner{padding-top:var(--s6);background:none}
   .hero-inner{padding-top:40vh;padding-bottom:var(--s5);background:linear-gradient(0deg,rgba(34,25,32,.92) 0,rgba(34,25,32,.92) calc(100% - 40vh + 32px),rgba(34,25,32,0) calc(100% - 40vh + 160px))}
 }
+@media(max-width:900px){
+  /* 홈 Hero(--focus): 사진을 위에 따로, 텍스트·버튼은 아래 플럼 바탕에. 사진과 글자가 겹치지 않는다.
+     601~900px: 오른쪽 4:3 사진을 16:10으로 낮춰(768px에서 576 → 480px) 첫 화면에 버튼까지 가깝게. 얼굴 62%·손 48%가 가운데 쪽 */
+  .hero-full--focus{display:block;min-height:0}
+  .hero-full--focus picture{display:block}
+  .hero-full--focus .hero-bg{position:static;display:block;height:auto;aspect-ratio:16/10;max-height:60svh;object-position:60% 30%;-webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 100%);mask-image:linear-gradient(180deg,#000 82%,transparent 100%)}
+  .hero-full--focus .hero-inner{padding-top:var(--s3);background:none}
+  .hero-full--focus .hero-text{max-width:600px}
+}
 @media(max-width:600px){
+  /* 홈 Hero: Rachel에 가까운 4:3 사진(얼굴 55%·손 38%). 16:10으로 낮추면 손이 사진 아래 페이드 구간에 걸려 4:3 유지 */
+  .hero-full--focus .hero-bg{aspect-ratio:4/3;max-height:50svh;object-position:55% 28%}
   .hero-full .cta{flex-direction:column;align-items:stretch}
   .hero-full .cta .btn{width:100%}
   .metric{grid-template-columns:1fr;row-gap:var(--gap-tight)}

@@ -77,11 +77,12 @@
 | 크림 / 조정 오렌지 | 5.48:1 |
 | 플럼 / 세이지 | 6.37:1 |
 | 조정 오렌지 / 흰색 | 6.22:1 |
+| Hero 강조 오렌지(--orange-on-dark #F0845C) / 홈 Hero 다크 합성 배경 | 5.93:1 이상 (2026-11-04 실측). 조정 오렌지와 같은 색 계열을 밝힌 값, 어두운 Hero 위 글자 전용·밝은 배경 금지 |
 
 ### 버튼
 - Primary: 플럼 배경 + 크림 문구
 - Secondary 채움: 조정 오렌지 배경 + 크림 문구
-- Secondary 외곽선: 화이트 배경 + 조정 오렌지 문구·테두리
+- Secondary 외곽선: 화이트 배경 + 조정 오렌지 문구·테두리. hover는 중립 면(#F6F6F4) 바탕(5.75:1), active는 중립 면 + #8A3219 문구·테두리(7.61:1). 채우지 않아 주요 버튼보다 가볍게 유지 (2026-11-05)
 
 ### 사용 금지 조합
 - 플럼 ↔ 조정 오렌지 (약 2.40:1): 서로를 글자·배경이나 기능 식별용 경계로 조합하지 않는다
@@ -159,21 +160,24 @@
 - 머리글(.page-header): 라벨 + 제목(h1/h2) + 첫 소개 문단(.lead)을 하나로 묶는다. Home Hero·Why Us·Use Cases·Contact 안내, Approach·Contact 페이지 도입에 공통 적용 (한국어·영어 동일)
 - 첫 소개 문단(.lead): 글자 20px(모바일 600px 이하 18px, --lead-size), 줄 높이 1.7, 굵기 400, 자간 0, 최대 너비 720px, 제목 → 문단 24px(--gap-lead), padding 0. 문단 기본 margin은 지우고 이 규칙으로만 간격을 준다
 - 소개 문단 → 다음 콘텐츠: 64px(모바일 40px, --gap-after-lead). `.page-header + [class]` 규칙이 개별 블록의 margin-top보다 우선한다. 본문 중간 문단·카드 설명은 .lead를 쓰지 않는다
-- Home Hero(2026-10-29 3차, 풀블리드): 사이트에서 Hero만 이미지 중심 다크 스타일. 사진(home-hero-team)이 화면 좌우 끝까지 채우고(cover, 둥근 모서리·테두리 없음), 텍스트는 .wrap 안 왼쪽 아래라 아래 섹션과 시작선이 같다. 높이 80svh에서 시작해 콘텐츠에 따라 늘어난다. 음영: 데스크톱은 왼쪽·아래 그라데이션, 900px 이하는 사진을 위쪽에 따로 크롭하고 텍스트 블록 뒤만 균일하게 어둡게(확대해도 대비 유지). 제목 흰색, 본문 #ECE7EB, 보조 #DDD5DB. 버튼: Primary 아이보리(크림) 채움 + 플럼 글자, Secondary 어두운 반투명 + 흰 테두리·글자, focus는 흰 외곽선 + 어두운 링. 600px 이하 버튼 세로 배치. 대비는 합성된 실제 배경 픽셀로 측정해 일반 4.5:1·큰 글자 3:1 이상 유지. 제목 "새로운 시장의 맥락을, 제품의 다음 단계로." / 버튼 "프로젝트 문의하기"(문의 폼) · "사례 살펴보기"(#work). 사진 속 인물을 실제 CEO·고객으로 소개하지 않는다
+- Home Hero(2026-10-29 3차, 풀블리드): 사이트에서 Hero만 이미지 중심 다크 스타일. 사진(home-hero-team)이 화면 좌우 끝까지 채우고(cover, 둥근 모서리·테두리 없음), 텍스트는 .wrap 안 왼쪽 아래라 아래 섹션과 시작선이 같다. 높이 80svh에서 시작해 콘텐츠에 따라 늘어난다. 음영: 데스크톱은 왼쪽·아래 그라데이션, 900px 이하는 사진을 위쪽에 따로 크롭하고 텍스트 블록 뒤만 균일하게 어둡게(확대해도 대비 유지). 제목 흰색, 본문 #ECE7EB, 보조 #DDD5DB. 버튼: Primary 아이보리(크림) 채움 + 플럼 글자, Secondary 어두운 반투명 + 흰 테두리·글자, focus는 흰 외곽선 + 어두운 링. 600px 이하 버튼 세로 배치. 대비는 합성된 실제 배경 픽셀로 측정해 일반 4.5:1·큰 글자 3:1 이상 유지. 제목 "새로운 시장의 맥락을, 제품의 다음 단계로."(2026-11-04: '시장'·'맥락' 두 단어만 .hero-hl --orange-on-dark, 영어는 market·context) / 버튼 "프로젝트 문의하기"(문의 폼) · "사례 살펴보기"(#work). 사진 속 인물을 실제 CEO·고객으로 소개하지 않는다
+- Home Hero 4차(2026-11-04, .hero-full--focus): 왼쪽 제목 · 오른쪽 인물. 흰 상의 인물이 중심 인물. 데스크톱(901px~)은 재구성 와이드 사진 home-hero-focus-wide(2304×1024, 얼굴 가로 67%, 빈 왼쪽은 원본 왼쪽을 반전·흐림으로 채움) + object-position 67% 30%로 화면 폭과 관계없이 얼굴이 ⅔ 지점. 텍스트 폭 min(600px, 50%), 음영은 왼쪽 0~50% 진하게 → 60%에서 0(얼굴 주변 음영 없음) + 오른쪽 위 모니터 살짝 낮춤. 900px 이하는 얼굴이 가운데인 4:3 사진 home-hero-focus(최대 60svh)를 위에 따로, 텍스트·버튼은 아래 플럼 바탕(겹침 없음). 두 사진 모두 tools/make_hero_images.py가 원본 "Startup leaders align around operations.png"에서 만들고, 중심 인물 밖은 밝기·채도를 낮춘다(얼굴·피부 편집 없음). 예전 home-hero-team-*.jpg는 Hero에서 쓰지 않음
+- Home Hero 5차(2026-11-05, 대표 이미지 교체): 사용자가 준 assets/Product designer leading a studio critique.png(1774×887) — 복잡한 제품 화면(대형 화면·노트북 대시보드)을 바탕으로 팀의 디자인 논의를 이끄는 Rachel. 웹용은 tools/make_hero_images.py가 만든 assets/images/home-hero-rachel-design-review-<1280|1774>.jpg(데스크톱 2:1 원본 비율) · -tablet-<768|1152>.jpg(601~900px, 오른쪽 4:3, 16:10으로 표시) · -mobile-<640|987>.jpg(~600px, Rachel 얼굴·손·노트북에 가까운 4:3). 보정·원본보다 큰 확대 없음, 품질 86·4:4:4. 한국어·영어 홈이 같은 파일을 쓴다. 데스크톱 object-position 75% 30%(얼굴 가로 ¾, 손 ⅔), 음영은 왼쪽 그라데이션 하나(0~53% 진하게 → 62%에서 0, 위·아래·오른쪽 음영 없음). 글 상자 min(600px, 48%), 영어는 901px 이상에서 53%·h1 12.5em으로 제목 두 줄. 이전 home-hero-focus-*.jpg는 쓰지 않는다
 - Approach·Work Hero(2026-10-29): 홈과 같은 풀블리드 다크 Hero(.hero-full). Approach(.hero-full--low)는 approach-brainstorming 사진을 전체 폭으로, 인물 얼굴·유리벽 스케치가 위에 보이도록 텍스트를 아래에 두고 음영은 주로 아래쪽. 원래 Hero에 있던 강조 문장은 6단계 섹션 맨 앞으로 옮겼다. Work(.hero-full--plain)는 사진 없이 다크 배경 + 재구성 제품 화면 미리보기(연출 사진을 프로젝트 증거로 쓰지 않는 규칙), 사례 바로가기 링크는 흰 글자. 대비는 합성 배경 픽셀로 측정
 - 홈 Services·Work Hero 띠(2026-10-29, .hero-full--band): 섹션 첫머리를 화면 전체 폭 다크 띠로. Services 띠는 가로 사진 services-product-discussion을 배경으로(세로 사진은 띠에서 얼굴이 텍스트와 겹쳐서 개발 협업 블록으로 옮김, 4:3), Work 띠는 사진 없이 재구성 제품 화면 미리보기. 띠 다음 내용은 .section-after-band(위 구분선 없음). #services·#work 앵커는 띠에 둔다. 대비 측정은 전체 페이지 캡처 대신 요소를 화면 안으로 스크롤해 측정(전체 캡처는 vh가 바뀌어 위치가 어긋남)
 - 창업자 소개 그리드: 사진 열 --founder-photo 340px(320~360 범위) + 열 사이 --gap-split 64px + 본문은 남은 너비(본문에 별도 max-width를 두지 않음). 위쪽 정렬, 사진은 원본 비율, 900px 이하에서 세로 배치(사진 최대 440px)
 - 사진·비주얼(2026-10-29): 사용자가 준 AI 연출 사진 11장의 웹용 사본은 assets/images/<영문-소문자-하이픈>-<폭>.jpg(가로 768/1152/1536, 세로 560/1122, JPEG 84·4:4:4)이고 srcset·sizes·width/height를 둔다. 원본 PNG(assets/)는 지우지 않는다. 첫 화면 히어로만 fetchpriority="high", 나머지는 loading="lazy"
 - AI 연출 사진에 캡션을 붙이지 않는다(2026-10-29 사용자 요청으로 모든 "AI로 연출한 이미지" 표시 제거). 사진을 실제 고객·직원·행사·프로젝트 수행 증거처럼 설명하지 않는다
-- 사진 배치: 홈 Hero(home-hero-team) · Why Us 머리(why-us-meeting) · Why Us 리더십(why-us-leadership) · Services 머리(services-collaboration, 세로 원본을 4:3로, object-position 50% 30%) · Services 개발 협업(services-product-discussion) · 홈 #founder(founder-portrait) · Approach 히어로(approach-brainstorming) · Approach 우선순위(approach-priority-meeting, 아래에 매트릭스) · 창업자 소개 멘토링(about-mentoring-session) · 커뮤니티(about-values-community). Contact에는 사진을 두지 않는다
+- 사진 배치: 홈 Hero(home-hero-rachel-design-review, 2026-11-05) · Why Us 머리(why-us-meeting) · Why Us 리더십(why-us-leadership) · Services 머리(services-collaboration, 세로 원본을 4:3로, object-position 50% 30%) · Services 개발 협업(services-product-discussion) · 홈 #founder(founder-portrait) · Approach 히어로(approach-brainstorming) · Approach 우선순위(approach-priority-meeting, 아래에 매트릭스) · 창업자 소개 멘토링(about-mentoring-session) · 커뮤니티(about-values-community). Contact에는 사진을 두지 않는다
 - 공통 레이아웃(2026-10-29 통일, 새 화면도 이것만 쓴다):
   - .media-split: 장면 사진 + 글, 두 열 1:1, 사이 --gap-split, 세로 가운데. 사진은 .frame-photo(4:3, object-fit: cover, 기본 50% 50%). 900px 이하는 항상 글 → 사진. 같은 섹션 안 다음 블록은 64px(모바일 48px)
   - .profile-split(--end): 인물 사진 열 --profile-w 320px, .frame-profile 4:5 cover(object-position 50% 25%), 사진 아래 3줄. 900px 이하는 사진 → 글
   - .frame-product·.vis·.thumb·.demo: 제품 화면·사례 데모는 cover로 자르지 않고 원본 비율·내용 그대로
   - 글자 위계 토큰: --fs-display 48(1100px 이하 40, 600px 이하 34) 페이지 h1 · --fs-h2 36(28) 섹션 제목 · --fs-h3 24(22) 하위 제목·사례·단계 제목 · --fs-h4 20 항목·카드 제목 · --fs-stat 30(26) 수치. 페이지별로 h1·h2 크기를 따로 덮어쓰지 않는다
   - 한 줄로 읽혀야 하는 짧은 문장(홈 Work 제목, Approach 6단계 강조 문장)은 .text-wide로 읽기 폭 제한을 풀어 데스크톱에서 한 줄로. 좁은 칸에서 줄 끝에 갈리면 안 되는 구(상담 설명의 "협업할 범위를 함께 살펴보겠습니다.")는 .keep(601px 이상 한 덩어리). 문장을 별도 문단으로 나누지 않는다(2026-10-29 사용자 요청)
-  - 간격·줄 간격(2026-10-29 실측 점검 후 통일): 라벨 → 제목 16 · 제목 → 소개 문단 24 · 머리글 → 다음 블록 64(모바일 40) · 소제목(24px) → 설명 24 · 항목 제목(20px) → 설명 8 · 사례 제목 → 한 줄 강점 8 · 소개 문단 → 그 블록 24 · 버튼 줄 앞 32(--gap-cta, 머리글·사진+글 안 포함) · 사진+글 블록 앞뒤 64(모바일 48, --after-split) · 문단 ↔ 문단 24 · 목록 항목 8 · 정의 목록 라벨 → 값 4, 값 → 다음 라벨 16(사례 상세는 24) · 섹션 위아래 96(모바일 64, 사례 섹션 포함). 줄 간격: 본문 17px 1.7(--lh-body) · 작은 글 12~15px 1.6(--lh-small) · 수치 1.25(--lh-stat) · 라벨 1.4. 예시 화면·데모 안의 UI 글자는 제외
+  - 간격·줄 간격(2026-10-29 실측 점검 후 통일): 라벨 → 제목 16 · 제목 → 소개 문단 24 · 머리글 → 다음 블록 64(모바일 40) · 소제목(24px) → 설명 24 · 항목 제목(20px) → 설명 8 · 사례 제목 → 한 줄 강점 8 · 소개 문단 → 그 블록 24 · 버튼 줄 앞 32(--gap-cta, 머리글·사진+글 안 포함) · 버튼 ↔ 버튼 32(.cta·.cta-row gap --s4, 2026-11-04 16에서 변경, 줄바꿈·세로 배치 때도 32) · 사진+글 블록 앞뒤 64(모바일 48, --after-split) · 문단 ↔ 문단 24 · 목록 항목 8 · 정의 목록 라벨 → 값 4, 값 → 다음 라벨 16(사례 상세는 24) · 섹션 위아래 96(모바일 64, 사례 섹션 포함). 줄 간격: 본문 17px 1.7(--lh-body) · 작은 글 12~15px 1.6(--lh-small) · 수치 1.25(--lh-stat) · 라벨 1.4. 예시 화면·데모 안의 UI 글자는 제외
   - 예전 그리드(.hero-grid, .intro-grid, .split, .svc-intro, .about-hero, .values-grid, .founder-preview, .prio-grid, .wide-media, .founder)는 지웠다. 되살리지 않는다
+- 홈 서비스 카드(.svc-card, 2026-11-05): 예시 화면 / 캡션 / 제목 / 정의 목록 네 행을 subgrid로 함께 써서 예시 화면 높이·캡션 시작선을 맞춘다. 데스크톱 3열 · 601~900px 2열 · 600px 이하 1열
 - 사진이 없는 곳은 HTML/CSS 비주얼: 서비스별 예시 산출물(UX 진단 주석 화면 · 현지화 비교(i18n:keep) · 사용자 흐름 3화면), 개발 협업 컴포넌트 상태(기본·오류·비활성), Why Us 경력(회사 배경 vs Rachel의 역할), Approach 6단계 프로세스 다이어그램(데스크톱 6열 → 1100px 이하 3열 → 600px 이하 세로)과 우선순위 매트릭스, 홈 Work·사례 페이지 히어로의 재구성 화면 미리보기, 창업자 소개 타임라인. 예시 산출물에는 "예시 산출물" 표시와 "실제 프로젝트 결과가 아님" 안내를 붙이고, 예시로 성과를 만들지 않는다
 - 읽기 너비(--text 720px)는 컨테이너가 아니라 안쪽 요소(.lead, h2, 기획서의 .body > *)에만 건다. `.wrap`과 폭 제한 클래스를 같은 요소에 같이 쓰지 않는다 — 섹션 전체가 가운데로 밀린다
 - overflow-x: hidden으로 넘침을 가리지 않는다. 고정 높이는 헤더·버튼 최소 높이, 장식 선에만 쓴다
