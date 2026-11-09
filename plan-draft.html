@@ -178,6 +178,8 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
 .scenario h3{margin-top:0}
 .scenario ol{margin-top:var(--gap-sub)}
 .scenario .kv{font-size:15px;line-height:var(--lh-small)}
+/* 시나리오의 라벨은 "방문 목적" 하나뿐이라 180px 열 대신 라벨 폭만큼만 쓴다 (700px 이하는 아래 한 열 규칙) */
+@media(min-width:701px){.scenario .kv{grid-template-columns:auto minmax(0,1fr)}}
 .scenario .done{margin-top:var(--gap-sub);padding-top:var(--gap-sub);border-top:1px solid var(--line);font-size:15px;line-height:var(--lh-small)}
 .scenario .done strong{margin-right:var(--s1)}
 .tbd-box{border:1.5px dashed rgba(48,35,46,.35)}
