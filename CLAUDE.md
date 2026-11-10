@@ -38,6 +38,37 @@
 - 내 소개 문구 방향: B2B SaaS와 엔터프라이즈 제품을 전문으로 하는 시니어 프로덕트 디자이너
 - 이 스타일에서 바꾸고 싶은 부분: 별도의 Contact 페이지와 문의 폼 대신, 모든 페이지의 푸터에 이메일과 LinkedIn 링크를 배치한다.
 
+## Second Context 다크 리디자인 (2026-11-10, 최우선 — 아래 규칙과 충돌하면 이 항목을 따른다)
+- 참고: edenspiekermann.com 구조(큰 글자, 번호 원 사례, 둥근 카드, About 사진+수치, "Let’s" 푸터)를 Second Context 내용으로 적용
+- 색: 전체 배경 #000, 제목 #FFF, 본문 #B3B3B3(10.02:1), 작은 글 #999(7.37:1), 강조 #F0845C(8.16:1). 캡슐 버튼은 흰 바탕 + 검정 글자(hover #E0E0E0). 토큰은 assets/second-context.css의 body.sc-dark에서 다시 정의한다. 데모·예시 산출물·썸네일(.demo·.vis·.thumb)은 "어두운 예시 영역"(2026-11-10 사용자 요청: 패널 #141414 · 안쪽 면 #1F1F1F · 글자·선택 채움 흰색 · 강조 #F0845C · 채움 위 글자 #141414 · 경계 #8C8C8C), 흰 섹션(.sc-light) 안에서는 밝은 토큰. 입력 칸만 "밝은 UI 영역"으로 기존 플럼 토큰
+- 로고(2026-11-10 2차, 사용자 요청): 두 사각 프레임 + 워드마크가 있는 승인 로고의 흰색판 assets/second-context-logo-white.png(800×326, PNG 안 여백 포함, 비율 유지)를 헤더(56px, 600px 이하 40px)와 푸터(80px)에 쓴다. 글자만 자른 assets/second-context-wordmark-white.png는 지금 쓰지 않는다
+- 콘텐츠 폭(2026-11-10): .sc-dark에서 --max 1464px → 안쪽 콘텐츠·이미지 최대 1400px(이전 1136px). 아래 표의 --max 1200px보다 우선
+- 포인트 컬러: 섹션 라벨(.eyebrow, 제목 앞) 앞에 장식 오렌지 #DA613E 24×2px 선. 글자에는 쓰지 않는다
+- 헤더·검색·푸터는 tools/sc_chrome.py가 다섯 페이지에 똑같이 넣는다(HTML에서 직접 고치지 않음). 수정 후 `python3 tools/sc_chrome.py . && python3 tools/build_en_pages.py .`
+- 헤더 순서: 로고 · 선택 이유(#why-us) · 서비스(#services) · 프로젝트(#work) · 진행 방식(#approach) · 문의(#contact) · 30분 상담 예약(Calendly 새 탭) · 한국어 / EN · 검색. 메뉴 이름은 한국어 페이지에서도 영어로 고정(2026-11-10): Why Us / Services / Work / Approach / Contact / Book a 30-minute consultation. 푸터 Company 메뉴·Newsletter 제목·문의 버튼(Send a project inquiry)도 영어. 하위 페이지의 메뉴는 second-context.html#섹션으로 이동하고, 관련 섹션을 aria-current="true"로 표시(About→선택 이유, 사례→프로젝트, 협업 방식→진행 방식, 문의 페이지→문의). 홈에서는 site.js가 보이는 섹션을 표시
+- 1201px 이상 가로 메뉴, 1200px 이하 메뉴 버튼 + 같은 순서의 메뉴 패널(맨 아래 큰 상담 예약 캡슐, Esc로 닫힘). 앵커 위치는 site.js가 헤더 높이 + 16px로 scroll-padding-top을 맞춘다
+- 언어 링크(한국어 / EN)는 헤더와 푸터 맨 아래 두 곳. build_en_pages.py가 넣는다(헤더는 검색 버튼 앞, 푸터는 저작권 앞)
+- 푸터: Let’s 회전 단어 + 캡슐 "프로젝트 문의하기"(→ 홈 #contact) + 원형 화살표 + 일시정지 → Company(헤더와 같은 다섯 섹션) · Follow(LinkedIn https://www.linkedin.com/company/second-context/ · GitHub https://github.com/RachelCho, 새 탭) · 뉴스레터(라벨 "뉴스레터 구독 이메일", 검색 입력 라벨은 "사이트 검색어") → 로고 · 언어 · "© Second Context 현재 연도"(site.js가 연도 갱신). 정책 페이지는 아직 없어 링크를 두지 않는다
+- 검색·푸터 회전 단어·뉴스레터·Hero 영상은 assets/site.js. 검색은 site.js의 INDEX(실제 페이지·사례만)를 찾는다. 회전 단어 전환은 원본과 같은 오른쪽 20px → 0, 0.3초 ease-out(CSS 변수 --lets-shift·--lets-dur·--lets-ease), 간격은 원본에서 확인 못 해 data-interval 2400ms. 일시정지/재생, 움직임 줄이기 시 멈춤
+- 뉴스레터: 구독 서비스가 연결되지 않음(form data-endpoint 비어 있음). 화면에 "연결 준비 중"을 표시하고, 신청해도 등록된 척하지 않는다. 서비스를 연결하면 data-endpoint에 주소만 넣는다
+- 흰 섹션 교차(2026-11-10): 홈 Services·Approach와 About 멘토링은 흰 바탕(.sc-light: 제목 #000, 본문 #4D4D4D 8.45:1, 작은 글 #666 5.74:1, 버튼 검정 채움/검정 테두리). 나머지는 검정
+- Rachel 사진 재사용: 홈 Why Us 머리 아래 why-us-meeting + why-us-leadership(둥근 두 장 7:5), Services 카드 아래 services-product-discussion + services-collaboration(4:5), Approach 머리 아래 approach-brainstorming 넓은 띠(2:1, 900px 이하 4:3)
+- 가독성(2026-11-10): 제목·카드 제목은 text-wrap:balance, 본문은 text-wrap:pretty, 한국어는 keep-all. 사례 제목은 뒤 구를 <span class="tl">로 묶어 한국어에서 그 앞에서 줄바꿈("미국 홈헬스케어 SaaS의 / 일정 관리 UX", "글로벌 제약사의 운영 모니터링· / 인시던트 관리 UX", "글로벌 테크 기업의 / 한국어 제품 현지화"). 영어 사례 제목은 균형 줄바꿈
+- 번호 원(01·02·03, 사례·서비스·진행 방식·차별점): 글자와 테두리 모두 브랜드 오렌지. 검정 바탕 #F0845C(8.16:1), 흰 바탕 #A83E20(6.22:1)
+- 파비콘·OG(2026-11-10): 검정 바탕 + 흰 두 사각 프레임 심볼만(워드마크·문구 없음). tools/make_brand_icons.py로 favicon.ico·assets/favicon-32.png·assets/og/<home|approach|work|contact>-<ko|en>.png를 만든다. 아래 "크림 배경 파비콘"·"글자 중심 OG 카드" 규칙과 tools/make_og_images.py는 Second Context에 더 쓰지 않는다(포트폴리오 portfolio.png는 그대로)
+- 홈 Hero(2026-11-10 4차): 영상이 화면 전체(헤더 아래 ~ 화면 끝)를 채우는 .sc-hero--full(아래 "Hero 영상"). 900px 이하는 영상 위 · 글 아래(겹치지 않음)
+- 사례 대표 제품 이미지(2026-11-10, 홈 #work 넓은 카드): HTML 목업 대신 사용자가 준 3:2 이미지(01 "Healthcare visit scheduling workspace-2" · 02 "Premium Incident Management Dashboard in Studio" · 03 "Korean localization booking comparison-1", 이미지 안에 "0N / …" 라벨과 "Illustrative concept." 포함). 원본 assets/case-product-<healthcare|monitoring|localization>.png, 웹용 assets/images/case-product-<이름>-<768|1152|1536>.jpg(JPEG 84·4:4:4). 자르지 않도록 .cap-card--landscape(3:2), .cap-card--product는 예시 콘셉트 표시를 오른쪽 위에
+- 사례 02 왼쪽 카드(세로 4:5): 사용자가 준 "Operations desk incident management dashboard.png"(1122×1402) → assets/images/case-context-monitoring-desk-<560|1122>.jpg
+- 사례 03 오른쪽 카드: 사용자가 준 "Flat smartphone and laptop booking prototypes.png"(3:2) → assets/images/case-context-localization-booking-<768|1152|1536>.jpg, 자르지 않도록 카드 사진 비율 3:2(.cap-card--landscape)
+- Hero 영상(2026-11-10 4차): 사용자가 준 1110.mov(1916×1080, 4.6초)를 tools/make_hero_video.py로 무음 assets/video/hero-loop.mp4(데스크톱)·hero-loop-960.mp4(900px 이하)와 첫 프레임 포스터 assets/images/home-hero-video-poster-<960|1916>.jpg로 만든다. 에덴슈피커만처럼 영상이 화면 전체, 글은 왼쪽 아래(제목 넓게 두 줄 → 설명 | 버튼 한 줄)로 얼굴과 겹치지 않게. 음영은 CSS: 전체 30% + 아래 진하게 + 왼쪽 옅게. 영상 전 프레임 합성 실측 최저 대비: 1440px 제목 7.91·설명 6.34, 1024px 5.88·4.71. 일시정지 버튼은 오른쪽 위. 움직임 줄이기·영상 오류면 포스터만
+- 홈 구성(2026-11-10 2차): Hero → #why-us(차별점 · About Second Context 소개·수치·사진 · 경험한 제품과 맡은 역할, "About Second Context" 링크로 About 페이지) → #services(제품 전략 · UX 리서치 · 프로덕트 디자인 · AI 기반 프로토타이핑) → #work(01·02·03 카드) → #approach(맥락 이해 → 문제 정의 → 디자인 및 검증 → 실행 지원, 자세히 보기 → second-context-approach.html) → #contact(문의 페이지와 같은 문의 폼 #inquiry + 이메일·상담 예약) → 푸터
+- 사례 03은 사용자 결정(2026-11-10)으로 기존 한국어 현지화 사례를 유지한다(Logistics — Vessel Tracking은 검증 자료가 없어 쓰지 않음)
+- 맥락 사진 3장은 Figma 이미지 생성(파일 "Second Context — case context images")으로 만든 assets/case-context-*.png와 웹용 assets/images/case-context-*-<560|1024>.jpg. 예시 화면·사진에는 "예시 콘셉트 / Illustrative concept"를 붙인다
+- 사례 상세 항목: 개요 · 내 역할 / 과제 / 접근 · 핵심 설계 판단 / 해결 · 바뀐 화면과 흐름 / 결과 (영어 Overview · Challenge · Approach · Solution · Outcomes)
+- About 페이지(second-context-about.html)를 다시 실제 페이지로 쓴다: 세 문단(문구 그대로) + 경력 수치 + 경력 목록(회사 이름 익명) + 멘토링. 학교 정보(SVA)는 넣지 않는다. 2019 항목은 사용자 요청으로 "그린피스, University of Florida, Diversity Way Maker, Walmart 등 글로벌 기업·기관과 함께 일함"(실명)
+- 홈 #why-us의 창업자 사진은 이전 #founder와 같은 founder-portrait 원본(4:5) + 사진 아래 3줄. About 페이지는 실제 프로필(about-profile)
+- 한국어 페이지만 제목 줄 간격과 라벨·제목·설명 사이 간격을 약 8px 더 준다(css 끝 html[lang="ko"] 규칙)
+
 ## Second Context 브랜드 규칙 (필수)
 - 적용 대상: second-context.html, plan-draft.html, plan-draft.md 등 Second Context 관련 화면과 문서
 - 포트폴리오(index.html)의 스타일 C 기준과 별개로 적용한다.
@@ -98,7 +129,7 @@
 - 창업자 소개 보강(2026-10-29, 출처: yeagyeong.com/about, 웹사이트용 이력서 2026-10-19본. LinkedIn은 로그인 없이 경력이 보이지 않아 쓰지 않음): 타임라인 2019 SVA BFA 일러스트레이션 · 2019 현지화 · 2023년 이전 그린피스·University of Florida·게이츠 재단 관련 교육 사이트(사용자 제공, 실명) · 2019–2020 VR 게임 스타트업 프로덕트 디자이너(사용자 제공, 회사명 없음) · 2020 General Assembly 프로그래밍 과정 수강(사용자 제공) · 2023 Aristocrat Gaming USA(호주 본사와 협업, 글로벌 애플리케이션, 사용자 제공, 실명) · 2024 제약사 · 2024 LA 물류 SaaS 중견기업 파운딩 디자이너(사용자 확인: 2024, 이력서의 2024–2025 대신)(글로벌 디스플레이 제조사 선박 추적 대시보드, React 디자인 시스템) · 2025–2026 YC 헬스케어 · 2026 Toptal을 통해 글로벌 기업들과 협업(사용자 제공, 실명) · 2026 Flexwork Pro 강사 · 현재. 멘토링 활동: ADPList 멘토(2024–2026, 40명 이상), Flexwork Pro UX 커리어 세미나(2026, 150명 이상 신청·약 60명 참석), AI 제품 디자인 과정 강사. 회사·고객사 이름은 익명(FNS·LG Display 포함), 학교·커뮤니티 이름은 실명
 - 자료끼리 다른 값(확인 전까지 쓰지 않음): ADPList 순위(Top 10 vs TOP100), 멘티 취업 수(29+ vs 25+), 방문 국가(27 vs 21+), 현지화 연도(2019 vs 2020)
 - 1인칭(나/저)으로 쓰고, '자수성가'·'역경 극복'·'글로벌 리더' 같은 수식어 대신 구체적 경험(직접 학비 마련, 이민자로 쌓은 커리어, 27개국 디지털 노매드)으로 보여준다. 확인되지 않은 어려움·감정·가족사·재정 상황은 덧붙이지 않는다
-- 경력 수치(Rachel 제공): 40+ 완료한 프로젝트 / Projects completed · 12+ 함께 일한 글로벌·다국적 기업 / Global & multinational companies worked with · 27 여행한 국가 / Countries visited. 12+를 "약 12개"로 바꾸지 않고, 27은 여행한 국가 수로만 쓴다(일한 국가·시장 수 아님). 투자금은 개인 수치에 넣지 않는다
+- 경력 수치(Rachel 제공): 40+ 완료한 프로젝트 / Projects completed · 12+ 함께 일한 글로벌·다국적 기업 / Global & multinational companies worked with · 27 여행한 국가 / Countries visited. 12+를 "약 12개"로 바꾸지 않고, 27+(2026-11-10 사용자 요청으로 + 표기)는 여행한 국가 수로만 쓴다(일한 국가·시장 수 아님). 투자금은 개인 수치에 넣지 않는다
 - 카운트업(assets/count-up.js): HTML에는 최종 값, 화면 60% 진입 시 세 숫자를 동시에 0→최종 값 900ms(ease-out), 방문당 한 번, 언어 전환으로 들어온 페이지에서는 다시 재생하지 않음(lang.js가 sc:counted 전달). 움직임 줄이기·IntersectionObserver 미지원이면 최종 값 그대로. 보이는 숫자는 aria-hidden, sr-only로 최종 값만 읽음, aria-live 없음. tabular-nums + 최종 자릿수만큼 폭 확보
 - 회사명은 쓰지 않는다("Y Combinator W21 출신의 미국 헬스케어 스타트업"). 투자금은 회사의 이력이며 개인 성과로 쓰지 않고, 금액은 사용자가 2026-10-29에 1,420만 달러($14.2 million)로 확정했다($15M 표기는 쓰지 않는다)
 - 기업 경험은 실제 참여 형태를 존중하고, 27개국은 개인 배경으로만 쓴다(27개 시장 업무·리서치로 바꾸지 않는다)
