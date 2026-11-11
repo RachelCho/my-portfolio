@@ -60,6 +60,8 @@
 - 홈 Hero(2026-11-10 4차): 영상이 화면 전체(헤더 아래 ~ 화면 끝)를 채우는 .sc-hero--full(아래 "Hero 영상"). 900px 이하는 영상 위 · 글 아래(겹치지 않음)
 - 사례 대표 제품 이미지(2026-11-10, 홈 #work 넓은 카드): HTML 목업 대신 사용자가 준 3:2 이미지(01 "Healthcare visit scheduling workspace-2" · 02 "Premium Incident Management Dashboard in Studio" · 03 "Korean localization booking comparison-1", 이미지 안에 "0N / …" 라벨과 "Illustrative concept." 포함). 원본 assets/case-product-<healthcare|monitoring|localization>.png, 웹용 assets/images/case-product-<이름>-<768|1152|1536>.jpg(JPEG 84·4:4:4). 자르지 않도록 .cap-card--landscape(3:2), .cap-card--product는 예시 콘셉트 표시를 오른쪽 위에
 - 문의 배경(2026-11-11, 사용자 요청): Contact 페이지(.contact-page)와 홈 #contact 뒤에 Rachel의 멘토링 장면 about-mentoring-session(1536, 900px 이하 1152)을 CSS 배경으로 두고 위→아래로 진해지는 검정 음영(.62 → .8 → .88). 아래 "Contact 페이지: 사진 없음" 규칙보다 우선. 사진 위 글자 합성 픽셀 실측 최저 6.78:1(라벨), 제목 8.43 이상
+- 홈 Selected Work 바탕(2026-11-11, 사용자 요청): 사례 화면이 밝은 화이트 모드 기기라 은빛 미색 #EFEDE8(.sc-light.sc-tone-ivory, 흰 섹션 글자 규칙 사용). 대비 제목 17.9 · 본문 #4D4D4D 7.2 · 작은 글 #666 4.9 · 번호 원 #A83E20 5.3:1. 흰 카드는 옅은 테두리, 카드 포커스는 검정 외곽선
+- 홈 "경험한 제품과 맡은 역할"(2026-11-11 2차): 연도 160px | 32px | 콘텐츠, 설명은 라벨 120px | 본문 minmax(0,1fr)(읽기 폭 제한 없음, line-height 1.7, keep-all + overflow-wrap anywhere). 767px 이하 세로(라벨 아래 본문). 선택자 .proof-rows
 - Why Us 바탕(2026-11-11, 사용자 요청): 검정 대신 다크 플럼 #1B1419(본문 #B3B3B3 8.67:1 · 작은 글 #999 6.37:1 · 강조 #F0845C 6.9:1)
 - 사례 02 카드 순서(2026-11-11): HTML 순서를 화면 순서(맥락 사진 → 제품 화면)와 같게 바꿔 키보드·스크린 리더 순서가 보이는 순서와 같다. 모바일도 같은 순서
 - 뉴스레터 연결 전(2026-11-11): site.js가 data-endpoint가 비면 form에 data-state="off"를 두고 입력·버튼을 비활성, 제목 옆 "준비 중" 표시
