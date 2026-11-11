@@ -52,6 +52,7 @@ a{color:inherit;text-underline-offset:3px}
 .text-wide{max-width:none}
 /* 줄 끝에서 가르지 않을 짧은 구: 601px 이상에서만 한 덩어리로 줄바꿈 (좁은 화면은 자연스럽게) */
 @media(min-width:601px){.keep{display:inline-block}}
+.nowrap{white-space:nowrap} /* 금액처럼 한 단어로 읽혀야 하는 숫자가 줄 끝에서 갈라지지 않게 */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .skip{position:absolute;left:var(--s2);top:-200px;z-index:100;background:var(--plum);color:var(--white);padding:var(--s2) var(--s3);border-radius:4px;font-weight:600;text-decoration:underline}
 .skip:focus{top:var(--s2)}
