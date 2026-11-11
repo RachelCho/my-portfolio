@@ -144,6 +144,7 @@ small{font-size:13px}
 .chip.idea{background:#FFFFFF;color:var(--orange);border-color:var(--orange);border-style:dashed}
 .chip.tbd{background:var(--orange);color:var(--cream);border-color:var(--orange)}
 .chip.ext,.chip.site,.chip.ops{background:#F6F6F4;color:var(--plum)}
+.chip.issue{background:#FFFFFF;color:var(--orange);border-color:var(--orange);border-width:1.5px} /* 점검 '문제 발견': 조정 오렌지 / 흰 6.22:1 */
 .kv{display:grid;grid-template-columns:minmax(0,180px) minmax(0,1fr);gap:var(--s1) var(--s3)}
 .kv + h3{margin-top:var(--gap-block)}
 .kv dt{font-weight:700}
@@ -153,6 +154,7 @@ small{font-size:13px}
 .tbl table.cols-3{min-width:560px}
 .tbl table.cols-4{min-width:680px}
 .tbl table.cols-5{min-width:780px}
+.tbl table.cols-6{min-width:900px} /* 2026-11-11: 6열 표(화면 목록·벤치마킹·점검)가 모바일에서 눌려 칩이 겹쳤음 */
 .tbl table.cols-7{min-width:980px}
 .tbl table.cols-8{min-width:1080px}
 /* ID·섹션명·앵커는 한 줄로, 설명·CTA는 칸 너비에 맞춰 줄바꿈 */
@@ -203,6 +205,7 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
 .wr{display:flex;gap:var(--s1)}
 .wr > .wb{flex:1}
 .wr.r75 > .wb:first-child{flex:7}.wr.r75 > .wb:last-child{flex:5}
+.wr.r57 > .wb:first-child{flex:5}.wr.r57 > .wb:last-child{flex:7}
 .wb{padding:var(--pad-box);background:#FFFFFF;border:1px solid var(--field-border,#8C858E);border-radius:3px;font-size:12px;line-height:var(--lh-ui);min-width:0}
 .wb.bar{background:var(--plum);color:var(--cream);border-color:var(--plum)}
 .wb.ph{background:repeating-linear-gradient(45deg,#FFFFFF 0 6px,#EDEBEC 6px 12px);text-align:center}
@@ -223,7 +226,8 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
 }
 /* 좁은 화면 조정 */
 @media(max-width:700px){
-  .kv{grid-template-columns:1fr;gap:4px}
+  .kv{grid-template-columns:minmax(0,1fr);gap:4px} /* 2026-11-11: 1fr은 긴 URL의 최소 폭 때문에 360px에서 2px 넘쳤음 */
+  .kv dd{overflow-wrap:anywhere}
   .kv dd{margin-bottom:var(--s1)}
   .kv dd:last-child{margin-bottom:0}
 }
@@ -235,12 +239,15 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
   <div class="wrap">
     <p class="label">Plan draft</p>
     <h1>Second Context<br>웹사이트 기획서</h1>
-    <p>목적·대상·화면·기능·예외·범위를 한 페이지에서 확인하는 기획서입니다. 2026-10-29 기준 실제 사이트 구현과 대조해 정리했고, 아직 사업적 판단이 필요한 내용은 "결정 필요"로 남겼습니다.</p>
+    <p>목적·대상·화면·기능·예외·범위를 한 페이지에서 확인하는 기획서입니다. <strong>2026-11-11, 커밋 947f46e의 로컬 코드</strong>를 기준으로 다시 정리했습니다. 같은 날 공개 사이트(rachelcho.github.io/my-portfolio)의 HTML·CSS·JS 10개 파일을 내려받아 비교했고 로컬과 모두 같았습니다(차이 없음). 이전 점검(2026-10-29) 결과는 날짜와 환경을 그대로 남겼고, 사업적 판단이 필요한 내용은 "결정 필요"로 표시했습니다.</p>
     <div class="docs">
-      <span>실제 사이트 →</span><a href="second-context.html">한국어 홈</a><span>·</span><a href="en/second-context.html">English</a><span>·</span><a href="second-context-approach.html">Approach</a><span>·</span><a href="second-context-work.html">사례</a><span>·</span><a href="second-context-contact.html">Contact</a>
+      <span>실제 사이트 →</span><a href="second-context.html">한국어 홈</a><span>·</span><a href="en/second-context.html">English</a><span>·</span><a href="second-context-approach.html">Approach</a><span>·</span><a href="second-context-work.html">사례</a><span>·</span><a href="second-context-contact.html">Contact</a><span>·</span><a href="second-context-about.html">About</a>
     </div>
-    <div class="legend"><span>표시:</span><span class="chip ok">구현됨</span><span class="chip part">부분 구현</span><span class="chip no">미구현</span><span class="chip idea">제안</span><span class="chip tbd">결정 필요</span><span class="chip tbd">확인 필요</span><span>· 검증:</span><span class="chip ok">브라우저 확인</span><span class="chip part">코드 확인</span><span class="chip no">미확인</span></div>
-    <nav class="toc" aria-label="목차"><p class="toc-h">목차</p><ol><li><a href="#s01"><span>01</span>기획 목적과 성공 기준</a></li><li><a href="#s02"><span>02</span>브랜드와 대상</a></li><li><a href="#s03"><span>03</span>대표 페르소나</a></li><li><a href="#s04"><span>04</span>필요성과 어려움</a></li><li><a href="#s05"><span>05</span>서비스</a></li><li><a href="#s06"><span>06</span>관련 사례</a></li><li><a href="#s07"><span>07</span>창업자 소개</a></li><li><a href="#s08"><span>08</span>사이트 구조와 화면 목록</a></li><li><a href="#s09"><span>09</span>사용자 시나리오</a></li><li><a href="#s10"><span>10</span>흐름도와 와이어프레임</a></li><li><a href="#s11"><span>11</span>기능정의서</a></li><li><a href="#s12"><span>12</span>예외 상황</a></li><li><a href="#s13"><span>13</span>의존관계</a></li><li><a href="#s14"><span>14</span>첫 공개 필수 · 추후 · 결정 필요</a></li><li><a href="#s15"><span>15</span>문서와 구현의 정합성</a></li><li><a href="#s16"><span>16</span>디자인 방향</a></li></ol></nav>
+    <div class="docs">
+      <span>설계 자료 →</span><a href="https://github.com/RachelCho/my-portfolio/blob/main/docs/screens.md">screens.md</a><span>·</span><a href="https://github.com/RachelCho/my-portfolio/blob/main/docs/features.md">features.md</a><span>·</span><a href="https://github.com/RachelCho/my-portfolio/blob/main/docs/design-style.md">design-style.md</a><span>·</span><a href="https://github.com/RachelCho/my-portfolio/blob/main/docs/second-context-home-build-prompt.md">홈 제작 요청문</a>
+    </div>
+    <div class="legend"><span>표시:</span><span class="chip ok">구현됨</span><span class="chip part">부분 구현</span><span class="chip no">미구현</span><span class="chip idea">제안</span><span class="chip tbd">결정 필요</span><span class="chip tbd">확인 필요</span><span>· 검증:</span><span class="chip ok">브라우저 확인</span><span class="chip part">코드 확인</span><span class="chip no">미확인</span><span>· 점검:</span><span class="chip ok">통과</span><span class="chip issue">문제 발견</span><span class="chip no">미확인</span></div>
+    <nav class="toc" aria-label="목차"><p class="toc-h">목차</p><ol><li><a href="#s01"><span>01</span>기획 목적과 성공 기준</a></li><li><a href="#s02"><span>02</span>브랜드와 대상</a></li><li><a href="#s03"><span>03</span>대표 페르소나</a></li><li><a href="#s04"><span>04</span>필요성과 어려움</a></li><li><a href="#s05"><span>05</span>서비스</a></li><li><a href="#s06"><span>06</span>진행 방식 (Approach)</a></li><li><a href="#s07"><span>07</span>관련 사례</a></li><li><a href="#s08"><span>08</span>About Second Context · Founder</a></li><li><a href="#s09"><span>09</span>정보 구조 (홈 영역)</a></li><li><a href="#s10"><span>10</span>사이트 구조와 화면 목록</a></li><li><a href="#s11"><span>11</span>사용자 시나리오</a></li><li><a href="#s12"><span>12</span>흐름도와 와이어프레임</a></li><li><a href="#s13"><span>13</span>기능정의서</a></li><li><a href="#s14"><span>14</span>예외 상황</a></li><li><a href="#s15"><span>15</span>의존관계</a></li><li><a href="#s16"><span>16</span>첫 공개 필수 · 추후 · 결정 필요</a></li><li><a href="#s17"><span>17</span>벤치마킹 대응표</a></li><li><a href="#s18"><span>18</span>화면 폭별 점검 (2026-11-11)</a></li><li><a href="#s19"><span>19</span>문서와 구현의 정합성</a></li><li><a href="#s20"><span>20</span>디자인 방향</a></li></ol></nav>
   </div>
 </header>
 
@@ -250,22 +257,21 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
     <div class="wrap">
       <p class="label">01 · Purpose</p>
       <h2 id="s01-t">기획 목적과 성공 기준</h2>
-
       <dl class="kv">
-        <dt>무엇을 만드는가</dt><dd>Second Context의 B2B 제품 디자인 컨설팅 웹사이트 (한국어 기본 + 영어)</dd>
+        <dt>무엇을 만드는가</dt><dd>Second Context의 B2B 프로덕트 디자인 컨설팅 웹사이트 (한국어 기본 + 영어)</dd>
         <dt>누구를 위한 사이트인가</dt><dd>미국 진출을 준비하거나 미국 사용자 경험을 개선하려는 한국 B2B SaaS 기업의 프로덕트팀과 파운더</dd>
         <dt>방문자가 얻어야 할 것</dt><dd>① 현재 제품에서 생길 수 있는 과제 ② Second Context 서비스가 우리 상황에 맞는지 ③ 전문성의 근거(사례·경력) ④ 실제 협업 방식</dd>
-        <dt>핵심 행동</dt><dd>30분 상담 예약(Calendly) 또는 프로젝트 문의(Contact 페이지 폼)</dd>
+        <dt>핵심 행동</dt><dd>30분 상담 예약(Calendly) 또는 프로젝트 문의(홈 #contact 문의 폼, 같은 폼이 Contact 페이지에도 있음)</dd>
+        <dt>작성 기준 버전</dt><dd>로컬 커밋 947f46e (2026-11-11). 공개 사이트와 차이 없음 — <a href="#s18">점검 환경과 근거</a></dd>
       </dl>
       <h3>첫 공개 완료 기준</h3>
-      <div class="tbl" role="region" tabindex="0" aria-label="첫 공개 완료 기준 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-3"><colgroup><col style="width:24%"><col style="width:34%"><col style="width:42%"></colgroup><thead><tr><th scope="col">기준</th><th scope="col">확인 방법</th><th scope="col">현재 상태 (2026-10-29)</th></tr></thead><tbody>
-<tr><td data-label="기준">주요 콘텐츠와 내부 링크가 정상 작동</td><td data-label="확인 방법">로컬 브라우저에서 한국어·영어 페이지, 메뉴·섹션·사례 링크 확인</td><td data-label="현재 상태 (2026-10-29)"><span class="chip ok">브라우저 확인</span> 로컬 미리보기 기준. 공개 URL에서는 페이지 응답(200)만 확인</td></tr>
-<tr><td data-label="기준">모바일에서 사용 가능</td><td data-label="확인 방법">375·768·1440px에서 가로 넘침·잘림·버튼 크기 확인</td><td data-label="현재 상태 (2026-10-29)"><span class="chip ok">브라우저 확인</span> 가로 넘침 0건, 자동 접근성 검사(axe) 위반 0건. 자동 검사만으로 접근성 전체를 충족했다고 보지 않음</td></tr>
-<tr><td data-label="기준">예약 경로 확인</td><td data-label="확인 방법">사이트의 예약 버튼이 Calendly 예약 페이지를 새 탭으로 여는지</td><td data-label="현재 상태 (2026-10-29)"><span class="chip ok">브라우저 확인</span> 링크 주소·새 탭 속성. Calendly 안에서 실제 예약을 끝까지 진행하는 것은 <span class="chip no">미확인</span> (외부 서비스)</td></tr>
-<tr><td data-label="기준">문의 수신 또는 대체 연락 경로 확인</td><td data-label="확인 방법">폼 성공·실패 처리, 운영자 메일함 수신, 이메일 링크·주소 복사</td><td data-label="현재 상태 (2026-10-29)">폼 처리 <span class="chip ok">브라우저 확인</span> (전송 요청을 가로채 확인). Formspree → rachel.cho5257@gmail.com 실제 수신은 <span class="chip tbd">확인 필요</span>. 대체 경로(이메일) <span class="chip ok">구현됨</span></td></tr>
+<div class="tbl" role="region" tabindex="0" aria-label="첫 공개 완료 기준 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-4"><colgroup><col style="width:18%"><col style="width:24%"><col style="width:29%"><col style="width:29%"></colgroup><thead><tr><th scope="col">기준</th><th scope="col">확인 방법</th><th scope="col">이전 점검 (2026-10-29 · 로컬 헤드리스 Chrome)</th><th scope="col">이번 점검 (2026-11-11 · macOS 26.6.2 · Chrome 157 헤드리스(DevTools Protocol) · 로컬 서버)</th></tr></thead><tbody>
+<tr><td data-label="기준">주요 콘텐츠와 내부 링크가 정상 작동</td><td data-label="확인 방법">한국어·영어 페이지, 메뉴·섹션·사례 링크, 검색</td><td data-label="이전 점검 (2026-10-29 · 로컬 헤드리스 Chrome)"><span class="chip ok">브라우저 확인</span> 로컬 미리보기 기준. 공개 URL은 응답(200)만 확인</td><td data-label="이번 점검 (2026-11-11 · macOS 26.6.2 · Chrome 157 헤드리스(DevTools Protocol) · 로컬 서버)"><span class="chip ok">통과</span> 홈 8영역 표시·메뉴 패널·검색·언어 전환을 브라우저에서 동작시킴. 사례 카드·메뉴 링크 주소는 코드 확인. 공개 사이트는 로컬과 같은 파일 해시</td></tr>
+<tr><td data-label="기준">모바일에서 사용 가능</td><td data-label="확인 방법">가로 넘침·잘림·버튼 크기</td><td data-label="이전 점검 (2026-10-29 · 로컬 헤드리스 Chrome)"><span class="chip ok">브라우저 확인</span> 375·768·1440px 가로 넘침 0건, axe 위반 0건 (당시 디자인)</td><td data-label="이번 점검 (2026-11-11 · macOS 26.6.2 · Chrome 157 헤드리스(DevTools Protocol) · 로컬 서버)"><span class="chip issue">문제 발견</span> 360·375px(최대 414px)에서 푸터 회전 단어가 문서 폭을 4~5px 넘김. 그 밖의 항목 통과 — <a href='#s18'>18 참고</a>. 이번에는 axe를 실행하지 않음</td></tr>
+<tr><td data-label="기준">예약 경로 확인</td><td data-label="확인 방법">예약 버튼이 Calendly를 새 탭으로 여는지</td><td data-label="이전 점검 (2026-10-29 · 로컬 헤드리스 Chrome)"><span class="chip ok">브라우저 확인</span> 링크 주소·새 탭 속성. 실제 예약 완료 <span class="chip no">미확인</span></td><td data-label="이번 점검 (2026-11-11 · macOS 26.6.2 · Chrome 157 헤드리스(DevTools Protocol) · 로컬 서버)"><span class="chip part">코드 확인</span> 링크·새 탭 속성. 실제 예약 완료는 <span class="chip tbd">확인 필요</span> (별도 확인 항목)</td></tr>
+<tr><td data-label="기준">문의 수신 또는 대체 연락 경로</td><td data-label="확인 방법">폼 성공·실패 처리, 메일함 수신, 이메일 링크·복사</td><td data-label="이전 점검 (2026-10-29 · 로컬 헤드리스 Chrome)">폼 처리 <span class="chip ok">브라우저 확인</span>(요청 가로채기). 실제 수신 <span class="chip tbd">확인 필요</span></td><td data-label="이번 점검 (2026-11-11 · macOS 26.6.2 · Chrome 157 헤드리스(DevTools Protocol) · 로컬 서버)"><span class="chip ok">통과</span> 한국어·영어 폼에서 실패(입력 유지)·성공(초기화)·두 번 눌러도 요청 1회 — Formspree 요청을 가로채 시험. 실제 메일 수신 <span class="chip tbd">확인 필요</span> (별도 확인 항목)</td></tr>
 </tbody></table></div>
       <p class="note">실제 측정 근거가 없으므로 전환율·예약 수·매출 목표는 정하지 않습니다.</p>
-
     </div>
   </section>
 
@@ -290,10 +296,10 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
       <p class="label">03 · Personas</p>
       <h2 id="s03-t">대표 페르소나 (기획용 가설)</h2>
 
-      <p class="measure">실제 조사 결과가 아니라, 사이트 구성과 문구를 점검하기 위해 세운 가설입니다. 나이·취미 대신 서비스 이용 맥락만 적었습니다. 영어 콘텐츠를 선호하는 방문자는 별도 페르소나가 아니라 <a href="#s09">시나리오 3</a>의 이용 경로로 다룹니다.</p>
+      <p class="measure">실제 조사 결과가 아니라, 사이트 구성과 문구를 점검하기 위해 세운 가설입니다. 나이·취미 대신 서비스 이용 맥락만 적었습니다. 영어 콘텐츠를 선호하는 방문자는 별도 페르소나가 아니라 <a href="#s11">시나리오 3</a>의 이용 경로로 다룹니다.</p>
       <div class="persona-grid">
       <article class="persona"><p class="p-tag">기획용 가설 페르소나 P1</p><h3>미국 진출을 준비하는 한국 B2B SaaS 파운더</h3><dl><dt>역할</dt><dd>회사의 미국 출시 결정을 이끄는 파운더. 제품·영업·채용을 함께 맡고 있어 UX에 쓸 수 있는 시간이 짧다</dd><dt>방문 계기</dt><dd>미국 출시를 앞두고 지인 소개·검색·LinkedIn 등으로 사이트를 처음 방문 (유입 경로는 가정)</dd><dt>해결하려는 문제</dt><dd>현재 제품이 미국 사용자에게 맞는지 점검하고, 제한된 시간과 예산 안에서 무엇부터 고칠지 정하기</dd><dt>의사결정에 필요한 정보</dt><dd>어떤 문제를 봐 주는지(서비스 범위), 비슷한 제품을 다뤄 본 경험(사례·경력), 진행 방식과 첫 만남의 부담</dd><dt>주요 우려</dt><dd>번역 수준의 조언에 그칠까, 비용과 기간이 얼마나 될까(가격은 사이트에 없음 — 결정 필요), 한국 팀의 사정을 이해할까</dd><dt>사이트에서 하려는 행동</dt><dd>Why Us·Services로 적합성 확인 → 사례와 Approach로 신뢰 확인 → 30분 상담 예약</dd></dl></article>
-      <article class="persona"><p class="p-tag">기획용 가설 페르소나 P2</p><h3>미국 서비스를 운영하며 UX 개선이 필요한 프로덕트 리드 또는 PM</h3><dl><dt>역할</dt><dd>이미 미국 고객이 있는 제품의 프로덕트 리드·PM. 개선 과제와 외부 협업 범위를 내부에 설명해야 한다</dd><dt>방문 계기</dt><dd>온보딩 이탈이나 핵심 업무 흐름의 문의가 반복되어 외부 전문가를 찾는 중 (가정)</dd><dt>해결하려는 문제</dt><dd>미국 사용자의 온보딩·핵심 업무 흐름에서 생기는 문제를 파악하고, 외부 전문가와 개선 범위·협업 방식을 검토하기</dd><dt>의사결정에 필요한 정보</dt><dd>복잡한 업무 제품을 다룬 구체적 설계 판단과 결과, 단계별 산출물, 개발팀과의 연결 방식</dd><dt>주요 우려</dt><dd>우리 개발 일정·조직에 맞게 범위를 나눌 수 있을까, 산출물이 실제 구현으로 이어질까, 내부 보고에 쓸 근거가 있을까</dd><dt>사이트에서 하려는 행동</dt><dd>사례 페이지의 설계 판단·데모 확인 → Approach의 단계·산출물 검토 → Contact 폼으로 프로젝트 문의</dd></dl></article>
+      <article class="persona"><p class="p-tag">기획용 가설 페르소나 P2</p><h3>미국 서비스를 운영하며 UX 개선이 필요한 프로덕트 리드 또는 PM</h3><dl><dt>역할</dt><dd>이미 미국 고객이 있는 제품의 프로덕트 리드·PM. 개선 과제와 외부 협업 범위를 내부에 설명해야 한다</dd><dt>방문 계기</dt><dd>온보딩 이탈이나 핵심 업무 흐름의 문의가 반복되어 외부 전문가를 찾는 중 (가정)</dd><dt>해결하려는 문제</dt><dd>미국 사용자의 온보딩·핵심 업무 흐름에서 생기는 문제를 파악하고, 외부 전문가와 개선 범위·협업 방식을 검토하기</dd><dt>의사결정에 필요한 정보</dt><dd>복잡한 업무 제품을 다룬 구체적 설계 판단과 결과, 단계별 산출물, 개발팀과의 연결 방식</dd><dt>주요 우려</dt><dd>우리 개발 일정·조직에 맞게 범위를 나눌 수 있을까, 산출물이 실제 구현으로 이어질까, 내부 보고에 쓸 근거가 있을까</dd><dt>사이트에서 하려는 행동</dt><dd>사례 페이지의 설계 판단·데모 확인 → Approach의 단계·산출물 검토 → 홈 Contact(#contact)의 문의 폼으로 프로젝트 문의</dd></dl></article>
       </div>
 
     </div>
@@ -319,7 +325,7 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
           <tr><td>우선순위 부재</td><td>고칠 것이 많아 보이지만 출시 전에 무엇부터 할지 정하지 못한다</td><td>출시 전에 어떤 UX 문제부터 개선해야 하는가?</td></tr>
         </tbody>
       </table></div>
-      <p class="note">실제 기업의 공개 사례는 출처를 확인한 뒤 추가합니다 — <a href="#s14">추후 개선</a>.</p>
+      <p class="note">현재 홈(2026-11-11)에는 이 네 유형 표가 없습니다. Why Us는 문제의식 한 문단 + 차별점 3개로 바뀌었고(커밋 ce9b463, 2026-11-10), 이 표는 기획 근거로만 남깁니다. 실제 기업의 공개 사례는 출처를 확인한 뒤 추가합니다 — <a href="#s16">추후 개선</a>.</p>
     </div>
   </section>
 
@@ -327,23 +333,55 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
     <div class="wrap">
       <p class="label">05 · Services</p>
       <h2 id="s05-t">서비스</h2>
-<div class="tbl" role="region" tabindex="0" aria-label="서비스 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-3"><colgroup><col style="width:22%"><col style="width:43%"><col style="width:35%"></colgroup><thead><tr><th scope="col">서비스</th><th scope="col">내용</th><th scope="col">결과물</th></tr></thead><tbody>
-<tr><td data-label="서비스">Product UX Review</td><td data-label="내용">온보딩·핵심 작업·정보 구조·화면 문구 검토</td><td data-label="결과물">우선순위를 포함한 UX 진단 보고서</td></tr>
-<tr><td data-label="서비스">Market Context Session</td><td data-label="내용">목표 사용자·업무 방식·현지화 가정 검토</td><td data-label="결과물">상담 및 핵심 권고 요약</td></tr>
-<tr><td data-label="서비스">Design Partnership</td><td data-label="내용">합의한 문제의 설계·프로토타입·개발 협업</td><td data-label="결과물">범위에 맞춘 제품 디자인 결과물</td></tr>
+      <p class="measure">현재 홈 #services(흰 바탕)의 서비스 카드 4개를 기준으로 정리했습니다. 홈 카드에는 제목과 설명만 있고 <strong>산출물 칸이 따로 없습니다.</strong> 아래 "산출물"은 홈 설명 문구에 실제로 적힌 것(관찰)과, Approach 상세 페이지의 단계별 산출물 중 관련 있어 보이는 것(<span class="chip idea">제안</span>)을 나눠 적었습니다.</p>
+      <h3>현재 서비스 4개</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="현재 서비스 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-4"><colgroup><col style="width:16%"><col style="width:38%"><col style="width:28%"><col style="width:18%"></colgroup><thead><tr><th scope="col">서비스</th><th scope="col">홈 설명 (현재 문구)</th><th scope="col">산출물</th><th scope="col">상태</th></tr></thead><tbody>
+<tr><td data-label="서비스">01 제품 전략</td><td data-label="홈 설명 (현재 문구)">목표 시장과 사용자, 사업 목표를 함께 살펴 제품의 우선순위와 다음 단계를 정합니다.</td><td data-label="산출물">관찰: 우선순위와 다음 단계(문구 안). <span class="chip idea">제안</span> Approach 1·3단계의 시장·사용 맥락 브리프, 우선순위 매트릭스 및 디자인 방향</td><td data-label="상태"><span class="chip ok">구현됨</span> 산출물 표기 <span class="chip tbd">결정 필요</span></td></tr>
+<tr><td data-label="서비스">02 UX 리서치</td><td data-label="홈 설명 (현재 문구)">목표 사용자의 업무 방식과 사용 맥락을 인터뷰와 사용성 테스트로 확인하고, 설계에 쓸 수 있는 근거로 정리합니다.</td><td data-label="산출물">관찰: 설계 근거 정리(문구 안). <span class="chip idea">제안</span> Approach 2·6단계의 UX 진단 및 현지화 가정 목록, 검증 결과</td><td data-label="상태"><span class="chip ok">구현됨</span> 산출물 표기 <span class="chip tbd">결정 필요</span></td></tr>
+<tr><td data-label="서비스">03 프로덕트 디자인</td><td data-label="홈 설명 (현재 문구)">합의한 문제를 사용자 흐름과 화면으로 설계하고, 프로토타입과 개발 협업까지 이어갑니다. 디자인 의도와 요구사항, 고려할 예외 상황을 함께 정리해 구현 과정의 해석 차이를 줄입니다.</td><td data-label="산출물">관찰: 사용자 흐름·화면, 프로토타입, 디자인 의도·요구사항·예외 상황 정리(문구 안). Approach 4·5단계 산출물과 같은 내용</td><td data-label="상태"><span class="chip ok">구현됨</span></td></tr>
+<tr><td data-label="서비스">04 AI 기반 프로토타이핑</td><td data-label="홈 설명 (현재 문구)">AI 도구로 아이디어를 실제로 동작하는 프로토타입으로 빠르게 만들어, 개발에 들어가기 전에 팀과 사용자에게 확인합니다.</td><td data-label="산출물">관찰: 동작하는 프로토타입(문구 안). Approach에는 따로 대응하는 단계 없음</td><td data-label="상태"><span class="chip ok">구현됨</span> 범위·도구 <span class="chip tbd">결정 필요</span></td></tr>
+</tbody></table></div>
+      <h3>이전 서비스 3개와의 관계</h3>
+      <p class="measure">근거: 이전 3개(Product UX Review · Market Context Session · Design Partnership)는 커밋 ce9b463(2026-11-10, 다크 리디자인)에서 현재 4개로 바뀌었습니다. 바꾼 이유나 대응 관계를 적은 기록은 저장소·CLAUDE.md에 없습니다. 그래서 아래 표는 <strong>문구가 겹치는 곳을 비교한 관찰</strong>이며, 공식 대응 관계는 <span class="chip tbd">결정 필요</span>입니다.</p>
+<div class="tbl" role="region" tabindex="0" aria-label="이전 서비스와 현재 서비스의 문구 비교 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-4"><colgroup><col style="width:18%"><col style="width:30%"><col style="width:32%"><col style="width:20%"></colgroup><thead><tr><th scope="col">이전 서비스</th><th scope="col">이전 검토 범위 · 결과물</th><th scope="col">현재 4개 중 문구가 겹치는 곳 (관찰)</th><th scope="col">정리</th></tr></thead><tbody>
+<tr><td data-label="이전 서비스">Product UX Review</td><td data-label="이전 검토 범위 · 결과물">온보딩·핵심 작업·정보 구조·화면 문구 / 우선순위를 포함한 UX 진단 보고서</td><td data-label="현재 4개 중 문구가 겹치는 곳 (관찰)">서비스 이름은 없어짐. '우선순위'는 01 제품 전략, '사용성 테스트'는 02 UX 리서치에 있음. 'UX 진단'은 Approach 2단계 산출물(UX 진단 및 현지화 가정 목록)에만 남음</td><td data-label="정리">진단형 단기 상품으로 둘지 <span class="chip tbd">결정 필요</span></td></tr>
+<tr><td data-label="이전 서비스">Market Context Session</td><td data-label="이전 검토 범위 · 결과물">목표 사용자·업무 방식·현지화 가정 / 상담 및 핵심 권고 요약</td><td data-label="현재 4개 중 문구가 겹치는 곳 (관찰)">'목표 시장과 사용자'는 01 제품 전략, '업무 방식과 사용 맥락'은 02 UX 리서치에 있음</td><td data-label="정리">30분 상담과의 관계 <span class="chip tbd">결정 필요</span></td></tr>
+<tr><td data-label="이전 서비스">Design Partnership</td><td data-label="이전 검토 범위 · 결과물">합의한 문제의 설계·프로토타입·개발 협업 / 범위에 맞춘 제품 디자인 결과물</td><td data-label="현재 4개 중 문구가 겹치는 곳 (관찰)">03 프로덕트 디자인의 첫 문장과 거의 같음(“합의한 문제를 … 설계하고, 프로토타입과 개발 협업까지”)</td><td data-label="정리">같은 서비스의 이름 변경으로 볼 수 있음 (관찰)</td></tr>
+<tr><td data-label="이전 서비스">(없음)</td><td data-label="이전 검토 범위 · 결과물">—</td><td data-label="현재 4개 중 문구가 겹치는 곳 (관찰)">04 AI 기반 프로토타이핑은 이전 구성에 없던 새 항목</td><td data-label="정리">새로 추가</td></tr>
 </tbody></table></div>
       <ul class="measure-wide">
-        <li>결과를 보장하는 문구 대신 검토 범위와 실제 제공물을 설명합니다. 홈 Services에는 서비스별 <strong>예시 산출물</strong>(UX 진단 주석 화면, 현지화 비교, 사용자 흐름, 컴포넌트 상태)을 "실제 프로젝트 결과 아님"으로 표시해 보여 줍니다.</li>
-        <li><strong>30분 상담</strong>(Calendly 예약)은 구체적인 질문 한 가지를 함께 살펴보고 다음 행동을 정리하는 첫 대화입니다. 가격 <span class="chip tbd">결정 필요</span> · 사전 검토 범위와 결과물 <span class="chip tbd">결정 필요</span> · Market Context Session과의 관계(같은 것인지, 유료 세션의 시작인지) <span class="chip tbd">결정 필요</span></li>
+        <li>이전 홈의 서비스별 <strong>예시 산출물</strong>(UX 진단 주석 화면·현지화 비교·사용자 흐름)과 개발 협업 블록은 현재 홈에 없습니다. 현지화 비교 예시는 사례 03 이미지로 옮겨졌습니다.</li>
+        <li><strong>30분 상담</strong>(Calendly)은 서비스 카드가 아니라 헤더 캡슐과 #contact에서 안내합니다. 가격·사전 검토 범위·결과물 <span class="chip tbd">결정 필요</span></li>
+        <li>결과를 보장하는 문구 대신 검토 범위와 실제 제공물을 설명한다는 원칙은 유지합니다.</li>
       </ul>
     </div>
   </section>
 
   <section id="s06" aria-labelledby="s06-t">
     <div class="wrap">
-      <p class="label">06 · Selected work</p>
-      <h2 id="s06-t">관련 사례</h2>
+      <p class="label">06 · Approach</p>
+      <h2 id="s06-t">진행 방식 (Approach)</h2>
+      <p class="measure">홈 #approach는 <strong>4단계 요약</strong>, 상세 페이지(second-context-approach.html)는 <strong>6단계</strong>입니다. 두 곳의 단계 이름이 다르므로, 설명 문구와 산출물을 비교해 대응 관계를 정리했습니다. 대응은 문구 비교로 정한 것이며 사이트에 대응표가 있는 것은 아닙니다.</p>
+      <h3>홈 요약 4단계 ↔ 상세 6단계</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="홈 4단계와 상세 6단계의 대응 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-5"><colgroup><col style="width:14%"><col style="width:28%"><col style="width:24%"><col style="width:22%"><col style="width:12%"></colgroup><thead><tr><th scope="col">홈 단계</th><th scope="col">홈 설명</th><th scope="col">상세 단계</th><th scope="col">상세 산출물</th><th class="nw" scope="col">대응</th></tr></thead><tbody>
+<tr><td data-label="홈 단계">01 맥락 이해</td><td data-label="홈 설명">제품과 목표 시장, 사용자와 업무 환경을 살펴 현재 상황을 함께 파악합니다.</td><td data-label="상세 단계">1단계 시장과 사용 맥락 이해하기<br>2단계 제품 경험과 현지화 가정 점검하기</td><td data-label="상세 산출물">시장·사용 맥락 브리프 / UX 진단 및 현지화 가정 목록</td><td class="nw" data-label="대응">1 : 2</td></tr>
+<tr><td data-label="홈 단계">02 문제 정의</td><td data-label="홈 설명">사용자 영향·사업 중요도·구현 난이도로 먼저 풀 문제와 우선순위를 정합니다.</td><td data-label="상세 단계">3단계 개선 방향과 우선순위 합의하기</td><td data-label="상세 산출물">우선순위 매트릭스 및 디자인 방향 (상세 페이지에 예시 매트릭스: 영향 × 구현 난이도)</td><td class="nw" data-label="대응">1 : 1</td></tr>
+<tr><td data-label="홈 단계">03 디자인 및 검증</td><td data-label="홈 설명">사용자 흐름과 화면을 설계하고, 프로토타입으로 사용자와 팀에게 확인합니다.</td><td data-label="상세 단계">4단계 현지 맥락에 맞는 경험 설계하기</td><td data-label="상세 산출물">개선 사용자 흐름 및 합의 범위의 디자인·프로토타입</td><td class="nw" data-label="대응">1 : 1</td></tr>
+<tr><td data-label="홈 단계">04 실행 지원</td><td data-label="홈 설명">디자인 의도와 요구사항, 예외 상황을 정리해 개발 과정의 해석 차이를 줄입니다.</td><td data-label="상세 단계">5단계 실행 계획과 개발 연결하기</td><td data-label="상세 산출물">디자인 전달 자료 및 실행 계획</td><td class="nw" data-label="대응">1 : 1</td></tr>
+<tr><td data-label="홈 단계">(홈에 없음)</td><td data-label="홈 설명">—</td><td data-label="상세 단계">6단계 검증하고 다음 개선으로 이어가기</td><td data-label="상세 산출물">검증 결과 및 후속 개선 백로그</td><td class="nw" data-label="대응"><span class="chip tbd">결정 필요</span></td></tr>
+</tbody></table></div>
+      <ul class="measure-wide">
+        <li>상세 6단계의 "출시 후 검증 → 다음 개선"은 홈 요약에 따로 없습니다. 홈 03의 "검증"은 개발 전 프로토타입 검증입니다. 홈 04 설명에 다음 개선을 한 줄 더할지, 지금처럼 요약에서 뺄지 <span class="chip tbd">결정 필요</span></li>
+        <li>상세 페이지 구성: 머리글 → 6단계 개요(단계를 누르면 설명으로 이동) → 단계별 설명·산출물·기대 효과 × 6 → 상담 CTA → 우선순위(예시 매트릭스) → Business value 4개 → 마지막 CTA</li>
+        <li>상세 페이지 CTA: "30분 상담 예약하기" → <strong>Contact 페이지 #booking</strong>(Calendly 직접이 아님), "프로젝트 문의하기" → 홈 #contact</li>
+      </ul>
+    </div>
+  </section>
 
+  <section id="s07" aria-labelledby="s07-t">
+    <div class="wrap">
+      <p class="label">07 · Selected work</p>
+      <h2 id="s07-t">관련 사례</h2>
       <div class="measure">
         <p><strong>복잡한 업무와 새로운 사용 맥락을, 명확한 제품 경험으로.</strong> Second Context를 시작하기 전, Rachel Cho가 이전 경력에서 수행한 세 프로젝트입니다. 고객사 이름은 밝히지 않습니다.</p>
       </div>
@@ -352,22 +390,22 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
 <tr><td data-label="사례">02 글로벌 제약사의 운영 모니터링·인시던트 관리 UX<br><small>Global Pharma · Enterprise Monitoring · 2024</small></td><td data-label="핵심 설계 판단">8개 대시보드에 흩어진 정보를 심각도와 후속 영향 중심으로 재구조화. 기술 신호와 업무 영향(막힌 팀·담당자)을 함께 보는 우선순위</td><td data-label="대표 수치·범위 (숫자 옆에 지표 종류)">업무 성과 인시던트 조사 30분 → 3분(프로젝트 보고) · 업무 성과 triage 시간 80% 단축 · 업무 성과 개발자 내부 도구 티켓 처리 40% 단축 · 리서치 범위 이해관계자 인터뷰 15회</td></tr>
 <tr><td data-label="사례">03 글로벌 테크 기업의 한국어 제품 현지화<br><small>Global Tech · Korean Localization · 2019</small></td><td data-label="핵심 설계 판단">번역 문구에서 멈추지 않고 이름·날짜·시간 표기, 타이포그래피·간격까지 한국어 맥락에 맞춤</td><td data-label="대표 수치·범위 (숫자 옆에 지표 종류)">프로젝트 기간 6주(2019년) · 산출물: 한국어 UX 문구와 디자인 자산, 현지화 레이아웃</td></tr>
 </tbody></table></div>
-      <h3>현재 구조와 검토 상태</h3>
+      <p class="note">수치는 사례 페이지(second-context-work.html)에만 있습니다. 현재 홈 #work에는 수치가 없습니다.</p>
+      <h3>현재 구조와 검토 상태 (2026-11-11)</h3>
       <ul class="measure-wide">
-        <li>홈 #work: 사례마다 핵심 설계 판단·대표 수치·재구성 화면 미리보기·"사례 자세히 보기" 링크 <span class="chip ok">구현됨</span></li>
-        <li>사례 페이지 <code>second-context-work.html</code>: 문제 / 내 역할 / 핵심 설계 판단 / 바뀐 화면과 흐름 / 확인된 결과 + 3단계 재구성 데모(재생·정지·다시 보기). 사례 02는 데모 두 개를 탭으로 전환 <span class="chip ok">구현됨</span></li>
-        <li>사례 <strong>구조</strong>는 확정·구현됨. 사례 <strong>콘텐츠의 공개 범위</strong>(고객사의 공개 동의, 수치 공개 허용 여부)는 <span class="chip tbd">결정 필요</span> — 현재는 회사명을 익명으로 쓰고 공개 자료(이전 사이트 사례, 웹사이트용 이력서)에 있는 수치만 사용</li>
-        <li>이전 기획서의 "사례 자세히 보기를 펼치면…" 방식은 별도 사례 페이지로 바뀌었습니다 (<a href="#s15">정합성 점검</a> 참고)</li>
+        <li>홈 #work: 사례마다 번호 원 · 분야 라벨 · 제목(h3) · 한 줄 설명 + <strong>이미지 카드 2개</strong>(제품 화면 + 사용 맥락, 카드 전체가 사례 페이지 링크, "예시 콘셉트" 표시) <span class="chip ok">구현됨</span></li>
+        <li>사례 01 오른쪽 카드: 16:9 노트북 화면 "AI-assisted Re-assignment" — 한국어 페이지도 영어 문구(2026-11-11 사용자 결정) <span class="chip ok">구현됨</span></li>
+        <li>사례 페이지: 개요 · 내 역할 / 과제 / 접근 · 핵심 설계 판단 / 해결 · 바뀐 화면과 흐름 / 결과 + 3단계 재구성 데모, 사례 02는 탭 두 개 <span class="chip ok">구현됨</span></li>
+        <li>사례 <strong>콘텐츠 공개 범위</strong>(고객사 동의, 수치 공개 허용) <span class="chip tbd">결정 필요</span> — 현재는 익명 + 공개 자료 수치만</li>
+        <li>360px에서 카드 이미지 속 UI 글자는 읽기 어렵고, 사례 01 제품 이미지의 "01 / VISIT SCHEDULING" 라벨이 둥근 모서리에 일부 가려짐 <span class="chip issue">문제 발견</span> — <a href="#s18">18 참고</a></li>
       </ul>
-
     </div>
   </section>
 
-  <section id="s07" aria-labelledby="s07-t">
+  <section id="s08" aria-labelledby="s08-t">
     <div class="wrap">
-      <p class="label">07 · Founder</p>
-      <h2 id="s07-t">창업자 소개</h2>
-
+      <p class="label">08 · About · Founder</p>
+      <h2 id="s08-t">About Second Context · Founder</h2>
       <div class="founder">
         <figure>
           <img src="assets/images/founder-portrait-560.jpg" width="560" height="700" loading="lazy" alt="밝은 실내에서 의자에 앉아 미소 짓는 Rachel Cho">
@@ -378,250 +416,374 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
           </figcaption>
         </figure>
         <div class="founder-text">
-          <p><strong>복잡한 문제를 함께 풀어가는 디자인 파트너.</strong></p>
-          <p>Second Context를 이끄는 제품·UX 컨설턴트 Rachel Cho입니다. Y Combinator 출신으로 1,420만 달러의 투자를 유치한 미국 헬스케어 스타트업에서 파운딩 디자이너로 제품 디자인을 이끌었습니다. 글로벌 기업의 업무 시스템과 제품 현지화 경험을 바탕으로, 복잡한 문제를 진단하고 개선 우선순위부터 실제 설계까지 연결합니다.</p>
-          <p>직접 학비를 마련하며 공부하고, 이민자로 새로운 언어와 문화 속에서 커리어를 쌓았습니다. 디지털 노매드로 여러 나라를 여행하며 서로 다른 배경과 관점을 이해해온 경험은, 제품이 쓰이는 맥락과 그 안의 사람을 살피는 바탕이 되었습니다.</p>
-          <p>지금은 제품팀과 파운더의 고민을 함께 풀며, 이민자 커뮤니티와 주니어 디자이너의 새로운 출발도 돕고 있습니다. ADPList 멘토링과 Flexwork Pro의 UX·AI 제품 디자인 강의를 통해 경험을 나누고, 막막한 상황에서도 실행 가능한 다음 걸음을 함께 찾습니다.</p>
+          <p><strong>홈: About Second Context (#founder, Why Us 안에 중첩)</strong></p>
+          <p>가운데 라벨 "About Second Context" + 큰 문장 "맥락으로 완성하는, 독립 프로덕트 디자인." → 왼쪽: 소개 문단 1개(독립 프로덕트 디자인 스튜디오 · 홈헬스케어 SaaS 파운딩 디자이너 · 제약사 운영 모니터링 · 제품 현지화) + [About Second Context] 버튼(→ About 페이지) + 경력 수치 3줄 / 오른쪽: 인물 사진(4:5) + 사진 아래 3줄. 이어서 "경험한 제품과 맡은 역할"(#experience) 3행(2025–2026 · 2024 · 2019, 회사 배경과 Rachel의 역할을 나눠 적음).</p>
+          <p><strong>About 페이지 (second-context-about.html)</strong> — 2026-10-29에는 홈으로 넘기는 안내 페이지였지만 지금은 실제 페이지입니다: 세 문단(문구 그대로) + 경력 수치 + 경력 목록(Experience, 회사 이름 익명) + 멘토링(Mentoring). 사진은 실제 프로필(about-profile).</p>
           <ul class="founder-stats" aria-label="경력 요약">
             <li><span class="stat-value">40+</span><span class="stat-label">완료한 프로젝트</span></li>
             <li><span class="stat-value">12+</span><span class="stat-label">함께 일한 글로벌·다국적 기업</span></li>
-            <li><span class="stat-value">27</span><span class="stat-label">여행한 국가</span></li>
+            <li><span class="stat-value">27+</span><span class="stat-label">여행한 국가</span></li>
           </ul>
-          <p class="note">홈 #founder 한 곳에서 보여 줍니다(2026-10-29 통합). 수치는 화면에 들어올 때 한 번 카운트업. 투자 금액은 회사의 이력이며 개인 성과로 쓰지 않습니다. 27은 여행한 국가 수입니다. 이전 소개 주소(second-context-about.html)는 홈 Founder로 이동합니다.</p>
+          <p class="note">27은 2026-11-10 사용자 요청으로 "27+" 표기. 여행한 국가 수이며 일한 국가·시장 수가 아닙니다. 수치는 화면에 들어올 때 한 번 카운트업. 투자 금액(1,420만 달러)은 회사의 이력이며 개인 성과로 쓰지 않습니다.</p>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <section id="s08" aria-labelledby="s08-t">
-    <div class="wrap">
-      <p class="label">08 · Screens</p>
-      <h2 id="s08-t">사이트 구조와 화면 목록</h2>
-
-      <p class="measure">정적 HTML 사이트(GitHub Pages)입니다. 영어 페이지는 <code>en/</code> 폴더에 같은 파일 이름으로 있고, 한국어 원본에서 빌드 스크립트(<code>tools/build_en_pages.py</code>)로 만듭니다.</p>
-      <h3>독립 페이지</h3>
-      <div class="tbl" role="region" tabindex="0" aria-label="독립 페이지 표 (가로로 스크롤할 수 있음)"><table class="rt ids  cols-7"><colgroup><col style="width:13%"><col style="width:10%"><col style="width:15%"><col style="width:14%"><col style="width:20%"><col style="width:17%"><col style="width:11%"></colgroup><thead><tr><th class="nw" scope="col">화면 ID</th><th scope="col">화면명</th><th scope="col">파일 경로</th><th scope="col">목적</th><th scope="col">주요 콘텐츠</th><th scope="col">주요 CTA</th><th scope="col">연결 화면</th></tr></thead><tbody>
-<tr><td class="nw" data-label="화면 ID">S-01 / S-01E</td><td data-label="화면명">홈</td><td data-label="파일 경로">second-context.html<br>en/second-context.html</td><td data-label="목적">사이트의 문제의식·서비스·전문성을 한 번에 이해</td><td data-label="주요 콘텐츠">Hero · Why Us · Services · Work 요약 · Founder · 상담 섹션 (아래 홈 섹션 표)</td><td data-label="주요 CTA">프로젝트 문의하기 · 사례 살펴보기 · 30분 상담 예약하기 · 사례 자세히 보기</td><td data-label="연결 화면">S-02, S-03, S-04, X-01</td></tr>
-<tr><td class="nw" data-label="화면 ID">S-02 / S-02E</td><td data-label="화면명">Approach (협업 방식)</td><td data-label="파일 경로">second-context-approach.html<br>en/…</td><td data-label="목적">협업 과정과 단계별 산출물을 확인</td><td data-label="주요 콘텐츠">도입(사진) · 6단계 다이어그램 · 단계별 설명·산출물·기대 효과 · 우선순위 매트릭스 · Business value · 마지막 CTA</td><td data-label="주요 CTA">30분 상담 예약하기(→ S-04#booking) · 프로젝트 문의하기(→ S-04#inquiry)</td><td data-label="연결 화면">S-04, 헤더 → X-01</td></tr>
-<tr><td class="nw" data-label="화면 ID">S-03 / S-03E</td><td data-label="화면명">사례 상세 (Work)</td><td data-label="파일 경로">second-context-work.html<br>en/…</td><td data-label="목적">세 사례의 설계 판단과 결과를 깊게 확인</td><td data-label="주요 콘텐츠">재구성 화면 미리보기 · 사례별 문제·역할·판단·화면·결과 · 3단계 데모 · 사례 02 탭</td><td data-label="주요 CTA">헤더의 30분 상담 예약만 있음 — 페이지 끝 상담 CTA는 <span class="chip idea">제안</span></td><td data-label="연결 화면">S-01, X-01</td></tr>
-<tr><td class="nw" data-label="화면 ID">S-04 / S-04E</td><td data-label="화면명">Contact</td><td data-label="파일 경로">second-context-contact.html<br>en/…</td><td data-label="목적">프로젝트 문의 또는 상담 예약</td><td data-label="주요 콘텐츠">머리글 · 문의 폼(#inquiry) · 다른 연락 방법(이메일·복사, 30분 상담 #booking)</td><td data-label="주요 CTA">문의 보내기 · 30분 상담 예약하기</td><td data-label="연결 화면">X-01, X-02</td></tr>
-<tr><td class="nw" data-label="화면 ID">S-05 / S-05E</td><td data-label="화면명">이전 창업자 소개 주소</td><td data-label="파일 경로">second-context-about.html<br>en/…</td><td data-label="목적">예전 링크로 들어온 방문자를 홈 Founder로 이동 (독립 콘텐츠 아님)</td><td data-label="주요 콘텐츠">안내 문장과 이동 링크 (자동 이동, 검색 제외)</td><td data-label="주요 CTA">홈의 창업자 소개로 이동</td><td data-label="연결 화면">S-01#founder</td></tr>
-</tbody></table></div>
-      <h3>홈 내부 섹션 (독립 페이지 아님)</h3>
-      <div class="tbl" role="region" tabindex="0" aria-label="홈 내부 섹션 (독립 페이지 아님) 표 (가로로 스크롤할 수 있음)"><table class="rt ids  cols-5"><colgroup><col style="width:9%"><col style="width:11%"><col style="width:10%"><col style="width:43%"><col style="width:27%"></colgroup><thead><tr><th class="nw" scope="col">ID</th><th class="nw" scope="col">섹션</th><th class="nw" scope="col">앵커</th><th scope="col">주요 콘텐츠</th><th scope="col">CTA</th></tr></thead><tbody>
-<tr><td class="nw" data-label="ID">H-1</td><td class="nw" data-label="섹션">Hero</td><td class="nw" data-label="앵커">(상단)</td><td data-label="주요 콘텐츠">제목 "새로운 시장의 맥락을, 제품의 다음 단계로." · 설명 · 분야 태그 · 대표 이미지(복잡한 제품 화면을 바탕으로 팀의 디자인 논의를 이끄는 Rachel, 전체 폭 배경)</td><td data-label="CTA">프로젝트 문의하기 · 사례 살펴보기</td></tr>
-<tr><td class="nw" data-label="ID">H-2</td><td class="nw" data-label="섹션">Why Us</td><td class="nw" data-label="앵커">#why</td><td data-label="주요 콘텐츠">문제의식 · 시행착오 유형 4개(설명용 예시) · 판단을 실행으로(사진) · 회사 배경과 Rachel의 역할</td><td data-label="CTA">—</td></tr>
-<tr><td class="nw" data-label="ID">H-3</td><td class="nw" data-label="섹션">Services</td><td class="nw" data-label="앵커">#services</td><td data-label="주요 콘텐츠">서비스 3개와 예시 산출물 · 개발 협업(컴포넌트 상태 예시)</td><td data-label="CTA">—</td></tr>
-<tr><td class="nw" data-label="ID">H-4</td><td class="nw" data-label="섹션">Work</td><td class="nw" data-label="앵커">#work</td><td data-label="주요 콘텐츠">사례 3개 요약 · 대표 수치</td><td data-label="CTA">사례 자세히 보기 · 30분 상담 예약하기 · 협업 방식 보기</td></tr>
-<tr><td class="nw" data-label="ID">H-5</td><td class="nw" data-label="섹션">Founder</td><td class="nw" data-label="앵커">#founder</td><td data-label="주요 콘텐츠">세 문단 소개 · 경력 수치 카운트업</td><td data-label="CTA">—</td></tr>
-<tr><td class="nw" data-label="ID">H-6</td><td class="nw" data-label="섹션">상담</td><td class="nw" data-label="앵커">#contact</td><td data-label="주요 콘텐츠">"30분 상담으로 시작합니다." · 멘토링 사진</td><td data-label="CTA">30분 상담 예약하기(Calendly) · 프로젝트 문의하기</td></tr>
-</tbody></table></div>
-      <h3>외부 서비스 (사이트 밖)</h3>
-      <div class="tbl" role="region" tabindex="0" aria-label="외부 서비스 (사이트 밖) 표 (가로로 스크롤할 수 있음)"><table class="rt ids  cols-4"><colgroup><col style="width:10%"><col style="width:18%"><col style="width:30%"><col style="width:42%"></colgroup><thead><tr><th class="nw" scope="col">ID</th><th scope="col">이름</th><th scope="col">역할</th><th scope="col">사이트가 관여하는 범위</th></tr></thead><tbody>
-<tr><td class="nw" data-label="ID">X-01</td><td data-label="이름">Calendly 예약 페이지</td><td data-label="역할">30분 상담 시간 선택·예약 확정</td><td data-label="사이트가 관여하는 범위">새 탭으로 여는 링크까지. 예약 가능 시간·확정·안내 메일은 Calendly 설정에 따름</td></tr>
-<tr><td class="nw" data-label="ID">X-02</td><td data-label="이름">Formspree</td><td data-label="역할">문의 폼 수신 후 운영자 이메일로 전달</td><td data-label="사이트가 관여하는 범위">전송 요청과 응답 처리(2xx면 성공 표시)까지. 실제 메일 도착은 운영자가 확인</td></tr>
-</tbody></table></div>
-      <p class="note">공통 헤더(모든 페이지): 로고 · Why Us · Services · Work · Approach · Contact · [30분 상담 예약] · 한국어 / EN. 하위 페이지의 Why Us·Services·Work는 홈의 해당 섹션으로 이동합니다.</p>
-
     </div>
   </section>
 
   <section id="s09" aria-labelledby="s09-t">
     <div class="wrap">
-      <p class="label">09 · Scenarios</p>
-      <h2 id="s09-t">사용자 시나리오</h2>
-
-      <p class="measure">현재 구현으로 가능한 경로를 적었고, 사이트에 없는 동작은 <span class="chip idea">제안</span>으로 표시했습니다. Calendly 페이지로 <em>이동</em>한 것과 Calendly에서 예약을 <em>완료</em>한 것은 다른 상태입니다. 사이트는 예약 완료 여부를 알 수 없습니다.</p>
-      <article class="scenario"><h3>1. 미국 진출을 준비하는 파운더 (P1) → 상담 예약</h3><dl class="kv"><dt>방문 목적</dt><dd>미국 출시 전에 제품 경험을 점검받을 수 있는지, 누구와 어떻게 진행하는지 확인</dd></dl><ol><li>홈 Hero에서 사이트가 다루는 문제(새로운 시장의 맥락)를 읽는다</li><li>Why Us의 시행착오 유형에서 자기 상황과 비슷한 항목을 찾는다</li><li>Services의 서비스 3개와 예시 산출물로 받을 수 있는 도움을 확인한다</li><li>Work 요약의 대표 수치를 보고 "사례 자세히 보기"로 사례 페이지(S-03)에서 설계 판단과 데모를 본다</li><li>헤더의 Approach에서 6단계와 산출물을 확인한다</li><li>"30분 상담 예약하기"를 누른다 — Approach에서는 Contact의 상담 안내(#booking)를 거쳐, 헤더·홈에서는 바로 Calendly 새 탭(X-01)으로 이동</li><li>Calendly에서 시간을 고르고 예약을 확정한다 <span class="chip ext">외부</span></li></ol><p class="done"><strong>완료 상태</strong> 사이트 기준 완료 = Calendly 예약 페이지가 열림. 실제 완료 = Calendly에서 예약 확정 (사이트에서 확인 불가). 예약 확인 메일은 Calendly 설정에 따름</p></article>
-      <article class="scenario"><h3>2. 구체적인 개선 과제가 있는 프로덕트 리드·PM (P2) → 프로젝트 문의</h3><dl class="kv"><dt>방문 목적</dt><dd>특정 업무 흐름 개선을 외부와 함께할 수 있는지, 범위와 협업 방식을 내부에 설명할 근거 확보</dd></dl><ol><li>홈 Services와 Work에서 비슷한 업무 제품 경험을 확인한다</li><li>사례 페이지에서 문제·역할·설계 판단·결과와 단계형 데모(사례 02는 탭 두 개)를 본다</li><li>Approach에서 단계별 산출물·기대 효과와 우선순위 매트릭스를 검토한다</li><li>"프로젝트 문의하기"로 Contact 폼(#inquiry)에 이름·이메일·회사 또는 제품명·제품 URL·문의 내용을 적는다</li><li>"문의 보내기" → 보내는 중… → 성공 안내 (실패 시 입력 유지·재시도)</li><li>운영자가 메일함에서 문의를 받고 회신한다 <span class="chip ops">운영</span></li></ol><p class="done"><strong>완료 상태</strong> 사이트 기준 완료 = 서버가 2xx로 응답해 성공 안내가 보임. 실제 완료 = 운영자 메일함 도착과 회신 (실제 수신은 <span class="chip tbd">확인 필요</span>)</p></article>
-      <article class="scenario"><h3>3. 영어 콘텐츠를 선호하는 방문자 (언어 이용 경로)</h3><dl class="kv"><dt>방문 목적</dt><dd>같은 내용을 영어로 읽고 위 1·2와 같은 판단을 함</dd></dl><ol><li>한국어 페이지에서 헤더의 "EN"을 누르면 같은 페이지의 영어판으로 이동한다 (보던 위치, 사례 단계·탭, 작성 중인 문의 내용 유지)</li><li>선택한 언어가 이 브라우저에 기억되어, 다음에 한국어 주소로 와도 영어판으로 열린다</li><li>영어 페이지의 내부 링크는 모두 영어 페이지로 연결된다</li><li>서비스·사례·Approach 검토 후 상담 예약(Calendly) 또는 영어 문의 폼으로 문의한다</li><li>Calendly 화면의 언어는 Calendly 설정을 따른다 <span class="chip ext">외부</span></li><li>브라우저 언어·접속 국가에 따른 자동 이동은 하지 않는다 (의도된 동작). 자동 제안 배너 등은 <span class="chip idea">제안</span> 단계로도 두지 않음</li></ol><p class="done"><strong>완료 상태</strong> 시나리오 1·2와 같음. 문의 폼은 영어 페이지임을 함께 보내 운영자가 회신 언어를 알 수 있음 (숨김 항목 language)</p></article>
-
+      <p class="label">09 · Information architecture</p>
+      <h2 id="s09-t">정보 구조 (홈 영역)</h2>
+      <p class="measure">실제 홈(second-context.html)의 순서와 중첩을 기준으로 정리했습니다. 요청 목록의 9개(Header · Hero · Why Us · About Second Context·Founder · Services · Selected Work · Approach · Contact · Footer) 중 <strong>About Second Context·Founder는 독립 영역이 아니라 Why Us 안의 하위 블록</strong>이라, 실제 홈의 최상위 영역은 <strong>8개</strong>입니다. 수업 기본형도 8영역이라 영역 수가 같습니다.</p>
+<div class="tbl" role="region" tabindex="0" aria-label="홈 정보 구조 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-7"><colgroup><col style="width:13%"><col style="width:13%"><col style="width:19%"><col style="width:16%"><col style="width:12%"><col style="width:14%"><col style="width:13%"></colgroup><thead><tr><th scope="col">영역 · 앵커</th><th scope="col">방문자가 확인하는 정보</th><th scope="col">포함 요소와 개수</th><th scope="col">주요 버튼 → 이동</th><th scope="col">데스크톱 배치</th><th scope="col">모바일 쌓이는 순서</th><th scope="col">예약·문의 기여</th></tr></thead><tbody>
+<tr><td data-label="영역 · 앵커">1 Header<br><code>.site-header</code> (고정)</td><td data-label="방문자가 확인하는 정보">누가 운영하는 사이트인지, 어디로 갈 수 있는지</td><td data-label="포함 요소와 개수">로고 1 · 메뉴 5 · 상담 캡슐 1 · 언어 링크 2 · 검색 버튼 1 (1200px 이하: 메뉴 버튼 1 + 패널)</td><td data-label="주요 버튼 → 이동">Book a 30-minute consultation → Calendly 새 탭 · 메뉴 → 홈 앵커</td><td data-label="데스크톱 배치">한 줄 가로</td><td data-label="모바일 쌓이는 순서">로고 → 언어 → 검색 → Menu</td><td data-label="예약·문의 기여">어느 위치에서나 상담 예약으로 가는 지름길</td></tr>
+<tr><td data-label="영역 · 앵커">2 Hero<br><code>#top</code></td><td data-label="방문자가 확인하는 정보">무엇을 하는 곳인지 한 문장</td><td data-label="포함 요소와 개수">라벨 1 · h1 1 · 설명 1 · 버튼 2 · 영상 1 + 포스터 1 · 일시정지 1</td><td data-label="주요 버튼 → 이동">프로젝트 문의하기 → #contact · 사례 살펴보기 → #work</td><td data-label="데스크톱 배치">영상 전체 화면, 글 왼쪽 아래</td><td data-label="모바일 쌓이는 순서">영상 → 글 → 버튼 2 세로</td><td data-label="예약·문의 기여">필요성 이해의 시작, 바로 문의·사례로 연결</td></tr>
+<tr><td data-label="영역 · 앵커">3 Why Us<br><code>#why-us</code></td><td data-label="방문자가 확인하는 정보">번역만으로 부족한 이유, 차별점</td><td data-label="포함 요소와 개수">머리글 1 · 사진 2 · 차별점 제목 1 + 문장 3 · (About 블록) · 경험 행 3</td><td data-label="주요 버튼 → 이동">— (About 블록의 버튼은 아래 행)</td><td data-label="데스크톱 배치">사진 7:5 · 차별점 5:7</td><td data-label="모바일 쌓이는 순서">머리글 → 사진 2 → 차별점</td><td data-label="예약·문의 기여">필요성 이해 → 이 팀이 다른 이유</td></tr>
+<tr><td data-label="영역 · 앵커">3-1 About Second Context · Founder<br><code>#founder</code> (Why Us 안)</td><td data-label="방문자가 확인하는 정보">누가 하는지, 경력 근거</td><td data-label="포함 요소와 개수">큰 문장 1 · 소개 문단 1 · 버튼 1 · 수치 3 · 인물 사진 1 + 3줄 · 경험 행 3(<code>#experience</code>)</td><td data-label="주요 버튼 → 이동">About Second Context → second-context-about.html</td><td data-label="데스크톱 배치">큰 문장 가운데 · 글 | 사진 1:1</td><td data-label="모바일 쌓이는 순서">큰 문장 → 글 → 버튼 → 수치 → 사진 → 경험 행</td><td data-label="예약·문의 기여">신뢰 확인(사람·경력)</td></tr>
+<tr><td data-label="영역 · 앵커">4 Services<br><code>#services</code> (흰색)</td><td data-label="방문자가 확인하는 정보">받을 수 있는 도움의 종류</td><td data-label="포함 요소와 개수">머리글 1 · 서비스 카드 4 · 사진 2</td><td data-label="주요 버튼 → 이동">— (버튼 없음)</td><td data-label="데스크톱 배치">카드 2 × 2 · 사진 7:5</td><td data-label="모바일 쌓이는 순서">카드 1열 4 → 사진 2</td><td data-label="예약·문의 기여">적합성 검토</td></tr>
+<tr><td data-label="영역 · 앵커">5 Selected Work<br><code>#work</code></td><td data-label="방문자가 확인하는 정보">비슷한 문제를 풀어 본 경험</td><td data-label="포함 요소와 개수">머리글 1 · 사례 3 × (번호·분야·제목·설명 + 카드 2) · 안내 1</td><td data-label="주요 버튼 → 이동">카드 6개 → second-context-work.html#case-…</td><td data-label="데스크톱 배치">사례 머리 1 : 3 · 카드 7:5(02는 5:7)</td><td data-label="모바일 쌓이는 순서">번호 → 제목 → 카드 2 세로</td><td data-label="예약·문의 기여">신뢰 확인(결과물·판단)</td></tr>
+<tr><td data-label="영역 · 앵커">6 Approach<br><code>#approach</code> (흰색)</td><td data-label="방문자가 확인하는 정보">어떻게 진행되는지</td><td data-label="포함 요소와 개수">머리글 1 · 사진 띠 1 · 단계 4 · 버튼 1</td><td data-label="주요 버튼 → 이동">진행 방식 자세히 보기 → second-context-approach.html</td><td data-label="데스크톱 배치">사진 2:1 → 단계 4열</td><td data-label="모바일 쌓이는 순서">사진 4:3 → 단계 1열(601~1100px 2열) → 버튼</td><td data-label="예약·문의 기여">신뢰 확인(과정·부담 줄이기)</td></tr>
+<tr><td data-label="영역 · 앵커">7 Contact<br><code>#contact</code></td><td data-label="방문자가 확인하는 정보">어떻게 연락하는지</td><td data-label="포함 요소와 개수">머리글 1 · 문의 폼 1(입력 5 + 버튼 1 + 상태 1) · 이메일 1 + 복사 버튼 1 · 상담 버튼 1</td><td data-label="주요 버튼 → 이동">문의 보내기 → Formspree · 30분 상담 예약하기 → Calendly 새 탭</td><td data-label="데스크톱 배치">폼 7 : 다른 연락 방법 5</td><td data-label="모바일 쌓이는 순서">머리글 → 폼(한 열) → 다른 연락 방법</td><td data-label="예약·문의 기여">문의·예약 완료 지점</td></tr>
+<tr><td data-label="영역 · 앵커">8 Footer<br>(모든 페이지)</td><td data-label="방문자가 확인하는 정보">다시 문의할 기회, 다른 채널</td><td data-label="포함 요소와 개수">Let’s 회전 단어 1 · 문의 캡슐 1 + 화살표 1 + 일시정지 1 · Company 링크 5 · Follow 링크 2 · 뉴스레터(라벨·안내·입력·버튼) · 로고 · 언어 · 저작권</td><td data-label="주요 버튼 → 이동">Send a project inquiry → 홈 #contact · LinkedIn·GitHub → 새 탭</td><td data-label="데스크톱 배치">Let’s → 3열(3:3:6) → 아래 줄</td><td data-label="모바일 쌓이는 순서">Let’s → 버튼 → Company → Follow → Newsletter → 로고·언어·저작권</td><td data-label="예약·문의 기여">끝까지 읽은 방문자의 문의 유도</td></tr>
+</tbody></table></div>
+      <h3>수업 기본형 8영역과의 대응</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="수업 기본형 대응 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-4"><colgroup><col style="width:16%"><col style="width:22%"><col style="width:14%"><col style="width:48%"></colgroup><thead><tr><th scope="col">수업 기본형</th><th scope="col">Second Context</th><th scope="col">처리</th><th scope="col">이유 (컨설팅 고객의 흐름)</th></tr></thead><tbody>
+<tr><td data-label="수업 기본형">1 Header</td><td data-label="Second Context">1 Header</td><td data-label="처리">가져옴</td><td data-label="이유 (컨설팅 고객의 흐름)">역할 유지. 메뉴를 고객 흐름 순서(Why Us → Services → Work → Approach → Contact)로 두고 상담 캡슐을 더함</td></tr>
+<tr><td data-label="수업 기본형">2 Hero</td><td data-label="Second Context">2 Hero</td><td data-label="처리">가져옴</td><td data-label="이유 (컨설팅 고객의 흐름)">역할 유지. 이름 대신 '무엇을 하는지' 한 문장 — <strong>필요성 이해</strong>의 시작</td></tr>
+<tr><td data-label="수업 기본형">(없음)</td><td data-label="Second Context">3 Why Us</td><td data-label="처리">새로 추가</td><td data-label="이유 (컨설팅 고객의 흐름)">컨설팅은 방문자가 먼저 '왜 외부 도움이 필요한지' 알아야 함 — 서비스의 필요성과 차별점을 설명하는 <strong>필요성 이해</strong> 단계</td></tr>
+<tr><td data-label="수업 기본형">3 기본정보</td><td data-label="Second Context">3-1 About Second Context · Founder</td><td data-label="처리">이름 바꿈 · 위치 이동</td><td data-label="이유 (컨설팅 고객의 흐름)">개인 정보(위치·학력) 대신 회사와 창업자의 경력 수치·역할 — <strong>신뢰 확인</strong>. Why Us 안에 둬 '왜 이 팀인가'의 근거로 읽히게 함</td></tr>
+<tr><td data-label="수업 기본형">4 스킬</td><td data-label="Second Context">4 Services</td><td data-label="처리">이름 바꿈</td><td data-label="이유 (컨설팅 고객의 흐름)">도구 목록 대신 고객이 살 수 있는 도움 4가지 — <strong>적합성 검토</strong></td></tr>
+<tr><td data-label="수업 기본형">5 포트폴리오</td><td data-label="Second Context">5 Selected Work</td><td data-label="처리">이름 바꿈</td><td data-label="이유 (컨설팅 고객의 흐름)">작업물 카드 대신 사례 3개(문제·판단·결과는 사례 페이지) — <strong>신뢰 확인</strong></td></tr>
+<tr><td data-label="수업 기본형">6 게시판</td><td data-label="Second Context">6 Approach</td><td data-label="처리">대체</td><td data-label="이유 (컨설팅 고객의 흐름)">게시글 목록 대신 진행 방식 4단계 — 첫 협업의 부담을 줄이는 <strong>신뢰 확인</strong>. 게시판 기능은 없음</td></tr>
+<tr><td data-label="수업 기본형">7 컨택트</td><td data-label="Second Context">7 Contact</td><td data-label="처리">가져옴</td><td data-label="이유 (컨설팅 고객의 흐름)">역할 유지. 입력 5칸 + 이메일 + 30분 상담 — <strong>문의</strong></td></tr>
+<tr><td data-label="수업 기본형">8 푸터</td><td data-label="Second Context">8 Footer</td><td data-label="처리">가져옴</td><td data-label="이유 (컨설팅 고객의 흐름)">역할 유지 + 문의 캡슐·뉴스레터·Follow — 마지막 <strong>문의</strong> 기회</td></tr>
+</tbody></table></div>
+      <h3>영역 순서와 고객 흐름</h3>
+      <ol class="measure-wide">
+        <li><strong>필요성 이해</strong> — Hero · Why Us (문제의식·차별점)</li>
+        <li><strong>적합성 검토</strong> — Services (4가지 도움)</li>
+        <li><strong>신뢰 확인</strong> — About Second Context·Founder(Why Us 안) · Selected Work · Approach</li>
+        <li><strong>문의</strong> — Contact · Footer 문의 캡슐 · 헤더 상담 캡슐(어느 단계에서나)</li>
+      </ol>
+      <p class="note">관찰: 실제 순서에서는 About·Founder(신뢰 확인)가 Services(적합성 검토)보다 먼저 나옵니다. 흐름표와 순서가 완전히 같지는 않으며, 순서를 바꿀지는 <span class="chip idea">제안</span> 단계입니다(이번 작업에서 홈은 고치지 않음).</p>
+      <h3>핵심 영역 명세</h3>
+      <dl class="kv">
+        <dt>Hero (2026-11-10 4차)</dt><dd>영상: 사용자가 준 1110.mov(1916×1080, 4.6초)를 <code>tools/make_hero_video.py</code>로 만든 무음 반복 영상. 데스크톱 <code>assets/video/hero-loop.mp4</code>, 900px 이하 <code>hero-loop-960.mp4</code>. 대체 이미지: 첫 프레임 포스터 <code>home-hero-video-poster-960|1916.jpg</code>(움직임 줄이기 설정·영상 오류·로드 전). 제어: 오른쪽 위 "일시정지/재생" 버튼(aria-pressed, 영상이 재생된 뒤에만 보임). 배치: 901px 이상은 영상이 헤더 아래 화면 전체, 글은 왼쪽 아래(제목 두 줄 → 설명 | 버튼 2개). 900px 이하는 영상(600px 이하 4:3) 위, 글·버튼 아래로 겹치지 않음. 음영은 CSS. 영상 전 프레임 합성 실측 최저 대비 1440px 제목 7.91 · 설명 6.34 (2026-11-10 기록)</dd>
+        <dt>Contact 경로</dt><dd>① 홈 Hero "프로젝트 문의하기" · 푸터 "Send a project inquiry"(모든 페이지) · Approach 상세 "프로젝트 문의하기" → <strong>홈 #contact의 문의 폼</strong> → 입력 5칸 → 문의 보내기 → 보내는 중… → 성공 안내·초기화 / 실패 안내·입력 유지. ② <strong>Contact 페이지</strong>(second-context-contact.html)는 같은 폼·같은 Formspree 주소 + 다른 연락 방법. 들어가는 길은 Approach 상세의 "30분 상담 예약하기"(→ #booking) 두 곳뿐이며 홈·헤더·푸터·검색에는 없음 <span class="chip issue">문제 발견</span>. ③ 상담 예약은 헤더 캡슐·#contact·Contact 페이지 버튼 → Calendly 새 탭</dd>
+        <dt>Footer</dt><dd>Let’s + 회전 단어(Understand · Design · Build · Collaborate, 2.4초) · Send a project inquiry(→ 홈 #contact) + 원형 화살표 + 일시정지 → Company(Why Us · Services · Work · Approach · Contact) · Follow(LinkedIn https://www.linkedin.com/company/second-context/ · GitHub https://github.com/RachelCho, 새 탭) · Newsletter → 로고 · 한국어 / EN · © Second Context 연도(site.js 갱신). 정책 페이지 링크는 없음(페이지 없음)</dd>
+        <dt>Newsletter</dt><dd>화면: <span class="chip ok">구현됨</span> 라벨 "뉴스레터 구독 이메일", 상시 안내 "구독 서비스 연결 준비 중입니다. 지금은 신청해도 등록되지 않습니다.", 형식 검사. 구독 연결: <span class="chip no">미구현</span> <code>data-endpoint</code> 비어 있음 → 신청하면 "아직 뉴스레터 구독 서비스가 연결되지 않아 등록되지 않았습니다…"만 표시(등록된 척하지 않음). 서비스 선택 <span class="chip tbd">결정 필요</span></dd>
+        <dt>LinkedIn · GitHub</dt><dd><span class="chip ok">구현됨</span> 푸터 Follow에만 있음. 이전 기획서의 개인 LinkedIn(linkedin.com/in/rachelchoart)은 사이트에 없고, 현재는 회사 페이지 주소. 외부 페이지 내용은 <span class="chip no">미확인</span></dd>
+      </dl>
     </div>
   </section>
 
   <section id="s10" aria-labelledby="s10-t">
     <div class="wrap">
-      <p class="label">10 · Flow &amp; wireframes</p>
-      <h2 id="s10-t">흐름도와 와이어프레임</h2>
-
-      <h3>주요 흐름도</h3>
-      <ol class="flow" aria-label="방문부터 상담 예약·문의까지의 흐름">
-        <li class="fl-col"><p class="fl-h">진입</p><div class="fl-b">홈 Hero</div><div class="fl-b sub">영어 페이지 / 사례·Approach 직접 링크</div></li>
-        <li class="fl-col"><p class="fl-h">이해</p><div class="fl-b">Why Us</div><div class="fl-b">Services · 예시 산출물</div></li>
-        <li class="fl-col"><p class="fl-h">신뢰 확인</p><div class="fl-b">Work 요약 → 사례 페이지</div><div class="fl-b">Founder</div><div class="fl-b">Approach 6단계</div></li>
-        <li class="fl-col"><p class="fl-h">행동</p><div class="fl-b cta">30분 상담 예약하기</div><div class="fl-b cta">프로젝트 문의하기 → Contact 폼</div></li>
-        <li class="fl-col"><p class="fl-h">완료</p><div class="fl-b ext">Calendly에서 예약 확정 <span class="chip ext">외부</span></div><div class="fl-b">성공 안내 → Formspree → 운영자 메일 <span class="chip tbd">수신 확인 필요</span></div></li>
-      </ol>
-      <p class="note">헤더의 "30분 상담 예약"과 이메일 링크는 어느 단계에서든 바로 행동으로 갈 수 있는 지름길입니다.</p>
-
-      <h3>와이어프레임 (박스와 라벨 중심)</h3>
-      <p class="measure">현재 구현된 배치를 단순화했습니다. 점선 박스는 <span class="chip idea">제안</span>입니다. 화면이 900px 이하로 좁아지면 두 열 배치는 모두 한 열로 쌓이고(사진은 글 다음, 인물 사진은 글 위), 6단계 다이어그램은 세로로 바뀝니다. 홈 Hero는 예외로 대표 이미지가 위, 제목·설명·버튼이 아래 어두운 바탕에 놓여 인물과 글이 겹치지 않습니다.</p>
-      <div class="wf-grid">
-      <figure class="wf"><figcaption>홈 (데스크톱 · 현재 구조)</figcaption>
-        <div class="wb bar">헤더: 로고 · 메뉴 · 30분 상담 예약 · 한국어/EN</div>
-        <div class="wb ph">Hero · 대표 이미지 전체 폭 배경 — 왼쪽: 글 + 버튼 2개(어두운 그라데이션) · 오른쪽: Rachel</div>
-        <div class="wr"><div class="wb ">Why Us 글</div><div class="wb ph">사진 4:3</div></div>
-        <div class="wr"><div class="wb ">시행착오 카드</div><div class="wb ">시행착오 카드</div></div>
-        <div class="wr"><div class="wb ph">사진 4:3</div><div class="wb ">판단을 실행으로 글</div></div>
-        <div class="wr"><div class="wb ">경력 01</div><div class="wb ">경력 02</div><div class="wb ">경력 03</div></div>
-        <div class="wr"><div class="wb ">Services 글</div><div class="wb ph">사진 4:3</div></div>
-        <div class="wr"><div class="wb vis">예시 산출물 1</div><div class="wb vis">예시 산출물 2</div><div class="wb vis">예시 산출물 3</div></div>
-        <div class="wr"><div class="wb ">개발 협업 글 + 상태 예시</div><div class="wb ph">사진 4:3</div></div>
-        <div class="wr"><div class="wb vis">사례 머리 + 미리보기</div><div class="wb ">설계 판단 · 수치 · 자세히 보기</div></div>
-        <div class="wr"><div class="wb ph narrow">인물 4:5</div><div class="wb ">Founder 세 문단 + 수치</div></div>
-        <div class="wr"><div class="wb ">상담 제목 · 설명 · 버튼 2개</div><div class="wb ph">사진 4:3</div></div>
-        <div class="wb bar">푸터</div>
-      </figure>
-      <figure class="wf"><figcaption>Approach (데스크톱 · 현재 구조)</figcaption>
-        <div class="wb bar">헤더</div>
-        <div class="wr"><div class="wb ">제목 · 설명</div><div class="wb ph">사진 4:3</div></div>
-        <div class="wb ">강조 문장 (한 줄)</div>
-        <div class="wr"><div class="wb step">01</div><div class="wb step">02</div><div class="wb step">03</div><div class="wb step">04</div><div class="wb step">05</div><div class="wb step">06</div></div>
-        <div class="wb ">단계별 설명 · 산출물 · 기대 효과 × 6</div>
-        <div class="wr"><div class="wb ">우선순위 글</div><div class="wb ph">사진 4:3</div></div>
-        <div class="wb vis">우선순위 매트릭스 (예시 산출물)</div>
-        <div class="wr"><div class="wb ">가치 1</div><div class="wb ">가치 2</div></div>
-        <div class="wb cta">마지막 CTA</div>
-      </figure></div>
-      <div class="wf-pair">
-      <figure class="wf"><figcaption>Contact · 데스크톱</figcaption>
-        <div class="wb bar">헤더</div>
-        <div class="wb ">라벨 · 제목 · 설명 (전체 폭)</div>
-        <div class="wr r75"><div class="wb form">문의 폼 (7)<br>이름* · 이메일*<br>회사 또는 제품명 · 제품 URL<br>문의 내용*<br>[문의 보내기] · 상태 안내</div><div class="wb ">다른 연락 방법 (5)<br>이메일 · 복사<br>30분 상담 · 예약하기</div></div>
-        <div class="wb idea">[제안] 폼 아래 개인정보 처리 안내 — 문구 결정 필요</div>
-      </figure>
-      <figure class="wf wf-m"><figcaption>Contact · 모바일 (쌓이는 순서)</figcaption>
-        <div class="wb bar">헤더 (두 줄)</div>
-        <div class="wb ">① 제목 · 설명</div>
-        <div class="wb form">② 문의 폼 (한 열)</div>
-        <div class="wb ">③ 다른 연락 방법</div>
-        <div class="wb bar">푸터</div>
-      </figure>
-      </div>
+      <p class="label">10 · Screens</p>
+      <h2 id="s10-t">사이트 구조와 화면 목록</h2>
+      <p class="measure">정적 HTML 사이트(GitHub Pages)입니다. 영어 페이지는 <code>en/</code> 폴더에 같은 파일 이름으로 있고 <code>tools/build_en_pages.py</code>로 만듭니다. 헤더·검색·푸터는 <code>tools/sc_chrome.py</code>가 다섯 페이지에 똑같이 넣습니다. 자세한 목록: <a href="https://github.com/RachelCho/my-portfolio/blob/main/docs/screens.md">docs/screens.md</a></p>
+      <h3>독립 페이지</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="독립 페이지 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-6"><colgroup><col style="width:10%"><col style="width:12%"><col style="width:16%"><col style="width:18%"><col style="width:24%"><col style="width:20%"></colgroup><thead><tr><th class="nw" scope="col">화면 ID</th><th scope="col">화면명</th><th scope="col">파일</th><th scope="col">역할</th><th scope="col">진입 경로</th><th scope="col">주요 행동</th></tr></thead><tbody>
+<tr><td class="nw" data-label="화면 ID">S-01</td><td data-label="화면명">홈</td><td data-label="파일">second-context.html</td><td data-label="역할">필요성 → 적합성 → 신뢰 → 문의</td><td data-label="진입 경로">직접 주소 · 모든 페이지의 로고·메뉴·푸터 Company</td><td data-label="주요 행동">프로젝트 문의하기 · 사례 살펴보기 · 상담 예약 · 문의 폼 전송</td></tr>
+<tr><td class="nw" data-label="화면 ID">S-02</td><td data-label="화면명">Approach</td><td data-label="파일">second-context-approach.html</td><td data-label="역할">6단계·산출물·기대 효과</td><td data-label="진입 경로">홈 #approach “진행 방식 자세히 보기” · 검색</td><td data-label="주요 행동">30분 상담 예약하기(→ S-04#booking) · 프로젝트 문의하기(→ S-01#contact)</td></tr>
+<tr><td class="nw" data-label="화면 ID">S-03</td><td data-label="화면명">사례 상세</td><td data-label="파일">second-context-work.html</td><td data-label="역할">세 사례의 판단·결과·데모</td><td data-label="진입 경로">홈 #work 카드 6개 · 검색</td><td data-label="주요 행동">데모 단계·재생·정지, 사례 02 탭</td></tr>
+<tr><td class="nw" data-label="화면 ID">S-04</td><td data-label="화면명">Contact</td><td data-label="파일">second-context-contact.html</td><td data-label="역할">문의 폼 + 다른 연락 방법</td><td data-label="진입 경로">Approach 상담 버튼 2곳뿐 <span class="chip issue">문제 발견</span></td><td data-label="주요 행동">문의 보내기 · 이메일 복사 · 30분 상담 예약하기</td></tr>
+<tr><td class="nw" data-label="화면 ID">S-05</td><td data-label="화면명">About</td><td data-label="파일">second-context-about.html</td><td data-label="역할">소개 세 문단·수치·경력·멘토링</td><td data-label="진입 경로">홈 #founder “About Second Context” · 검색</td><td data-label="주요 행동">경력 확인</td></tr>
+</tbody></table></div>
+      <h3>홈 내부 영역 · 오버레이 · 외부 서비스</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="홈 내부와 외부 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-3"><colgroup><col style="width:10%"><col style="width:22%"><col style="width:68%"></colgroup><thead><tr><th class="nw" scope="col">ID</th><th scope="col">이름</th><th scope="col">내용</th></tr></thead><tbody>
+<tr><td class="nw" data-label="ID">H-1~8</td><td data-label="이름">홈 영역 8개</td><td data-label="내용">Header · Hero(#top) · Why Us(#why-us, 안에 #founder·#experience) · Services(#services) · Selected Work(#work) · Approach(#approach) · Contact(#contact, #inquiry·#booking) · Footer — <a href='#s09'>09 정보 구조</a></td></tr>
+<tr><td class="nw" data-label="ID">O-01</td><td data-label="이름">사이트 검색</td><td data-label="내용">헤더 검색 버튼 → 오버레이. 같은 언어의 페이지·사례만(Contact 페이지 없음). Esc로 닫힘</td></tr>
+<tr><td class="nw" data-label="ID">O-02</td><td data-label="이름">모바일 메뉴 패널</td><td data-label="내용">1200px 이하 Menu 버튼 → 메뉴 5 + 큰 상담 캡슐. Esc로 닫힘</td></tr>
+<tr><td class="nw" data-label="ID">X-01</td><td data-label="이름">Calendly</td><td data-label="내용">새 탭 링크까지. 예약 확정·메일은 Calendly 설정</td></tr>
+<tr><td class="nw" data-label="ID">X-02</td><td data-label="이름">Formspree</td><td data-label="내용">전송 요청과 2xx 처리까지. 메일 도착은 운영자 확인</td></tr>
+<tr><td class="nw" data-label="ID">X-03</td><td data-label="이름">LinkedIn · GitHub</td><td data-label="내용">푸터 Follow 새 탭 링크</td></tr>
+<tr><td class="nw" data-label="ID">X-04</td><td data-label="이름">뉴스레터 서비스</td><td data-label="내용"><span class="chip no">미연결</span> — 선택 <span class="chip tbd">결정 필요</span></td></tr>
+</tbody></table></div>
     </div>
   </section>
 
   <section id="s11" aria-labelledby="s11-t">
     <div class="wrap">
-      <p class="label">11 · Features</p>
-      <h2 id="s11-t">기능정의서</h2>
-
-      <p class="measure">구현 상태는 2026-10-29 코드 기준, "검증"은 로컬 브라우저(headless Chrome)에서 실제로 동작을 확인했는지를 따로 적었습니다. 문의 폼 시험은 Formspree로 가는 요청을 브라우저에서 가로채 응답을 흉내 냈으므로 실제 메일은 보내지 않았습니다.</p>
-      <div class="tbl" role="region" tabindex="0" aria-label="기능정의서 표 (가로로 스크롤할 수 있음)"><table class="rt ids feat cols-8"><colgroup><col style="width:7%"><col style="width:11%"><col style="width:12%"><col style="width:22%"><col style="width:14%"><col style="width:11%"><col style="width:9%"><col style="width:14%"></colgroup><thead><tr><th class="nw" scope="col">기능 ID</th><th scope="col">기능명</th><th scope="col">사용자 행동</th><th scope="col">동작 및 결과</th><th scope="col">예외 처리</th><th class="nw" scope="col">우선순위</th><th scope="col">선행 조건</th><th scope="col">구현 상태</th></tr></thead><tbody>
-<tr><td class="nw" data-label="기능 ID">F-01</td><td data-label="기능명">공통 내비게이션·홈 섹션 이동</td><td data-label="사용자 행동">헤더 메뉴(Why Us · Services · Work · Approach · Contact)를 누름</td><td data-label="동작 및 결과">홈 섹션 앵커 또는 하위 페이지로 이동. 현재 페이지 메뉴는 밑줄·굵기 + aria-current. 본문 바로가기 링크</td><td data-label="예외 처리">앵커가 가려지지 않도록 스크롤 여백 확보</td><td class="nw" data-label="우선순위">필수</td><td data-label="선행 조건">—</td><td data-label="구현 상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span></td></tr>
-<tr><td class="nw" data-label="기능 ID">F-02</td><td data-label="기능명">모바일 메뉴</td><td data-label="사용자 행동">좁은 화면에서 메뉴를 봄</td><td data-label="동작 및 결과">1100px 이하에서 헤더가 두 줄(로고·언어 / 메뉴)로 바뀌고 메뉴가 줄바꿈되어 모두 보임. 열고 닫는 토글 메뉴는 없음</td><td data-label="예외 처리">모든 링크 44px 이상 터치 영역</td><td class="nw" data-label="우선순위">필수</td><td data-label="선행 조건">—</td><td data-label="구현 상태"><span class="chip ok">구현됨</span> 줄바꿈 방식 <span class="chip ok">브라우저 확인</span> · 토글형 메뉴 <span class="chip no">미구현</span> (필요성 미확인)</td></tr>
-<tr><td class="nw" data-label="기능 ID">F-03</td><td data-label="기능명">한국어·영어 전환</td><td data-label="사용자 행동">헤더의 한국어 / EN을 누름</td><td data-label="동작 및 결과">같은 페이지의 다른 언어판으로 이동, 보던 위치·사례 단계·탭·작성 중인 문의 유지, 선택 언어 기억</td><td data-label="예외 처리">저장소가 막힌 브라우저에서는 기억 없이 동작</td><td class="nw" data-label="우선순위">필수</td><td data-label="선행 조건">영어 콘텐츠·번역 표</td><td data-label="구현 상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span></td></tr>
-<tr><td class="nw" data-label="기능 ID">F-04</td><td data-label="기능명">관련 사례 상세 펼치기·접기</td><td data-label="사용자 행동">사례의 자세한 내용을 보려 함</td><td data-label="동작 및 결과">현재는 펼치기·접기가 아니라 "사례 자세히 보기" 링크로 사례 페이지 이동. 사례 페이지에서 3단계 데모(단계 버튼·재생·정지·다시 보기, 화살표 키), 사례 02 탭 전환</td><td data-label="예외 처리">움직임 줄이기 설정에서는 전환 효과 없이 단계만 이동</td><td class="nw" data-label="우선순위">필수(사례 확인)</td><td data-label="선행 조건">사례 공개 범위</td><td data-label="구현 상태">펼치기·접기 <span class="chip no">미구현</span> · 대체 방식(사례 페이지·데모) <span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span></td></tr>
-<tr><td class="nw" data-label="기능 ID">F-05</td><td data-label="기능명">Calendly 30분 상담 예약 링크</td><td data-label="사용자 행동">"30분 상담 예약(하기)"를 누름</td><td data-label="동작 및 결과">헤더·홈은 Calendly 예약 페이지를 새 탭으로 염. Approach는 Contact의 상담 안내(#booking)를 거침</td><td data-label="예외 처리">Calendly 접속 실패·빈 일정은 사이트가 감지하지 못함 (예외 표 참고)</td><td class="nw" data-label="우선순위">필수</td><td data-label="선행 조건">상담 범위·Calendly 설정</td><td data-label="구현 상태"><span class="chip ok">구현됨</span> 링크 <span class="chip ok">브라우저 확인</span> · 실제 예약 완료 <span class="chip no">미확인</span></td></tr>
-<tr><td class="nw" data-label="기능 ID">F-06a</td><td data-label="기능명">문의 폼 — 화면</td><td data-label="사용자 행동">Contact 폼을 봄</td><td data-label="동작 및 결과">이름*·이메일*·회사 또는 제품명·제품 URL·문의 내용*, 항상 보이는 라벨, 예시 placeholder</td><td data-label="예외 처리">—</td><td class="nw" data-label="우선순위">필수</td><td data-label="선행 조건">—</td><td data-label="구현 상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span></td></tr>
-<tr><td class="nw" data-label="기능 ID">F-06b</td><td data-label="기능명">문의 폼 — 입력 검증</td><td data-label="사용자 행동">필수 칸을 비우거나 형식이 틀린 값으로 보냄</td><td data-label="동작 및 결과">칸 아래 오류 문구 + 요약 안내, 첫 오류 칸으로 포커스. URL은 https:// 없이 적어도 받음</td><td data-label="예외 처리">오류는 색과 문구로 함께 표시</td><td class="nw" data-label="우선순위">필수</td><td data-label="선행 조건">—</td><td data-label="구현 상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span> (필수 누락·이메일 형식)</td></tr>
-<tr><td class="nw" data-label="기능 ID">F-06c</td><td data-label="기능명">문의 폼 — 실제 전송 연결</td><td data-label="사용자 행동">"문의 보내기"</td><td data-label="동작 및 결과">Formspree로 전송 → 2xx면 성공 안내·입력 초기화, 실패면 입력 유지·재시도 안내, 전송 중 중복 제출 차단</td><td data-label="예외 처리">전송 주소가 비면 보내지 않고 실패 안내</td><td class="nw" data-label="우선순위">필수</td><td data-label="선행 조건">수신 서비스·수신 주소·개인정보 안내</td><td data-label="구현 상태">연결 <span class="chip ok">구현됨</span> · 처리 흐름 <span class="chip ok">브라우저 확인</span> (요청 가로채기) · 운영자 메일함 실제 수신 <span class="chip tbd">확인 필요</span></td></tr>
-<tr><td class="nw" data-label="기능 ID">F-07</td><td data-label="기능명">이메일 및 기타 연락 링크</td><td data-label="사용자 행동">이메일 주소를 누르거나 복사</td><td data-label="동작 및 결과">mailto 링크, "이메일 주소 복사" 버튼(복사가 실제로 된 때만 완료 안내, 실패 시 선택 가능한 주소 칸)</td><td data-label="예외 처리">클립보드 접근 불가 시 수동 복사 칸</td><td class="nw" data-label="우선순위">필수(대체 경로)</td><td data-label="선행 조건">—</td><td data-label="구현 상태"><span class="chip ok">구현됨</span> 링크·버튼 <span class="chip ok">브라우저 확인</span> · LinkedIn 링크는 사이트에 없음(기획서에만 있었음) <span class="chip tbd">결정 필요</span></td></tr>
-</tbody></table></div>
-
+      <p class="label">11 · Scenarios</p>
+      <h2 id="s11-t">사용자 시나리오</h2>
+      <p class="measure">현재 구현으로 가능한 경로입니다. Calendly 페이지가 <em>열린 것</em>과 예약을 <em>완료한 것</em>은 다른 상태이며, 사이트는 예약 완료를 알 수 없습니다.</p>
+      <article class="scenario"><h3>1. 미국 진출을 준비하는 파운더 (P1) → 상담 예약</h3><dl class="kv"><dt>방문 목적</dt><dd>미국 출시 전에 제품 경험을 점검받을 수 있는지, 누구와 어떻게 진행하는지 확인</dd></dl><ol><li>홈 Hero의 영상과 제목에서 사이트가 다루는 문제(새로운 시장의 맥락)를 읽는다</li><li>Why Us의 문제의식과 차별점 3개를 읽는다</li><li>같은 영역의 About Second Context에서 경력 수치(40+ · 12+ · 27+)와 경험 행 3개를 본다</li><li>Services의 4가지 도움 중 필요한 것을 찾는다</li><li>Work의 사례 카드를 눌러 사례 페이지(S-03)에서 설계 판단과 데모를 본다</li><li>홈 Approach 4단계를 보고, 필요하면 "진행 방식 자세히 보기"로 6단계를 확인한다</li><li>헤더의 "Book a 30-minute consultation" 또는 #contact의 "30분 상담 예약하기"를 누른다 → Calendly 새 탭. (Approach 상세에서 누르면 Contact 페이지 #booking을 한 번 거침)</li><li>Calendly에서 시간을 고르고 예약을 확정한다 <span class="chip ext">외부</span></li></ol><p class="done"><strong>완료 상태</strong> 사이트 기준 = Calendly 예약 페이지가 열림. 실제 완료 = Calendly 예약 확정 (<span class="chip tbd">확인 필요</span> — 별도 확인 항목)</p></article>
+      <article class="scenario"><h3>2. 구체적인 개선 과제가 있는 프로덕트 리드·PM (P2) → 프로젝트 문의</h3><dl class="kv"><dt>방문 목적</dt><dd>특정 업무 흐름 개선을 외부와 함께할 수 있는지, 범위와 협업 방식을 내부에 설명할 근거 확보</dd></dl><ol><li>홈 Services와 Work에서 비슷한 업무 제품 경험을 확인한다</li><li>사례 페이지에서 문제·역할·설계 판단·결과와 단계형 데모(사례 02는 탭 두 개)를 본다</li><li>Approach 상세에서 단계별 산출물·기대 효과와 우선순위 매트릭스를 검토한다</li><li>Hero·Approach 상세의 "프로젝트 문의하기" 또는 푸터 "Send a project inquiry"로 <strong>홈 #contact</strong>에 가서 이름·이메일·회사 또는 제품명·제품 URL·문의 내용을 적는다</li><li>"문의 보내기" → 보내는 중… → 성공 안내·입력 초기화 (실패 시 입력 유지·재시도)</li><li>운영자가 메일함에서 문의를 받고 회신한다 <span class="chip ops">운영</span></li></ol><p class="done"><strong>완료 상태</strong> 사이트 기준 = 서버 2xx 뒤 성공 안내. 실제 완료 = 운영자 메일함 도착과 회신 (<span class="chip tbd">확인 필요</span> — 별도 확인 항목)</p></article>
+      <article class="scenario"><h3>3. 영어 콘텐츠를 선호하는 방문자 (언어 이용 경로)</h3><dl class="kv"><dt>방문 목적</dt><dd>같은 내용을 영어로 읽고 위 1·2와 같은 판단을 함</dd></dl><ol><li>헤더(또는 푸터 맨 아래)의 "EN"을 누르면 같은 페이지의 영어판으로 이동한다</li><li>선택이 이 브라우저에 기억되어(localStorage <code>sc-lang</code>), 다음에 한국어 주소로 와도 영어판으로 열린다 — 2026-11-11 브라우저 확인</li><li>영어 페이지의 내부 링크는 영어 페이지로만 연결된다</li><li>상담 예약(Calendly) 또는 영어 문의 폼으로 문의한다(숨김 항목 language로 페이지 언어를 함께 보냄)</li><li>브라우저 언어·접속 국가에 따른 자동 이동은 하지 않는다(의도된 동작)</li></ol><p class="done"><strong>완료 상태</strong> 시나리오 1·2와 같음</p></article>
     </div>
   </section>
 
   <section id="s12" aria-labelledby="s12-t">
     <div class="wrap">
-      <p class="label">12 · Exceptions</p>
-      <h2 id="s12-t">예외 상황</h2>
-
-      <div class="tbl" role="region" tabindex="0" aria-label="예외 상황 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-5"><colgroup><col style="width:16%"><col style="width:11%"><col style="width:33%"><col style="width:18%"><col style="width:22%"></colgroup><thead><tr><th scope="col">상황</th><th scope="col">처리 주체</th><th scope="col">현재 사이트의 안내 (구현된 문구)</th><th scope="col">사용자의 다음 행동</th><th scope="col">상태</th></tr></thead><tbody>
-<tr><td data-label="상황">필수 입력 누락</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">칸 아래 "오류: 이름 항목을 입력해 주세요." 등 + "입력 내용을 확인해 주세요. 수정이 필요한 항목이 N개 있습니다."</td><td data-label="사용자의 다음 행동">표시된 칸을 채우고 다시 보냄</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span></td></tr>
-<tr><td data-label="상황">잘못된 이메일 형식</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">"이메일 형식이 올바르지 않습니다. name@company.com 형태로 입력해 주세요."</td><td data-label="사용자의 다음 행동">주소를 고쳐 다시 보냄</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span></td></tr>
-<tr><td data-label="상황">전송 중 중복 제출</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">버튼이 "보내는 중…"으로 바뀌고 다시 눌러도 요청이 한 번만 감</td><td data-label="사용자의 다음 행동">응답을 기다림</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span> (세 번 눌러 요청 1회)</td></tr>
-<tr><td data-label="상황">문의 전송 성공</td><td data-label="처리 주체">사이트 + 외부</td><td data-label="현재 사이트의 안내 (구현된 문구)">"문의가 접수되었습니다. 남겨주신 이메일로 답변드리겠습니다." 서버 2xx 응답 뒤에만 표시, 입력 초기화</td><td data-label="사용자의 다음 행동">회신을 기다림</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span> · 실제 메일 도착 <span class="chip tbd">확인 필요</span></td></tr>
-<tr><td data-label="상황">문의 전송 실패</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">"전송하지 못했습니다. 작성하신 내용은 이 화면에 그대로 남아 있습니다. 다시 시도해 주세요." 입력 유지</td><td data-label="사용자의 다음 행동">다시 보내거나 이메일로 연락</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span> (서버 오류·네트워크 실패)</td></tr>
-<tr><td data-label="상황">전송 서비스 미연결 (전송 주소 비어 있음)</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">실패 안내와 같은 문구, 요청을 보내지 않음. 방문자 화면에 설정 안내는 쓰지 않음</td><td data-label="사용자의 다음 행동">이메일로 연락</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인</span> · 현재 공개 사이트는 주소가 연결된 상태</td></tr>
-<tr><td data-label="상황">Calendly 접속 실패 또는 예약 가능한 시간 없음</td><td data-label="처리 주체">외부 (Calendly)</td><td data-label="현재 사이트의 안내 (구현된 문구)">사이트는 감지할 수 없음. Calendly 화면의 안내를 따름. Contact 페이지에 이메일이 대체 경로로 이미 있음</td><td data-label="사용자의 다음 행동">Contact의 이메일 또는 문의 폼으로 연락</td><td data-label="상태">안내 문구 없음 · <span class="chip idea">제안</span> 예약 버튼 근처에 "예약이 어려우면 이메일로 알려 주세요" 같은 보조 문구 (미구현, 문구 결정 필요)</td></tr>
-</tbody></table></div>
-      <p class="note">사이트는 외부 서비스(Calendly·Formspree)의 상태를 자동으로 알 수 없다고 전제합니다. <span class="chip idea">제안</span> 표시 문구는 구현되지 않았습니다.</p>
-
+      <p class="label">12 · Flow &amp; wireframes</p>
+      <h2 id="s12-t">흐름도와 와이어프레임</h2>
+      <h3>주요 흐름도</h3>
+      <ol class="flow">
+        <li class="fl-col"><span class="fl-h">진입</span><div class="fl-b">홈 Hero</div><div class="fl-b sub">영어 페이지 · 사례·Approach 직접 링크 · 검색</div></li>
+        <li class="fl-col"><span class="fl-h">필요성 이해</span><div class="fl-b">Why Us 문제의식·차별점</div></li>
+        <li class="fl-col"><span class="fl-h">적합성 · 신뢰</span><div class="fl-b">About·경력 수치</div><div class="fl-b">Services 4</div><div class="fl-b">Work → 사례 페이지</div><div class="fl-b">Approach 4 → 상세 6</div></li>
+        <li class="fl-col"><span class="fl-h">행동</span><div class="fl-b cta">30분 상담 예약 (헤더·#contact)</div><div class="fl-b cta">문의 보내기 (홈 #contact)</div><div class="fl-b sub">Approach 상세 → Contact 페이지 #booking → Calendly</div></li>
+        <li class="fl-col"><span class="fl-h">완료</span><div class="fl-b ext">Calendly 예약 확정 <span class="chip ext">외부</span></div><div class="fl-b ext">성공 안내 → Formspree → 운영자 메일 <span class="chip tbd">확인 필요</span></div></li>
+      </ol>
+      <p class="note">헤더의 상담 캡슐과 푸터의 문의 캡슐은 어느 단계에서든 바로 행동으로 가는 지름길입니다.</p>
+      <h3>홈 스케치 요약 (박스와 라벨, 2026-11-11 구현 기록)</h3>
+      <p class="measure">수업 4단계(스케치)를 현재 구현에 맞춰 기록한 것입니다. 원본 스케치는 실제 높이에 비례한 SVG·JPG로 로컬 <code>sketch/</code> 폴더에 있고(<code>sketch-main</code> 1440px, <code>sketch-mobile-360</code> 360px), 참고 자료 보호를 위해 Git에 올리지 않습니다(.gitignore). 아래는 같은 내용을 공개 페이지에서 볼 수 있게 HTML로 옮긴 요약입니다. 줄무늬 상자 = 이미지·영상 자리, 진한 상자 = 헤더·푸터·주요 버튼.</p>
+      <div class="wf-pair">
+        <figure class="wf"><figcaption>홈 · 데스크톱 1440px (실측 높이 14,692px: Hero 811 · Why Us 3,959 · Services 1,962 · Work 4,114 · Approach 1,553 · Contact 1,102 · Footer 1,102)</figcaption>
+<div class="wb bar">① Header — 로고 · Why Us · Services · Work · Approach · Contact · [Book a 30-minute consultation] · 한국어 / EN · 검색</div>
+<div class="wb ph">② Hero — 영상(전체 화면) · 왼쪽 아래: 라벨 → H1(두 줄) → 설명 | [프로젝트 문의하기] [사례 살펴보기] · 오른쪽 위 [일시정지]</div>
+<div class="wb">③ Why Us — 라벨 · H2 · 설명</div>
+<div class="wr r75"><div class="wb ph">사진 (7)</div><div class="wb ph">사진 (5)</div></div>
+<div class="wr r57"><div class="wb">차별점 제목·설명 (5)</div><div class="wb">01 · 02 · 03 문장 3개 (7)</div></div>
+<div class="wb">③-1 About Second Context (#founder) — 큰 문장(가운데)</div>
+<div class="wr"><div class="wb">소개 문단 · [About Second Context] · 수치 3줄 40+ / 12+ / 27+</div><div class="wb ph">인물 사진 4:5 + 3줄</div></div>
+<div class="wb">경험한 제품과 맡은 역할 — 행 3 (연도 | 회사 배경 · Rachel의 역할)</div>
+<div class="wb">④ Services (흰색) — H2 · 카드 4 (2 × 2: 제품 전략 · UX 리서치 · 프로덕트 디자인 · AI 기반 프로토타이핑) · 사진 2 (7:5)</div>
+<div class="wb">⑤ Selected Work — H2 · 사례 01·02·03: 번호 원 | 분야·제목·설명 → 이미지 카드 2 (7:5, 02는 5:7)</div>
+<div class="wr r75"><div class="wb ph">제품 화면 3:2 + 카드 제목·설명</div><div class="wb ph">맥락 이미지 + 카드 제목·설명</div></div>
+<div class="wb">⑥ Approach (흰색) — H2 · 사진 띠 2:1 · 01 맥락 이해 | 02 문제 정의 | 03 디자인 및 검증 | 04 실행 지원 · [진행 방식 자세히 보기]</div>
+<div class="wr r75"><div class="wb form">⑦ Contact — 문의 폼 (7): 이름* | 이메일* · 회사·제품명 | 제품 URL · 문의 내용* · [문의 보내기]</div><div class="wb">다른 연락 방법 (5): 이메일 · [이메일 주소 복사] · 30분 상담 · [30분 상담 예약하기]</div></div>
+<div class="wb bar">⑧ Footer — Let’s + 회전 단어 · [Send a project inquiry] → · [일시정지] / Company 5 | Follow 2 | Newsletter(안내·입력) / 로고 · 한국어 / EN · ©</div>
+        </figure>
+        <figure class="wf wf-m"><figcaption>홈 · 모바일 360px (쌓이는 순서, 실측 18,357px)</figcaption>
+<div class="wb bar">① Header — 로고 · 한국어/EN · 검색 · [Menu]</div>
+<div class="wb ph">② 영상 4:3 · [일시정지]</div>
+<div class="wb">라벨 → H1 → 설명</div>
+<div class="wb cta">[프로젝트 문의하기]</div>
+<div class="wb">[사례 살펴보기]</div>
+<div class="wb">③ Why Us 머리글 → 사진 2 → 차별점 → 문장 3</div>
+<div class="wb">③-1 큰 문장 → 소개 → [About Second Context] → 수치 3</div>
+<div class="wb ph">인물 사진 4:5 → 3줄</div>
+<div class="wb">경험 행 3</div>
+<div class="wb">④ Services 카드 4 (1열) → 사진 2</div>
+<div class="wb ph">⑤ 사례 × 3: 번호 → 제목 → 카드 2 (세로)</div>
+<div class="wb">⑥ 사진 4:3 → 단계 4 (1열) → [진행 방식 자세히 보기]</div>
+<div class="wb form">⑦ 문의 폼 (1열) → 다른 연락 방법</div>
+<div class="wb bar">⑧ Let’s → 버튼 → Company → Follow → Newsletter → 로고·언어·©</div>
+        </figure>
+      </div>
+      <div class="wf-grid">
+        <figure class="wf"><figcaption>Approach 상세 · 데스크톱</figcaption>
+<div class="wb bar">헤더</div><div class="wb">라벨 · H1 · 설명</div><div class="wb step">6단계 개요 01~06 (누르면 설명으로 이동)</div><div class="wb">단계별 설명 · 산출물 · 기대 효과 × 6</div><div class="wb cta">상담 CTA: [30분 상담 예약하기 → Contact#booking] [프로젝트 문의하기 → 홈#contact]</div><div class="wb">우선순위 글 + 예시 매트릭스</div><div class="wr"><div class="wb">가치 1</div><div class="wb">가치 2</div><div class="wb">가치 3</div><div class="wb">가치 4</div></div><div class="wb cta">마지막 CTA (같은 두 버튼)</div><div class="wb bar">푸터</div>
+        </figure>
+        <figure class="wf"><figcaption>Contact 페이지 · 데스크톱 → 모바일</figcaption>
+<div class="wb bar">헤더</div><div class="wb">라벨 · H1 “지금 고민 중인 제품 이야기를 들려주세요.” · 설명</div><div class="wr r75"><div class="wb form">문의 폼 (7) — 홈과 같은 입력 5칸 · [문의 보내기]</div><div class="wb">다른 연락 방법 (5) — 이메일 · 복사 · 30분 상담 #booking</div></div><div class="wb">모바일: 머리글 → 폼(1열) → 다른 연락 방법</div><div class="wb idea">[제안] 폼 아래 개인정보 처리 안내 — 문구 결정 필요</div><div class="wb bar">푸터</div>
+        </figure>
+      </div>
     </div>
   </section>
 
   <section id="s13" aria-labelledby="s13-t">
     <div class="wrap">
-      <p class="label">13 · Dependencies</p>
-      <h2 id="s13-t">의존관계</h2>
-
-      <p><span class="chip ext">외부</span> 외부 서비스에서 완료하는 일 · <span class="chip site">사이트</span> 사이트 코드에서 구현하는 일 · <span class="chip ops">운영</span> 운영자가 확인·결정하는 일</p>
-      <div class="chain-grid">
-      <article class="chain"><h3>문의 수신</h3><ol class="ch"><li><span class="chip ops">운영</span> 수신 서비스 선택 — Formspree (완료)</li><li><span class="chip ops">운영</span> 수신 주소 확정 — rachel.cho5257@gmail.com (완료) · 개인정보 처리 안내 <span class="chip tbd">결정 필요</span></li><li><span class="chip site">사이트</span> 전송 연결 — data-endpoint (완료)</li><li><span class="chip ext">외부</span> <span class="chip ops">운영</span> 실제 수신 테스트 — 메일함 도착 <span class="chip tbd">확인 필요</span></li><li><span class="chip site">사이트</span> 문의 버튼 활성 — 현재 활성</li></ol><p class="note">원래 순서와 달리 개인정보 안내가 확정되기 전에 전송이 연결되어 있습니다. 공개 운영 전에 안내 문구를 정하는 것을 권장합니다 (<span class="chip tbd">결정 필요</span>).</p></article>
-      <article class="chain"><h3>상담 예약</h3><ol class="ch"><li><span class="chip ops">운영</span> 상담 범위·가격·결과물 확정 <span class="chip tbd">결정 필요</span></li><li><span class="chip ext">외부</span> Calendly 예약 페이지의 설명·시간·확인 메일 설정 <span class="chip tbd">확인 필요</span></li><li><span class="chip site">사이트</span> 예약 링크 연결 (완료)</li><li><span class="chip ops">운영</span> 실제 예약 테스트 <span class="chip no">미확인</span></li></ol></article>
-      <article class="chain"><h3>한국어·영어</h3><ol class="ch"><li><span class="chip ops">운영</span> 한국어 원문 확정</li><li><span class="chip site">사이트</span> 번역 표 갱신 → 영어 페이지 빌드 (표에 없는 한국어가 남으면 빌드 중단)</li><li><span class="chip site">사이트</span> 페이지 대응 관계(같은 파일 이름)·hreflang 확인 (완료)</li><li><span class="chip site">사이트</span> 언어 전환·기억 테스트 (완료)</li></ol></article>
-      <article class="chain"><h3>사례 게재</h3><ol class="ch"><li><span class="chip ops">운영</span> 사례 공개 범위 검토 — 고객사 동의·수치 공개 <span class="chip tbd">결정 필요</span></li><li><span class="chip ops">운영</span> 공개 콘텐츠 확정 — 현재는 익명·공개 자료 수치</li><li><span class="chip site">사이트</span> 홈 요약·사례 페이지·재구성 데모 게재 (완료)</li></ol></article>
-      </div>
-
+      <p class="label">13 · Features</p>
+      <h2 id="s13-t">기능정의서</h2>
+      <p class="measure">구현 상태는 2026-11-11 코드 기준. 검증은 "11-11" = 이번 점검(2026-11-11 · macOS 26.6.2 · Chrome 157 헤드리스(DevTools Protocol) · 로컬 서버), "10-29" = 이전 점검(2026-10-29 · 로컬 헤드리스 Chrome)으로 나눠 적었습니다. 문의 폼은 Formspree 요청을 브라우저에서 가로채 실패·성공 응답을 흉내 냈고, 실제 메일은 보내지 않았습니다. 자세한 표: <a href="https://github.com/RachelCho/my-portfolio/blob/main/docs/features.md">docs/features.md</a></p>
+<div class="tbl" role="region" tabindex="0" aria-label="기능정의서 표 (가로로 스크롤할 수 있음)"><table class="rt ids feat cols-7"><colgroup><col style="width:7%"><col style="width:12%"><col style="width:13%"><col style="width:25%"><col style="width:16%"><col style="width:8%"><col style="width:19%"></colgroup><thead><tr><th class="nw" scope="col">기능 ID</th><th scope="col">기능명</th><th scope="col">사용자 행동</th><th scope="col">동작 및 결과</th><th scope="col">예외 처리</th><th scope="col">우선순위</th><th scope="col">구현 · 검증</th></tr></thead><tbody>
+<tr><td class="nw" data-label="기능 ID">F-01</td><td data-label="기능명">헤더 메뉴·섹션 이동</td><td data-label="사용자 행동">메뉴 5개를 누름</td><td data-label="동작 및 결과">홈 앵커로 이동, 헤더 높이 + 16px 여백. 보이는 섹션 메뉴에 aria-current</td><td data-label="예외 처리">—</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip part">코드 확인</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-02</td><td data-label="기능명">모바일 메뉴</td><td data-label="사용자 행동">1200px 이하 Menu</td><td data-label="동작 및 결과">패널: 메뉴 5 + 상담 캡슐, aria-expanded. Esc로 닫고 포커스 복귀</td><td data-label="예외 처리">—</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-03</td><td data-label="기능명">사이트 검색</td><td data-label="사용자 행동">검색 버튼 → 검색어</td><td data-label="동작 및 결과">같은 언어의 페이지·사례 결과(예: 헬스케어 2개). Esc로 닫고 포커스 복귀</td><td data-label="예외 처리">결과 없음 안내. Contact 페이지는 대상 아님</td><td data-label="우선순위">추가</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-04</td><td data-label="기능명">한국어·영어 전환</td><td data-label="사용자 행동">한국어 / EN</td><td data-label="동작 및 결과">같은 페이지의 다른 언어, 선택 기억</td><td data-label="예외 처리">저장 불가 시 기억 없이 동작</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> 이동·기억 <span class="chip ok">브라우저 확인 11-11</span> · 위치·입력 유지 <span class="chip ok">브라우저 확인 10-29</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-05</td><td data-label="기능명">Hero 영상</td><td data-label="사용자 행동">홈 진입</td><td data-label="동작 및 결과">무음 반복 재생, 재생 후 일시정지/재생 버튼</td><td data-label="예외 처리">움직임 줄이기·오류: 포스터만, 버튼 숨김</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> 재생·포스터 <span class="chip ok">브라우저 확인 11-11</span> · 버튼 클릭 <span class="chip part">코드 확인</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-06</td><td data-label="기능명">사례 보기</td><td data-label="사용자 행동">홈 사례 카드</td><td data-label="동작 및 결과">사례 페이지 #case-…, 3단계 데모·사례 02 탭</td><td data-label="예외 처리">움직임 줄이기 시 전환 없이 단계만</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> 카드 <span class="chip ok">브라우저 확인 11-11</span> · 데모 <span class="chip ok">브라우저 확인 10-29</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-07</td><td data-label="기능명">30분 상담 예약</td><td data-label="사용자 행동">헤더 캡슐·#contact·Contact 페이지 버튼</td><td data-label="동작 및 결과">Calendly 새 탭. Approach 상세 버튼만 Contact#booking 경유</td><td data-label="예외 처리">Calendly 장애·빈 일정은 감지 못함</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip part">코드 확인</span> · 예약 완료 <span class="chip tbd">확인 필요</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-08a</td><td data-label="기능명">문의 폼 — 화면</td><td data-label="사용자 행동">홈 #contact 또는 Contact 페이지</td><td data-label="동작 및 결과">입력 5(필수 3), 항상 보이는 라벨, 두 곳 같은 폼</td><td data-label="예외 처리">—</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-08b</td><td data-label="기능명">문의 폼 — 검증</td><td data-label="사용자 행동">빈 칸·잘못된 형식으로 보냄</td><td data-label="동작 및 결과">칸 아래 오류 + 요약, 첫 오류 칸 포커스, aria-invalid</td><td data-label="예외 처리">URL은 https:// 없이도 받음</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-08c</td><td data-label="기능명">문의 폼 — 전송</td><td data-label="사용자 행동">문의 보내기</td><td data-label="동작 및 결과">보내는 중… → 2xx 성공·초기화 / 실패·입력 유지, 중복 차단</td><td data-label="예외 처리">전송 주소가 비면 실패 문구</td><td data-label="우선순위">필수</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span>(요청 가로채기) · 메일 수신 <span class="chip tbd">확인 필요</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-09</td><td data-label="기능명">이메일·복사</td><td data-label="사용자 행동">mailto 또는 복사 버튼</td><td data-label="동작 및 결과">복사 성공 시에만 완료 안내</td><td data-label="예외 처리">실패 시 선택 가능한 주소 칸</td><td data-label="우선순위">필수(대체 경로)</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> 실패 경로 <span class="chip ok">브라우저 확인 11-11</span> · 성공 경로 <span class="chip no">미확인</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-10</td><td data-label="기능명">푸터 회전 단어</td><td data-label="사용자 행동">푸터를 봄</td><td data-label="동작 및 결과">단어 4개 2.4초 간격, 일시정지 버튼</td><td data-label="예외 처리">움직임 줄이기: 고정·버튼 숨김</td><td data-label="우선순위">추가</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span> · <span class="chip issue">360~414px 폭 4px 초과</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-11</td><td data-label="기능명">Follow 링크</td><td data-label="사용자 행동">LinkedIn·GitHub</td><td data-label="동작 및 결과">회사 LinkedIn · GitHub RachelCho 새 탭</td><td data-label="예외 처리">—</td><td data-label="우선순위">추가</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip part">코드 확인</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-12</td><td data-label="기능명">뉴스레터</td><td data-label="사용자 행동">이메일 입력 → 버튼</td><td data-label="동작 및 결과">화면·형식 검사·연결 준비 중 안내</td><td data-label="예외 처리">미연결: 등록되지 않았다고 알림</td><td data-label="우선순위">추후</td><td data-label="구현 · 검증">화면 <span class="chip ok">구현됨</span> · 연결 <span class="chip no">미구현</span> · <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td class="nw" data-label="기능 ID">F-13</td><td data-label="기능명">경력 수치 카운트업</td><td data-label="사용자 행동">About 블록이 화면에 들어옴</td><td data-label="동작 및 결과">0 → 최종 값 900ms 한 번</td><td data-label="예외 처리">움직임 줄이기: 최종 값</td><td data-label="우선순위">추가</td><td data-label="구현 · 검증"><span class="chip ok">구현됨</span> <span class="chip part">코드 확인</span></td></tr>
+</tbody></table></div>
     </div>
   </section>
 
   <section id="s14" aria-labelledby="s14-t">
     <div class="wrap">
-      <p class="label">14 · Scope</p>
-      <h2 id="s14-t">첫 공개 필수 · 추후 개선 · 결정 필요</h2>
-
-      <div class="scope-grid">
-        <div class="scope"><h3>첫 공개 필수</h3><ul>
-          <li>홈·Approach·사례·Contact 한국어·영어 (구현됨)</li>
-          <li>공통 내비게이션, 언어 전환 (구현됨)</li>
-          <li>Calendly 예약 링크 (구현됨) + 실제 예약 테스트 (미확인)</li>
-          <li>문의 폼 전송 (구현됨) + 운영자 메일함 실제 수신 확인 (확인 필요)</li>
-          <li>이메일 대체 연락 경로 (구현됨)</li>
-          <li>모바일 사용성 (확인됨)</li>
-          <li>문의 폼의 개인정보 처리 안내 — 개인정보를 받으므로 필요, 문구는 결정 필요</li>
-          <li>사례 공개 범위 확인 — 결정 필요 항목과 연결</li>
-        </ul></div>
-        <div class="scope"><h3>추후 개선</h3><ul>
-          <li>출처를 확인한 실제 기업의 현지화 시행착오 사례 추가</li>
-          <li>사례 페이지 끝의 상담 CTA (제안)</li>
-          <li>Approach 상담 버튼 연결 방식 통일 검토 (제안: 지금은 Contact를 거침)</li>
-          <li>로고 벡터 마스터 정리</li>
-        </ul></div>
-        <div class="scope tbd-box"><h3>결정 필요</h3><ul>
-          <li>30분 상담 가격, 사전 검토 범위와 결과물</li>
-          <li>Market Context Session과 30분 상담의 관계</li>
-          <li>서비스별 가격과 범위</li>
-          <li>사례 공개 권한 (고객사 동의, 수치 공개 범위)</li>
-          <li>개인정보 처리 안내 문구와 문의 보관 기간</li>
-          <li>LinkedIn 등 추가 연락 링크 노출 여부</li>
-          <li>브랜드명 상표·도메인</li>
-          <li>기존 조예경 포트폴리오(index.html)와 Second Context 사이트의 관계</li>
-        </ul></div>
-      </div>
-      <p class="note measure-wide">제외: 로그인·회원가입·결제·관리자 시스템. 방문자는 정보를 보고 예약·문의만 하므로 현재 사이트 목적상 필요성이 확인되지 않았습니다. "미정"이라는 이유만으로 추후 항목으로 넘기지 않았습니다 — 예: 개인정보 안내는 결정은 필요하지만 첫 공개 필수입니다.</p>
-
+      <p class="label">14 · Exceptions</p>
+      <h2 id="s14-t">예외 상황</h2>
+<div class="tbl" role="region" tabindex="0" aria-label="예외 상황 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-5"><colgroup><col style="width:16%"><col style="width:10%"><col style="width:36%"><col style="width:16%"><col style="width:22%"></colgroup><thead><tr><th scope="col">상황</th><th scope="col">처리 주체</th><th scope="col">현재 사이트의 안내 (구현된 문구)</th><th scope="col">사용자의 다음 행동</th><th scope="col">상태</th></tr></thead><tbody>
+<tr><td data-label="상황">필수 입력 누락</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">칸 아래 “오류: 이름 항목을 입력해 주세요.” 등 + “입력 내용을 확인해 주세요. 수정이 필요한 항목이 N개 있습니다.”</td><td data-label="사용자의 다음 행동">칸을 채우고 다시 보냄</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td data-label="상황">잘못된 이메일 형식</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">“이메일 형식이 올바르지 않습니다. name@company.com 형태로 입력해 주세요.”</td><td data-label="사용자의 다음 행동">고쳐서 다시 보냄</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 10-29</span></td></tr>
+<tr><td data-label="상황">전송 중 중복 제출</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">버튼이 “보내는 중…”, 다시 눌러도 요청 1회</td><td data-label="사용자의 다음 행동">응답을 기다림</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td data-label="상황">문의 전송 성공</td><td data-label="처리 주체">사이트 + 외부</td><td data-label="현재 사이트의 안내 (구현된 문구)">“문의가 접수되었습니다. 남겨주신 이메일로 답변드리겠습니다.” (2xx 뒤에만), 입력 초기화</td><td data-label="사용자의 다음 행동">회신을 기다림</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span> · 메일 도착 <span class="chip tbd">확인 필요</span></td></tr>
+<tr><td data-label="상황">문의 전송 실패</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">“전송하지 못했습니다. 작성하신 내용은 이 화면에 그대로 남아 있습니다. 다시 시도해 주세요.” 입력 유지</td><td data-label="사용자의 다음 행동">다시 보내거나 이메일</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td data-label="상황">문의 전송 주소 비어 있음</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">실패 문구와 같음, 요청 안 보냄</td><td data-label="사용자의 다음 행동">이메일로 연락</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 10-29</span> · 현재는 연결됨</td></tr>
+<tr><td data-label="상황">뉴스레터 — 빈 칸</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">“이메일 주소를 입력해 주세요.”</td><td data-label="사용자의 다음 행동">입력</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td data-label="상황">뉴스레터 — 서비스 미연결</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">“아직 뉴스레터 구독 서비스가 연결되지 않아 등록되지 않았습니다. 소식을 받고 싶으시면 문의 페이지로 알려 주세요.” (상시 안내도 있음)</td><td data-label="사용자의 다음 행동">문의 폼 이용 (안내 문구에 링크는 없음)</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span> · 링크 추가 <span class="chip idea">제안</span></td></tr>
+<tr><td data-label="상황">Hero 영상 오류·움직임 줄이기</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">영상 없이 첫 프레임 포스터, 일시정지 버튼 숨김</td><td data-label="사용자의 다음 행동">—</td><td data-label="상태"><span class="chip ok">구현됨</span> 움직임 줄이기 <span class="chip ok">브라우저 확인 11-11</span> · 오류 경로 <span class="chip part">코드 확인</span></td></tr>
+<tr><td data-label="상황">이메일 자동 복사 실패</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">“자동 복사를 사용할 수 없습니다. 아래 칸의 주소를 선택해 직접 복사해 주세요.” + 주소 칸</td><td data-label="사용자의 다음 행동">직접 복사</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip ok">브라우저 확인 11-11</span></td></tr>
+<tr><td data-label="상황">검색 결과 없음</td><td data-label="처리 주체">사이트</td><td data-label="현재 사이트의 안내 (구현된 문구)">“‘…’에 맞는 결과가 없습니다. 다른 단어로 찾거나 문의 페이지로 알려 주세요.”</td><td data-label="사용자의 다음 행동">다른 단어</td><td data-label="상태"><span class="chip ok">구현됨</span> <span class="chip part">코드 확인</span></td></tr>
+<tr><td data-label="상황">Calendly 접속 실패·빈 일정</td><td data-label="처리 주체">외부</td><td data-label="현재 사이트의 안내 (구현된 문구)">사이트는 감지 못함. #contact·Contact 페이지에 이메일 대체 경로</td><td data-label="사용자의 다음 행동">이메일 또는 문의 폼</td><td data-label="상태">안내 없음 · <span class="chip idea">제안</span> 예약 버튼 근처 보조 문구</td></tr>
+</tbody></table></div>
+      <p class="note">사이트는 외부 서비스(Calendly·Formspree)의 상태를 자동으로 알 수 없다고 전제합니다. <span class="chip idea">제안</span> 표시 항목은 구현되지 않았습니다.</p>
     </div>
   </section>
 
   <section id="s15" aria-labelledby="s15-t">
     <div class="wrap">
-      <p class="label">15 · Consistency</p>
-      <h2 id="s15-t">문서와 구현의 정합성 점검</h2>
-<div class="tbl" role="region" tabindex="0" aria-label="문서와 구현의 정합성 점검 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-4"><colgroup><col style="width:14%"><col style="width:26%"><col style="width:30%"><col style="width:30%"></colgroup><thead><tr><th scope="col">항목</th><th scope="col">이전 기획서</th><th scope="col">현재 구현</th><th scope="col">정리</th></tr></thead><tbody>
-<tr><td data-label="항목">사이트 언어</td><td data-label="이전 기획서">"사이트 언어 최종 결정" 미정 / 한·영 페이지 구현 설명과 충돌</td><td data-label="현재 구현">한국어 기본 + 영어(en/) 구현, 언어 기억</td><td data-label="정리">언어 구성은 확정·구현됨으로 정리. 미정 목록에서 삭제</td></tr>
-<tr><td data-label="항목">사례</td><td data-label="이전 기획서">구조와 콘텐츠가 한 덩어리로 "확정"</td><td data-label="현재 구현">구조·페이지 구현됨, 공개 범위는 검토 중</td><td data-label="정리">구조 <span class="chip ok">구현됨</span> / 공개 범위 <span class="chip tbd">결정 필요</span>로 분리</td></tr>
-<tr><td data-label="항목">사례 상세 방식</td><td data-label="이전 기획서">"사례 자세히 보기"를 펼침</td><td data-label="현재 구현">별도 사례 페이지 + 재구성 데모</td><td data-label="정리">현재 방식으로 갱신. 펼치기·접기는 <span class="chip no">미구현</span>으로 기능정의서에 명시</td></tr>
-<tr><td data-label="항목">문의 폼</td><td data-label="이전 기획서">화면·검증만 구현, 전송 미정 → 버튼 비활성</td><td data-label="현재 구현">Formspree 연결, 버튼 활성</td><td data-label="정리">화면 / 검증 / 전송을 F-06a·b·c로 분리. 실제 수신은 <span class="chip tbd">확인 필요</span></td></tr>
-<tr><td data-label="항목">Contact 구성</td><td data-label="이전 기획서">폼 65% · 연락 35%, 팀·전화번호 항목, Languages, Gmail 작성 링크, LinkedIn</td><td data-label="현재 구현">머리글 → 폼 7 : 다른 연락 방법 5, 이름·이메일·회사 또는 제품명·제품 URL·문의 내용, 이메일·복사, 30분 상담</td><td data-label="정리">현재 구현 기준으로 갱신. LinkedIn 노출은 <span class="chip tbd">결정 필요</span></td></tr>
-<tr><td data-label="항목">홈 Hero</td><td data-label="이전 기획서">"새로운 시장, 새로운 사용 맥락." / 30분 상담 예약 · 관련 사례 보기</td><td data-label="현재 구현">"새로운 시장의 맥락을, 제품의 다음 단계로." / 프로젝트 문의하기 · 사례 살펴보기</td><td data-label="정리">현재 문구로 갱신</td></tr>
-<tr><td data-label="항목">홈 Hero 대표 이미지</td><td data-label="이전 기획서">글 + 사진 4:3 두 열 / 노트북 앞 네 사람의 운영 대시보드 논의 사진</td><td data-label="현재 구현">전체 폭 배경 사진: 복잡한 제품 화면을 바탕으로 팀의 디자인 논의를 이끄는 Rachel(오른쪽), 글은 왼쪽 어두운 그라데이션 위. 한국어·영어 같은 파일 (2026-11-05)</td><td data-label="정리">대표 이미지·구성 갱신</td></tr>
-<tr><td data-label="항목">창업자 소개</td><td data-label="이전 기획서">홈 Founder (흑백 사진)</td><td data-label="현재 구현">홈 #founder로 통합, 이전 소개 주소는 이동, 투자 금액 1,420만 달러(회사 이력) 확정</td><td data-label="정리">현재 문구로 갱신</td></tr>
-<tr><td data-label="항목">상담 버튼 연결</td><td data-label="이전 기획서">Calendly 직접 링크</td><td data-label="현재 구현">헤더·홈은 Calendly 직접, Approach는 Contact #booking 경유</td><td data-label="정리">차이를 명시. 통일 여부는 <span class="chip idea">제안</span></td></tr>
-<tr><td data-label="항목">30분 상담 ↔ Market Context Session</td><td data-label="이전 기획서">미정</td><td data-label="현재 구현">사이트에 관계 설명 없음</td><td data-label="정리"><span class="chip tbd">결정 필요</span> 유지</td></tr>
-<tr><td data-label="항목">로그인·콘텐츠 관리</td><td data-label="이전 기획서">"기술 스택, 로그인 방식, 콘텐츠 관리 권한" 미정</td><td data-label="현재 구현">방문자 로그인 없음. 운영자는 저장소의 HTML을 고치고 빌드 스크립트로 영어 페이지를 만든 뒤 GitHub Pages로 배포</td><td data-label="정리">방문자 로그인 = 필요 없음(범위 제외). 운영자 콘텐츠 관리 = 저장소 직접 수정 방식. 작업 지침의 로그인·작업물 관리는 개인 포트폴리오 프로젝트의 항목</td></tr>
-<tr><td data-label="항목">글자 크기 규칙</td><td data-label="이전 기획서">H1 64px (모바일 40px)</td><td data-label="현재 구현">페이지 제목 48 · 섹션 36 · 하위 24 · 항목 20(px), 모바일 34 · 28 · 22</td><td data-label="정리">디자인 규칙 갱신</td></tr>
-</tbody></table></div><p class="note">가격·경력·성과 수치·고객명·공개 권한·상담 제공 범위는 이 문서에서 새로 정하지 않았습니다.</p>
+      <p class="label">15 · Dependencies</p>
+      <h2 id="s15-t">의존관계</h2>
+<p><span class="chip ext">외부</span> 외부 서비스에서 완료하는 일 · <span class="chip site">사이트</span> 사이트 코드에서 구현하는 일 · <span class="chip ops">운영</span> 운영자가 확인·결정하는 일</p>
+      <div class="chain-grid">
+      <article class="chain"><h3>문의 수신</h3><ol class="ch"><li><span class="chip ops">운영</span> 수신 서비스 — Formspree (완료)</li><li><span class="chip ops">운영</span> 수신 주소 — rachel.cho5257@gmail.com (완료) · 개인정보 처리 안내 <span class="chip tbd">결정 필요</span></li><li><span class="chip site">사이트</span> 홈 #contact·Contact 페이지 data-endpoint 연결 (완료)</li><li><span class="chip ext">외부</span> <span class="chip ops">운영</span> 실제 수신 테스트 <span class="chip tbd">확인 필요</span></li></ol><p class="note">개인정보 안내가 확정되기 전에 전송이 연결되어 있습니다. 공개 운영 전에 문구를 정하는 것을 권장합니다.</p></article>
+      <article class="chain"><h3>상담 예약</h3><ol class="ch"><li><span class="chip ops">운영</span> 상담 범위·가격·결과물 <span class="chip tbd">결정 필요</span></li><li><span class="chip ext">외부</span> Calendly 설명·시간·확인 메일 설정 <span class="chip tbd">확인 필요</span></li><li><span class="chip site">사이트</span> 예약 링크 연결 (완료) · Approach 상세의 Contact 경유 여부 <span class="chip tbd">결정 필요</span></li><li><span class="chip ops">운영</span> 실제 예약 테스트 <span class="chip no">미확인</span></li></ol></article>
+      <article class="chain"><h3>뉴스레터</h3><ol class="ch"><li><span class="chip ops">운영</span> 구독 서비스 선택 <span class="chip tbd">결정 필요</span></li><li><span class="chip ops">운영</span> 발송 주기·내용·개인정보 안내 <span class="chip tbd">결정 필요</span></li><li><span class="chip site">사이트</span> form.newsletter의 data-endpoint에 주소 입력 (미완료)</li><li><span class="chip site">사이트</span> 상시 안내 "연결 준비 중" 문구 삭제 (연결 후)</li></ol></article>
+      <article class="chain"><h3>한국어·영어</h3><ol class="ch"><li><span class="chip ops">운영</span> 한국어 원문 확정</li><li><span class="chip site">사이트</span> 번역 표 갱신 → 영어 페이지 빌드 (표에 없는 한국어가 남으면 중단)</li><li><span class="chip site">사이트</span> 공통 헤더·푸터는 sc_chrome.py → build_en_pages.py 순서로 실행</li><li><span class="chip site">사이트</span> 언어 전환·기억 (2026-11-11 확인)</li></ol></article>
+      <article class="chain"><h3>사례 게재</h3><ol class="ch"><li><span class="chip ops">운영</span> 공개 범위 — 고객사 동의·수치 공개 <span class="chip tbd">결정 필요</span></li><li><span class="chip ops">운영</span> 공개 콘텐츠 — 현재 익명·공개 자료 수치</li><li><span class="chip site">사이트</span> 홈 카드·사례 페이지·재구성 데모 (완료)</li></ol></article>
+      <article class="chain"><h3>운영 사이트 동기화</h3><ol class="ch"><li><span class="chip site">사이트</span> my-portfolio에서 화면 수정·빌드</li><li><span class="chip site">사이트</span> second-context 저장소에서 sync_from_portfolio.py → docs/</li><li><span class="chip ext">외부</span> GitHub Pages 배포 (second-context.com)</li></ol></article>
+      </div>
     </div>
   </section>
 
   <section id="s16" aria-labelledby="s16-t">
     <div class="wrap">
-      <p class="label">16 · Design</p>
-      <h2 id="s16-t">디자인 방향 — Second Context 브랜드</h2>
-      <h3>확정 컬러 토큰</h3>
+      <p class="label">16 · Scope</p>
+      <h2 id="s16-t">첫 공개 필수 · 추후 개선 · 결정 필요</h2>
+      <div class="scope-grid">
+        <div class="scope"><h3>첫 공개 필수</h3><ul>
+          <li>홈·Approach·사례·Contact·About 한국어·영어 <span class="chip ok">구현됨</span></li>
+          <li>공통 헤더·검색·푸터, 언어 전환 <span class="chip ok">구현됨</span></li>
+          <li>Calendly 예약 링크 <span class="chip ok">구현됨</span> + 실제 예약 테스트 <span class="chip tbd">확인 필요</span></li>
+          <li>문의 폼 전송 <span class="chip ok">구현됨</span> + 메일함 실제 수신 <span class="chip tbd">확인 필요</span></li>
+          <li>이메일 대체 경로 <span class="chip ok">구현됨</span></li>
+          <li>모바일 사용성 — 360·375px 푸터 폭 초과 <span class="chip issue">문제 발견</span></li>
+          <li>문의 폼 개인정보 처리 안내 <span class="chip tbd">결정 필요</span></li>
+          <li>사례 공개 범위 <span class="chip tbd">결정 필요</span></li>
+        </ul></div>
+        <div class="scope"><h3>추후 개선</h3><ul>
+          <li>뉴스레터 구독 서비스 연결 (현재 화면만, 미연결 안내)</li>
+          <li>Contact 페이지 진입 경로 정리 (검색·푸터에 추가하거나 정리)</li>
+          <li>출처를 확인한 실제 기업의 현지화 시행착오 사례</li>
+          <li>사례 이미지 확대 보기(360px 가독성)</li>
+          <li>뉴스레터 안내 문구의 "문의 페이지" 링크</li>
+          <li>로고 벡터 마스터 정리</li>
+        </ul></div>
+        <div class="scope tbd-box"><h3>결정 필요</h3><ul>
+          <li>서비스 4개의 산출물·범위·가격, 이전 3개 상품명 유지 여부</li>
+          <li>30분 상담 가격·사전 검토 범위·결과물, Market Context Session과의 관계</li>
+          <li>홈 Approach 요약에 상세 6단계(검증·다음 개선)를 반영할지</li>
+          <li>Approach 상세의 상담 버튼: Contact 경유 유지 / Calendly 직접</li>
+          <li>Contact 페이지를 독립 페이지로 둘지</li>
+          <li>뉴스레터 서비스·발송 주기·개인정보 안내</li>
+          <li>사례 공개 권한 · 개인정보 처리 안내 문구와 문의 보관 기간</li>
+          <li>브랜드명 상표·도메인, 기존 포트폴리오(index.html)와의 관계</li>
+        </ul></div>
+      </div>
+      <p class="note">제외: 로그인·회원가입·결제·관리자 시스템. 방문자는 정보를 보고 예약·문의만 하므로 필요성이 확인되지 않았습니다. 운영자는 저장소의 HTML을 직접 고치고 GitHub Pages로 배포합니다.</p>
+    </div>
+  </section>
+
+  <section id="s17" aria-labelledby="s17-t">
+    <div class="wrap">
+      <p class="label">17 · Benchmark</p>
+      <h2 id="s17-t">벤치마킹 대응표</h2>
+      <p class="measure">기존 자료: 프로젝트 CLAUDE.md의 다크 리디자인 기록(2026-11-10) 한 줄 — "edenspiekermann.com 구조(큰 글자, 번호 원 사례, 둥근 카드, About 사진+수치, ‘Let’s’ 푸터)를 Second Context 내용으로 적용". 구조 분석표는 따로 없었습니다. 2026-11-11에 원본 홈을 텍스트 추출로 다시 봤고, 추출에 나오지 않은 시각 요소(번호 원·둥근 카드·푸터)는 <strong>벤치마킹 원본 확인 필요</strong>로 남깁니다. 색·사진·글은 가져오지 않았습니다.</p>
+      <h3>관찰 (원본 사이트에서 확인한 사실)</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="벤치마킹 관찰 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-3"><colgroup><col style="width:22%"><col style="width:18%"><col style="width:60%"></colgroup><thead><tr><th scope="col">참고 사이트 · URL</th><th scope="col">참고 영역</th><th scope="col">관찰한 구조 (2026-11-11 텍스트 추출)</th></tr></thead><tbody>
+<tr><td data-label="참고 사이트 · URL">Edenspiekermann<br><code>edenspiekermann.com</code></td><td data-label="참고 영역">Hero</td><td data-label="관찰한 구조 (2026-11-11 텍스트 추출)">H1 회사명 + H2 한 문장(“Design strategy that ships”) · 링크 1(“View our work”) · 사례 카드 2</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">서비스 블록 × 4</td><td data-label="관찰한 구조 (2026-11-11 텍스트 추출)">서비스마다 라벨/문장 1 · 버튼 1(행동형 문구) · 사례 카드 2 (전략·프로덕트 디자인·엔지니어링·Figma)</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">고객 로고</td><td data-label="관찰한 구조 (2026-11-11 텍스트 추출)">로고 이미지 6</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">회사 소개 · 수치</td><td data-label="관찰한 구조 (2026-11-11 텍스트 추출)">소개 문단 1 · 버튼 “About us” · 수치 3~4개(라벨 일부 추출 불명확)</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">소속 · 새 소식</td><td data-label="관찰한 구조 (2026-11-11 텍스트 추출)">모회사 표기 1 · “What’s new” 제목(항목은 추출 안 됨)</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">푸터 · 번호 원 · 둥근 카드</td><td data-label="관찰한 구조 (2026-11-11 텍스트 추출)">텍스트 추출에 나오지 않음 — <span class="chip tbd">벤치마킹 원본 확인 필요</span></td></tr>
+</tbody></table></div>
+      <h3>Second Context 적용 (가져옴 · 변경 · 제외 · 추가)</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="벤치마킹 대응표 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-6"><colgroup><col style="width:16%"><col style="width:14%"><col style="width:20%"><col style="width:16%"><col style="width:12%"><col style="width:22%"></colgroup><thead><tr><th scope="col">참고 사이트 · URL</th><th scope="col">참고 영역</th><th scope="col">관찰한 구조</th><th scope="col">Second Context 적용 영역</th><th scope="col">처리</th><th scope="col">적용 이유</th></tr></thead><tbody>
+<tr><td data-label="참고 사이트 · URL">edenspiekermann.com</td><td data-label="참고 영역">Hero</td><td data-label="관찰한 구조">큰 한 문장 + 짧은 행동 링크</td><td data-label="Second Context 적용 영역">2 Hero</td><td data-label="처리">변경</td><td data-label="적용 이유">한 문장 구조는 가져오고, 배경 영상과 버튼 2개(문의·사례)로 문의 동선을 앞에 둠</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">서비스 블록 × 4</td><td data-label="관찰한 구조">서비스마다 사례 카드 2</td><td data-label="Second Context 적용 영역">4 Services · 5 Selected Work</td><td data-label="처리">변경</td><td data-label="적용 이유">서비스와 사례를 분리: 서비스 카드 4 + 사례 3 × 카드 2. 사례가 3개뿐이라 서비스마다 붙일 수 없음</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">고객 로고</td><td data-label="관찰한 구조">로고 6</td><td data-label="Second Context 적용 영역">—</td><td data-label="처리">제외</td><td data-label="적용 이유">고객사 이름·로고 비공개 원칙</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">회사 소개 · 수치</td><td data-label="관찰한 구조">소개 + About 버튼 + 수치</td><td data-label="Second Context 적용 영역">3-1 About Second Context</td><td data-label="처리">가져옴</td><td data-label="적용 이유">같은 구조(소개·버튼·수치) + 창업자 사진. 수치는 Rachel 제공 값만</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">새 소식</td><td data-label="관찰한 구조">What’s new</td><td data-label="Second Context 적용 영역">6 Approach</td><td data-label="처리">제외 · 대체</td><td data-label="적용 이유">운영할 게시물이 없음. 수업의 게시판 자리를 진행 방식으로 대체</td></tr>
+<tr><td data-label="참고 사이트 · URL">〃</td><td data-label="참고 영역">푸터 (기록상 ‘Let’s’)</td><td data-label="관찰한 구조"><span class="chip tbd">원본 확인 필요</span></td><td data-label="Second Context 적용 영역">8 Footer</td><td data-label="처리">가져옴(기록 기준)</td><td data-label="적용 이유">회전 단어 + 문의 캡슐로 마지막 문의 기회</td></tr>
+<tr><td data-label="참고 사이트 · URL">(자체)</td><td data-label="참고 영역">—</td><td data-label="관찰한 구조">—</td><td data-label="Second Context 적용 영역">3 Why Us · 7 Contact 폼</td><td data-label="처리">추가</td><td data-label="적용 이유">컨설팅 고객의 필요성 이해 단계와 문의 완료 지점이 원본 구조에 없음</td></tr>
+</tbody></table></div>
+      <p class="note">제안과 관찰을 나눠 적었습니다. "처리·적용 이유" 열은 현재 구현을 설명하는 해석이며, 원본 사이트의 의도를 확인한 것은 아닙니다.</p>
+      <h3>작성용 빈 표 (다른 참고 사이트를 더할 때)</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="벤치마킹 작성용 빈 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-6"><colgroup><col style="width:16%"><col style="width:14%"><col style="width:20%"><col style="width:16%"><col style="width:12%"><col style="width:22%"></colgroup><thead><tr><th scope="col">참고 사이트 · URL</th><th scope="col">참고 영역</th><th scope="col">관찰한 구조</th><th scope="col">Second Context 적용 영역</th><th scope="col">가져옴·변경·제외·추가</th><th scope="col">적용 이유</th></tr></thead><tbody>
+<tr><td data-label="참고 사이트 · URL">&nbsp;</td><td data-label="참고 영역">&nbsp;</td><td data-label="관찰한 구조">&nbsp;</td><td data-label="Second Context 적용 영역">&nbsp;</td><td data-label="가져옴·변경·제외·추가">&nbsp;</td><td data-label="적용 이유">&nbsp;</td></tr>
+<tr><td data-label="참고 사이트 · URL">&nbsp;</td><td data-label="참고 영역">&nbsp;</td><td data-label="관찰한 구조">&nbsp;</td><td data-label="Second Context 적용 영역">&nbsp;</td><td data-label="가져옴·변경·제외·추가">&nbsp;</td><td data-label="적용 이유">&nbsp;</td></tr>
+<tr><td data-label="참고 사이트 · URL">&nbsp;</td><td data-label="참고 영역">&nbsp;</td><td data-label="관찰한 구조">&nbsp;</td><td data-label="Second Context 적용 영역">&nbsp;</td><td data-label="가져옴·변경·제외·추가">&nbsp;</td><td data-label="적용 이유">&nbsp;</td></tr>
+</tbody></table></div>
+    </div>
+  </section>
+
+  <section id="s18" aria-labelledby="s18-t">
+    <div class="wrap">
+      <p class="label">18 · Checks</p>
+      <h2 id="s18-t">화면 폭별 점검 (2026-11-11)</h2>
+      <dl class="kv">
+        <dt>검사 날짜 · 환경</dt><dd>2026-11-11 · macOS 26.6.2 · Google Chrome 157.0.8103.39 헤드리스(DevTools Protocol 스크립트) · 로컬 서버 <code>python3 -m http.server</code> · 기기 에뮬레이션(768px 이하 모바일 모드)</dd>
+        <dt>대상 버전</dt><dd>로컬 커밋 947f46e. 공개 사이트와 같은 날 HTML·CSS·JS 10개 파일 해시 비교 — 모두 같음</dd>
+        <dt>근거</dt><dd>각 폭에서 <code>scrollWidth</code>·요소 위치·글자 크기 측정, 360px 영역 캡처, Tab 키 12회 이동, <code>prefers-reduced-motion</code> 에뮬레이션, Formspree 요청 가로채기. 캡처와 스크립트는 작업 폴더 밖 임시 폴더에 두고 저장소에는 넣지 않음</dd>
+        <dt>범위</dt><dd>홈(한국어) 중심. 가로 넘침은 Approach·사례·Contact·About·영어 홈·기획서도 측정. 실제 휴대폰·Safari·스크린 리더는 <span class="chip no">미확인</span></dd>
+      </dl>
+      <h3>항목별 결과</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="화면 폭별 점검 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-6"><colgroup><col style="width:16%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:48%"></colgroup><thead><tr><th scope="col">항목</th><th class="nw" scope="col">360</th><th class="nw" scope="col">375</th><th class="nw" scope="col">768</th><th class="nw" scope="col">1440</th><th scope="col">근거</th></tr></thead><tbody>
+<tr><td data-label="항목">가로 넘침과 콘텐츠 잘림</td><td class="nw" data-label="360"><span class="chip issue">문제 발견</span></td><td class="nw" data-label="375"><span class="chip issue">문제 발견</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">문서 폭 360→364, 375→379px(390·414px도 +4~5). 원인: 푸터 Let’s 회전 단어(56px)의 긴 단어. 이 요소를 숨기면 폭이 맞음. scrollTo로 옆으로 밀리지는 않음. 5개 페이지 공통. 768·1440 넘침 0. 기획서는 4개 폭 모두 넘침 0</td></tr>
+<tr><td data-label="항목">헤더·언어 전환·메뉴 배치</td><td class="nw" data-label="360"><span class="chip ok">통과</span></td><td class="nw" data-label="375"><span class="chip ok">통과</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">360·375·768: 로고 → 한국어/EN → 검색 → Menu, 버튼 44px 이상. 1440: 가로 메뉴 5 + 캡슐. 메뉴 패널 열기·Esc 닫기·포커스 복귀(360). 1440 메뉴 “Work” 링크 폭 36px(높이 44px) — 참고</td></tr>
+<tr><td data-label="항목">Hero 영상·이미지와 텍스트</td><td class="nw" data-label="360"><span class="chip ok">통과</span></td><td class="nw" data-label="375"><span class="chip ok">통과</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">900px 이하: 영상 위(360px 높이 270) · 글 아래, 겹치지 않음, 960 영상 사용. 1440: 영상 811px, 글 왼쪽 아래. 재생 확인, 일시정지 버튼 표시. 움직임 줄이기: 영상 없음·포스터·버튼 숨김</td></tr>
+<tr><td data-label="항목">사례 화면 가독성</td><td class="nw" data-label="360"><span class="chip issue">문제 발견</span></td><td class="nw" data-label="375"><span class="chip issue">문제 발견</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">카드 제목 20px · 설명 16px(HTML)은 읽힘. 360px 이미지 폭 328px에서 이미지 속 UI 글자는 읽기 어려움. 사례 01 제품 이미지의 “01 / VISIT SCHEDULING” 라벨이 둥근 모서리(48px)에 일부 가려짐(360px 캡처)</td></tr>
+<tr><td data-label="항목">문의 폼·라벨·버튼</td><td class="nw" data-label="360"><span class="chip ok">통과</span></td><td class="nw" data-label="375"><span class="chip ok">통과</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">라벨 5개 항상 보임, 입력 높이 46px, 버튼 48px. 360·375: 한 열, 768·1440: 두 열(이름|이메일, 회사|URL). 빈 칸 오류·첫 칸 포커스·실패/성공(가로채기) 확인</td></tr>
+<tr><td data-label="항목">푸터·뉴스레터 안내</td><td class="nw" data-label="360"><span class="chip ok">통과</span></td><td class="nw" data-label="375"><span class="chip ok">통과</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">“구독 서비스 연결 준비 중…” 안내가 4개 폭 모두 보임. 360: Company → Follow → Newsletter 1열. 768: 2열 + 뉴스레터 전체 폭. 1440: 3열. 신청 시 미연결 안내(등록된 척 안 함)</td></tr>
+<tr><td data-label="항목">키보드 포커스</td><td class="nw" data-label="360"><span class="chip ok">통과</span></td><td class="nw" data-label="375"><span class="chip ok">통과</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">본문 바로가기부터 Tab 12회, 모든 요소 3px 실선 외곽선. 일시정지 버튼은 Hero 글·버튼 다음 순서(화면에서는 위) — 참고. 포커스 시 스크롤해 헤더(sticky)에 가리지 않음(재측정)</td></tr>
+<tr><td data-label="항목">움직임 줄이기</td><td class="nw" data-label="360"><span class="chip ok">통과</span></td><td class="nw" data-label="375"><span class="chip ok">통과</span></td><td class="nw" data-label="768"><span class="chip ok">통과</span></td><td class="nw" data-label="1440"><span class="chip ok">통과</span></td><td data-label="근거">prefers-reduced-motion: 영상 대신 포스터, 회전 단어 고정(Understand), 일시정지 버튼 숨김</td></tr>
+<tr><td data-label="항목">실제 메일 수신 · Calendly 예약 완료</td><td class="nw" data-label="360"><span class="chip no">미확인</span></td><td class="nw" data-label="375"><span class="chip no">미확인</span></td><td class="nw" data-label="768"><span class="chip no">미확인</span></td><td class="nw" data-label="1440"><span class="chip no">미확인</span></td><td data-label="근거">별도 확인 항목 (운영자). 이번 점검은 요청 가로채기·링크 속성까지</td></tr>
+</tbody></table></div>
+      <h3>발견한 문제 (홈페이지는 이번에 고치지 않음)</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="발견한 문제 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-4"><colgroup><col style="width:16%"><col style="width:26%"><col style="width:28%"><col style="width:30%"></colgroup><thead><tr><th scope="col">문제</th><th scope="col">위치</th><th scope="col">영향</th><th scope="col">권장 수정안</th></tr></thead><tbody>
+<tr><td data-label="문제">푸터 회전 단어 폭 초과</td><td data-label="위치">공통 푸터 <code>.lets-title</code> (assets/second-context.css, <code>font-size:clamp(56px,10vw,160px)</code>) · 5개 페이지</td><td data-label="영향">360~414px에서 문서 폭 4~5px 초과. 측정상 가로 이동은 없었지만 실제 휴대폰에서 좌우 흔들림 여부는 확인 필요</td><td data-label="권장 수정안">600px 이하 최솟값을 약 48px로 낮추거나 <code>.lets-title{max-width:100%;overflow-wrap:anywhere}</code>. sc_chrome.py는 수정 불필요</td></tr>
+<tr><td data-label="문제">Contact 페이지 진입 경로</td><td data-label="위치">second-context-contact.html · 홈·헤더·푸터·검색(site.js INDEX)</td><td data-label="영향">같은 폼이 홈에 있어 문의는 가능하지만, 독립 페이지가 Approach 상담 버튼으로만 열려 상담 예약이 한 단계 늘어남</td><td data-label="권장 수정안"><span class="chip tbd">결정 필요</span> ① 유지: 검색 INDEX·푸터에 추가 ② 정리: Approach 버튼을 Calendly 직접으로 바꾸고 페이지를 홈 #contact로 안내</td></tr>
+<tr><td data-label="문제">사례 01 이미지 라벨 가림</td><td data-label="위치">홈 #case-healthcare 왼쪽 카드 이미지 (case-product-healthcare-*.jpg, 이미지 안 왼쪽 위 라벨)</td><td data-label="영향">360px에서 “01 / VISIT SCHEDULING”의 앞부분이 카드 모서리에 가려짐</td><td data-label="권장 수정안">모바일에서 카드 모서리를 줄이거나(예: 24px) 이미지 안 라벨 여백을 둔 이미지로 교체</td></tr>
+<tr><td data-label="문제">사례 이미지 속 글자</td><td data-label="위치">홈 #work 카드 6개</td><td data-label="영향">360px에서 이미지 속 UI 글자는 읽기 어려움(설명은 HTML 글이라 읽힘)</td><td data-label="권장 수정안"><span class="chip idea">제안</span> 사례 페이지에서 큰 이미지·확대 보기 제공</td></tr>
+<tr><td data-label="문제">뉴스레터 안내의 “문의 페이지”</td><td data-label="위치">assets/site.js 뉴스레터 미연결 문구</td><td data-label="영향">안내가 문의 페이지를 말하지만 링크가 없음</td><td data-label="권장 수정안"><span class="chip idea">제안</span> 홈 #contact 링크를 문구에 추가</td></tr>
+</tbody></table></div>
+    </div>
+  </section>
+
+  <section id="s19" aria-labelledby="s19-t">
+    <div class="wrap">
+      <p class="label">19 · Consistency</p>
+      <h2 id="s19-t">문서와 구현의 정합성 점검</h2>
+<div class="tbl" role="region" tabindex="0" aria-label="문서와 구현의 정합성 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-4"><colgroup><col style="width:14%"><col style="width:26%"><col style="width:32%"><col style="width:28%"></colgroup><thead><tr><th scope="col">항목</th><th scope="col">이전 기획서 (2026-10-29)</th><th scope="col">현재 구현 (2026-11-11)</th><th scope="col">정리</th></tr></thead><tbody>
+<tr><td data-label="항목">기준 버전</td><td data-label="이전 기획서 (2026-10-29)">2026-10-29 구현 기준</td><td data-label="현재 구현 (2026-11-11)">2026-11-11 커밋 947f46e, 공개 사이트와 동일</td><td data-label="정리">머리글·01·18에 명시</td></tr>
+<tr><td data-label="항목">디자인</td><td data-label="이전 기획서 (2026-10-29)">흰 바탕 + 플럼·오렌지</td><td data-label="현재 구현 (2026-11-11)">검정 바탕 다크 리디자인(2026-11-10), Services·Approach만 흰 섹션</td><td data-label="정리">20 디자인 방향 갱신, docs/design-style.md 신설</td></tr>
+<tr><td data-label="항목">홈 구성</td><td data-label="이전 기획서 (2026-10-29)">Hero → Why Us → Services → Work → Founder → 상담</td><td data-label="현재 구현 (2026-11-11)">Hero → Why Us(안에 About·경험) → Services → Work → Approach → Contact(폼)</td><td data-label="정리">09 정보 구조 신설</td></tr>
+<tr><td data-label="항목">Hero</td><td data-label="이전 기획서 (2026-10-29)">사진(Rachel 디자인 논의), 버튼 문구 동일</td><td data-label="현재 구현 (2026-11-11)">무음 반복 영상 + 포스터 대체 + 일시정지 버튼, 900px 이하 영상 위·글 아래</td><td data-label="정리">09 핵심 영역 명세 갱신</td></tr>
+<tr><td data-label="항목">Why Us</td><td data-label="이전 기획서 (2026-10-29)">시행착오 유형 4개 표</td><td data-label="현재 구현 (2026-11-11)">문제의식 문단 + 사진 2 + 차별점 3 + About + 경험 행 3</td><td data-label="정리">04에 표를 기획 근거로만 남긴다고 명시</td></tr>
+<tr><td data-label="항목">Services</td><td data-label="이전 기획서 (2026-10-29)">3개(Product UX Review · Market Context Session · Design Partnership) + 예시 산출물</td><td data-label="현재 구현 (2026-11-11)">4개(제품 전략 · UX 리서치 · 프로덕트 디자인 · AI 기반 프로토타이핑), 산출물 칸 없음</td><td data-label="정리">05 갱신, 이전과의 관계는 문구 비교, 공식 대응 <span class="chip tbd">결정 필요</span></td></tr>
+<tr><td data-label="항목">Approach</td><td data-label="이전 기획서 (2026-10-29)">Approach 페이지 6단계만</td><td data-label="현재 구현 (2026-11-11)">홈 4단계 요약 + 상세 6단계</td><td data-label="정리">06 대응표 신설, 6단계(검증) 반영 여부 결정 필요</td></tr>
+<tr><td data-label="항목">사례 (홈)</td><td data-label="이전 기획서 (2026-10-29)">핵심 설계 판단·대표 수치·미리보기</td><td data-label="현재 구현 (2026-11-11)">번호·제목·설명 + 이미지 카드 2, 수치는 사례 페이지만</td><td data-label="정리">07 갱신</td></tr>
+<tr><td data-label="항목">About 페이지</td><td data-label="이전 기획서 (2026-10-29)">홈 #founder로 이동시키는 안내 페이지</td><td data-label="현재 구현 (2026-11-11)">실제 페이지(세 문단·수치·경력·멘토링)</td><td data-label="정리">08·10 갱신</td></tr>
+<tr><td data-label="항목">Contact</td><td data-label="이전 기획서 (2026-10-29)">Contact 페이지 폼 하나, 프로젝트 문의하기 → Contact</td><td data-label="현재 구현 (2026-11-11)">홈 #contact에 같은 폼. 프로젝트 문의 버튼은 모두 홈 #contact. Contact 페이지는 Approach 상담 버튼으로만 진입</td><td data-label="정리">09·10·11 갱신, 진입 경로 문제 기록</td></tr>
+<tr><td data-label="항목">LinkedIn·GitHub</td><td data-label="이전 기획서 (2026-10-29)">개인 LinkedIn 주소 기재, 사이트에 링크 없음(결정 필요)</td><td data-label="현재 구현 (2026-11-11)">푸터 Follow: LinkedIn 회사 페이지 + GitHub RachelCho</td><td data-label="정리"><span class="chip ok">구현됨</span>으로 갱신</td></tr>
+<tr><td data-label="항목">Footer</td><td data-label="이전 기획서 (2026-10-29)">기록 없음</td><td data-label="현재 구현 (2026-11-11)">Let’s 회전 단어 · 문의 캡슐 · Company · Follow · Newsletter · 언어 · ©</td><td data-label="정리">09·13 갱신</td></tr>
+<tr><td data-label="항목">Newsletter</td><td data-label="이전 기획서 (2026-10-29)">없음</td><td data-label="현재 구현 (2026-11-11)">화면 구현, 구독 미연결(안내 표시)</td><td data-label="정리">화면/연결 상태를 나눠 표시</td></tr>
+<tr><td data-label="항목">헤더</td><td data-label="이전 기획서 (2026-10-29)">1100px 이하 두 줄, 토글 메뉴 없음</td><td data-label="현재 구현 (2026-11-11)">1200px 이하 Menu 버튼 + 패널, 검색 버튼 추가, 메뉴 이름 영어 고정</td><td data-label="정리">13 F-02·F-03 갱신</td></tr>
+<tr><td data-label="항목">경력 수치</td><td data-label="이전 기획서 (2026-10-29)">27</td><td data-label="현재 구현 (2026-11-11)">27+</td><td data-label="정리">08 갱신</td></tr>
+<tr><td data-label="항목">사이트 언어</td><td data-label="이전 기획서 (2026-10-29)">확정 (2026-10-29 정리)</td><td data-label="현재 구현 (2026-11-11)">변경 없음</td><td data-label="정리">유지</td></tr>
+<tr><td data-label="항목">로그인·콘텐츠 관리</td><td data-label="이전 기획서 (2026-10-29)">방문자 로그인 제외, 저장소 직접 수정</td><td data-label="현재 구현 (2026-11-11)">변경 없음</td><td data-label="정리">유지</td></tr>
+</tbody></table></div>
+      <p class="note">가격·경력·성과 수치·고객명·공개 권한·상담 제공 범위는 이 문서에서 새로 정하지 않았습니다.</p>
+    </div>
+  </section>
+
+  <section id="s20" aria-labelledby="s20-t">
+    <div class="wrap">
+      <p class="label">20 · Design</p>
+      <h2 id="s20-t">디자인 방향 — Second Context 브랜드</h2>
+      <p class="measure">현재 사이트는 2026-11-10 다크 리디자인을 따릅니다(CLAUDE.md 최우선 규칙). 실제 값의 전체 목록은 <a href="https://github.com/RachelCho/my-portfolio/blob/main/docs/design-style.md">docs/design-style.md</a>에 있습니다.</p>
+      <h3>현재 사이트 색 (다크)</h3>
+<div class="tbl" role="region" tabindex="0" aria-label="현재 사이트 색 표 (가로로 스크롤할 수 있음)"><table class="rt  cols-3"><colgroup><col style="width:40%"><col style="width:20%"><col style="width:40%"></colgroup><thead><tr><th scope="col">역할</th><th class="nw" scope="col">값</th><th scope="col">대비</th></tr></thead><tbody>
+<tr><td data-label="역할">배경 / 제목</td><td class="nw" data-label="값">#000000 / #FFFFFF</td><td data-label="대비">21:1</td></tr>
+<tr><td data-label="역할">본문 / 작은 글</td><td class="nw" data-label="값">#B3B3B3 / #999999</td><td data-label="대비">10.02:1 / 7.37:1</td></tr>
+<tr><td data-label="역할">강조 글자·번호 원 (검정 바탕)</td><td class="nw" data-label="값">#F0845C</td><td data-label="대비">8.16:1</td></tr>
+<tr><td data-label="역할">흰 섹션 제목 / 본문 / 작은 글 / 번호 원</td><td class="nw" data-label="값">#000 / #4D4D4D / #666 / #A83E20</td><td data-label="대비">21 / 8.45 / 5.74 / 6.22:1</td></tr>
+<tr><td data-label="역할">라벨 앞 장식 선</td><td class="nw" data-label="값">#DA613E (24×2px, 글자 금지)</td><td data-label="대비">장식</td></tr>
+<tr><td data-label="역할">캡슐 버튼</td><td class="nw" data-label="값">흰 바탕 + 검정 글자, hover #E0E0E0 (흰 섹션은 검정 채움)</td><td data-label="대비">21:1</td></tr>
+</tbody></table></div>
+      <h3>브랜드 기본 토큰 (입력칸·기획서·밝은 UI 영역)</h3>
       <div class="tbl" role="region" tabindex="0" aria-label="확정 컬러 토큰 표 (가로로 스크롤할 수 있음)"><table class="cols-3"><colgroup><col style="width:40%"><col style="width:14%"><col style="width:46%"></colgroup>
         <thead><tr><th>토큰</th><th class="nw">HEX</th><th>역할</th></tr></thead>
         <tbody>
@@ -678,26 +840,15 @@ td small{display:block;margin-top:4px;line-height:var(--lh-small)}
         <li>장식 오렌지 #DA613E: 글자·버튼·기능 요소에 쓰지 않는다</li>
       </ul>
 
-      <h3>대표 이미지 (홈 Hero, 2026-11-05)</h3>
-      <figure class="hero-ref">
-        <img src="assets/images/home-hero-rachel-design-review-1280.jpg" width="1280" height="640" loading="lazy" alt="제품 대시보드가 띄워진 화면 앞에서 손짓으로 설명하며 팀의 디자인 논의를 이끄는 Rachel Cho">
-        <figcaption>복잡한 제품 화면을 바탕으로 팀의 디자인 논의를 이끄는 Rachel</figcaption>
-      </figure>
+      
+      <h3>그 밖의 디자인 규칙 (2026-11-11 구현)</h3>
       <ul class="measure-wide">
-        <li>의미: 대형 화면과 노트북에 띄운 제품 대시보드를 바탕으로, Rachel이 손짓으로 설명하며 팀의 디자인 논의를 이끄는 장면. 복잡한 업무 제품을 팀과 함께 판단하는 Second Context의 일하는 방식을 보여 준다. 화면 속 대시보드는 실제 고객 프로젝트 결과로 소개하지 않는다</li>
-        <li>구성: 사진을 화면 전체 폭 배경으로 쓰고, 제목·설명·분야 태그·버튼은 왼쪽(공통 컨테이너 시작선)에 둔다. 왼쪽 절반에만 플럼 계열 그라데이션을 깔아 글자 대비를 확보하고, 오른쪽 Rachel의 얼굴과 설명하는 손은 사진 그대로 밝게 둔다</li>
-        <li>데스크톱(901px~): 원본 2:1, 얼굴이 화면 가로 약 ¾·손이 약 ⅔ 지점. 영어는 문장이 길어 글 상자를 조금 넓혀 제목을 두 줄로 맞춘다</li>
-        <li>태블릿(601~900px): 오른쪽을 자른 사진(16:10 표시)을 위에, 글·버튼을 아래 어두운 바탕에 둔다. 모바일(~600px): Rachel 얼굴·손·노트북에 더 가깝게 자른 4:3 사진을 위에 둔다</li>
-        <li>파일: assets/images/home-hero-rachel-design-review-*.jpg (데스크톱 1280·1774, 태블릿 768·1152, 모바일 640·987). 원본 assets/Product designer leading a studio critique.png에서 tools/make_hero_images.py로 만들며, 얼굴·피부·화면은 보정하지 않는다. 한국어·영어 홈이 같은 파일을 쓴다</li>
-        <li>대비: 사진 위 글자는 합성된 실제 배경 픽셀로 측정해 일반 글자 4.5:1·큰 글자 3:1 이상 유지</li>
-      </ul>
-
-      <h3>그 밖의 디자인 규칙</h3>
-      <ul class="measure-wide">
-        <li>서체: Manrope (영문), Noto Sans KR (한글)</li>
-        <li>글자 위계: 페이지 제목 48px · 섹션 제목 36px · 하위 제목 24px · 항목 제목 20px (모바일 34 · 28 · 22 · 20), 본문 17px/1.7, 라벨 13px</li>
-        <li>레이아웃: 사진 + 글은 두 열 1:1, 장면 사진 4:3, 인물 사진 4:5(폭 320px). 제품 화면·데모는 자르지 않음. 본문 최대 폭 약 720px, 전체 최대 폭 약 1200px</li>
-        <li>로고: 승인된 이미지를 사용하고 텍스트로 다시 입력하지 않는다. 비율·색상을 바꾸거나 그림자·그라데이션을 넣지 않는다</li>
+        <li>서체: Manrope(영문) + Noto Sans KR(한글), 제목 굵기 500</li>
+        <li>글자: h1 clamp(40–84px) · h2 clamp(30–52px) · h3 clamp(24–34px) · 본문 17px/1.7 · 첫 소개 문단 20px(모바일 18px). 한국어는 줄 간격·간격을 약 8px 더 줌</li>
+        <li>레이아웃: 콘텐츠 최대 1400px, 좌우 여백 32px(600px 이하 16px), 섹션 위아래 96px, 카드 모서리 48px</li>
+        <li>포커스: 3px 실선(검정 영역 흰색, 흰 영역 검정), 누르는 영역 44×44px 이상</li>
+        <li>움직임: 영상·회전 단어·카운트업 모두 움직임 줄이기 설정에서 멈춤, 영상과 회전 단어에는 일시정지 버튼</li>
+        <li>로고: 승인 로고의 흰색판(헤더 56px, 600px 이하 40px, 푸터 80px). 비율·색 변경 금지</li>
         <li>톤: 명확하고 구체적이며 차분한 실무자</li>
       </ul>
     </div>

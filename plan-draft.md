@@ -2,6 +2,8 @@
 
 > 이 문서(plan-draft.md, plan-draft.html)는 강사님께 공유하는 기획서입니다.
 > 실제 사이트 시안은 second-context.html입니다.
+>
+> **2026-11-11 안내:** 이 Markdown 초안은 2026-10-28 무렵 내용에 머물러 있습니다. 현재 구현(커밋 947f46e) 기준의 최신 기획서는 `plan-draft.html`이고, 설계 자료는 `docs/screens.md` · `docs/features.md` · `docs/design-style.md` · `docs/second-context-home-build-prompt.md`에 있습니다.
 
 ## 1. 브랜드와 사이트 제목
 - 사이트 제목: Second Context (로고 표기: second context / 한국어: 세컨드 컨텍스트)
