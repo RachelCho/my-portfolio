@@ -7,6 +7,7 @@ R = sys.argv[1]
 PAGES = ["second-context.html", "second-context-approach.html", "second-context-contact.html", "second-context-about.html", "second-context-work.html"]
 # 헤더·푸터 메뉴는 홈의 섹션으로 연결한다(2026-11-10 2차). 하위 페이지는 관련 섹션을 현재 위치로 표시
 # 메뉴 이름은 두 언어 모두 영어로 고정(2026-11-10 사용자 요청). 헤더·푸터 공통
+# 상담·문의 버튼은 2026-11-11 사용자 요청으로 한국어 페이지에서 "30분 상담 예약" · "프로젝트 문의하기"(영어는 build_en_pages.py 표)
 SECTIONS = [("why-us", "Why Us"), ("services", "Services"), ("work", "Work"), ("approach", "Approach"), ("contact", "Contact")]
 CURRENT = {"second-context-about.html": "why-us", "second-context-work.html": "work",
            "second-context-approach.html": "approach", "second-context-contact.html": "contact"}
@@ -47,7 +48,7 @@ def header(page):
             '    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>\n'
             '    <nav class="main-nav" id="main-nav" aria-label="주요 메뉴">\n'
             + links +
-            f'      <a class="pill pill-light nav-cta" href="{CALENDLY}" target="_blank" rel="noopener"><span class="nav-cta-text">Book a 30-minute consultation</span>{NEW_TAB}</a>\n'
+            f'      <a class="pill pill-light nav-cta" href="{CALENDLY}" target="_blank" rel="noopener"><span class="nav-cta-text">30분 상담 예약</span>{NEW_TAB}</a>\n'
             '    </nav>\n'
             f'    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false">{SEARCH_ICON}<span class="sr-only">사이트 검색</span></button>\n'
             '  </div>\n</header>\n\n'
@@ -71,9 +72,10 @@ def footer(page):
     company = "".join(f"          <li>{section_link(page, sid, name, False)}</li>\n" for sid, name in SECTIONS)
     return ('<footer class="site-footer">\n  <div class="wrap">\n'
           '    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">\n'
-          '      <p class="lets-title"><span class="sr-only">Let’s understand, design, build, and collaborate.</span><span aria-hidden="true"><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>\n'
+          '      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>\n'
+          '      <p class="lets-sentence">Let’s understand, design, build, and collaborate.</p>\n'
           '      <div class="lets-actions">\n'
-          f'        <a class="lets-cta" href="{home(page)}#contact"><span class="pill pill-light">Send a project inquiry</span><span class="circle-btn circle-btn--light">{ARROW}</span></a>\n'
+          f'        <a class="lets-cta" href="{home(page)}#contact"><span class="pill pill-light">프로젝트 문의하기</span><span class="circle-btn circle-btn--light">{ARROW}</span></a>\n'
           '        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">일시정지</span><span class="sr-only"> 움직이는 문구</span></button>\n'
           '      </div>\n'
           '    </div>\n'
@@ -91,7 +93,7 @@ def footer(page):
           '        </ul>\n'
           '      </nav>\n'
           '      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">\n'
-          '        <p class="fl-title" id="nl-title">Newsletter</p>\n'
+          '        <p class="fl-title" id="nl-title">Newsletter <span class="nl-badge">준비 중</span></p>\n'
           '        <label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>\n'
           '        <p class="newsletter-note" id="nl-note">구독 서비스 연결 준비 중입니다. 지금은 신청해도 등록되지 않습니다.</p>\n'
           '        <div class="newsletter-field">\n'
