@@ -52,7 +52,7 @@
 - 언어 링크(한국어 / EN)는 헤더와 푸터 맨 아래 두 곳. build_en_pages.py가 넣는다(헤더는 검색 버튼 앞, 푸터는 저작권 앞)
 - 푸터: Let’s 회전 단어(장식, aria-hidden) + 그 아래 항상 보이는 완전한 문장 "Let’s understand, design, build, and collaborate."(2026-11-11) + 캡슐 "프로젝트 문의하기"(→ 홈 #contact) + 원형 화살표 + 일시정지 → Company(헤더와 같은 다섯 섹션) · Follow(LinkedIn https://www.linkedin.com/company/second-context/ · GitHub https://github.com/RachelCho, 새 탭) · 뉴스레터(라벨 "뉴스레터 구독 이메일", 검색 입력 라벨은 "사이트 검색어") → 로고 · 언어 · "© Second Context 현재 연도"(site.js가 연도 갱신). 정책 페이지는 아직 없어 링크를 두지 않는다
 - 검색·푸터 회전 단어·뉴스레터·Hero 영상은 assets/site.js. 검색은 site.js의 INDEX(실제 페이지·사례만)를 찾는다. 회전 단어 전환은 원본과 같은 오른쪽 20px → 0, 0.3초 ease-out(CSS 변수 --lets-shift·--lets-dur·--lets-ease), 간격은 원본에서 확인 못 해 data-interval 2400ms. 일시정지/재생, 움직임 줄이기 시 멈춤
-- 뉴스레터: 구독 서비스가 연결되지 않음(form data-endpoint 비어 있음). 화면에 "연결 준비 중"을 표시하고, 신청해도 등록된 척하지 않는다. 서비스를 연결하면 data-endpoint에 주소만 넣는다. 2026-11-12 사용자 요청으로 안내 문장("구독 서비스 연결 준비 중입니다…")은 없애고 제목 옆 "준비 중" 배지 + 비활성 입력만 둔다
+- 뉴스레터: 구독 서비스가 연결되지 않음(form data-endpoint 비어 있음). 화면에 "연결 준비 중"을 표시하고, 신청해도 등록된 척하지 않는다. 서비스를 연결하면 data-endpoint에 주소만 넣는다. 2026-11-12 사용자 요청으로 안내 문장("구독 서비스 연결 준비 중입니다…")과 제목 옆 "준비 중" 배지를 모두 없애고 비활성 입력·버튼만 둔다
 - 흰 섹션 교차(2026-11-10): 홈 Services·Approach와 About 멘토링은 흰 바탕(.sc-light: 제목 #000, 본문 #4D4D4D 8.45:1, 작은 글 #666 5.74:1, 버튼 검정 채움/검정 테두리). 나머지는 검정
 - Rachel 사진 재사용: 홈 Why Us 머리 아래 why-us-meeting + why-us-leadership(둥근 두 장 7:5), Services 카드 아래 services-product-discussion + services-collaboration(4:5), Approach 머리 아래 approach-brainstorming 넓은 띠(2:1, 900px 이하 4:3)
 - 가독성(2026-11-10): 제목·카드 제목은 text-wrap:balance, 본문은 text-wrap:pretty, 한국어는 keep-all. 사례 제목은 뒤 구를 <span class="tl">로 묶어 한국어에서 그 앞에서 줄바꿈("미국 홈헬스케어 SaaS의 / 일정 관리 UX", "글로벌 제약사의 운영 모니터링· / 인시던트 관리 UX", "글로벌 테크 기업의 / 한국어 제품 현지화"). 영어 사례 제목은 균형 줄바꿈

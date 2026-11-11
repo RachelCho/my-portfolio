@@ -93,7 +93,7 @@ def footer(page):
           '        </ul>\n'
           '      </nav>\n'
           '      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">\n'
-          '        <p class="fl-title" id="nl-title">Newsletter <span class="nl-badge">준비 중</span></p>\n'
+          '        <p class="fl-title" id="nl-title">Newsletter</p>\n'
           '        <label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>\n'
           '        <div class="newsletter-field">\n'
           '          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-status">\n'
