@@ -1,16 +1,21 @@
-"""Second Context 다섯 페이지(한국어 원본)에 같은 헤더·검색 오버레이·푸터를 넣는다 (2026-11-10 다크 리디자인).
+"""Second Context 페이지(한국어 원본: 홈·하위 네 페이지·사례 네 페이지)에 같은 헤더·검색 오버레이·푸터를 넣는다 (2026-11-10 다크 리디자인).
 사용: python3 tools/sc_chrome.py . && python3 tools/build_en_pages.py .
 언어 링크는 build_en_pages.py가 검색 버튼 바로 앞에 넣는다. 영어 문구는 build_en_pages.py의 COMMON 표에서 바꾼다."""
 import os, re, sys
 
 R = sys.argv[1]
 PAGES = ["second-context.html", "second-context-approach.html", "second-context-contact.html", "second-context-about.html", "second-context-work.html"]
+# 사례 상세(2026-11-16): 카드마다 독립 사례 페이지
+CASES = ["second-context-case-healthcare.html", "second-context-case-monitoring.html", "second-context-case-identity.html", "second-context-case-localization.html", "second-context-case-ogs.html"]
+PAGES += CASES
 # 헤더·푸터 메뉴는 홈의 섹션으로 연결한다(2026-11-10 2차). 하위 페이지는 관련 섹션을 현재 위치로 표시
 # 메뉴 이름은 두 언어 모두 영어로 고정(2026-11-10 사용자 요청). 헤더·푸터 공통
 # 상담·문의 버튼은 2026-11-11 사용자 요청으로 한국어 페이지에서 "30분 상담 예약" · "프로젝트 문의하기"(영어는 build_en_pages.py 표)
-SECTIONS = [("why-us", "Why Us"), ("services", "Services"), ("work", "Work"), ("approach", "Approach"), ("contact", "Contact")]
-CURRENT = {"second-context-about.html": "why-us", "second-context-work.html": "work",
+# 2026-11-16: Services와 Selected Work를 홈 "What we do"(#services) 하나로 합쳐 Work 메뉴를 뺐다. #work 앵커는 그 영역 안 서비스 목록에 남아 있다
+SECTIONS = [("why-us", "Why Us"), ("services", "What we do"), ("approach", "Approach"), ("contact", "Contact")]
+CURRENT = {"second-context-about.html": "why-us", "second-context-work.html": "services",
            "second-context-approach.html": "approach", "second-context-contact.html": "contact"}
+CURRENT.update({c: "services" for c in CASES})
 CALENDLY = "https://calendly.com/yeagyeong/meeting-with-rachel-cho"
 # 외부 링크: 주소가 비어 있으면 링크 없이 '준비 중'으로 표시한다
 LINKEDIN = "https://www.linkedin.com/company/second-context/"

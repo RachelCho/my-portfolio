@@ -1,6 +1,6 @@
 # Second Context 디자인 스타일 (design-style.md)
 
-- 기준: 2026-11-11, 커밋 `947f46e`의 `assets/second-context.css` 실제 값. 규칙 원본은 프로젝트 `CLAUDE.md`의 "Second Context 다크 리디자인"(최우선)과 "Second Context 브랜드 규칙"
+- 기준: 2026-11-16, 커밋 `c03264c`의 `assets/second-context.css` 실제 값(코드로 확인, 이번 갱신에서 CSS는 바꾸지 않음. 처음 작성 2026-11-11 `947f46e`). 규칙 원본은 프로젝트 `CLAUDE.md`의 "Second Context 다크 리디자인"(최우선)과 "Second Context 브랜드 규칙"
 - 이 파일은 Second Context 전용이다. 저장소 루트의 `design-style.md`는 개인 포트폴리오(index.html) "스타일 C — 카드형 벤토 그리드" 문서이므로 그대로 둔다
 - 홈·하위 페이지의 `<body class="sc-dark">`가 다크 토큰을 다시 정의한다. 기본 토큰(플럼·크림 등)은 입력칸과 기획서에만 남아 있다
 
@@ -17,7 +17,12 @@
 | 구분선 `--line` | `rgba(255,255,255,.2)` | 장식 |
 | 장식 선 `--accent-deco` | `#DA613E` (라벨 앞 24×2px 선 전용, 글자·기능 요소 금지) | — |
 
-### 흰 영역 (`.sc-light`: 홈 Services·Approach, About 멘토링)
+### 바탕이 다른 섹션 (2026-11-11)
+- 홈 Why Us: 다크 플럼 `#1B1419`(본문 #B3B3B3 8.67:1 · 작은 글 #999 6.35:1 · 강조 #F0845C 7.03:1, 2026-11-16 재계산)
+- 홈 What we do(2026-11-16, 이전 Services + Selected Work): 흰 바탕 `.sc-light`. 사례 카드는 사진 위 흰 글자, 글자 영역 음영 검정 70% 이상(흰 사진 위에서도 흰색 8.4:1 · #E6E6E6 6.7:1), 캡슐 라벨 흰 바탕 검정 글자. 사례 페이지(second-context-case-*.html) 본문도 흰 바탕, Problem·Results 띠는 은빛 미색 `#EFEDE8`
+- 홈 #contact·Contact 페이지: 멘토링 사진 CSS 배경 + 위→아래 검정 음영(.62 → .8 → .88)
+
+### 흰 영역 (`.sc-light`: 홈 What we do·Approach, About 멘토링, 사례 페이지 본문)
 | 역할 | 값 | 흰 바탕 대비 |
 |---|---|---|
 | 제목 | `#000000` | 21:1 |
@@ -37,11 +42,35 @@
 - 장식 오렌지 `#DA613E`를 글자·버튼에 쓰지 않는다
 
 ## 2. 서체와 글자 위계
-- **2026-11-11 토큰(우선)**: `--fs-display` clamp(40→80px) · `--fs-statement` 36→68 · `--fs-h2` 30→52 · `--fs-case` 26→40(사례 제목) · `--fs-h3` 22→32(카드 제목) · `--fs-item` 20→26(목록 항목) · `--fs-body` 18px(600px 이하 17px), 행간 1.75 · `--fs-small` 16 · `--fs-caption` 14 · `--fs-label` 15. 읽기 폭 `--measure` 한국어 34em · 영어 64ch. 아래 목록은 그 이전 값의 기록
+
+현재 적용되는 값이다(2026-11-16 확인, `assets/second-context.css`의 "2026-11-11 공통 레이아웃·타이포그래피 정리" 층과 그 뒤 규칙). 이전 값은 아래 "변경 이력"에만 둔다.
+
 - 서체: Manrope(영문) + Noto Sans KR(한글), Google Fonts. 제목 굵기 500, 자간 -0.03em
-- 크기(다크): h1 `clamp(40px, 5.6vw, 84px)`(1440px에서 실측 80.6px, 360px 44px) · h2 `clamp(30px, 3.6vw, 52px)` · h3 `clamp(24px, 2.4vw, 34px)` · 카드 제목 `clamp(20px, 1.8vw, 26px)` · 본문 17px/1.7 · 첫 소개 문단(.lead) 20px(600px 이하 18px) · 라벨(.eyebrow) 15px · 푸터 Let’s `clamp(56px, 10vw, 160px)` 굵기 300
-- 한국어만: 제목 줄 간격 h1 1.18 · h2 1.26, 본문 1.8, 라벨·제목·설명 사이 약 8px 추가(`html[lang="ko"]` 규칙)
-- 줄바꿈: 제목 `text-wrap: balance`, 본문 `pretty`, 한국어 `word-break: keep-all`. 사례 제목 뒤 구는 `<span class="tl">`
+
+| 역할 | 토큰 · 선택자 | 현재 값 |
+|---|---|---|
+| 페이지 대형 제목(Hero·하위 페이지 h1) | `--fs-display` · `.sc-hero h1`, `.sc-page-head h1` | `clamp(40px, 3.4vw + 28px, 80px)` |
+| 소개 큰 문장 | `--fs-statement` · `.about-statement` | `clamp(36px, 2.8vw + 26px, 68px)`, 최대 폭 14em |
+| 섹션 제목(h2) | `--fs-h2` · `.sc-head h2` | `clamp(30px, 2vw + 22px, 52px)` |
+| 사례 제목·차별점 제목 | `--fs-case` · `.case-title`, `.case-head h2`, `.diff-title` | `clamp(26px, 1.2vw + 20px, 40px)` |
+| 카드 제목(h3) | `--fs-h3` · `.svc-tile h3`, `.cap-title` | `clamp(22px, .8vw + 18px, 32px)` |
+| 목록 항목 제목 | `--fs-item` · `.row-what`, `.flow-steps h3` | `clamp(20px, .5vw + 17px, 26px)` |
+| 첫 소개 문단(.lead) | `--lead-size` | `clamp(18px, .4vw + 16px, 21px)` |
+| 주요 본문 | `--fs-body` / `--lh-body` | 18px / 1.75 (600px 이하 17px / 1.7) |
+| 보조 설명·캡션 | `--fs-small` / `--lh-small` | 16px / 1.6 (600px 이하 15px) |
+| 작은 캡션 | `--fs-caption` | 14px |
+| 라벨(.eyebrow) | `--fs-label` | 15px |
+| 푸터 Let’s(장식 회전 문구) | `.sc-dark .lets-title` | `clamp(44px, 8vw, 128px)`, 굵기 300, 줄 간격 1, 자간 -0.04em, `overflow-wrap: anywhere` |
+| 푸터 Let’s 아래 완전한 문장 | `.lets-sentence` | `--fs-small`(16px, 600px 이하 15px) / 1.6 |
+
+- 읽기 폭 `--measure`: 한국어 34em, 영어 64ch. 홈 What we do 소개 문장은 읽기 폭(--measure) 안에서 줄바꿈
+- 한국어만: 제목 줄 간격 h1 1.18 · h2 1.26, 소개·본문 문단 1.8, 라벨·제목·설명 사이 약 8px 추가(`html[lang="ko"]` 규칙)
+- 줄바꿈: 제목 `text-wrap: balance`, 본문 `pretty`, 한국어 `word-break: keep-all`. 사례 제목 뒤 구는 `<span class="tl">`. 짧은 고유명사·구는 줄바꿈 없는 공백(U+00A0)
+- 접근성: Approach 번호 숫자(흰색 / #DA613E, 3.65:1)는 큰 글자(굵게 20px) 기준으로만 통과하므로 크기·굵기를 줄이지 않는다
+
+### 변경 이력 (현재 규칙 아님)
+- 2026-11-10 다크 리디자인 첫 값: h1 `clamp(40px, 5.6vw, 84px)` · h2 `clamp(30px, 3.6vw, 52px)` · h3 `clamp(24px, 2.4vw, 34px)` · 카드 제목 `clamp(20px, 1.8vw, 26px)` · 본문 17px/1.7 · .lead 20px(600px 이하 18px) · 라벨 15px · 푸터 Let’s `clamp(56px, 10vw, 160px)` 굵기 300
+- 2026-11-11(커밋 `49d07d6`): 위 표의 토큰 층으로 교체. 푸터 Let’s를 `clamp(44px, 8vw, 128px)` + `overflow-wrap: anywhere`로 줄여, 2026-11-11 점검에서 발견한 360~414px 문서 폭 4~5px 초과에 대응
 
 ## 3. 간격과 레이아웃
 - 간격 단위: 8 / 16 / 24 / 32 / 48 / 64 / 96px (`--s1`~`--s7`)
@@ -69,6 +98,7 @@
 
 ## 6. 움직임
 - Hero 영상, 푸터 회전 단어(0.3초 ease-out, 2.4초 간격), 카운트업(900ms), 카드 hover 확대(1.04)
+- 홈 Approach 01→04 순차 강조(768px 이상, 약 1.4초, 한 번), 스크롤 등장 `.sc-reveal`(0.3초, 아래 16px → 0, 2026-11-12). 둘 다 JS 없음·움직임 줄이기에서는 처음부터 완성 상태(코드 확인)
 - `prefers-reduced-motion: reduce`: 영상 대신 포스터, 회전 단어 고정, 카운트업 없음(2026-11-11 브라우저 확인)
 - 움직이는 요소마다 일시정지 버튼(Hero 영상·푸터 회전 단어)
 
@@ -77,9 +107,11 @@
 |---|---|
 | 한국어 1120px · 영어 1240px 이상 | 가로 메뉴 + 상담 캡슐("30분 상담 예약" / "Book a 30-minute consultation") |
 | 그보다 좁을 때 | "Menu" 버튼 + 패널(같은 순서, 맨 아래 큰 상담 캡슐) |
-| 1100px 이하 | 진행 방식 4단계 → 2열 |
-| 900px 이하 | Hero: 영상 위 · 글 아래(겹치지 않음). 두 열(사진 쌍·차별점·About·사례 카드·문의) → 한 열. 서비스 1열. 사례 02는 HTML·화면 모두 맥락 사진 → 제품 화면 |
-| 600px 이하 | 좌우 여백 16px, 진행 방식 1열, 푸터 링크 1열. Hero 버튼은 360·375px에서 세로·전체 폭(2026-11-11 확인) |
+| 1024px 이하 | 좌우 여백 32px |
+| 1023px 이하 | 홈 What we do 넓은 사례 카드 16:9 → 3:2, 사례 결과 3열 → 2열, 홈 Approach 4단계 → 2열 |
+| 900px 이하 | Hero: 영상 위 · 글 아래(겹치지 않음). 두 열(사진 쌍·차별점·About·사례 카드·문의) → 한 열. 사례 02는 HTML·화면 모두 맥락 사진 → 제품 화면 |
+| 767px 이하 | 홈 What we do 사례 카드 1열·4:5, 사례 페이지 2열 이미지 → 1열, 홈 Approach 세로 타임라인(정적인 세로선, 단계 사이 48px), "경험한 제품과 맡은 역할" 라벨 아래 본문 |
+| 600px 이하 | 좌우 여백 20px(`.sc-dark`의 `--gutter`, 2026-11-11), 본문 17px, 카드 모서리 32px, 푸터 링크 1열. Hero 버튼은 세로·전체 폭(360·375px, 2026-11-11 브라우저 확인) |
 - 순서: About 영역은 글 → 사진, 문의 영역은 폼 → 다른 연락 방법, 푸터는 Company → Follow → Newsletter → 로고·언어·저작권
 
 ## 8. 대비 원칙
