@@ -8,14 +8,19 @@ PAGES = ["second-context.html", "second-context-approach.html", "second-context-
 # 사례 상세(2026-11-16): 카드마다 독립 사례 페이지
 CASES = ["second-context-case-healthcare.html", "second-context-case-monitoring.html", "second-context-case-identity.html", "second-context-case-localization.html", "second-context-case-ogs.html"]
 PAGES += CASES
+# 서비스·가격 / 60분 리뷰 / 예약·자료 안내(2026-11-16, 로컬 초안)
+PRICING = ["second-context-services.html", "second-context-ux-review.html", "second-context-booking-policy.html"]
+PAGES += PRICING
 # 헤더·푸터 메뉴는 홈의 섹션으로 연결한다(2026-11-10 2차). 하위 페이지는 관련 섹션을 현재 위치로 표시
 # 메뉴 이름은 두 언어 모두 영어로 고정(2026-11-10 사용자 요청). 헤더·푸터 공통
 # 상담·문의 버튼은 2026-11-11 사용자 요청으로 한국어 페이지에서 "30분 상담 예약" · "프로젝트 문의하기"(영어는 build_en_pages.py 표)
 # 2026-11-16: Services와 Selected Work를 홈 "What we do"(#services) 하나로 합쳐 Work 메뉴를 뺐다. #work 앵커는 그 영역 안 서비스 목록에 남아 있다
-SECTIONS = [("why-us", "Why Us"), ("services", "What we do"), ("approach", "Approach"), ("contact", "Contact")]
+# 메뉴: 홈 섹션 + 서비스·가격 페이지(Pricing, 2026-11-16, 2026-11-18 사용자 요청으로 Contact 다음). 페이지 링크는 (id, 이름, 주소)
+SECTIONS = [("why-us", "Why Us"), ("services", "What we do"), ("approach", "Approach"), ("contact", "Contact"), ("pricing", "Pricing", "second-context-services.html")]
 CURRENT = {"second-context-about.html": "why-us", "second-context-work.html": "services",
            "second-context-approach.html": "approach", "second-context-contact.html": "contact"}
 CURRENT.update({c: "services" for c in CASES})
+CURRENT.update({p: "pricing" for p in PRICING})
 CALENDLY = "https://calendly.com/yeagyeong/meeting-with-rachel-cho"
 # 외부 링크: 주소가 비어 있으면 링크 없이 '준비 중'으로 표시한다
 LINKEDIN = "https://www.linkedin.com/company/second-context/"
@@ -29,7 +34,10 @@ def home(page):
     return "" if page == PAGES[0] else "second-context.html"
 
 
-def section_link(page, sid, name, cur_attr=True):
+def section_link(page, sid, name, cur_attr=True, url=None):
+    if url:  # 홈 섹션이 아닌 페이지 링크(data-nav 없음: 홈 스크롤 표시 대상이 아님)
+        cur = ' aria-current="page"' if cur_attr and page == url else (' aria-current="true"' if cur_attr and CURRENT.get(page) == sid else '')
+        return f'<a{cur} href="{url}">{name}</a>'
     cur = ' aria-current="true"' if cur_attr and CURRENT.get(page) == sid else ''
     return f'<a{cur} href="{home(page)}#{sid}" data-nav="{sid}">{name}</a>'
 
@@ -47,7 +55,7 @@ ARROW = ('<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fil
 
 
 def header(page):
-    links = "".join(f"      {section_link(page, sid, name)}\n" for sid, name in SECTIONS)
+    links = "".join(f"      {section_link(page, *x[:2], True, *x[2:])}\n" for x in SECTIONS)
     return ('<header class="site-header">\n  <div class="wrap">\n'
             f'    <a href="second-context.html" class="logo" aria-label="Second Context 홈">{WORDMARK}></a>\n'
             '    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>\n'
@@ -74,7 +82,7 @@ def header(page):
 
 
 def footer(page):
-    company = "".join(f"          <li>{section_link(page, sid, name, False)}</li>\n" for sid, name in SECTIONS)
+    company = "".join(f"          <li>{section_link(page, *x[:2], False, *x[2:])}</li>\n" for x in SECTIONS)
     return ('<footer class="site-footer">\n  <div class="wrap">\n'
           '    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">\n'
           '      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>\n'

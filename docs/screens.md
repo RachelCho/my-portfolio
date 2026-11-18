@@ -13,6 +13,9 @@
 | S-02 | Approach (협업 방식) | `second-context-approach.html` | 6단계 진행 방식·산출물·기대 효과 확인 | 홈 #approach의 "진행 방식 자세히 보기", 검색 | 30분 상담 예약하기(→ S-04#booking) · 프로젝트 문의하기(→ S-01#contact) |
 | S-03 | 사례 목록 (Work) | `second-context-work.html` | 네 사례 카드 목록. 이전 주소의 `#case-healthcare`·`#case-monitoring`·`#case-localization`(+`-detail`)은 해당 사례 페이지로 이동(2026-11-16) | 이전 링크, 사례 페이지 | 사례 카드 → 사례 페이지 |
 | S-03a~e | 사례 상세 | `second-context-case-<healthcare\|monitoring\|identity\|localization\|ogs>.html` (ogs는 공개 사례, 섹션 01~07 구조) | 첫 화면(캡슐·제목·요약·대표 사진) → 프로젝트 소개 → Problem/Solution(또는 Design Response) → 핵심 설계 판단 3 → 결과와 배운 점 → 관련 사례·문의·What we do로 돌아가기 | 홈 What we do 카드(카드마다 한 사례), 사례 목록, 검색, 관련 사례 | 데모 단계 이동·재생(healthcare·monitoring·localization) |
+| S-07 | 서비스·가격 (로컬 초안) | `second-context-services.html` | 요약 카드 → 번호별 상세 4개 → FAQ. 가격 USD | 메뉴 Pricing, 홈 What we do·Approach·사례 페이지 버튼, 검색 | 각 상품 CTA → 문의 폼(유형 미리 선택) · 30분 상담(Calendly) |
+| S-08 | 60분 집중 UX 리뷰 (로컬 초안) | `second-context-ux-review.html` | US$200 · 포함 · 진행 순서 · 준비 자료 · 별도 범위 · 신청과 결제 | 서비스·가격, 홈 버튼 | 리뷰 신청 문의(?service=review). 유료 예약 주소가 생기면 booking-config.js에서 교체 |
+| S-09 | 예약·취소·자료 처리 안내 (초안, noindex) | `second-context-booking-policy.html` | 예약 방법 · 결제 · 변경/취소/환불(운영자 확정 필요) · 자료 처리 · 결과물 | 서비스·가격 FAQ, 리뷰 페이지 | — |
 | S-04 | Contact (문의 페이지) | `second-context-contact.html` | 홈과 같은 문의 폼 + 다른 연락 방법 | **Approach의 "30분 상담 예약하기" 버튼 두 곳(→ #booking)뿐**. 홈·헤더·푸터·검색(site.js INDEX)에는 이 페이지가 없음 | 문의 보내기 · 이메일 주소 복사 · 30분 상담 예약하기 |
 | S-05 | About Second Context | `second-context-about.html` | 소개 세 문단 · 경력 수치 · 경력 목록 · 멘토링 | 홈 #founder의 "About Second Context" 버튼, 검색 | 수치 확인, 홈으로 이동 |
 

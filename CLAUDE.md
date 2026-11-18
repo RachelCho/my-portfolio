@@ -40,6 +40,17 @@
 
 ## Second Context 다크 리디자인 (2026-11-10, 최우선 — 아래 규칙과 충돌하면 이 항목을 따른다)
 - 참고: edenspiekermann.com 구조(큰 글자, 번호 원 사례, 둥근 카드, About 사진+수치, "Let’s" 푸터)를 Second Context 내용으로 적용
+- 서비스·가격·예약 안내(2026-11-16 메인 브리프, 2026-11-18 커밋·배포, 결제 활성화 전 · 가격·정책은 검토용 초안):
+  - 새 페이지(한·영): second-context-services.html(서비스·가격: 요약 카드 → 01 무료 30분 상담 · 02 60분 집중 UX 리뷰 US$200 · 03 UX 진단 스프린트 US$1,500부터 · 04 복잡한 제품 흐름 개선 스프린트 별도 견적 → FAQ), second-context-ux-review.html(리뷰 상세), second-context-booking-policy.html(예약·결제·변경/취소/환불·자료 처리·결과물, noindex 초안). 메뉴 Pricing(2026-11-18 사용자 요청으로 Contact 다음, 맨 끝. 헤더·푸터 Company 같은 순서)
+  - 가격은 두 언어 모두 USD(US$200, US$1,500부터), 결제 통화 USD 명시. 언어별 가격 차이 없음
+  - 확정되지 않은 정책(변경·취소·환불, 자료 보관·삭제, 녹화 조건, 홍보·포트폴리오 사용)은 .draft-flag "운영자 확정 필요"로 표시. 임의로 기간·환불률을 정하지 않는다. NDA는 "필요한 경우 자료 공유 전에 문의"만
+  - 결제: assets/booking-config.js 한곳(SC_BOOKING.paidReviewUrl). 비어 있으면 '리뷰 신청 문의'(second-context-contact.html?service=review#inquiry) + "온라인 결제 연결 준비 중" 안내, 넣으면 [data-paid-review-link] 버튼이 보인다. 무료 상담 링크를 유료 버튼에 쓰지 않는다
+  - 문의 폼(문의 페이지·홈 #contact): 문의 유형 select(name=service, data-key review|sprint|project|other, ?service=로 미리 선택, 메일 제목에 붙음) + 상담 진행 언어 radio(name=consult_language). 언어 전환 시 lang.js가 유형·언어를 넘기고, 영어 선호 이동 때 ?query를 유지
+  - 문의 폼 정리(2026-11-16 사용자 요청): 첫 항목 "문의 유형을 선택해 주세요 / Select an inquiry type"(value 빈 값, 기본 선택, 메일 제목에 붙이지 않음) · 60분 집중 UX 리뷰 · UX 진단 스프린트 · 복잡한 제품 흐름 개선 스프린트 · 기타 문의. 무료 30분 상담 항목은 없앴다. 화면 문구(option 글자)에 가격·설명을 넣지 않고, 전송 값(value)은 이전 그대로(가격 포함). 유형별 보조 문구 한 줄만(review: 비용 US$200 + 접수 후 일정·결제 안내 / sprint: 범위 확인 후 견적 / project: 목표·일정에 맞춘 범위 제안), select의 aria-describedby로 연결. 결제·환불·준비 중 같은 긴 안내는 폼에 두지 않고 서비스·리뷰 상세·예약 안내 페이지에만
+  - 문의 폼 간격(2026-11-16): 제목 행 → 첫 칸 32 · 라벨 → 입력 12 · 입력 → 보조 문구·오류 8 · 칸 사이 24(모든 폭 동일). 입력·select·textarea 높이 56 이상, 좌우 16, 글자 17, 모서리 12. 기본 테두리 #8C858E 1px ↔ 포커스 플럼 2px + 흰 외곽선 3px(간격 2px, 흰 섹션은 검정), 오류는 포커스 중에도 #A83E20 테두리. 규칙은 second-context.css 끝 .inquiry-form 범위 블록에만 둔다(전역 덮어쓰기 금지). 600px 이하 폼 안쪽 여백 32·24
+  - 상품 구분(2026-11-16 사용자 요청, "이 단계에서 얻는 것" .pr-buy·요약 카드 설명): 02 집중 UX 리뷰 = 특정 문제에 대한 전문가 판단 · 03 UX 진단 스프린트 = 무엇을 먼저 고쳐야 하는지에 대한 진단·우선순위(개선 설계는 포함하지 않음) · 04 복잡한 제품 흐름 개선 스프린트(이전 "제품 디자인·프로토타이핑", 별도 견적, id·data-key project 유지) = 선정한 문제를 어떻게 바꿀지에 대한 구체적인 설계. 04의 기간·가격은 정하지 않았다. 요약 카드는 768px 이상에서 subgrid로 가격 시작선을 맞춘다
+  - 서비스·가격 결과물(60분 리뷰): 설명 <p>와 전달 기한 <p class="pr-due">를 별도 블록으로, 사이 8px
+  - 생성기: 페이지는 HTML이 원본. 번역은 tools/build_en_pages.py PRICING_PAGES(세 페이지 전용, 8자 미만 짧은 문구는 다른 페이지에 적용 안 함) + PRICING_EXTRA(폼·버튼)
 - What we do · 사례 페이지(2026-11-16, 사용자 요청 — 아래 Services·Selected Work·Work 메뉴·사례 페이지 규칙보다 우선):
   - 홈 Services + Selected Work → 흰 바탕 "What we do"(#services). `ol.wwd-list#work`(이전 #work 링크 유지)에 서비스 블록 3: 번호 원 | 큰 제목 → 설명 → 사례 카드. 01 복잡한 업무를 명확한 제품으로(Healthcare Scheduling · Enterprise Operations, 2열) · 02 시작부터 신뢰할 수 있는 경험으로(Identity Verification 1장, OGS는 추가하지 않음) · 03 시장과 사용 맥락에 맞는 경험으로(Product Localization 1장)
   - 메뉴: Why Us · What we do(#services) · Approach · Contact (Work 메뉴 없음, tools/sc_chrome.py SECTIONS). 사례·사례 목록 페이지는 What we do를 현재 위치로 표시

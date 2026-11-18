@@ -2043,3 +2043,122 @@ html[lang="ko"] .ogs-dev-cap{word-break:keep-all}
 .ogs-dev--phone .ogs-dev-screen{aspect-ratio:9/17;width:100%}
 .ogs-dev--phone .ogs-dev-screen img{width:100%;max-height:100%;object-fit:contain}
 @media(max-width:1023px){.ogs-devices{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ogs-dev--desk{grid-column:1/-1}.ogs-dev--phone2{display:block}.ogs-dev--phone{max-width:220px;justify-self:center;width:100%}}
+/* 서비스·가격 / 60분 리뷰 / 예약·자료 안내(2026-11-16, 로컬 초안): edenspiekermann.com/figma처럼 요약 → 번호별 상세. 흰 섹션 토큰 */
+[hidden]{display:none!important}
+.sc-dark .pr-hero h1{max-width:16em;font-size:var(--fs-display);text-wrap:balance}
+.pr-usd{margin-top:var(--s4);color:#000;font-size:var(--fs-small);font-weight:600}
+.pr-usd::before{content:"";display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:#A83E20;vertical-align:1px}
+.sc-dark .pr-h2{max-width:18em;color:#000;font-size:var(--fs-h2);line-height:1.12;text-wrap:balance}
+.pr-sec .eyebrow{font-variant-numeric:tabular-nums}
+.pr-summary{padding-top:0}
+.pr-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);list-style:none;margin:0;padding:0}
+.pr-card{position:relative;display:grid;gap:var(--s2);align-content:start;height:100%;padding:var(--s4);border-radius:var(--radius-card);background:#F4F4F2;color:#000;text-decoration:none;transition:background-color .2s ease,transform .2s ease}
+.pr-card:hover{background:#ECECE8}
+.pr-card:focus-visible{outline:3px solid #000;outline-offset:3px}
+.pr-card-name{font-size:var(--fs-item);font-weight:600;line-height:1.25}
+.pr-card-price{color:#A83E20;font-size:clamp(26px,1.4vw + 16px,40px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums} /* 6.2:1 큰 글자 */
+.pr-card-desc{color:#4D4D4D;font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-card-go{margin-top:auto;font-size:20px;transition:transform .2s ease}
+.pr-card:hover .pr-card-go{transform:translateX(4px)}
+.pr-price{margin-top:var(--s3);color:#A83E20;font-size:clamp(32px,2vw + 20px,56px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pr-price span{color:#4D4D4D;font-size:var(--fs-body);font-weight:400;letter-spacing:0}
+.pr-facts{display:grid;grid-template-columns:minmax(140px,2fr) minmax(0,7fr);gap:0;margin:var(--s5) 0 0;border-top:1px solid var(--line)}
+.pr-facts dt,.pr-facts dd{margin:0;padding:var(--s3) 0;border-bottom:1px solid var(--line)}
+.pr-facts dt{padding-right:var(--s3);color:#000;font-size:var(--fs-small);font-weight:700}
+.pr-facts dd{font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-facts a{color:#000;text-decoration:underline;text-underline-offset:3px}
+.pr-list{margin:0;padding-left:1.1em;display:grid;gap:4px}
+.pr-list--x{list-style:none;padding:0;margin-top:var(--s4)}
+.pr-list--x li{display:flex;gap:10px;font-size:var(--fs-body)}
+.pr-list--x li::before{content:"✕";color:#A83E20;font-weight:700}
+.pr-note{max-width:var(--measure);margin-top:var(--s4);color:#4D4D4D;font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-cta{margin-top:var(--s4)}
+.pr-pay{max-width:var(--measure);margin-top:var(--s4);padding:var(--s3) var(--s4);border-left:3px solid #A83E20;border-radius:0 12px 12px 0;background:#fff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.sc-tone-ivory .pr-pay{background:#fff}
+.pr-pay-k{color:#000;font-size:var(--fs-small);font-weight:700}
+.pr-pay p:not(.pr-pay-k){margin-top:4px;font-size:var(--fs-small);line-height:var(--lh-small);color:#30232E}
+.pr-faq{display:grid;margin-top:var(--s5);border-top:1px solid var(--line)}
+.pr-faq details{border-bottom:1px solid var(--line)}
+.pr-faq summary{display:flex;justify-content:space-between;gap:var(--s3);padding:var(--s3) 0;color:#000;font-size:var(--fs-item);font-weight:600;cursor:pointer;list-style:none}
+.pr-faq summary::-webkit-details-marker{display:none}
+.pr-faq summary::after{content:"+";font-weight:400;transition:transform .2s ease}
+.pr-faq details[open] summary::after{transform:rotate(45deg)}
+.pr-faq summary:focus-visible{outline:3px solid #000;outline-offset:2px}
+.pr-faq details p{max-width:var(--measure);padding-bottom:var(--s3);font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-faq a{color:#000;text-decoration:underline}
+.pr-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);list-style:none;margin:var(--s5) 0 0;padding:var(--s4) 0 0;border-top:1px solid var(--line)}
+.pr-meta li{display:grid;gap:4px;color:#4D4D4D;font-size:var(--fs-small)}
+.pr-meta b{color:#000;font-size:clamp(24px,1.2vw + 16px,36px);font-weight:600;letter-spacing:-.01em}
+.pr-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4);list-style:none;margin:var(--s5) 0 0;padding:0}
+.pr-steps li{display:grid;gap:var(--s1);align-content:start;padding-top:var(--s3);border-top:2px solid #000}
+.pr-steps b{color:#000;font-size:var(--fs-item)}
+.pr-steps span:not(.num-circle){font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4) var(--s3);list-style:none;margin:var(--s5) 0 0;padding:0;counter-reset:f}
+.pr-flow li{position:relative;display:grid;gap:var(--s1);align-content:start;padding:var(--s4);border-radius:24px;background:#fff}
+.pr-flow-n{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#000;color:#fff;font-weight:700}
+.pr-flow b{color:#000;font-size:var(--fs-item)}
+.pr-flow span:not(.pr-flow-n){font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s5);margin-top:var(--s5);align-items:start}
+.pr-two .pr-list{font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-warn{padding:var(--s4);border-radius:20px;background:#FDF1EC;color:#30232E;font-size:var(--fs-small);line-height:var(--lh-small)}
+.draft-flag{display:inline-block;padding:2px 10px;border:1.5px dashed #A83E20;border-radius:999px;color:#A83E20;font-size:12px;font-weight:700;white-space:nowrap;vertical-align:1px}
+.pr-draft-note{margin-top:var(--s4);color:#4D4D4D;font-size:var(--fs-small)}
+.pr-pending{max-width:var(--measure);margin-top:var(--s5);padding:var(--s4);border:1.5px dashed #A83E20;border-radius:20px;background:#FFF9F6}
+.pr-pending > p{margin:var(--s2) 0;font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-home-cta{margin-top:var(--s6)}
+html[lang="ko"] .pr-sec :is(p,dd,li,summary),html[lang="ko"] .pr-hero .lead{word-break:keep-all}
+/* 문의 폼: 문의 유형·상담 언어 */
+.inquiry-form select{width:100%;min-height:46px;padding:0 14px;border:1px solid var(--field-border);border-radius:4px;background:#fff;color:#30232E;font:inherit;font-size:16px}
+.sc-dark .inquiry-form select{border-radius:12px}
+.field-help{margin-top:8px;color:var(--body);font-size:14px;line-height:1.55}
+.field-choice{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin:0;padding:0;border:0}
+.field-choice legend{width:100%;margin-bottom:8px;font-weight:600;font-size:15px}
+.sc-dark .field-choice legend{color:#fff}
+.field-choice label{display:inline-flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
+.field-choice input{width:20px;height:20px;accent-color:#F0845C}
+@media(max-width:1023px){.pr-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-steps,.pr-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.pr-cards,.pr-flow,.pr-two{grid-template-columns:1fr}.pr-facts{grid-template-columns:1fr}.pr-facts dt{padding-bottom:0;border-bottom:0}.pr-facts dd{padding-top:6px}}
+@media(max-width:600px){.pr-steps,.pr-meta{grid-template-columns:1fr 1fr}}
+/* 서비스·가격 결과물: 설명과 전달 기한을 별도 블록으로(2026-11-16), 사이 8px */
+.pr-facts dd > p{margin:0}
+.pr-facts dd > p + p{margin-top:8px}
+
+/* 문의 폼 간격·입력창(2026-11-16): 제목 행 → 첫 칸 32 · 라벨 → 입력 12 · 입력 → 보조 문구·오류 8 · 칸 사이 24, 모든 폭 같은 위계.
+   원인: select가 .field input 규칙에서 빠져 margin-top 0으로 라벨에 붙었고, 기본 포커스 외곽선(3px + 간격 3px)이 라벨까지 닿았다.
+   입력 칸은 밝은 토큰(--plum #30232E)이라 전역 :focus-visible 외곽선이 어두운 폼 바탕에서 보이지 않았다 → 폼 안에서만 색을 정한다 */
+.inquiry-form .field-grid{gap:24px;margin-top:32px}
+.inquiry-form .field label{font-size:16px;line-height:1.4}
+.inquiry-form .field :is(input,textarea,select){display:block;width:100%;min-height:56px;margin-top:12px;padding:14px 16px;
+  border:1px solid #8C858E;border-radius:12px;background-color:#fff;color:#30232E;font:inherit;font-size:17px;line-height:1.5}
+.inquiry-form .field textarea{height:160px;min-height:120px}
+/* select: 기본 화살표 대신 같은 높이의 직접 그린 화살표(플럼, 흰 바탕 14.9:1) */
+.inquiry-form .field select{appearance:none;-webkit-appearance:none;padding-right:48px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%2330232E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;background-size:16px}
+/* 아직 고르지 않은 상태는 placeholder와 같은 회색(#7A737C, 흰 바탕 4.59:1) */
+.inquiry-form .field select:has(option[value=""]:checked){color:#7A737C}
+.inquiry-form .field select option{color:#30232E}
+/* 기본 테두리 #8C858E(1px) ↔ 포커스: 플럼 2px 테두리 + 바깥 외곽선(라벨과 7px 떨어짐) */
+.inquiry-form .field :is(input,textarea,select):focus{border-color:#30232E;box-shadow:inset 0 0 0 1px #30232E}
+.inquiry-form .field :is(input,textarea,select):focus-visible{outline:3px solid #fff;outline-offset:2px}
+.sc-light .inquiry-form .field :is(input,textarea,select):focus-visible{outline-color:#000}
+/* 오류는 포커스 중에도 오렌지 테두리 유지(흰 바탕 6.22:1), 문구로도 알림 */
+.inquiry-form .field [aria-invalid="true"],.inquiry-form .field [aria-invalid="true"]:focus{border-color:#A83E20;box-shadow:inset 0 0 0 1px #A83E20}
+.inquiry-form .field-help,.inquiry-form .field-error{margin-top:8px}
+.inquiry-form .field-help{font-size:15px;line-height:1.55}
+/* 상담 진행 언어: 라디오 줄 높이 44px 안에서 legend와 12px 정도 떨어져 보인다 */
+.inquiry-form .field-choice legend{margin-bottom:0;font-size:16px;line-height:1.4}
+@media(max-width:600px){.sc-dark .inquiry-form{padding:32px 24px}}
+
+/* 서비스·가격 02~04: 이 단계에서 얻는 것(2026-11-16) — 리뷰는 판단, 진단은 우선순위, 개선 스프린트는 설계로 구분 */
+.pr-buy{max-width:var(--measure);margin-top:var(--s3);color:#000;font-size:var(--fs-item);font-weight:600;line-height:1.4;text-wrap:balance}
+.pr-buy-k{display:block;margin-bottom:var(--s1);color:#4D4D4D;font-size:var(--fs-small);font-weight:700;line-height:1.4}
+html[lang="ko"] .pr-buy{word-break:keep-all}
+/* 요약 카드: 이름 길이가 달라도(04는 두~세 줄) 번호·이름·가격·설명·화살표 시작선을 subgrid로 맞춘다(여러 열일 때만) */
+@media(min-width:768px){
+  .pr-cards > li{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:var(--s2)}
+  .pr-cards .pr-card{grid-row:span 5;grid-template-rows:subgrid;row-gap:var(--s2);align-content:normal}
+  .pr-cards .pr-card-go{align-self:end}
+}
+/* 요약 카드 가격이 두 줄일 때 줄 사이 여백을 절반으로(2026-11-18 사용자 요청): 본문 행간 1.7(여백 0.7em) → 1.35(0.35em) */
+.pr-card-price{line-height:1.35}
