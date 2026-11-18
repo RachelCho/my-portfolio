@@ -2160,5 +2160,108 @@ html[lang="ko"] .pr-buy{word-break:keep-all}
   .pr-cards .pr-card{grid-row:span 5;grid-template-rows:subgrid;row-gap:var(--s2);align-content:normal}
   .pr-cards .pr-card-go{align-self:end}
 }
-/* 요약 카드 가격이 두 줄일 때 줄 사이 여백을 절반으로(2026-11-18 사용자 요청): 본문 행간 1.7(여백 0.7em) → 1.35(0.35em) */
-.pr-card-price{line-height:1.35}
+/* 요약 카드 가격이 두 줄일 때 줄 사이 여백(2026-11-18 사용자 요청 두 차례): 본문 행간 1.7 → 1.35 → 큰 제목처럼 1.1 */
+.pr-card-price{line-height:1.1}
+/* 결제 링크 연결 전·후 문구 전환(booking-config.js): 숨김 상태가 다른 display 규칙에 덮이지 않게 */
+[data-paid-pending][hidden],[data-paid-ready][hidden],[data-paid-review-link][hidden]{display:none!important}
+
+/* ── 서비스·가격 한눈에 보기 + 상세 슬라이더(2026-11-18 사용자 요청: 간결하게, 애니메이션·스크롤 슬라이더) ──
+   1) 요약: 단계 레일(대화 → 판단 → 우선순위 → 설계, 장식) + 카드 4장(이름·가격·얻는 것·핵심 두 가지). 화면에 들어오면 레일이 채워지고 카드가 차례로 떠오른다(site.js data-anim)
+   2) 상세: 네 패널 가로 스크롤 슬라이더(pricing.js). 가운데 패널 강조, 나머지는 살짝 작게(투명도는 쓰지 않아 글자 대비 유지)
+   JS 없음·움직임 줄이기: 처음부터 완성 상태, 슬라이더는 가로 스크롤만 */
+.pr-rail{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);list-style:none;margin:0 0 var(--s3);padding:0}
+.pr-rail::before,.pr-rail::after{content:"";position:absolute;left:var(--s4);right:0;top:7px;height:2px;border-radius:2px;background:rgba(0,0,0,.1)}
+.pr-rail::after{background:#DA613E;transform-origin:left;transform:scaleX(1)} /* 장식 오렌지: 선만 */
+.pr-rail li{position:relative;z-index:1;display:flex;align-items:center;gap:var(--s1);padding-left:var(--s4)}
+.pr-rail li::before{content:"";flex:none;width:16px;height:16px;border:2px solid #DA613E;border-radius:50%;background:#DA613E;box-shadow:0 0 0 4px #fff}
+.pr-rail-k{padding-right:var(--s1);background:#fff;color:#000;font-size:var(--fs-small);font-weight:700;line-height:1.2}
+.pr-chips{display:flex;flex-wrap:wrap;align-content:start;gap:var(--s1)}
+.pr-chip{padding:4px 12px;border:1px solid rgba(0,0,0,.16);border-radius:999px;background:#fff;color:#30232E;font-size:13px;line-height:1.5}
+.pr-card{transition:background-color .2s ease,transform .25s ease,box-shadow .25s ease}
+@media(hover:hover){.pr-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(0,0,0,.35)}}
+@media(min-width:768px){
+  .pr-cards > li{grid-row:span 6}
+  .pr-cards .pr-card{grid-row:span 6}
+}
+@media(max-width:1023px){.pr-rail{display:none}}
+/* 등장: 레일 채우기 1.1초, 점 차례로, 카드 0.08초 간격 */
+.js-anim .pr-glance .pr-rail::after{transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1) .15s}
+.js-anim .pr-glance.is-play .pr-rail::after{transform:scaleX(1)}
+.js-anim .pr-glance .pr-rail li::before{background:#fff;transition:background-color .3s ease}
+.js-anim .pr-glance.is-play .pr-rail li::before{background:#DA613E}
+.js-anim .pr-glance .pr-rail li:nth-child(2)::before{transition-delay:.45s}
+.js-anim .pr-glance .pr-rail li:nth-child(3)::before{transition-delay:.75s}
+.js-anim .pr-glance .pr-rail li:nth-child(4)::before{transition-delay:1.05s}
+.js-anim .pr-glance .pr-cards > li{opacity:0;transform:translateY(24px);transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1)}
+.js-anim .pr-glance.is-play .pr-cards > li{opacity:1;transform:none}
+.js-anim .pr-glance .pr-cards > li:nth-child(2){transition-delay:.08s}
+.js-anim .pr-glance .pr-cards > li:nth-child(3){transition-delay:.16s}
+.js-anim .pr-glance .pr-cards > li:nth-child(4){transition-delay:.24s}
+
+/* 상세 슬라이더 */
+.pr-slider{margin-top:var(--s5)}
+.pr-slider-nav{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s3)}
+.pr-slider-nav[hidden]{display:none}
+.pr-tabs{display:flex;flex-wrap:wrap;gap:var(--s1)}
+.pr-tabs button{display:inline-flex;align-items:center;gap:var(--s1);min-height:44px;padding:6px 16px 6px 6px;border:1px solid rgba(0,0,0,.24);border-radius:999px;background:#fff;color:#000;font:inherit;font-size:15px;font-weight:600;line-height:1.3;cursor:pointer;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.pr-tab-n{display:grid;place-items:center;flex:none;width:30px;height:30px;border:1.5px solid #A83E20;border-radius:50%;color:#A83E20;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.pr-tabs button:hover{border-color:#000}
+.pr-tabs button[aria-current="true"]{border-color:#000;background:#000;color:#fff}
+.pr-tabs button[aria-current="true"] .pr-tab-n{border-color:#F0845C;color:#F0845C} /* 검정 위 8.16:1 */
+.pr-arrows{display:flex;gap:var(--s1)}
+.pr-arrow{display:grid;place-items:center;width:48px;height:48px;border:1px solid #000;border-radius:50%;background:#fff;color:#000;cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.pr-arrow:hover:not(:disabled){background:#000;color:#fff}
+.pr-arrow:disabled{border-color:rgba(0,0,0,.2);color:rgba(0,0,0,.35);cursor:default}
+.pr-tabs button:focus-visible,.pr-arrow:focus-visible,.pr-track:focus-visible,.pr-more summary:focus-visible{outline:3px solid #000;outline-offset:3px}
+.pr-progress{grid-column:1 / -1;height:3px;border-radius:3px;background:rgba(0,0,0,.12);overflow:hidden}
+.pr-progress span{display:block;height:100%;background:#000;transform-origin:left;transform:scaleX(0);transition:transform .12s linear}
+.pr-track{position:relative;display:flex;align-items:flex-start;gap:var(--s3);margin:var(--s2) calc(-1 * var(--s2)) 0;padding:var(--s3) var(--s2) var(--s4);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--s2);overscroll-behavior-x:contain}
+.js-slider .pr-track{scrollbar-width:none}
+.js-slider .pr-track::-webkit-scrollbar{display:none}
+.pr-panel{flex:0 0 min(86%, 980px);scroll-snap-align:start;display:grid;gap:var(--s4);align-content:start;padding:var(--s5);border-radius:32px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.js-slider .pr-panel:not(.is-active){transform:scale(.95)}
+.js-slider .pr-panel.is-active{box-shadow:0 0 0 1px rgba(0,0,0,.08),0 28px 56px -28px rgba(0,0,0,.3)}
+.pr-panel-head{display:grid;gap:var(--s2);justify-items:start}
+.pr-panel-title{color:#000;font-size:var(--fs-h3);font-weight:600;line-height:1.2;text-wrap:balance}
+.pr-panel .pr-price{margin-top:0;font-size:clamp(28px,1.6vw + 18px,44px);line-height:1.15}
+.pr-panel .pr-buy{margin-top:var(--s1)}
+.pr-panel-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4);padding-top:var(--s4);border-top:1px solid var(--line)}
+.pr-k{margin-bottom:var(--s1);color:#000;font-size:var(--fs-small);font-weight:700}
+.pr-col{color:#30232E;font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-col > p + p{margin-top:8px}
+.pr-more{border-top:1px solid var(--line)}
+.pr-more summary{display:inline-flex;align-items:center;gap:var(--s1);min-height:44px;margin-top:var(--s1);color:#000;font-size:var(--fs-small);font-weight:700;cursor:pointer;list-style:none}
+.pr-more summary::-webkit-details-marker{display:none}
+.pr-more summary::before{content:"+";display:grid;place-items:center;width:24px;height:24px;border:1px solid #000;border-radius:50%;font-weight:400;line-height:1;transition:transform .2s ease}
+.pr-more[open] summary::before{transform:rotate(45deg)}
+.pr-more .pr-facts{margin-top:var(--s1)}
+.pr-panel :is(.pr-pay,.pr-note,.pr-cta){margin-top:0}
+.pr-more .pr-note{margin-top:var(--s2)}
+html[lang="ko"] .pr-panel :is(.pr-col,.pr-chip,.pr-panel-title){word-break:keep-all}
+html[lang="ko"] .pr-card-desc{word-break:keep-all}
+@media(max-width:767px){
+  .pr-slider-nav{grid-template-columns:1fr auto}
+  .pr-tabs button{padding:6px}
+  .pr-tab-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .pr-panel{flex-basis:88%;padding:var(--s4) var(--s3);border-radius:24px}
+  .pr-panel-body{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .pr-card,.pr-panel,.pr-progress span,.pr-more summary::before{transition:none}
+  .pr-card:hover,.js-slider .pr-panel:not(.is-active){transform:none}
+}
+/* 레일: 점과 글자 사이로 선이 보이지 않게 글자 바탕이 양옆을 덮는다 */
+.pr-rail li{gap:0}
+.pr-rail-k{padding:0 var(--s1)}
+/* 767px 이하 요약 카드: 이름 | 가격 한 줄 → 얻는 것 → 핵심 두 가지(번호 원·화살표 생략)로 짧게 */
+@media(max-width:767px){
+  .pr-cards{gap:var(--s2)}
+  .pr-card{grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:var(--s1) var(--s2);padding:var(--s3)}
+  .pr-card > .num-circle,.pr-card-go{display:none}
+  .pr-card-name{font-size:18px}
+  .pr-card-price{font-size:22px;text-align:right;white-space:nowrap}
+  .pr-card-desc,.pr-chips{grid-column:1 / -1}
+  .pr-chips{margin-top:4px}
+}
+[data-sprint-pending][hidden],[data-sprint-ready][hidden],[data-sprint-link][hidden]{display:none!important}
+[data-project-pending][hidden],[data-project-ready][hidden],[data-project-link][hidden]{display:none!important}
