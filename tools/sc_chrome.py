@@ -105,7 +105,7 @@ def footer(page):
           f'          <li>{follow(GITHUB, "GitHub", "Rachel Cho")}</li>\n'
           '        </ul>\n'
           '      </nav>\n'
-          '      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">\n'
+          '      <form class="newsletter" data-endpoint="https://assets.mailerlite.com/jsonp/2799467/forms/204673114018154094/subscribe" novalidate aria-labelledby="nl-title">\n'
           '        <p class="fl-title" id="nl-title">Newsletter</p>\n'
           '        <label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>\n'
           '        <div class="newsletter-field">\n'
